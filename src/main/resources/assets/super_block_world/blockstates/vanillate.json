@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "super_block_world:block/vanillate"
+      },
+      {
+        "model": "super_block_world:block/vanillate_clean"
+      },
+      {
+        "model": "super_block_world:block/vanillate",
+        "y": 180
+      },
+      {
+        "model": "super_block_world:block/vanillate_clean",
+        "y": 180
+      }
+    ]
+  }
+}

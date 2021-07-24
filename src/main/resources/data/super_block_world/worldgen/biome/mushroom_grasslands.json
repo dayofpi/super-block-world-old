@@ -1,0 +1,84 @@
+{
+  "surface_builder": "minecraft:grass",
+  "depth": 0.125,
+  "scale": 0.08,
+  "temperature": 0.8,
+  "downfall": 0.4,
+  "precipitation": "rain",
+  "category": "plains",
+  "player_spawn_friendly": true,
+  "effects": {
+    "sky_color": 45563,
+    "fog_color": 12909823,
+    "water_color": 44799,
+    "water_fog_color": 1982868,
+    "grass_color": 7067428,
+    "foliage_color": 962817,
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2
+    }
+  },
+  "starts": [],
+  "spawners": {
+    "monster": [],
+    "creature": [
+      {
+        "type": "minecraft:rabbit",
+        "weight": 4,
+        "minCount": 2,
+        "maxCount": 3
+      }
+    ],
+    "ambient": [],
+    "underground_water_creature": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {},
+  "carvers": {
+    "air": [
+      "minecraft:cave",
+      "minecraft:canyon"
+    ]
+  },
+  "features": [
+    [],
+    [
+      "minecraft:lake_water",
+      "minecraft:lake_lava"
+    ],
+    [
+      "minecraft:amethyst_geode"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [
+      "minecraft:rare_dripstone_cluster",
+      "minecraft:rare_small_dripstone"
+    ],
+    [
+      "super_block_world:vanillate_topping",
+      "minecraft:patch_tall_grass_2",
+      "minecraft:glow_lichen",
+      "minecraft:classic_vines_cave_feature",
+      "minecraft:plain_vegetation",
+      "minecraft:flower_plain_decorated",
+      "minecraft:patch_grass_plain",
+      "minecraft:brown_mushroom_taiga",
+      "minecraft:red_mushroom_taiga",
+      "super_block_world:patch_sugar_cane",
+      "super_block_world:patch_pumpkin",
+      "minecraft:spring_water",
+      "minecraft:spring_lava"
+    ],
+    [
+      "minecraft:freeze_top_layer"
+    ]
+  ]
+}
