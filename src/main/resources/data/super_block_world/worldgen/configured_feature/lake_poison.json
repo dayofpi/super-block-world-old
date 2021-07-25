@@ -25,7 +25,7 @@
                 "height": {
                   "type": "minecraft:uniform",
                   "min_inclusive": {
-                    "above_bottom": 20
+                    "above_bottom": 5
                   },
                   "max_inclusive": {
                     "absolute": 40
@@ -44,28 +44,13 @@
                   }
                 },
                 "feature": {
-                  "type": "minecraft:block_pile",
+                  "type": "minecraft:lake",
                   "config": {
-                    "state_provider": {
-                      "type": "minecraft:weighted_state_provider",
-                      "entries": [
-                        {
-                          "weight": 1,
-                          "data": {
-                            "Name": "minecraft:amethyst_cluster",
-                            "Properties": {
-                              "facing": "up",
-                              "waterlogged": "false"
-                            }
-                          }
-                        },
-                        {
-                          "weight": 5,
-                          "data": {
-                            "Name": "super_block_world:crystal_bricks"
-                          }
-                        }
-                      ]
+                    "state": {
+                      "Name": "super_block_world:poison",
+                      "Properties": {
+                        "level": "0"
+                      }
                     }
                   }
                 }

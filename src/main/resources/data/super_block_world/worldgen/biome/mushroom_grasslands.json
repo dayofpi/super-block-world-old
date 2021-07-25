@@ -59,17 +59,17 @@
     [],
     [],
     [
-      "super_block_world:cave_ceiling_1",
       "super_block_world:vanillate_topping",
       "minecraft:rare_dripstone_cluster",
       "minecraft:rare_small_dripstone"
     ],
     [
-      "super_block_world:cave_ceiling_2",
+      "super_block_world:cave_ceiling",
+      "super_block_world:cave_lanterns",
       "super_block_world:toppings_coal",
       "super_block_world:toppings_iron",
       "super_block_world:toppings_gold",
-      "super_block_world:pile_crystal",
+      "super_block_world:lake_poison",
       "minecraft:patch_tall_grass_2",
       "minecraft:classic_vines_cave_feature",
       "minecraft:plain_vegetation",

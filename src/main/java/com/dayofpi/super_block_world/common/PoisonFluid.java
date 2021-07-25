@@ -12,14 +12,12 @@ import net.minecraft.item.Item;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Optional;
 import java.util.Random;
 
 public class PoisonFluid extends CustomFluid {
@@ -49,10 +47,7 @@ public class PoisonFluid extends CustomFluid {
         return BlockReg.POISON.getDefaultState().with(FluidBlock.LEVEL, getBlockStateLevel(fluidState));
     }
 
-    public Optional<SoundEvent> getBucketFillSound() {
-        return Optional.of(SoundEvents.ITEM_BUCKET_FILL_LAVA);
-    }
-
+    @Override
     public void randomDisplayTick(World world, BlockPos pos, FluidState state, Random random) {
         BlockPos blockPos = pos.up();
         if (world.getBlockState(blockPos).isAir() && !world.getBlockState(blockPos).isOpaqueFullCube(world, blockPos)) {

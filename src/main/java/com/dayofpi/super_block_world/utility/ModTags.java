@@ -17,9 +17,11 @@ public class ModTags {
 
     public static Tag<Block> ALWAYS_CARVABLE;
     public static Tag<Fluid> POISON;
+    public static Tag<Fluid> TRUE_LAVA;
 
     public static void registerTags() {
         ALWAYS_CARVABLE = addBlockTag("always_carvable");
         POISON = addFluidTag("poison");
+        TRUE_LAVA = addFluidTag("true_lava");
     }
 }

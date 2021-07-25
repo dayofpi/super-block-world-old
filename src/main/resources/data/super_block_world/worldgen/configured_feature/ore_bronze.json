@@ -26,25 +26,26 @@
                     "above_bottom": 0
                   },
                   "max_inclusive": {
-                    "below_top": 200
+                    "absolute": 100
                   }
                 }
               }
             },
             "feature": {
-              "type": "minecraft:spring_feature",
+              "type": "minecraft:ore",
               "config": {
-                "state": {
-                  "Name": "minecraft:water",
-                  "Properties": {
-                    "falling": "true"
+                "size": 10,
+                "discard_chance_on_air_exposure": 0,
+                "targets": [
+                  {
+                    "target": {
+                      "predicate_type": "minecraft:block_match",
+                      "block": "super_block_world:vanillate"
+                    },
+                    "state": {
+                      "Name": "super_block_world:bronze_ore"
+                    }
                   }
-                },
-                "rock_count": 4,
-                "hole_count": 2,
-                "requires_block_below": true,
-                "valid_blocks": [
-                  "super_block_world:vanillate"
                 ]
               }
             }

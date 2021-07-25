@@ -4,7 +4,7 @@
     "decorator": {
       "type": "minecraft:count",
       "config": {
-        "count": 16
+        "count": 17
       }
     },
     "feature": {
@@ -47,26 +47,6 @@
                     "to_place": {
                       "type": "minecraft:weighted_state_provider",
                       "entries": [
-                        {
-                          "weight": 5,
-                          "data": {
-                            "Name": "minecraft:chain",
-                            "Properties": {
-                              "axis": "y",
-                              "waterlogged": "false"
-                            }
-                          }
-                        },
-                        {
-                          "weight": 1,
-                          "data": {
-                            "Name": "minecraft:lantern",
-                            "Properties": {
-                              "hanging": "true",
-                              "waterlogged": "false"
-                            }
-                          }
-                        },
                         {
                           "weight": 3,
                           "data": {

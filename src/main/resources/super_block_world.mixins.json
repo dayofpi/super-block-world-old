@@ -6,9 +6,7 @@
   "mixins": [
     "CarverMixin",
     "EntityExtra",
-    "LivingEntityExtra",
     "EntityMixin",
-    "LivingEntityMixin"
   ],
   "client": [],
   "injectors": {
