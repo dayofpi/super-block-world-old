@@ -1,0 +1,11 @@
+{
+  "block.water.evaporate": {
+    "subtitle": "block.water.evaporate",
+    "sounds": [
+      {
+        "name": "minecraft:random/fizz",
+        "stream": true
+      }
+    ]
+  }
+}

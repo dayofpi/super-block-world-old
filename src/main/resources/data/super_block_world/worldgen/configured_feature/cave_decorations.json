@@ -5,17 +5,32 @@
       "type": "minecraft:weighted_state_provider",
       "entries": [
         {
+          "weight": 20,
+          "data": {
+            "Name": "minecraft:amethyst_cluster",
+            "Properties": {
+              "facing": "up",
+              "waterlogged": "false"
+            }
+          }
+        },
+        {
           "weight": 50,
           "data": {
-            "Name": "minecraft:grass"
+            "Name": "minecraft:large_amethyst_bud",
+            "Properties": {
+              "facing": "up",
+              "waterlogged": "false"
+            }
           }
         },
         {
           "weight": 10,
           "data": {
-            "Name": "minecraft:tall_grass",
+            "Name": "minecraft:lantern",
             "Properties": {
-              "half": "lower"
+              "hanging": "false",
+              "waterlogged": "false"
             }
           }
         }

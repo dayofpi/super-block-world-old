@@ -4,7 +4,11 @@
   "package": "com.dayofpi.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "CarverMixin"
+    "CarverMixin",
+    "EntityExtra",
+    "LivingEntityExtra",
+    "EntityMixin",
+    "LivingEntityMixin"
   ],
   "client": [],
   "injectors": {

@@ -2,9 +2,11 @@
   "type": "minecraft:decorated",
   "config": {
     "decorator": {
-      "type": "minecraft:count",
+      "type": "minecraft:count_extra",
       "config": {
-        "count": 40
+        "count": 0,
+        "extra_count": 1,
+        "extra_chance": 0.08
       }
     },
     "feature": {
@@ -23,10 +25,10 @@
                 "height": {
                   "type": "minecraft:uniform",
                   "min_inclusive": {
-                    "above_bottom": 0
+                    "above_bottom": 20
                   },
                   "max_inclusive": {
-                    "absolute": 60
+                    "absolute": 40
                   }
                 }
               }
@@ -42,32 +44,31 @@
                   }
                 },
                 "feature": {
-                  "type": "minecraft:vegetation_patch",
+                  "type": "minecraft:block_pile",
                   "config": {
-                    "surface": "floor",
-                    "depth": 1,
-                    "vertical_range": 6,
-                    "extra_bottom_block_chance": 0,
-                    "extra_edge_column_chance": 0.3,
-                    "vegetation_chance": 0.0007,
-                    "xz_radius": {
-                      "type": "minecraft:uniform",
-                      "value": {
-                        "min_inclusive": 4,
-                        "max_inclusive": 8
-                      }
-                    },
-                    "replaceable": "super_block_world:apply_topping_to",
-                    "ground_state": {
-                      "type": "minecraft:simple_state_provider",
-                      "state": {
-                        "Name": "super_block_world:topped_vanillate"
-                      }
-                    },
-                    "vegetation_feature": "super_block_world:cave_decorations"
+                    "state_provider": {
+                      "type": "minecraft:weighted_state_provider",
+                      "entries": [
+                        {
+                          "weight": 1,
+                          "data": {
+                            "Name": "minecraft:amethyst_cluster",
+                            "Properties": {
+                              "facing": "up",
+                              "waterlogged": "false"
+                            }
+                          }
+                        },
+                        {
+                          "weight": 5,
+                          "data": {
+                            "Name": "super_block_world:crystal_bricks"
+                          }
+                        }
+                      ]
+                    }
                   }
                 }
-
               }
             }
           }

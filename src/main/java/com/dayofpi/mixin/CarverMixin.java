@@ -1,6 +1,6 @@
 package com.dayofpi.mixin;
 
-import com.dayofpi.super_block_world.registry.TagReg;
+import com.dayofpi.super_block_world.utility.ModTags;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.tag.FluidTags;
@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class CarverMixin {
     @Inject(at=@At("HEAD"), method="canCarveBlock(Lnet/minecraft/block/BlockState;Lnet/minecraft/block/BlockState;)Z", cancellable = true)
     private void canCarveBlock(BlockState state, BlockState stateAbove, CallbackInfoReturnable<Boolean> info) {
-        info.setReturnValue(state.isIn(TagReg.ALWAYS_CARVABLE) || (state.isOf(Blocks.SAND) || state.isOf(Blocks.GRAVEL)) && !stateAbove.getFluidState().isIn(FluidTags.WATER));
+        info.setReturnValue(state.isIn(ModTags.ALWAYS_CARVABLE) || (state.isOf(Blocks.SAND) || state.isOf(Blocks.GRAVEL)) && !stateAbove.getFluidState().isIn(FluidTags.WATER));
         info.cancel();
     }
 }
