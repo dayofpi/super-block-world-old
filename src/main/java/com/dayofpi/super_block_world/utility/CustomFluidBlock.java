@@ -45,7 +45,7 @@ public class CustomFluidBlock extends FluidBlock {
                     return false;
                 }
 
-                if (world.getFluidState(blockPos).isIn(ModTags.TRUE_LAVA)) {
+                if (world.getFluidState(blockPos).isIn(FluidTags.LAVA)) {
                     Block block = !world.getFluidState(pos).isStill() ? BlockReg.VANILLATE : BlockReg.TOPPED_VANILLATE;
                     world.setBlockState(pos, block.getDefaultState());
                     this.playExtinguishSound(world, pos);

@@ -1,6 +1,5 @@
 package com.dayofpi.mixin;
 
-import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.fluid.Fluid;
@@ -14,25 +13,19 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 @Mixin(Entity.class)
 public interface EntityExtra {
     @Accessor("firstUpdate")
-    boolean getFirstUpdate();
+    boolean accessFirstUpdate();
 
     @Accessor("world")
-    World getWorld();
+    World accessWorld();
 
     @Accessor("blockPos")
-    BlockPos getBlockPos();
-
-    @Accessor("fluidHeight")
-    Object2DoubleMap<Tag<Fluid>> getFluidHeight();
+    BlockPos accessBlockPos();
 
     @Accessor("fallDistance")
-    float getFallDistance();
+    float accessFalLDistance();
 
-    @Invoker("isInLava")
-    boolean invokeIsInLava();
-
-    @Invoker("setOnFireFromLava")
-    void invokeSetOnFireFromLava();
+    @Invoker("updateMovementInFluid")
+    boolean invokeUpdateMovementInFluid(Tag<Fluid> tag, double d);
 
     @Invoker("damage")
     boolean invokeDamage(DamageSource source, float amount);

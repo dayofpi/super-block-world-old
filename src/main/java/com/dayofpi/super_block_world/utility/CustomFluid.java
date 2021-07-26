@@ -9,6 +9,7 @@ import net.minecraft.fluid.FlowableFluid;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.item.Item;
+import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
@@ -41,7 +42,7 @@ public class CustomFluid extends FlowableFluid {
     protected void flow(WorldAccess world, BlockPos pos, BlockState state, Direction direction, FluidState fluidState) {
         if (direction == Direction.DOWN) {
             FluidState fluidState2 = world.getFluidState(pos);
-            if (this.isIn(ModTags.POISON) && fluidState2.isIn(ModTags.TRUE_LAVA)) {
+            if (this.isIn(ModTags.POISON) && fluidState2.isIn(FluidTags.LAVA)) {
                 if (state.getBlock() instanceof FluidBlock || state.getBlock() instanceof CustomFluidBlock) {
                     world.setBlockState(pos, BlockReg.VANILLATE.getDefaultState(), 3);
                 }

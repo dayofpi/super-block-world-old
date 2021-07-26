@@ -3,14 +3,16 @@
   "death.attack.poison": "%1$s mistook poison for soda",
   "death.attack.poison.player": "%1$s fell into poison while escaping %2$s",
   "block.water.evaporate": "Water evaporates",
-  "item.super_block_world.power_star": "Power Star",
+  "item.super_block_world.bronze_ingot": "Bronze Ingot",
   "item.super_block_world.poison_bucket": "Poison Bucket",
+  "item.super_block_world.power_star": "Power Star",
   "block.super_block_world.vanillate": "Vanillate",
   "block.super_block_world.topped_vanillate": "Topped Vanillate",
   "block.super_block_world.coal_topped_vanillate": "Coal Topped Vanillate",
   "block.super_block_world.iron_topped_vanillate": "Iron Topped Vanillate",
   "block.super_block_world.gold_topped_vanillate": "Gold Topped Vanillate",
   "block.super_block_world.bronze_ore": "Bronze Ore",
+  "block.super_block_world.bronze_block": "Bronze Block",
   "block.super_block_world.toadstone_bricks": "Toadstone Bricks",
   "block.super_block_world.crystal_bricks": "Crystal Bricks"
 }

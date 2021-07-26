@@ -14,6 +14,7 @@ public class BlockItemReg {
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "iron_topped_vanillate"), new BlockItem(BlockReg.IRON_TOPPED_VANILLATE, new FabricItemSettings().group(Main.MOD_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "gold_topped_vanillate"), new BlockItem(BlockReg.GOLD_TOPPED_VANILLATE, new FabricItemSettings().group(Main.MOD_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "bronze_ore"), new BlockItem(BlockReg.BRONZE_ORE, new FabricItemSettings().group(Main.MOD_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "bronze_block"), new BlockItem(BlockReg.BRONZE_BLOCK, new FabricItemSettings().group(Main.MOD_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "toadstone_bricks"), new BlockItem(BlockReg.TOADSTONE_BRICKS, new FabricItemSettings().group(Main.MOD_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "crystal_bricks"), new BlockItem(BlockReg.CRYSTAL_BRICKS, new FabricItemSettings().group(Main.MOD_GROUP)));
     }
