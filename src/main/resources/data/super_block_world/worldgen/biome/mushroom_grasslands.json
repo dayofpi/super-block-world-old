@@ -63,7 +63,8 @@
       "super_block_world:toppings_coal",
       "super_block_world:toppings_iron",
       "super_block_world:toppings_gold",
-      "super_block_world:ore_bronze"
+      "super_block_world:ore_bronze",
+      "super_block_world:ore_crumbs"
     ],
     [
       "minecraft:rare_dripstone_cluster",
@@ -72,7 +73,10 @@
     [
       "super_block_world:cave_ceiling",
       "super_block_world:cave_lanterns",
-
+      "super_block_world:patch_toadstone",
+      "super_block_world:patch_sugar_cane",
+      "super_block_world:patch_pumpkin",
+      "super_block_world:spring_water",
       "super_block_world:lake_poison",
       "minecraft:patch_tall_grass_2",
       "minecraft:classic_vines_cave_feature",
@@ -80,10 +84,7 @@
       "minecraft:flower_plain_decorated",
       "minecraft:patch_grass_plain",
       "minecraft:brown_mushroom_taiga",
-      "minecraft:red_mushroom_taiga",
-      "super_block_world:patch_sugar_cane",
-      "super_block_world:patch_pumpkin",
-      "super_block_world:spring_water"
+      "minecraft:red_mushroom_taiga"
     ],
     [
       "minecraft:freeze_top_layer"

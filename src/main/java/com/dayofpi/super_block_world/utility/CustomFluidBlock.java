@@ -37,10 +37,10 @@ public class CustomFluidBlock extends FluidBlock {
         if (this.fluid.isIn(ModTags.POISON)) {
             for (Direction direction : field_34006) {
                 BlockPos blockPos = pos.offset(direction.getOpposite());
-                if (world.getFluidState(blockPos).isIn(FluidTags.WATER)) {
+                if (world.getFluidState(blockPos).isIn(FluidTags.WATER) && !world.getFluidState(blockPos).isIn(ModTags.POISON)) {
                     Block block = Blocks.AIR;
                     world.setBlockState(blockPos, block.getDefaultState());
-                    world.playSound(null, pos, ModSounds.block_WATER_EVAPORATE, SoundCategory.BLOCKS, 0.5F, 2.6F);
+                    world.playSound(null, pos, ModSounds.WATER_EVAPORATE, SoundCategory.BLOCKS, 0.5F, 2.6F);
                     world.addParticle(ParticleTypes.LARGE_SMOKE, (double)pos.getX() + 0.5D, (double)pos.getY() + 0.25D, (double)pos.getZ() + 0.5D, 8D, 0.5D, 0.25D);
                     return false;
                 }

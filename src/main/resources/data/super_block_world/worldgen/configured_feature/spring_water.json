@@ -4,7 +4,7 @@
     "decorator": {
       "type": "minecraft:count",
       "config": {
-        "count": 10
+        "count": 30
       }
     },
     "feature": {
@@ -26,7 +26,7 @@
                     "above_bottom": 0
                   },
                   "max_inclusive": {
-                    "below_top": 200
+                    "below_top": 0
                   }
                 }
               }
@@ -41,10 +41,11 @@
                   }
                 },
                 "rock_count": 4,
-                "hole_count": 2,
-                "requires_block_below": true,
+                "hole_count": 1,
+                "requires_block_below": false,
                 "valid_blocks": [
-                  "super_block_world:vanillate"
+                  "super_block_world:vanillate",
+                  "super_block_world:topped_vanillate"
                 ]
               }
             }

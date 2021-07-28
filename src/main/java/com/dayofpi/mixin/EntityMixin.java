@@ -10,15 +10,21 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Entity.class)
 public class EntityMixin {
-    float fallDistance = ((EntityExtra)this).accessFalLDistance();
     final boolean firstUpdate = ((EntityExtra)this).accessFirstUpdate();
 
-    @Inject(at=@At("TAIL"), method="baseTick")
+    @Inject(at=@At("TAIL"), method = "baseTick")
     public void baseTick(CallbackInfo info) {
-        if (!firstUpdate && ((EntityExtra) this).accessWorld().getFluidState(((EntityExtra)this).accessBlockPos()).isIn(ModTags.POISON)) {
+        if (!firstUpdate && ((EntityExtra)this).world().getFluidState(((EntityExtra) this).blockPos()).isIn(ModTags.POISON)) {
+            // Deal damage
             ((EntityExtra)this).invokeDamage(ModDmgSources.POISON, 5.0F);
-            this.fallDistance *= 0.5F;
-            ((EntityExtra)this).invokeUpdateMovementInFluid(ModTags.POISON, 0.007D);
+        }
+    }
+
+    @Inject(at=@At("HEAD"), method = "onSwimmingStart", cancellable = true)
+    public void onSwimmingStart(CallbackInfo info) {
+        if (!firstUpdate && ((EntityExtra)this).world().getFluidState(((EntityExtra) this).blockPos()).isIn(ModTags.POISON)) {
+            // Do not show water splash particles
+            info.cancel();
         }
     }
 }

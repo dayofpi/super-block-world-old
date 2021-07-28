@@ -22,15 +22,15 @@ public class Main implements ModInitializer {
     // Item group
     public static final ItemGroup MOD_GROUP = FabricItemGroupBuilder.build(new Identifier(MOD_ID, "item_group"), () -> new ItemStack(ItemReg.POWER_STAR));
 
-    public static FlowableFluid STILL_POISON;
-    public static FlowableFluid FLOWING_POISON;
+    public static final FlowableFluid STILL_POISON = new PoisonFluid.Still();
+    public static FlowableFluid FLOWING_POISON = new PoisonFluid.Flowing();
 
     @Override
     public void onInitialize() {
         // This code runs as soon as Minecraft is in a mod-load-ready state.
         // However, some things (like resources) may still be uninitialized.
-        STILL_POISON = Registry.register(Registry.FLUID, new Identifier(MOD_ID, "poison"), new PoisonFluid.Still());
-        FLOWING_POISON = Registry.register(Registry.FLUID, new Identifier(MOD_ID, "flowing_poison"), new PoisonFluid.Flowing());
+        Registry.register(Registry.FLUID, new Identifier(MOD_ID, "poison"), STILL_POISON);
+        Registry.register(Registry.FLUID, new Identifier(MOD_ID, "flowing_poison"), FLOWING_POISON);
         BlockReg.registerBlocks();
         ItemReg.registerItems();
         ModTags.registerTags();

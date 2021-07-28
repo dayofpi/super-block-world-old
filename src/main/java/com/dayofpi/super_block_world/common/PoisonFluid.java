@@ -49,6 +49,7 @@ public class PoisonFluid extends CustomFluid {
 
     @Override
     public void randomDisplayTick(World world, BlockPos pos, FluidState state, Random random) {
+        // Give it unique particles
         BlockPos blockPos = pos.up();
         if (world.getBlockState(blockPos).isAir() && !world.getBlockState(blockPos).isOpaqueFullCube(world, blockPos)) {
             if (random.nextInt(100) == 0) {
