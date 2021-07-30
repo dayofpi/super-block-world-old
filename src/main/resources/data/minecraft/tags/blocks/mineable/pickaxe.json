@@ -3,7 +3,7 @@
   "values": [
     "super_block_world:vanillate",
     "super_block_world:vanillate_bricks",
-    "super_block_world:vanillate_crumbs",
+    "super_block_world:vanillate_crumble",
     "super_block_world:vanillate_brick_slab",
     "super_block_world:vanillate_brick_stairs",
     "super_block_world:topped_vanillate",
@@ -13,10 +13,13 @@
     "super_block_world:bronze_ore",
     "super_block_world:bronze_block",
     "super_block_world:bronze_slab",
+    "super_block_world:bronze_stairs",
     "super_block_world:toadstone",
     "super_block_world:toadstone_bricks",
     "super_block_world:golden_bricks",
     "super_block_world:crystal_bricks",
-    "super_block_world:toadstone_slab"
+    "super_block_world:toadstone_slab",
+    "super_block_world:toadstone_stairs",
+    "super_block_world:hardstone_bricks"
   ]
 }

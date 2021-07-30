@@ -1,4 +1,4 @@
-package com.dayofpi.mixin;
+package com.dayofpi.mixin.fluid;
 
 import com.dayofpi.super_block_world.utility.ModTags;
 import net.minecraft.block.Block;
@@ -14,19 +14,24 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 
+@SuppressWarnings("deprecation")
 @Mixin(PotatoesBlock.class)
 public class PotatoesBlockMixin extends CropBlock {
     public PotatoesBlockMixin(Settings settings) {
         super(settings);
     }
+
     @Override
     public void onBlockBreakStart(BlockState state, World world, BlockPos pos, PlayerEntity player) {
         BlockPos blockPos = pos.down();
-        for (Direction direction : Direction.Type.HORIZONTAL) {
-            FluidState fluidState = world.getFluidState(blockPos.offset(direction));
-            if (fluidState.isIn(ModTags.POISON)) {
-                world.breakBlock(pos, false);
-                Block.dropStack(world, pos, new ItemStack(Items.POISONOUS_POTATO));
+        if (state.get(AGE) == 7){ // Checks if the crop is fully grown
+            for (Direction direction : Direction.Type.HORIZONTAL) {
+                FluidState fluidState = world.getFluidState(blockPos.offset(direction));
+                if (fluidState.isIn(ModTags.POISON)) {
+                    // If there is poison next to it, always drop a poisonous potato
+                    world.breakBlock(pos, false);
+                    Block.dropStack(world, pos, new ItemStack(Items.POISONOUS_POTATO));
+                }
             }
         }
     }

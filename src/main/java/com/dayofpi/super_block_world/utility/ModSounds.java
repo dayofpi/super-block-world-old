@@ -6,10 +6,11 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class ModSounds {
-    public static final Identifier WATER_EVAPORATE_ID = new Identifier(Main.MOD_ID, "block.water.evaporate");
-    public static final SoundEvent WATER_EVAPORATE = new SoundEvent(WATER_EVAPORATE_ID);
+    public static final Identifier POISON_BURN_ID = new Identifier(Main.MOD_ID, "block.poison.burn");
+
+    public static final SoundEvent POISON_BURN = new SoundEvent(POISON_BURN_ID);
 
     public static void registerSounds() {
-        Registry.register(Registry.SOUND_EVENT, WATER_EVAPORATE_ID, WATER_EVAPORATE);
+        Registry.register(Registry.SOUND_EVENT, POISON_BURN_ID, POISON_BURN);
     }
 }

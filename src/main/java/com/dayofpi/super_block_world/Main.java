@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world;
 
-import com.dayofpi.super_block_world.common.PoisonFluid;
+import com.dayofpi.super_block_world.utility.fluids.PoisonFluid;
 import com.dayofpi.super_block_world.registry.BlockReg;
 import com.dayofpi.super_block_world.registry.ItemReg;
 import com.dayofpi.super_block_world.utility.ModSounds;

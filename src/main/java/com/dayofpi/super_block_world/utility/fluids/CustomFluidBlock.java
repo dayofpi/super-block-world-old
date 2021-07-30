@@ -1,14 +1,13 @@
-package com.dayofpi.super_block_world.utility;
+package com.dayofpi.super_block_world.utility.fluids;
 
 import com.dayofpi.super_block_world.registry.BlockReg;
+import com.dayofpi.super_block_world.utility.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FluidBlock;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.fluid.FlowableFluid;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -25,14 +24,10 @@ public class CustomFluidBlock extends FluidBlock {
         return !this.fluid.isIn(ModTags.POISON);
     }
 
-    private void playExtinguishSound(WorldAccess world, BlockPos pos) {
+    private void playExtinguishEvent(WorldAccess world, BlockPos pos) {
         world.syncWorldEvent(1501, pos, 0);
     }
 
-    /** The idea is that if poison flows over lava, it will turn into Vanillate, if lava
-     * flows over poison it will turn into Topped Vanillate.
-     * When poison touches water, it evaporates.
-     * */
     private boolean receiveNeighborFluids(World world, BlockPos pos) {
         if (this.fluid.isIn(ModTags.POISON)) {
             for (Direction direction : field_34006) {
@@ -40,20 +35,18 @@ public class CustomFluidBlock extends FluidBlock {
                 if (world.getFluidState(blockPos).isIn(FluidTags.WATER) && !world.getFluidState(blockPos).isIn(ModTags.POISON)) {
                     Block block = Blocks.AIR;
                     world.setBlockState(blockPos, block.getDefaultState());
-                    world.playSound(null, pos, ModSounds.WATER_EVAPORATE, SoundCategory.BLOCKS, 0.5F, 2.6F);
-                    world.addParticle(ParticleTypes.LARGE_SMOKE, (double)pos.getX() + 0.5D, (double)pos.getY() + 0.25D, (double)pos.getZ() + 0.5D, 8D, 0.5D, 0.25D);
+                    playExtinguishEvent(world, pos);
                     return false;
                 }
 
                 if (world.getFluidState(blockPos).isIn(FluidTags.LAVA)) {
-                    Block block = !world.getFluidState(pos).isStill() ? BlockReg.VANILLATE : BlockReg.TOPPED_VANILLATE;
+                    Block block = !world.getFluidState(pos).isStill() ? BlockReg.VANILLATE_CRUMBLE : BlockReg.TOPPED_VANILLATE;
                     world.setBlockState(pos, block.getDefaultState());
-                    this.playExtinguishSound(world, pos);
+                    this.playExtinguishEvent(world, pos);
                     return false;
                 }
             }
-        }
-        return true;
+        } return true;
     }
 
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {

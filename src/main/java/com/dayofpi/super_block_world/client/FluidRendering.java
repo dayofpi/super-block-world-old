@@ -3,12 +3,14 @@ package com.dayofpi.super_block_world.client;
 import com.dayofpi.super_block_world.Main;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandler;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.event.client.ClientSpriteRegistryCallback;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.texture.Sprite;
 import net.minecraft.client.texture.SpriteAtlasTexture;
 import net.minecraft.fluid.Fluid;
@@ -23,6 +25,7 @@ import java.util.function.Function;
 public class FluidRendering {
     public static void renderFluids() {
         setupFluidRendering(Main.STILL_POISON, Main.FLOWING_POISON, new Identifier(Main.MOD_ID, "poison"));
+        BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(), Main.STILL_POISON, Main.FLOWING_POISON);
     }
 
     public static void setupFluidRendering(final Fluid still, final Fluid flowing, final Identifier textureFluidId) {

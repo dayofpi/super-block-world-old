@@ -1,9 +1,10 @@
-package com.dayofpi.super_block_world.common;
+package com.dayofpi.super_block_world.utility.fluids;
 
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.registry.BlockReg;
 import com.dayofpi.super_block_world.registry.ItemReg;
-import com.dayofpi.super_block_world.utility.CustomFluid;
+import com.dayofpi.super_block_world.utility.ModTags;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FluidBlock;
 import net.minecraft.fluid.Fluid;
@@ -12,44 +13,71 @@ import net.minecraft.item.Item;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
+import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
+import net.minecraft.world.WorldAccess;
 
+import java.util.Optional;
 import java.util.Random;
 
-public class PoisonFluid extends CustomFluid {
-    @Override
+public abstract class PoisonFluid extends CustomFluid {
     public Fluid getStill() {
         return Main.STILL_POISON;
     }
 
-    @Override
     public Fluid getFlowing() {
         return Main.FLOWING_POISON;
     }
 
-    @Override
     public Item getBucketItem() {
         return ItemReg.POISON_BUCKET;
     }
 
-    @Nullable
+    public Optional<SoundEvent> getBucketFillSound() {
+        return Optional.of(SoundEvents.ITEM_BUCKET_FILL_LAVA);
+    }
+
     public ParticleEffect getParticle() {
         return ParticleTypes.FALLING_OBSIDIAN_TEAR;
     }
 
     @Override
     protected BlockState toBlockState(FluidState fluidState) {
-        // getBlockStateLevel converts the LEVEL_1_8 of the fluid state to the LEVEL_15 the fluid block uses
         return BlockReg.POISON.getDefaultState().with(FluidBlock.LEVEL, getBlockStateLevel(fluidState));
+    }
+
+    private void playExtinguishEvent(WorldAccess world, BlockPos pos) {
+        world.syncWorldEvent(1501, pos, 0);
+    }
+
+    protected void flow(WorldAccess world, BlockPos pos, BlockState state, Direction direction, FluidState fluidState) {
+        if (direction == Direction.DOWN) {
+            FluidState fluidState2 = world.getFluidState(pos);
+            if (this.isIn(ModTags.POISON) && fluidState2.isIn(FluidTags.LAVA)) {
+                if (state.getBlock() instanceof FluidBlock) {
+                    world.setBlockState(pos, BlockReg.VANILLATE.getDefaultState(), Block.NOTIFY_ALL);
+                }
+                this.playExtinguishEvent(world, pos);
+                return;
+            }
+        }
+
+        super.flow(world, pos, state, direction, fluidState);
+    }
+
+    @Override
+    public boolean isStill(FluidState state) {
+        return false;
     }
 
     @Override
     public void randomDisplayTick(World world, BlockPos pos, FluidState state, Random random) {
-        // Give it unique particles
+        //TODO: Give it unique particles
         BlockPos blockPos = pos.up();
         if (world.getBlockState(blockPos).isAir() && !world.getBlockState(blockPos).isOpaqueFullCube(world, blockPos)) {
             if (random.nextInt(100) == 0) {

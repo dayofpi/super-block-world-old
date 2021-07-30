@@ -1,6 +1,6 @@
 {
-  "block.water.evaporate": {
-    "subtitle": "block.water.evaporate",
+  "block.poison.burn": {
+    "subtitle": "block.poison.burn",
     "sounds": [
       {
         "name": "minecraft:random/fizz",

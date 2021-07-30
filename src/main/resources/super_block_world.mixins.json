@@ -5,9 +5,13 @@
   "compatibilityLevel": "JAVA_16",
   "mixins": [
     "CarverMixin",
-    "EntityExtra",
+    "EntityI",
     "EntityMixin",
-    "PotatoesBlockMixin"
+    "fluid.FluidBlockI",
+    "fluid.FluidBlockMixin",
+    "fluid.WaterFluidMixin",
+    "fluid.PotatoesBlockMixin",
+    "fluid.SpongeBlockMixin"
   ],
   "client": [],
   "injectors": {

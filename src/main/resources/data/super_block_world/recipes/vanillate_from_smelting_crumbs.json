@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smelting",
   "ingredient": {
-    "item": "super_block_world:vanillate_crumbs"
+    "item": "super_block_world:vanillate_crumble"
   },
   "result": "super_block_world:vanillate",
   "experience": 0.7,
