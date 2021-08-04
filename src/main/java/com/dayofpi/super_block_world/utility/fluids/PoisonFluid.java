@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.utility.fluids;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.registry.BlockReg;
-import com.dayofpi.super_block_world.registry.ItemReg;
+import com.dayofpi.super_block_world.registry.BlockRegistry;
+import com.dayofpi.super_block_world.registry.ItemRegistry;
 import com.dayofpi.super_block_world.utility.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -35,7 +35,7 @@ public abstract class PoisonFluid extends CustomFluid {
     }
 
     public Item getBucketItem() {
-        return ItemReg.POISON_BUCKET;
+        return ItemRegistry.POISON_BUCKET;
     }
 
     public Optional<SoundEvent> getBucketFillSound() {
@@ -48,7 +48,7 @@ public abstract class PoisonFluid extends CustomFluid {
 
     @Override
     protected BlockState toBlockState(FluidState fluidState) {
-        return BlockReg.POISON.getDefaultState().with(FluidBlock.LEVEL, getBlockStateLevel(fluidState));
+        return BlockRegistry.POISON.getDefaultState().with(FluidBlock.LEVEL, getBlockStateLevel(fluidState));
     }
 
     private void playExtinguishEvent(WorldAccess world, BlockPos pos) {
@@ -60,7 +60,7 @@ public abstract class PoisonFluid extends CustomFluid {
             FluidState fluidState2 = world.getFluidState(pos);
             if (this.isIn(ModTags.POISON) && fluidState2.isIn(FluidTags.LAVA)) {
                 if (state.getBlock() instanceof FluidBlock) {
-                    world.setBlockState(pos, BlockReg.VANILLATE.getDefaultState(), Block.NOTIFY_ALL);
+                    world.setBlockState(pos, BlockRegistry.VANILLATE.getDefaultState(), Block.NOTIFY_ALL);
                 }
                 this.playExtinguishEvent(world, pos);
                 return;
@@ -80,13 +80,6 @@ public abstract class PoisonFluid extends CustomFluid {
         //TODO: Give it unique particles
         BlockPos blockPos = pos.up();
         if (world.getBlockState(blockPos).isAir() && !world.getBlockState(blockPos).isOpaqueFullCube(world, blockPos)) {
-            if (random.nextInt(100) == 0) {
-                double d = (double)pos.getX() + random.nextDouble();
-                double e = (double)pos.getY() + 1.0D;
-                double f = (double)pos.getZ() + random.nextDouble();
-                world.addParticle(ParticleTypes.DRIPPING_OBSIDIAN_TEAR, d, e, f, 0.0D, 0.0D, 0.0D);
-            }
-
             if (random.nextInt(200) == 0) {
                 world.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_LAVA_AMBIENT, SoundCategory.BLOCKS, 0.2F + random.nextFloat() * 0.2F, 1.2F + random.nextFloat() * 0.15F, false);
             }

@@ -1,0 +1,14 @@
+{
+  "config": {
+    "top_material": {
+      "Name": "super_block_world:toadstool_grass"
+    },
+    "under_material": {
+      "Name": "super_block_world:toadstool_soil"
+    },
+    "underwater_material": {
+      "Name": "minecraft:gravel"
+    }
+  },
+  "type": "minecraft:default"
+}

@@ -46,10 +46,10 @@
             },
             "whitelist": [
               {
-                "Name": "minecraft:grass_block",
-                "Properties": {
-                  "snowy": "false"
-                }
+                "Name": "super_block_world:toadstool_grass"
+              },
+              {
+                "Name": "super_block_world:toadstool_soil"
               }
             ],
             "blacklist": []

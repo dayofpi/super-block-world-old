@@ -1,6 +1,6 @@
 package com.dayofpi.mixin.fluid;
 
-import com.dayofpi.super_block_world.registry.BlockReg;
+import com.dayofpi.super_block_world.registry.BlockRegistry;
 import com.dayofpi.super_block_world.utility.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -40,7 +40,7 @@ public class FluidBlockMixin extends Block {
                     this.playExtinguishSound(world, pos);
                     info.setReturnValue(false);
                 } else if (world.getFluidState(blockPos).isIn(ModTags.POISON)) {
-                    Block block = world.getFluidState(pos).isStill() ? BlockReg.VANILLATE : BlockReg.TOPPED_VANILLATE;
+                    Block block = world.getFluidState(pos).isStill() ? BlockRegistry.VANILLATE : BlockRegistry.TOPPED_VANILLATE;
                     world.setBlockState(pos, block.getDefaultState());
                     this.playExtinguishSound(world, pos);
                     info.setReturnValue(false);

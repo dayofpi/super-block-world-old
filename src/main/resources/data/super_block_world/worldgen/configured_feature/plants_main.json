@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:decorated",
+  "config": {
+    "decorator": {
+      "type": "minecraft:decorated",
+      "config": {
+        "outer": {
+          "type": "minecraft:square",
+          "config": {}
+        },
+        "inner": {
+          "type": "minecraft:heightmap",
+          "config": {
+            "heightmap": "MOTION_BLOCKING"
+          }
+        }
+      }
+    },
+    "feature": {
+      "type": "minecraft:decorated",
+      "config": {
+        "decorator": {
+          "type": "minecraft:count_extra",
+          "config": {
+            "count": 0,
+            "extra_count": 2,
+            "extra_chance": 0.5
+          }
+        },
+        "feature": "super_block_world:patch_flower_carpets"
+      }
+    }
+  }
+}

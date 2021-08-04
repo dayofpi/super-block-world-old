@@ -77,6 +77,12 @@
                       },
                       {
                         "Name": "super_block_world:vanillate"
+                      },
+                      {
+                        "Name": "super_block_world:vanillate_crumble"
+                      },
+                      {
+                        "Name": "minecraft:amethyst_block"
                       }
                     ]
                   }

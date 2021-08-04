@@ -23,16 +23,6 @@
               "waterlogged": "false"
             }
           }
-        },
-        {
-          "weight": 10,
-          "data": {
-            "Name": "minecraft:lantern",
-            "Properties": {
-              "hanging": "false",
-              "waterlogged": "false"
-            }
-          }
         }
       ]
     },

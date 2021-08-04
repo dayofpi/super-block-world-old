@@ -7,11 +7,17 @@
     "CarverMixin",
     "EntityI",
     "EntityMixin",
+    "PathAwareEntityMixin",
+    "RabbitEntityMixin",
+    "CropBlockMixin",
+    "StemBlockMixin",
+    "mushrooms.DefaultBiomeCreatorMixin",
+    "mushrooms.MushroomPlantBlockMixin",
     "fluid.FluidBlockI",
     "fluid.FluidBlockMixin",
-    "fluid.WaterFluidMixin",
     "fluid.PotatoesBlockMixin",
-    "fluid.SpongeBlockMixin"
+    "fluid.SpongeBlockMixin",
+    "fluid.WaterFluidMixin"
   ],
   "client": [],
   "injectors": {

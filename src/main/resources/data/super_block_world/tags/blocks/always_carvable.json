@@ -1,6 +1,8 @@
 {
   "replace": "false",
   "values": [
+    "super_block_world:toadstool_grass",
+    "super_block_world:toadstool_soil",
     "super_block_world:vanillate",
     "super_block_world:topped_vanillate",
     "#minecraft:base_stone_overworld",

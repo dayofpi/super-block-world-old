@@ -34,7 +34,7 @@
                   "condition": "minecraft:survives_explosion"
                 }
               ],
-              "name": "super_block_world:vanillate_crumbs"
+              "name": "super_block_world:vanillate_crumble"
             }
           ]
         }

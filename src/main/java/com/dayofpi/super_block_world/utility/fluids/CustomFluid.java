@@ -46,13 +46,13 @@ public abstract class CustomFluid extends FlowableFluid {
     @Override
     protected int getFlowSpeed(WorldView worldView) {
         // Water: 4; Lava: 2 (overworld) 4(nether)
-        return 2;
+        return 1;
     }
 
     @Override
     protected int getLevelDecreasePerBlock(WorldView worldView) {
         // Water: 1; Lava: 2 (overworld) 1(nether)
-        return 1;
+        return 2;
     }
 
     /**
@@ -60,7 +60,7 @@ public abstract class CustomFluid extends FlowableFluid {
      */
     @Override
     public int getTickRate(WorldView worldView) {
-        return 5;
+        return 20;
     }
 
     /**

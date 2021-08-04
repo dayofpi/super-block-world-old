@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "super_block_world:block/toadstool_grass"
+      },
+      {
+        "model": "super_block_world:block/toadstool_grass",
+        "y": 90
+      },
+      {
+        "model": "super_block_world:block/toadstool_grass",
+        "y": 180
+      },
+      {
+        "model": "super_block_world:block/toadstool_grass",
+        "y": 270
+      }
+    ]
+  }
+}

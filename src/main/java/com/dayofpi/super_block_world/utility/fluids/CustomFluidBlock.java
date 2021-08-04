@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.utility.fluids;
 
-import com.dayofpi.super_block_world.registry.BlockReg;
+import com.dayofpi.super_block_world.registry.BlockRegistry;
 import com.dayofpi.super_block_world.utility.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -21,7 +21,7 @@ public class CustomFluidBlock extends FluidBlock {
     }
 
     public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
-        return !this.fluid.isIn(ModTags.POISON);
+        return true;
     }
 
     private void playExtinguishEvent(WorldAccess world, BlockPos pos) {
@@ -31,7 +31,7 @@ public class CustomFluidBlock extends FluidBlock {
     private boolean receiveNeighborFluids(World world, BlockPos pos) {
         if (this.fluid.isIn(ModTags.POISON)) {
             for (Direction direction : field_34006) {
-                BlockPos blockPos = pos.offset(direction.getOpposite());
+                BlockPos blockPos = pos.add(1, 1, 1);
                 if (world.getFluidState(blockPos).isIn(FluidTags.WATER) && !world.getFluidState(blockPos).isIn(ModTags.POISON)) {
                     Block block = Blocks.AIR;
                     world.setBlockState(blockPos, block.getDefaultState());
@@ -40,7 +40,7 @@ public class CustomFluidBlock extends FluidBlock {
                 }
 
                 if (world.getFluidState(blockPos).isIn(FluidTags.LAVA)) {
-                    Block block = !world.getFluidState(pos).isStill() ? BlockReg.VANILLATE_CRUMBLE : BlockReg.TOPPED_VANILLATE;
+                    Block block = !world.getFluidState(pos).isStill() ? BlockRegistry.VANILLATE_CRUMBLE : BlockRegistry.TOPPED_VANILLATE;
                     world.setBlockState(pos, block.getDefaultState());
                     this.playExtinguishEvent(world, pos);
                     return false;

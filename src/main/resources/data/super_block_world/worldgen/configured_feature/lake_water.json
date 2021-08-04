@@ -2,11 +2,9 @@
   "type": "minecraft:decorated",
   "config": {
     "decorator": {
-      "type": "minecraft:count_extra",
+      "type": "minecraft:chance",
       "config": {
-        "count": 0,
-        "extra_count": 1,
-        "extra_chance": 0.1
+        "chance": 4
       }
     },
     "feature": {
@@ -25,33 +23,21 @@
                 "height": {
                   "type": "minecraft:uniform",
                   "min_inclusive": {
-                    "above_bottom": 5
+                    "above_bottom": 0
                   },
                   "max_inclusive": {
-                    "absolute": 40
+                    "below_top": 0
                   }
                 }
               }
             },
             "feature": {
-              "type": "minecraft:decorated",
+              "type": "super_block_world:lake",
               "config": {
-                "decorator": {
-                  "type": "minecraft:cave_surface",
-                  "config": {
-                    "surface": "floor",
-                    "floor_to_ceiling_search_range": 12
-                  }
-                },
-                "feature": {
-                  "type": "minecraft:lake",
-                  "config": {
-                    "state": {
-                      "Name": "super_block_world:poison",
-                      "Properties": {
-                        "level": "0"
-                      }
-                    }
+                "state": {
+                  "Name": "minecraft:water",
+                  "Properties": {
+                    "level": "0"
                   }
                 }
               }

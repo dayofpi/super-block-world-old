@@ -1,7 +1,7 @@
 {
-  "surface_builder": "minecraft:grass",
+  "surface_builder": "super_block_world:toadstool_grass",
   "depth": 0.125,
-  "scale": 0.08,
+  "scale": 0.09,
   "temperature": 0.8,
   "downfall": 0.4,
   "precipitation": "rain",
@@ -12,7 +12,7 @@
     "fog_color": 12909823,
     "water_color": 44799,
     "water_fog_color": 1982868,
-    "grass_color": 7067428,
+    "grass_color": 6080286,
     "foliage_color": 962817,
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
@@ -48,8 +48,8 @@
   "features": [
     [],
     [
-      "minecraft:lake_water",
-      "minecraft:lake_lava"
+      "super_block_world:lake_water",
+      "super_block_world:lake_lava"
     ],
     [
       "minecraft:amethyst_geode"
@@ -64,7 +64,8 @@
       "super_block_world:toppings_iron",
       "super_block_world:toppings_gold",
       "super_block_world:ore_bronze",
-      "super_block_world:ore_crumble"
+      "super_block_world:ore_crumble",
+      "super_block_world:ore_soil"
     ],
     [
       "minecraft:rare_dripstone_cluster",
@@ -72,19 +73,20 @@
     ],
     [
       "super_block_world:cave_ceiling",
+      "super_block_world:cave_floor",
       "super_block_world:cave_lanterns",
       "super_block_world:patch_toadstone",
       "super_block_world:patch_sugar_cane",
+      "super_block_world:plants_main",
+      "super_block_world:mushrooms_main",
       "super_block_world:patch_pumpkin",
       "super_block_world:spring_water",
-      "super_block_world:lake_poison",
+      "super_block_world:spring_poison",
       "minecraft:patch_tall_grass_2",
       "minecraft:classic_vines_cave_feature",
-      "minecraft:plain_vegetation",
+      "super_block_world:trees_main",
       "minecraft:flower_plain_decorated",
-      "minecraft:patch_grass_plain",
-      "minecraft:brown_mushroom_taiga",
-      "minecraft:red_mushroom_taiga"
+      "minecraft:patch_grass_plain"
     ],
     [
       "minecraft:freeze_top_layer"

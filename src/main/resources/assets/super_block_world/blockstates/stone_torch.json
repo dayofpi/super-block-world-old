@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "super_block_world:block/stone_torch"
+    },
+    "lit=true": {
+      "model": "super_block_world:block/stone_torch_lit"
+    }
+  }
+}
