@@ -2,9 +2,11 @@
   "type": "minecraft:decorated",
   "config": {
     "decorator": {
-      "type": "minecraft:count",
+      "type": "minecraft:count_extra",
       "config": {
-        "count": 2
+        "count": 0,
+        "extra_count": 1,
+        "extra_chance": 0.5
       }
     },
     "feature": {
@@ -23,10 +25,10 @@
                 "height": {
                   "type": "minecraft:uniform",
                   "min_inclusive": {
-                    "above_bottom": 0
+                    "absolute": 10
                   },
                   "max_inclusive": {
-                    "absolute": 60
+                    "absolute": 70
                   }
                 }
               }
@@ -62,7 +64,7 @@
                       "type": "minecraft:weighted_state_provider",
                       "entries": [
                         {
-                          "weight": 3,
+                          "weight": 2,
                           "data": {
                             "Name": "super_block_world:toadstone"
                           }
@@ -81,6 +83,13 @@
                         "direction": "up",
                         "allow_water": true,
                         "height_distribution": [
+                          {
+                            "weight": 2,
+                            "data": {
+                              "type": "minecraft:constant",
+                              "value": 1
+                            }
+                          },
                           {
                             "weight": 1,
                             "data": {

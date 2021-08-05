@@ -7,7 +7,8 @@
         "overlay": "super_block_world:block/toadstool_grass_overlay"
     },
     "elements": [
-        {   "from": [ 0, 0, 0 ],
+        {
+            "from": [ 0, 0, 0 ],
             "to": [ 16, 16, 16 ],
             "faces": {
                 "down":  { "uv": [ 0, 0, 16, 16 ], "texture": "#bottom", "cullface": "down" },
@@ -18,7 +19,8 @@
                 "east":  { "uv": [ 0, 0, 16, 16 ], "texture": "#side",   "cullface": "east" }
             }
         },
-        {   "from": [ 0, 0, 0 ],
+        {
+            "from": [ 0, 0, 0 ],
             "to": [ 16, 16, 16 ],
             "faces": {
                 "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#overlay", "tintindex": 0, "cullface": "north" },

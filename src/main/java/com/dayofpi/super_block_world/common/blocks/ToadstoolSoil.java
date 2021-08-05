@@ -37,7 +37,13 @@ public class ToadstoolSoil extends Block implements Fertilizable {
 
     @Override
     public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-        world.setBlockState(pos, BlockRegistry.TOADSTOOL_GRASS.getDefaultState(), 2);
+        for(int i = 0; i < 4; ++i) {
+            BlockPos blockPos = pos.add(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
+            if (world.getBlockState(blockPos).isOf(BlockRegistry.TOADSTOOL_SOIL)) {
+                world.setBlockState(pos, BlockRegistry.TOADSTOOL_GRASS.getDefaultState(), 2);
+                world.setBlockState(blockPos, BlockRegistry.TOADSTOOL_GRASS.getDefaultState(), 2);
+            }
+        }
     }
 
     @Override
@@ -47,6 +53,10 @@ public class ToadstoolSoil extends Block implements Fertilizable {
         {
             world.playSound(player, pos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
             world.setBlockState(pos, BlockRegistry.TOADSTOOL_FARMLAND.getDefaultState(), 2);
+            return ActionResult.success(world.isClient);
+        } else if (itemStack.isIn(FabricToolTags.SHOVELS)) {
+            world.playSound(player, pos, SoundEvents.ITEM_SHOVEL_FLATTEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            world.setBlockState(pos, BlockRegistry.TOADSTOOL_PATH.getDefaultState(), 2);
             return ActionResult.success(world.isClient);
         } else {
             return ActionResult.PASS;

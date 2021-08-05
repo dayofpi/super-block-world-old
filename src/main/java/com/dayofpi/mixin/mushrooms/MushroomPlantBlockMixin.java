@@ -1,7 +1,7 @@
 package com.dayofpi.mixin.mushrooms;
 
 import com.dayofpi.super_block_world.registry.FeatureRegistry;
-import com.dayofpi.super_block_world.registry.blocks.Plants;
+import com.dayofpi.super_block_world.registry.blocks.PlantRegistry;
 import com.dayofpi.super_block_world.utility.FeatureHelper;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -31,11 +31,11 @@ public class MushroomPlantBlockMixin extends PlantBlock {
         ConfiguredFeature<?, ?> mushroomFeature;
         if (this == Blocks.BROWN_MUSHROOM) {
             mushroomFeature = FeatureHelper.HUGE_BROWN_MUSHROOM;
-        } else if (this == Plants.YELLOW_MUSHROOM) {
+        } else if (this == PlantRegistry.YELLOW_MUSHROOM) {
             if (random.nextInt(2) == 0) {
                 mushroomFeature = FeatureRegistry.HUGE_YELLOW_MUSHROOM;
             } else mushroomFeature = FeatureRegistry.HUGE_YELLOW_MUSHROOM_WIDE;
-        } else if (this == Plants.GREEN_MUSHROOM) {
+        } else if (this == PlantRegistry.GREEN_MUSHROOM) {
             if (random.nextInt(2) == 0) {
                 mushroomFeature = FeatureRegistry.HUGE_GREEN_MUSHROOM;
             } else mushroomFeature = FeatureRegistry.HUGE_GREEN_MUSHROOM_WIDE;

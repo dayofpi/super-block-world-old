@@ -1,0 +1,100 @@
+{
+  "surface_builder": "super_block_world:forest",
+  "depth": 0.1,
+  "scale": 0.04,
+  "temperature": 0.9,
+  "downfall": 0.8,
+  "precipitation": "rain",
+  "category": "forest",
+  "player_spawn_friendly": false,
+  "effects": {
+    "sky_color": 8315640,
+    "fog_color": 12637889,
+    "water_color": 5295837,
+    "water_fog_color": 5295837,
+    "grass_color": 4887311,
+    "foliage_color": 4886788,
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2
+    }
+  },
+  "starts": [],
+  "spawners": {
+    "monster": [
+      {
+        "type": "minecraft:enderman",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 2
+      }
+    ],
+    "creature": [
+      {
+        "type": "minecraft:rabbit",
+        "weight": 6,
+        "minCount": 2,
+        "maxCount": 3
+      }
+    ],
+    "ambient": [],
+    "underground_water_creature": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {},
+  "carvers": {
+    "air": [
+      "super_block_world:cave",
+      "minecraft:canyon"
+    ]
+  },
+  "features": [
+    [],
+    [
+      "super_block_world:lake_water",
+      "super_block_world:lake_lava"
+    ],
+    [
+      "minecraft:amethyst_geode"
+    ],
+    [],
+    [],
+    [
+      "super_block_world:blocks/single",
+      "super_block_world:blocks/underground",
+      "super_block_world:vanillate_topping"
+    ],
+    [
+      "super_block_world:blocks/items",
+      "super_block_world:toppings_coal",
+      "super_block_world:toppings_iron",
+      "super_block_world:toppings_gold",
+      "super_block_world:ore_bronze",
+      "super_block_world:ore_crumble",
+      "super_block_world:ore_soil"
+    ],
+    [],
+    [
+      "super_block_world:cave_ceiling",
+      "super_block_world:cave_floor",
+      "super_block_world:cave_lanterns",
+      "super_block_world:patch_sugar_cane",
+      "super_block_world:patch_pumpkin",
+      "super_block_world:patch_stump",
+      "super_block_world:mushrooms_forest",
+      "super_block_world:spring_water",
+      "super_block_world:spring_poison",
+      "minecraft:patch_tall_grass_2",
+      "minecraft:classic_vines_cave_feature",
+      "super_block_world:trees_forest",
+      "minecraft:patch_grass_plain"
+    ],
+    [
+      "minecraft:freeze_top_layer"
+    ]
+  ]
+}

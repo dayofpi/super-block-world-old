@@ -7,7 +7,7 @@
       "Name": "super_block_world:toadstool_soil"
     },
     "underwater_material": {
-      "Name": "minecraft:gravel"
+      "Name": "super_block_world:vanillate_crumble"
     }
   },
   "type": "minecraft:default"

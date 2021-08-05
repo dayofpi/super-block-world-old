@@ -2,9 +2,11 @@
   "type": "minecraft:decorated",
   "config": {
     "decorator": {
-      "type": "minecraft:count",
+      "type": "minecraft:count_extra",
       "config": {
-        "count": 5
+        "count": 3,
+        "extra_count": 2,
+        "extra_chance": 0.3
       }
     },
     "feature": {

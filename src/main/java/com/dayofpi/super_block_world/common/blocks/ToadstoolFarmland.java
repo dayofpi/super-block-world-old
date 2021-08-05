@@ -4,6 +4,7 @@ import com.dayofpi.super_block_world.registry.BlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.server.world.ServerWorld;
@@ -22,6 +23,10 @@ public class ToadstoolFarmland extends FarmlandBlock {
         super(settings);
     }
 
+    @Override
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        return !this.getDefaultState().canPlaceAt(ctx.getWorld(), ctx.getBlockPos()) ? BlockRegistry.TOADSTOOL_SOIL.getDefaultState() : super.getPlacementState(ctx);
+    }
     public static void setToSoil(BlockState state, World world, BlockPos pos) {
         world.setBlockState(pos, pushEntitiesUpBeforeBlockChange(state, BlockRegistry.TOADSTOOL_SOIL.getDefaultState(), world, pos));
     }
@@ -43,10 +48,7 @@ public class ToadstoolFarmland extends FarmlandBlock {
         return true;
     }
 
-    @Override
-    public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return !this.getDefaultState().canPlaceAt(ctx.getWorld(), ctx.getBlockPos()) ? BlockRegistry.TOADSTOOL_SOIL.getDefaultState() : super.getPlacementState(ctx);
-    }
+
 
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
@@ -60,7 +62,7 @@ public class ToadstoolFarmland extends FarmlandBlock {
         if (!world.isClient && world.random.nextFloat() < fallDistance - 0.5F && entity instanceof LivingEntity && (entity instanceof PlayerEntity || world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING)) && entity.getWidth() * entity.getWidth() * entity.getHeight() > 0.512F) {
             setToSoil(state, world, pos);
         }
-        super.onLandedUpon(world, state, pos, entity, fallDistance);
+        entity.handleFallDamage(fallDistance, 1.0F, DamageSource.FALL);
     }
 
     @Override

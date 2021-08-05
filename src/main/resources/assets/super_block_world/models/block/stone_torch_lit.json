@@ -4,8 +4,8 @@
 	"textures": {
 		"fire": "block/fire_0",
 		"lower": "super_block_world:block/stone_torch_base",
-		"particle": "super_block_world:block/stone_torch",
-		"upper": "super_block_world:block/stone_torch"
+		"particle": "super_block_world:block/stone_torch_lit",
+		"upper": "super_block_world:block/stone_torch_lit"
 	},
 	"elements": [
 		{

@@ -1,0 +1,59 @@
+{
+  "type": "minecraft:decorated",
+  "config": {
+    "decorator": {
+      "type": "minecraft:count_extra",
+      "config": {
+        "count": 256,
+        "extra_count": 6,
+        "extra_chance": 0.5
+      }
+    },
+    "feature": {
+      "type": "minecraft:decorated",
+      "config": {
+        "decorator": {
+          "type": "minecraft:square",
+          "config": {}
+        },
+        "feature": {
+          "type": "minecraft:decorated",
+          "config": {
+            "decorator": {
+              "type": "minecraft:range",
+              "config": {
+                "height": {
+                  "type": "minecraft:uniform",
+                  "min_inclusive": {
+                    "above_bottom": 0
+                  },
+                  "max_inclusive": {
+                    "absolute": 50
+                  }
+                }
+              }
+            },
+            "feature": {
+              "type": "minecraft:ore",
+              "config": {
+                "size": 8,
+                "discard_chance_on_air_exposure": 0,
+                "targets": [
+                  {
+                    "target": {
+                      "predicate_type": "minecraft:tag_match",
+                      "tag": "super_block_world:bricks"
+                    },
+                    "state": {
+                      "Name": "super_block_world:question_block"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
