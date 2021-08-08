@@ -9,6 +9,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.registry.Registry;
+
 @SuppressWarnings("deprecation")
 public class SpawnPacket {
     public static Packet<?> create(Entity e, Identifier packetID) {
@@ -24,13 +25,13 @@ public class SpawnPacket {
         PacketBufUtil.writeAngle(byteBuf, e.getYaw());
         return ServerSidePacketRegistry.INSTANCE.toPacket(packetID, byteBuf);
     }
+
     public static final class PacketBufUtil {
 
         /**
          * Packs a floating-point angle into a {@code byte}.
          *
-         * @param angle
-         *         angle
+         * @param angle angle
          * @return packed angle
          */
         public static byte packAngle(float angle) {
@@ -40,8 +41,7 @@ public class SpawnPacket {
         /**
          * Unpacks a floating-point angle from a {@code byte}.
          *
-         * @param angleByte
-         *         packed angle
+         * @param angleByte packed angle
          * @return angle
          */
         public static float unpackAngle(byte angleByte) {
@@ -51,10 +51,8 @@ public class SpawnPacket {
         /**
          * Writes an angle to a {@link PacketByteBuf}.
          *
-         * @param byteBuf
-         *         destination buffer
-         * @param angle
-         *         angle
+         * @param byteBuf destination buffer
+         * @param angle   angle
          */
         public static void writeAngle(PacketByteBuf byteBuf, float angle) {
             byteBuf.writeByte(packAngle(angle));
@@ -63,8 +61,7 @@ public class SpawnPacket {
         /**
          * Reads an angle from a {@link PacketByteBuf}.
          *
-         * @param byteBuf
-         *         source buffer
+         * @param byteBuf source buffer
          * @return angle
          */
         public static float readAngle(PacketByteBuf byteBuf) {
@@ -74,10 +71,8 @@ public class SpawnPacket {
         /**
          * Writes a {@link Vec3d} to a {@link PacketByteBuf}.
          *
-         * @param byteBuf
-         *         destination buffer
-         * @param vec3d
-         *         vector
+         * @param byteBuf destination buffer
+         * @param vec3d   vector
          */
         public static void writeVec3d(PacketByteBuf byteBuf, Vec3d vec3d) {
             byteBuf.writeDouble(vec3d.x);
@@ -88,8 +83,7 @@ public class SpawnPacket {
         /**
          * Reads a {@link Vec3d} from a {@link PacketByteBuf}.
          *
-         * @param byteBuf
-         *         source buffer
+         * @param byteBuf source buffer
          * @return vector
          */
         public static Vec3d readVec3d(PacketByteBuf byteBuf) {

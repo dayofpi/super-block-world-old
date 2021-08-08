@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.client;
 
-import com.dayofpi.super_block_world.Main;
+import com.dayofpi.super_block_world.core.Main;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandler;
@@ -21,6 +21,7 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockRenderView;
 
 import java.util.function.Function;
+
 @SuppressWarnings("deprecation")
 @Environment(EnvType.CLIENT)
 public class FluidClient {
@@ -41,7 +42,7 @@ public class FluidClient {
         final Identifier fluidId = Registry.FLUID.getId(still);
         final Identifier listenerId = new Identifier(fluidId.getNamespace(), fluidId.getPath() + "_reload_listener");
 
-        final Sprite[] fluidSprites = { null, null };
+        final Sprite[] fluidSprites = {null, null};
 
         ResourceManagerHelper.get(ResourceType.CLIENT_RESOURCES).registerReloadListener(new SimpleSynchronousResourceReloadListener() {
             @Override
@@ -61,8 +62,7 @@ public class FluidClient {
         });
 
         // The FluidRenderer gets the sprites and color from a FluidRenderHandler during rendering
-        final FluidRenderHandler renderHandler = new FluidRenderHandler()
-        {
+        final FluidRenderHandler renderHandler = new FluidRenderHandler() {
             @Override
             public Sprite[] getFluidSprites(BlockRenderView view, BlockPos pos, FluidState state) {
                 return fluidSprites;

@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.common.block;
 
-import com.dayofpi.super_block_world.registry.ModPlants;
+import com.dayofpi.super_block_world.core.registry.ModPlants;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CarpetBlock;
@@ -40,7 +40,7 @@ public class Flowerbed extends CarpetBlock implements Fertilizable {
         if (k >= world.getBottomY() + 1 && k + 1 < world.getTopY()) {
             int i = 8;
             int j = 4;
-            for(int m = 0; m < i * i; ++m) {
+            for (int m = 0; m < i * i; ++m) {
                 BlockPos blockPos = pos.add(random.nextInt(i) - random.nextInt(i), random.nextInt(j) - random.nextInt(j), random.nextInt(i) - random.nextInt(i));
                 BlockState blockState2 = ModPlants.YELLOW_FLOWERBED.getDefaultState();
                 if (world.isAir(blockPos) && blockPos.getY() > world.getBottomY() && canGrowOn(world, blockPos)) {

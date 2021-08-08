@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.common.block;
 
-import com.dayofpi.super_block_world.registry.ModBlocks;
+import com.dayofpi.super_block_world.core.registry.BlockReg;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.DirtPathBlock;
@@ -17,7 +17,7 @@ public class ToadstoolPath extends DirtPathBlock {
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return !this.getDefaultState().canPlaceAt(ctx.getWorld(), ctx.getBlockPos()) ? Block.pushEntitiesUpBeforeBlockChange(this.getDefaultState(), ModBlocks.TOADSTOOL_SOIL.getDefaultState(), ctx.getWorld(), ctx.getBlockPos()) : super.getPlacementState(ctx);
+        return !this.getDefaultState().canPlaceAt(ctx.getWorld(), ctx.getBlockPos()) ? Block.pushEntitiesUpBeforeBlockChange(this.getDefaultState(), BlockReg.TOADSTOOL_SOIL.getDefaultState(), ctx.getWorld(), ctx.getBlockPos()) : super.getPlacementState(ctx);
     }
 
     @Override

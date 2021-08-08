@@ -1,8 +1,9 @@
 package com.dayofpi.super_block_world.client.entity.renderer;
 
-import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.client.EntityClient;
-import com.dayofpi.super_block_world.common.utility.items.ModBoatEntity;
+import com.dayofpi.super_block_world.core.Main;
+import com.dayofpi.super_block_world.client.ModEntityLayers;
+import com.dayofpi.super_block_world.client.entity.model.ModBoatModel;
+import com.dayofpi.super_block_world.core.utility.items.ModBoatEntity;
 import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.util.Pair;
 import net.fabricmc.api.EnvType;
@@ -13,7 +14,6 @@ import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
-import net.minecraft.client.render.entity.model.BoatEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
@@ -25,26 +25,26 @@ import java.util.stream.Stream;
 
 @Environment(EnvType.CLIENT)
 public class ModBoatRender extends EntityRenderer<ModBoatEntity> {
-    private final Map<ModBoatEntity.Type, Pair<Identifier, BoatEntityModel>> texturesAndModels;
+    private final Map<ModBoatEntity.Type, Pair<Identifier, ModBoatModel>> texturesAndModels;
 
     public ModBoatRender(EntityRendererFactory.Context context) {
         super(context);
         this.shadowRadius = 0.8F;
-        this.texturesAndModels = Stream.of(ModBoatEntity.Type.values()).collect(ImmutableMap.toImmutableMap((type) -> type, (type) -> Pair.of(new Identifier(Main.MOD_ID,"textures/" + type.getName() + "_boat.png"), new BoatEntityModel(context.getPart(EntityClient.createBoat(type))))));
+        this.texturesAndModels = Stream.of(ModBoatEntity.Type.values()).collect(ImmutableMap.toImmutableMap((type) -> type, (type) -> Pair.of(new Identifier(Main.MOD_ID, "textures/" + type.getName() + "_boat.png"), new ModBoatModel(context.getPart(ModEntityLayers.MOD_BOAT)))));
     }
 
     public void render(ModBoatEntity boatEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
         matrixStack.push();
         matrixStack.translate(0.0D, 0.375D, 0.0D);
         matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0F - f));
-        float h = (float)boatEntity.getDamageWobbleTicks() - g;
+        float h = (float) boatEntity.getDamageWobbleTicks() - g;
         float j = boatEntity.getDamageWobbleStrength() - g;
         if (j < 0.0F) {
             j = 0.0F;
         }
 
         if (h > 0.0F) {
-            matrixStack.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(MathHelper.sin(h) * h * j / 10.0F * (float)boatEntity.getDamageWobbleSide()));
+            matrixStack.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(MathHelper.sin(h) * h * j / 10.0F * (float) boatEntity.getDamageWobbleSide()));
         }
 
         float k = boatEntity.interpolateBubbleWobble(g);
@@ -52,9 +52,9 @@ public class ModBoatRender extends EntityRenderer<ModBoatEntity> {
             matrixStack.multiply(new Quaternion(new Vec3f(1.0F, 0.0F, 1.0F), boatEntity.interpolateBubbleWobble(g), true));
         }
 
-        Pair<Identifier, BoatEntityModel> pair = this.texturesAndModels.get(boatEntity.getBoatType());
+        Pair<Identifier, ModBoatModel> pair = this.texturesAndModels.get(boatEntity.getBoatType());
         Identifier identifier = pair.getFirst();
-        BoatEntityModel boatEntityModel = pair.getSecond();
+        ModBoatModel boatEntityModel = pair.getSecond();
         matrixStack.scale(-1.0F, -1.0F, 1.0F);
         matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(90.0F));
         boatEntityModel.setAngles(boatEntity, g, 0.0F, -0.1F, 0.0F, 0.0F);
@@ -70,6 +70,6 @@ public class ModBoatRender extends EntityRenderer<ModBoatEntity> {
     }
 
     public Identifier getTexture(ModBoatEntity boatEntity) {
-        return (Identifier)((Pair)this.texturesAndModels.get(boatEntity.getBoatType())).getFirst();
+        return (Identifier) ((Pair) this.texturesAndModels.get(boatEntity.getBoatType())).getFirst();
     }
 }

@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.common.block;
 
-import com.dayofpi.super_block_world.registry.ModBlocks;
+import com.dayofpi.super_block_world.core.registry.BlockReg;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -23,12 +23,8 @@ public class ToadstoolFarmland extends FarmlandBlock {
         super(settings);
     }
 
-    @Override
-    public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return !this.getDefaultState().canPlaceAt(ctx.getWorld(), ctx.getBlockPos()) ? ModBlocks.TOADSTOOL_SOIL.getDefaultState() : super.getPlacementState(ctx);
-    }
     public static void setToSoil(BlockState state, World world, BlockPos pos) {
-        world.setBlockState(pos, pushEntitiesUpBeforeBlockChange(state, ModBlocks.TOADSTOOL_SOIL.getDefaultState(), world, pos));
+        world.setBlockState(pos, pushEntitiesUpBeforeBlockChange(state, BlockReg.TOADSTOOL_SOIL.getDefaultState(), world, pos));
     }
 
     private static boolean hasCrop(BlockView world, BlockPos pos) {
@@ -44,11 +40,14 @@ public class ToadstoolFarmland extends FarmlandBlock {
                 return false;
             }
             blockPos = var2.next();
-        } while(!world.getFluidState(blockPos).isIn(FluidTags.WATER));
+        } while (!world.getFluidState(blockPos).isIn(FluidTags.WATER));
         return true;
     }
 
-
+    @Override
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        return !this.getDefaultState().canPlaceAt(ctx.getWorld(), ctx.getBlockPos()) ? BlockReg.TOADSTOOL_SOIL.getDefaultState() : super.getPlacementState(ctx);
+    }
 
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {

@@ -1,10 +1,10 @@
 package com.dayofpi.super_block_world.client.entity.renderer;
 
-import com.dayofpi.super_block_world.common.utility.blocktypes.ModSign;
-import com.dayofpi.super_block_world.common.blockentity.ModSignBE;
-import com.dayofpi.super_block_world.common.utility.blocktypes.ModSignBase;
-import com.dayofpi.super_block_world.common.utility.blocktypes.ModWallSign;
-import com.dayofpi.super_block_world.common.utility.ModSignType;
+import com.dayofpi.super_block_world.common.block.blockentity.ModSignBE;
+import com.dayofpi.super_block_world.core.utility.ModSignType;
+import com.dayofpi.super_block_world.core.utility.blocktypes.ModSign;
+import com.dayofpi.super_block_world.core.utility.blocktypes.ModSignBase;
+import com.dayofpi.super_block_world.core.utility.blocktypes.ModWallSign;
 import com.google.common.collect.ImmutableMap;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -12,7 +12,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
-import net.minecraft.client.model.*;
+import net.minecraft.client.model.Model;
+import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.TexturedRenderLayers;
@@ -47,6 +48,41 @@ public class ModSignRender implements BlockEntityRenderer<ModSignBE> {
         this.textRenderer = ctx.getTextRenderer();
     }
 
+    private static boolean shouldRender(ModSignBE sign, int signColor) {
+        if (signColor == DyeColor.BLACK.getSignColor()) {
+            return true;
+        } else {
+            MinecraftClient minecraftClient = MinecraftClient.getInstance();
+            ClientPlayerEntity clientPlayerEntity = minecraftClient.player;
+            if (clientPlayerEntity != null && minecraftClient.options.getPerspective().isFirstPerson() && clientPlayerEntity.isUsingSpyglass()) {
+                return true;
+            } else {
+                Entity entity = minecraftClient.getCameraEntity();
+                return entity != null && entity.squaredDistanceTo(Vec3d.ofCenter(sign.getPos())) < (double) RENDER_DISTANCE;
+            }
+        }
+    }
+
+    private static int getColor(ModSignBE sign) {
+        int i = sign.getTextColor().getSignColor();
+        double d = 0.4D;
+        int j = (int) ((double) NativeImage.getRed(i) * d);
+        int k = (int) ((double) NativeImage.getGreen(i) * d);
+        int l = (int) ((double) NativeImage.getBlue(i) * d);
+        return i == DyeColor.BLACK.getSignColor() && sign.isGlowingText() ? -988212 : NativeImage.getAbgrColor(0, l, k, j);
+    }
+
+    public static SignType getSignType(Block block) {
+        SignType signType2;
+        if (block instanceof ModSignBase) {
+            signType2 = ((ModSignBase) block).getSignType();
+        } else {
+            signType2 = ModSignType.AMANITA;
+        }
+
+        return signType2;
+    }
+
     @Override
     public void render(ModSignBE entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
         BlockState blockState = entity.getCachedState();
@@ -57,7 +93,7 @@ public class ModSignRender implements BlockEntityRenderer<ModSignBE> {
         float h;
         if (blockState.getBlock() instanceof ModSign) {
             matrices.translate(0.5D, 0.5D, 0.5D);
-            h = -((float)(blockState.get(ModSign.ROTATION) * 360) / 16.0F);
+            h = -((float) (blockState.get(ModSign.ROTATION) * 360) / 16.0F);
             matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(h));
             signModel.stick.visible = true;
         } else {
@@ -96,52 +132,17 @@ public class ModSignRender implements BlockEntityRenderer<ModSignBE> {
             r = light;
         }
 
-        for(int s = 0; s < 4; ++s) {
+        for (int s = 0; s < 4; ++s) {
             OrderedText orderedText = orderedTexts[s];
-            float t = (float)(-this.textRenderer.getWidth(orderedText) / 2);
+            float t = (float) (-this.textRenderer.getWidth(orderedText) / 2);
             if (bl2) {
-                this.textRenderer.drawWithOutline(orderedText, t, (float)(s * 10 - 20), q, m, matrices.peek().getModel(), vertexConsumers, r);
+                this.textRenderer.drawWithOutline(orderedText, t, (float) (s * 10 - 20), q, m, matrices.peek().getModel(), vertexConsumers, r);
             } else {
-                this.textRenderer.draw(orderedText, t, (float)(s * 10 - 20), q, false, matrices.peek().getModel(), vertexConsumers, false, 0, r);
+                this.textRenderer.draw(orderedText, t, (float) (s * 10 - 20), q, false, matrices.peek().getModel(), vertexConsumers, false, 0, r);
             }
         }
 
         matrices.pop();
-    }
-
-    private static boolean shouldRender(ModSignBE sign, int signColor) {
-        if (signColor == DyeColor.BLACK.getSignColor()) {
-            return true;
-        } else {
-            MinecraftClient minecraftClient = MinecraftClient.getInstance();
-            ClientPlayerEntity clientPlayerEntity = minecraftClient.player;
-            if (clientPlayerEntity != null && minecraftClient.options.getPerspective().isFirstPerson() && clientPlayerEntity.isUsingSpyglass()) {
-                return true;
-            } else {
-                Entity entity = minecraftClient.getCameraEntity();
-                return entity != null && entity.squaredDistanceTo(Vec3d.ofCenter(sign.getPos())) < (double)RENDER_DISTANCE;
-            }
-        }
-    }
-
-    private static int getColor(ModSignBE sign) {
-        int i = sign.getTextColor().getSignColor();
-        double d = 0.4D;
-        int j = (int)((double) NativeImage.getRed(i) * d);
-        int k = (int)((double)NativeImage.getGreen(i) * d);
-        int l = (int)((double)NativeImage.getBlue(i) * d);
-        return i == DyeColor.BLACK.getSignColor() && sign.isGlowingText() ? -988212 : NativeImage.getAbgrColor(0, l, k, j);
-    }
-
-    public static SignType getSignType(Block block) {
-        SignType signType2;
-        if (block instanceof ModSignBase) {
-            signType2 = ((ModSignBase)block).getSignType();
-        } else {
-            signType2 = ModSignType.AMANITA;
-        }
-
-        return signType2;
     }
 
     @Environment(EnvType.CLIENT)

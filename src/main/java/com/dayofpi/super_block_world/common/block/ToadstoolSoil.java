@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.common.block;
 
-import com.dayofpi.super_block_world.registry.ModBlocks;
+import com.dayofpi.super_block_world.core.registry.BlockReg;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -37,11 +37,11 @@ public class ToadstoolSoil extends Block implements Fertilizable {
 
     @Override
     public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-        for(int i = 0; i < 4; ++i) {
+        for (int i = 0; i < 4; ++i) {
             BlockPos blockPos = pos.add(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
-            if (world.getBlockState(blockPos).isOf(ModBlocks.TOADSTOOL_SOIL)) {
-                world.setBlockState(pos, ModBlocks.TOADSTOOL_GRASS.getDefaultState(), 2);
-                world.setBlockState(blockPos, ModBlocks.TOADSTOOL_GRASS.getDefaultState(), 2);
+            if (world.getBlockState(blockPos).isOf(BlockReg.TOADSTOOL_SOIL)) {
+                world.setBlockState(pos, BlockReg.TOADSTOOL_GRASS.getDefaultState(), 2);
+                world.setBlockState(blockPos, BlockReg.TOADSTOOL_GRASS.getDefaultState(), 2);
             }
         }
     }
@@ -49,14 +49,13 @@ public class ToadstoolSoil extends Block implements Fertilizable {
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         ItemStack itemStack = player.getStackInHand(hand);
-        if (itemStack.isIn(FabricToolTags.HOES))
-        {
+        if (itemStack.isIn(FabricToolTags.HOES)) {
             world.playSound(player, pos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            world.setBlockState(pos, ModBlocks.TOADSTOOL_FARMLAND.getDefaultState(), 2);
+            world.setBlockState(pos, BlockReg.TOADSTOOL_FARMLAND.getDefaultState(), 2);
             return ActionResult.success(world.isClient);
         } else if (itemStack.isIn(FabricToolTags.SHOVELS)) {
             world.playSound(player, pos, SoundEvents.ITEM_SHOVEL_FLATTEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            world.setBlockState(pos, ModBlocks.TOADSTOOL_PATH.getDefaultState(), 2);
+            world.setBlockState(pos, BlockReg.TOADSTOOL_PATH.getDefaultState(), 2);
             return ActionResult.success(world.isClient);
         } else {
             return ActionResult.PASS;

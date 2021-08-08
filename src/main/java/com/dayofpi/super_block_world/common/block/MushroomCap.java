@@ -23,19 +23,30 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
+@SuppressWarnings("deprecation")
 public class MushroomCap extends Block {
-    public static final BooleanProperty NORTH;
-    public static final BooleanProperty EAST;
-    public static final BooleanProperty SOUTH;
-    public static final BooleanProperty WEST;
-    public static final BooleanProperty UP;
+    protected static final BooleanProperty NORTH;
+    protected static final BooleanProperty EAST;
+    protected static final BooleanProperty SOUTH;
+    protected static final BooleanProperty WEST;
+    protected static final BooleanProperty UP;
     public static final BooleanProperty DOWN;
+
+    static {
+        NORTH = ConnectingBlock.NORTH;
+        EAST = ConnectingBlock.EAST;
+        SOUTH = ConnectingBlock.SOUTH;
+        WEST = ConnectingBlock.WEST;
+        UP = ConnectingBlock.UP;
+        DOWN = ConnectingBlock.DOWN;
+    }
 
     public MushroomCap(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(NORTH, true).with(EAST, true).with(SOUTH, true).with(WEST, true).with(UP, true).with(DOWN, true));
     }
 
+    @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         return this.getDefaultState();
     }
@@ -44,10 +55,12 @@ public class MushroomCap extends Block {
         builder.add(UP, DOWN, NORTH, EAST, SOUTH, WEST);
     }
 
+    @Override
     public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
         entity.handleFallDamage(fallDistance, 0.2F, DamageSource.FALL);
     }
 
+    @Override
     public void onEntityLand(BlockView world, Entity entity) {
         if (entity.bypassesLandingEffects()) {
             super.onEntityLand(world, entity);
@@ -57,7 +70,7 @@ public class MushroomCap extends Block {
 
     }
 
-    private void bounce(Entity entity) {
+    protected void bounce(Entity entity) {
         Vec3d vec3d = entity.getVelocity();
         if (vec3d.y < 0.0D) {
             double d = entity instanceof LivingEntity ? 1.0D : 0.8D;
@@ -84,22 +97,12 @@ public class MushroomCap extends Block {
         } else if (direction == Direction.SOUTH) {
             capSide = MushroomCap.SOUTH;
         }
-        if (itemStack.isIn(FabricToolTags.AXES))
-        {
+        if (itemStack.isIn(FabricToolTags.AXES)) {
             world.playSound(player, pos, SoundEvents.BLOCK_WART_BLOCK_BREAK, SoundCategory.BLOCKS, 0.6F, 1.2F);
             world.setBlockState(pos, state.cycle(capSide), 2);
             return ActionResult.success(world.isClient);
         } else {
             return ActionResult.PASS;
         }
-    }
-
-    static {
-        NORTH = ConnectingBlock.NORTH;
-        EAST = ConnectingBlock.EAST;
-        SOUTH = ConnectingBlock.SOUTH;
-        WEST = ConnectingBlock.WEST;
-        UP = ConnectingBlock.UP;
-        DOWN = ConnectingBlock.DOWN;
     }
 }

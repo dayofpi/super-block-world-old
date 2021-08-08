@@ -19,7 +19,7 @@ public class ToadstoolGrass extends ToadstoolSoil {
     }
 
     private static <U extends FeatureConfig> BlockState getFlowerState(Random random, BlockPos pos, ConfiguredFeature<U, ?> flowerFeature) {
-        FlowerFeature<U> flowerFeature2 = (FlowerFeature<U>)flowerFeature.feature;
+        FlowerFeature<U> flowerFeature2 = (FlowerFeature<U>) flowerFeature.feature;
         return flowerFeature2.getFlowerState(random, pos, flowerFeature.getConfig());
     }
 
@@ -29,10 +29,10 @@ public class ToadstoolGrass extends ToadstoolSoil {
         BlockState blockState = Blocks.GRASS.getDefaultState();
 
         label48:
-        for(int i = 0; i < 128; ++i) {
+        for (int i = 0; i < 128; ++i) {
             BlockPos blockPos2 = blockPos;
 
-            for(int j = 0; j < i / 16; ++j) {
+            for (int j = 0; j < i / 16; ++j) {
                 blockPos2 = blockPos2.add(random.nextInt(3) - 1, (random.nextInt(3) - 1) * random.nextInt(3) / 2, random.nextInt(3) - 1);
                 if (!world.getBlockState(blockPos2.down()).isOf(this) || world.getBlockState(blockPos2).isFullCube(world, blockPos2)) {
                     continue label48;
@@ -41,7 +41,7 @@ public class ToadstoolGrass extends ToadstoolSoil {
 
             BlockState blockState2 = world.getBlockState(blockPos2);
             if (blockState2.isOf(blockState.getBlock()) && random.nextInt(10) == 0) {
-                ((Fertilizable)blockState.getBlock()).grow(world, random, blockPos2, blockState2);
+                ((Fertilizable) blockState.getBlock()).grow(world, random, blockPos2, blockState2);
             }
 
             if (blockState2.isAir()) {
