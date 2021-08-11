@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "super_block_world:amanita_wall_sign"
+          "name": "super_block_world:amanita_sign"
         }
       ],
       "conditions": [

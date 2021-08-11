@@ -30,10 +30,6 @@
           "config": {
             "features": [
               {
-                "chance": 0.3,
-                "feature": "super_block_world:mushrooms/green_mushroom"
-              },
-              {
                 "chance": 0.1,
                 "feature": "minecraft:patch_brown_mushroom"
               }

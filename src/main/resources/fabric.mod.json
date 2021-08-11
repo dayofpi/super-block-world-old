@@ -20,10 +20,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.dayofpi.super_block_world.core.Main"
+      "com.dayofpi.super_block_world.Main"
     ],
     "client": [
-      "com.dayofpi.super_block_world.core.Client"
+      "com.dayofpi.super_block_world.Client"
     ]
   },
   "mixins": [

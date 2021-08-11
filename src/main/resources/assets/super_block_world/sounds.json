@@ -1,9 +1,53 @@
 {
-  "block.poison.burn": {
-    "subtitle": "block.poison.burn",
+  "entity.buzzy_beetle.hurt": {
+    "subtitle": "entity.buzzy_beetle.hurt",
     "sounds": [
       {
-        "name": "minecraft:random/fizz",
+        "name": "super_block_world:entity/buzzy/hurt1",
+        "stream": true
+      },
+      {
+        "name": "super_block_world:entity/buzzy/hurt2",
+        "stream": true
+      },
+      {
+        "name": "super_block_world:entity/buzzy/hurt3",
+        "stream": true
+      }
+    ]
+  },
+  "entity.buzzy_beetle.death": {
+  "subtitle": "entity.buzzy_beetle.death",
+  "sounds": [
+    {
+      "name": "super_block_world:entity/buzzy/death",
+      "stream": true
+    }
+  ]
+},
+  "entity.buzzy_beetle.drop": {
+    "subtitle": "entity.buzzy_beetle.drop",
+    "sounds": [
+      {
+        "name": "super_block_world:random/kick",
+        "stream": true
+      }
+    ]
+  },
+  "entity.buzzy_beetle.land": {
+    "subtitle": "entity.buzzy_beetle.land",
+    "sounds": [
+      {
+        "name": "super_block_world:random/impact",
+        "stream": true
+      }
+    ]
+  },
+  "entity.buzzy_beetle.block": {
+    "subtitle": "entity.buzzy_beetle.block",
+    "sounds": [
+      {
+        "name": "super_block_world:random/bump",
         "stream": true
       }
     ]

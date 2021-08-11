@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "com.dayofpi.super_block_world.core.mixin",
+  "package": "com.dayofpi.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
     "gen.CarverMixin",
@@ -14,6 +14,7 @@
     "entity.ClientPlayerEntityMixin",
     "entity.EntityI",
     "entity.EntityMixin",
+    "entity.SpawnRestrictionMixin",
     "entity.PathAwareEntityMixin",
     "entity.AnimalEntityMixin",
     "entity.RabbitEntityMixin",

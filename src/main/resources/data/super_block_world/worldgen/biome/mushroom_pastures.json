@@ -23,7 +23,14 @@
   },
   "starts": [],
   "spawners": {
-    "monster": [],
+    "monster": [
+      {
+        "type": "super_block_world:buzzy_beetle",
+        "weight": 100,
+        "minCount": 1,
+        "maxCount": 4
+      }
+    ],
     "creature": [
       {
         "type": "minecraft:horse",
