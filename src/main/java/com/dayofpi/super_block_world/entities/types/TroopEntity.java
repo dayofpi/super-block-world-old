@@ -6,15 +6,16 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.Monster;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
-import net.minecraft.world.WorldView;
+import net.minecraft.world.*;
+
+import java.util.Random;
 
 public abstract class TroopEntity extends AnimalEntity implements Monster {
     protected TroopEntity(EntityType<? extends TroopEntity> entityType, World world) {
@@ -30,6 +31,10 @@ public abstract class TroopEntity extends AnimalEntity implements Monster {
     @Override
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
         ActionResult actionResult = super.interactMob(player, hand);
+        ItemStack itemStack = player.getStackInHand(hand);
+        if (this.isBreedingItem(player.getStackInHand(hand))) {
+            this.playSound(this.getEatSound(itemStack), 1.0F, 1.0F);
+        }
         if (actionResult.isAccepted()) {
             this.setPersistent();
         }
@@ -37,8 +42,22 @@ public abstract class TroopEntity extends AnimalEntity implements Monster {
     }
 
     @Override
+    public boolean canImmediatelyDespawn(double distanceSquared) {
+        return !this.isPersistent();
+    }
+
+        @Override
     public boolean canSpawn(WorldAccess world, SpawnReason spawnReason) {
         return true;
+    }
+
+    public static boolean isSpawnDark(ServerWorldAccess world, BlockPos pos, Random random) {
+        if (world.getLightLevel(LightType.SKY, pos) > random.nextInt(32)) {
+            return false;
+        } else {
+            int i = world.toServerWorld().isThundering() ? world.getLightLevel(pos, 10) : world.getLightLevel(pos);
+            return i <= random.nextInt(8);
+        }
     }
 
     @Override

@@ -55,7 +55,7 @@
   "carvers": {
     "air": [
       "super_block_world:cave",
-      "minecraft:canyon"
+      "super_block_world:canyon"
     ]
   },
   "features": [
@@ -71,7 +71,8 @@
     [],
     [
       "super_block_world:blocks/single",
-      "super_block_world:blocks/underground",
+      "super_block_world:blocks/default",
+      "super_block_world:blocks/gloomstone",
       "super_block_world:vanillate_topping"
     ],
     [

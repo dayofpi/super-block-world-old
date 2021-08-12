@@ -7,6 +7,7 @@ import com.dayofpi.super_block_world.entities.types.ModBoatEntity;
 import com.dayofpi.super_block_world.items.types.ModBoatItem;
 import com.dayofpi.super_block_world.items.types.PowerStarItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
@@ -14,9 +15,13 @@ import net.minecraft.util.registry.Registry;
 
 
 public class ItemTypes {
+    public static final ArmorMaterial BUZZY_ARMOR_MATERIAL = new BuzzyArmorMaterial();
+
     public static final Item YOSHI_FRUIT = new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(2).saturationModifier(0.6F).build()).group(Main.MOD_GROUP));
-    public static final Item BUZZY_SHELL_PIECE = new Item(new FabricItemSettings().group(Main.MOD_GROUP));
     public static final Item BRONZE_INGOT = new Item(new FabricItemSettings().group(Main.MOD_GROUP));
+    public static final Item BUZZY_SHELL = new ArmorItem(BUZZY_ARMOR_MATERIAL, EquipmentSlot.HEAD, new FabricItemSettings().group(Main.MOD_GROUP));
+    public static final Item BUZZY_SHELL_PIECE = new Item(new FabricItemSettings().group(Main.MOD_GROUP));
+    public static final Item GREEN_MUSHROOM_ON_A_STICK = new OnAStickItem<>(new FabricItemSettings().group(Main.MOD_GROUP).maxDamage(25), EntityTypes.BUZZY_BEETLE, 2);
     public static final Item POISON_BUCKET = new BucketItem(Main.STILL_POISON, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1).group(Main.MOD_GROUP));
     public static final Item POWER_STAR = new PowerStarItem(new FabricItemSettings().rarity(Rarity.RARE).group(Main.MOD_GROUP));
     public static final Item BUZZY_BEETLE_SPAWN_EGG = new SpawnEggItem(EntityTypes.BUZZY_BEETLE, 4614307, 16768848, new FabricItemSettings().group(Main.MOD_GROUP));
@@ -25,8 +30,10 @@ public class ItemTypes {
     public static void registerItems() {
         registerBlockItems();
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "yoshi_fruit"), YOSHI_FRUIT);
-        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "buzzy_shell_piece"), BUZZY_SHELL_PIECE);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "bronze_ingot"), BRONZE_INGOT);
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "buzzy_shell"), BUZZY_SHELL);
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "buzzy_shell_piece"), BUZZY_SHELL_PIECE);
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "green_mushroom_on_a_stick"), GREEN_MUSHROOM_ON_A_STICK);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "poison_bucket"), POISON_BUCKET);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "power_star"), POWER_STAR);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "spawn_eggs/buzzy_beetle"), BUZZY_BEETLE_SPAWN_EGG);
@@ -51,6 +58,7 @@ public class ItemTypes {
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "bronze_slab"), new BlockItem(BlockTypes.BRONZE_SLAB, new FabricItemSettings().group(Main.MOD_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "bronze_stairs"), new BlockItem(BlockTypes.BRONZE_STAIRS, new FabricItemSettings().group(Main.MOD_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "question_block"), new BlockItem(BlockTypes.QUESTION_BLOCK, new FabricItemSettings().group(Main.MOD_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "empty_block"), new BlockItem(BlockTypes.EMPTY_BLOCK, new FabricItemSettings().group(Main.MOD_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "toadstone"), new BlockItem(BlockTypes.TOADSTONE, new FabricItemSettings().group(Main.MOD_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "toadstone_bricks"), new BlockItem(BlockTypes.TOADSTONE_BRICKS, new FabricItemSettings().group(Main.MOD_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "gloomstone"), new BlockItem(BlockTypes.GLOOMSTONE, new FabricItemSettings().group(Main.MOD_GROUP)));

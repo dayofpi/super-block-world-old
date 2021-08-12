@@ -6,6 +6,7 @@
   "mixins": [
     "gen.CarverMixin",
     "SignTypeI",
+    "ArmorItemMixin",
     "CropBlockMixin",
     "StemBlockMixin",
     "EntityModelLoaderI",

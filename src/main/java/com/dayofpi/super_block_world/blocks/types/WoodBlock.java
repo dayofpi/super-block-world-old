@@ -15,8 +15,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 @SuppressWarnings("deprecation")
-public class ModWood extends PillarBlock {
-    public ModWood(Settings settings) {
+public class WoodBlock extends PillarBlock {
+    public WoodBlock(Settings settings) {
         super(settings);
     }
 

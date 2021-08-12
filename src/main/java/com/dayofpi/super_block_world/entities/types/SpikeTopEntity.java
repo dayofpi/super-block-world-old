@@ -6,8 +6,8 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class SpikeTopEntity extends AbstractBuzzyBeetle {
-    public SpikeTopEntity(EntityType<? extends AbstractBuzzyBeetle> entityType, World world) {
+public class SpikeTopEntity extends AbstractBuzzyEntity {
+    public SpikeTopEntity(EntityType<? extends AbstractBuzzyEntity> entityType, World world) {
         super(entityType, world);
     }
 

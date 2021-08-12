@@ -14,7 +14,6 @@ import net.minecraft.entity.damage.ProjectileDamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
-import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
@@ -30,14 +29,14 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
-public abstract class AbstractBuzzyBeetle extends TroopEntity {
+public abstract class AbstractBuzzyEntity extends TroopEntity {
     private static final TrackedData<Boolean> UPSIDE_DOWN;
 
     static {
-        UPSIDE_DOWN = DataTracker.registerData(AbstractBuzzyBeetle.class, TrackedDataHandlerRegistry.BOOLEAN);
+        UPSIDE_DOWN = DataTracker.registerData(AbstractBuzzyEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     }
 
-    public AbstractBuzzyBeetle(EntityType<? extends AbstractBuzzyBeetle> entityType, World world) {
+    public AbstractBuzzyEntity(EntityType<? extends AbstractBuzzyEntity> entityType, World world) {
         super(entityType, world);
     }
 
@@ -53,7 +52,7 @@ public abstract class AbstractBuzzyBeetle extends TroopEntity {
     public static boolean canSpawn(ServerWorldAccess world, BlockPos pos, Random random) {
         boolean bool1 = isFloorValid(world.getBlockState(pos.down()));
         boolean bool2 = isFloorValid(world.getBlockState(pos.up()));
-        return HostileEntity.isSpawnDark(world, pos, random) && !world.isSkyVisible(pos) && (bool1 || bool2);
+        return TroopEntity.isSpawnDark(world, pos, random) && !world.isSkyVisible(pos) && (bool1 || bool2);
     }
 
     private static boolean isFloorValid(BlockState state) {
@@ -75,6 +74,7 @@ public abstract class AbstractBuzzyBeetle extends TroopEntity {
         this.goalSelector.add(8, new LookAroundGoal(this));
         this.goalSelector.add(7, new WanderAroundFarGoal(this, 1.0D));
         this.goalSelector.add(4, new MeleeAttackGoal(this, 1.0D, false));
+        this.goalSelector.add(2, new AvoidSunlightGoal(this));
         this.targetSelector.add(2, new RevengeGoal(this));
         this.targetSelector.add(1, new SwimGoal(this));
     }
@@ -101,14 +101,14 @@ public abstract class AbstractBuzzyBeetle extends TroopEntity {
     }
 
     public boolean isOnCeiling(BlockPos pos) {
-        return world.getBlockState(pos).isSideSolidFullSquare(world, pos, Direction.DOWN);
+        return world.getBlockState(pos).isSideSolidFullSquare(world, pos, Direction.DOWN) && !this.hasVehicle();
     }
 
     @Override
     public boolean damage(DamageSource source, float amount) {
         if (this.isInvulnerableTo(source)) {
             return false;
-        } else if (source instanceof ProjectileDamageSource || source.isFallingBlock() || source.getAttacker() != null && source.getAttacker() instanceof AbstractBuzzyBeetle) {
+        } else if (source instanceof ProjectileDamageSource || source.isFallingBlock() || source.getAttacker() != null && source.getAttacker() instanceof AbstractBuzzyEntity) {
             this.world.playSound(null, this.getBlockPos(), Sounds.BUZZY_BEETLE_BLOCK, SoundCategory.NEUTRAL, 1.0F, this.getSoundPitch());
             return false;
         } else {
@@ -127,15 +127,12 @@ public abstract class AbstractBuzzyBeetle extends TroopEntity {
         if (this.isUpsideDown()) {
             if (!this.world.isClient()) {
                 int i = this.computeFallDamage(fallDistance, damageMultiplier);
-                int type = 1;
-                if (this instanceof SpikeTopEntity) {
-                    type = 3;
-                }
                 if (i > 0) {
-                    int finalType = type;
-                    this.world.getOtherEntities(this, this.getBoundingBox().expand(3, 0, 3), EntityPredicates.EXCEPT_SPECTATOR).forEach((entity) -> entity.damage(Main.mobDrop(this), i + finalType));
-                    this.world.playSound(null, this.getBlockPos(), Sounds.BUZZY_BEETLE_LAND, SoundCategory.NEUTRAL, 10.0F, this.getSoundPitch());
+                    this.world.getOtherEntities(this, this.getBoundingBox().expand(3, 0, 3), EntityPredicates.EXCEPT_SPECTATOR).forEach((entity) -> entity.damage(Main.mobDrop(this), i + 1));
+                    this.world.playSound(null, this.getBlockPos(), Sounds.BUZZY_BEETLE_LAND, SoundCategory.NEUTRAL, 3.0F, this.getSoundPitch());
                     ((ServerWorld) this.world).spawnParticles(ParticleTypes.EXPLOSION, this.getX(), this.getBodyY(0.5D), this.getZ(), 1, 0.0D, 0.0D, 0.0D, 0.0D);
+                }
+                if (fallDistance > 0.0F) {
                     this.setUpsideDown(false);
                 }
             }

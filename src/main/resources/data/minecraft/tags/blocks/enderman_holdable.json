@@ -2,7 +2,6 @@
   "replace": "false",
   "values": [
     "super_block_world:question_block",
-    "super_block_world:stone_torch",
     "super_block_world:stone_torch"
   ]
 }

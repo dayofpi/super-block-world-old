@@ -6,15 +6,17 @@ import com.dayofpi.super_block_world.entities.models.BuzzyBeetleModel;
 import com.dayofpi.super_block_world.entities.types.BuzzyBeetleEntity;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
+import net.minecraft.client.render.entity.feature.SaddleFeatureRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3f;
 
 public class BuzzyBeetleRender<T extends BuzzyBeetleEntity> extends MobEntityRenderer<T, BuzzyBeetleModel<T>> {
-    private static final Identifier TEXTURE = new Identifier(Main.MOD_ID, "textures/entity/buzzy_beetle.png");
+    private static final Identifier TEXTURE = new Identifier(Main.MOD_ID, "textures/entity/buzzy_beetle/buzzy_beetle.png");
 
     public BuzzyBeetleRender(EntityRendererFactory.Context context) {
         super(context, new BuzzyBeetleModel<>(context.getPart(ModelLayers.BUZZY_BEETLE)), 0.5F);
+        this.addFeature(new SaddleFeatureRenderer<>(this, new BuzzyBeetleModel<>(context.getPart(ModelLayers.BUZZY_BEETLE_SADDLE)), new Identifier(Main.MOD_ID, "textures/entity/buzzy_beetle/buzzy_beetle_saddle.png")));
     }
 
     @Override

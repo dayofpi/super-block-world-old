@@ -21,6 +21,7 @@ public abstract class EntityModelLoaderMixin {
                 .putAll(EntityModels.getModels())
                 .put(ModelLayers.MOD_BOAT, ModBoatModel.getTexturedModelData())
                 .put(ModelLayers.BUZZY_BEETLE, BuzzyBeetleModel.getTexturedModelData())
+                .put(ModelLayers.BUZZY_BEETLE_SADDLE, BuzzyBeetleModel.getTexturedModelData())
                 .build());
     }
 }

@@ -1,4 +1,22 @@
 {
+  "item_in": {
+    "subtitle": "item_in",
+    "sounds": [
+      {
+        "name": "super_block_world:random/item_in",
+        "stream": true
+      }
+    ]
+  },
+  "item_out": {
+    "subtitle": "item_out",
+    "sounds": [
+      {
+        "name": "super_block_world:random/item_out",
+        "stream": true
+      }
+    ]
+  },
   "entity.buzzy_beetle.hurt": {
     "subtitle": "entity.buzzy_beetle.hurt",
     "sounds": [
