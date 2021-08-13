@@ -27,7 +27,7 @@ public class FluidBlockMixin extends Block {
         world.syncWorldEvent(WorldEvents.LAVA_EXTINGUISHED, pos, 0);
     }
 
-    @Inject(at = @At("HEAD"), method = "receiveNeighborFluids(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockPos;Lnet/minecraft/block/BlockState;)Z", cancellable = true)
+    @Inject(at = @At("HEAD"), method = "receiveNeighborFluids(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;)Z", cancellable = true)
     private void receiveNeighborFluids(World world, BlockPos pos, BlockState state, CallbackInfoReturnable<Boolean> info) {
         if (((FluidBlockI) this).aFluid().isIn(FluidTags.LAVA)) {
             boolean bl = world.getBlockState(pos.down()).isOf(Blocks.SOUL_SOIL);

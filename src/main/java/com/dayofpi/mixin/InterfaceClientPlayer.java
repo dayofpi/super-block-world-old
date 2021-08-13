@@ -1,4 +1,4 @@
-package com.dayofpi.mixin.entity;
+package com.dayofpi.mixin;
 
 import net.minecraft.client.input.Input;
 import net.minecraft.client.network.ClientPlayerEntity;
@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin(ClientPlayerEntity.class)
-public interface ClientPlayerEntityI {
+public interface InterfaceClientPlayer {
     @Accessor("input")
     Input input();
 

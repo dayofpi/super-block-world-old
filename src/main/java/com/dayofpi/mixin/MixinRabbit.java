@@ -1,4 +1,4 @@
-package com.dayofpi.mixin.entity;
+package com.dayofpi.mixin;
 
 import com.dayofpi.super_block_world.blocks.BlockTypes;
 import net.minecraft.block.BlockState;
@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.Random;
 
 @Mixin(RabbitEntity.class)
-public class RabbitEntityMixin {
+public class MixinRabbit {
     @Inject(at = @At("HEAD"), method = "canSpawn(Lnet/minecraft/entity/EntityType;Lnet/minecraft/world/WorldAccess;Lnet/minecraft/entity/SpawnReason;Lnet/minecraft/util/math/BlockPos;Ljava/util/Random;)Z", cancellable = true)
     private static void canSpawn(EntityType<RabbitEntity> entity, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random, CallbackInfoReturnable<Boolean> info) {
         BlockState blockState = world.getBlockState(pos.down());

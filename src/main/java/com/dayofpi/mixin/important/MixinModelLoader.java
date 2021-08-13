@@ -1,5 +1,6 @@
-package com.dayofpi.mixin;
+package com.dayofpi.mixin.important;
 
+import com.dayofpi.mixin.InterfaceModelLoader;
 import com.dayofpi.super_block_world.entities.ModelLayers;
 import com.dayofpi.super_block_world.entities.models.BuzzyBeetleModel;
 import com.dayofpi.super_block_world.entities.models.ModBoatModel;
@@ -13,11 +14,11 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(EntityModelLoader.class)
-public abstract class EntityModelLoaderMixin {
+public abstract class MixinModelLoader {
 
     @Inject(at = @At("TAIL"), method = "reload", cancellable = true)
     public void reload(ResourceManager manager, CallbackInfo info) {
-        ((EntityModelLoaderI) this).setModelParts(new ImmutableMap.Builder<>()
+        ((InterfaceModelLoader) this).setModelParts(new ImmutableMap.Builder<>()
                 .putAll(EntityModels.getModels())
                 .put(ModelLayers.MOD_BOAT, ModBoatModel.getTexturedModelData())
                 .put(ModelLayers.BUZZY_BEETLE, BuzzyBeetleModel.getTexturedModelData())

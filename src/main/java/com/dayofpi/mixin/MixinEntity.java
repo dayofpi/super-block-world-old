@@ -1,4 +1,4 @@
-package com.dayofpi.mixin.entity;
+package com.dayofpi.mixin;
 
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.misc.Tags;
@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.Random;
 
 @Mixin(Entity.class)
-public abstract class EntityMixin {
+public abstract class MixinEntity {
     private final Random random = new Random();
     protected boolean touchingPoison;
 
@@ -23,18 +23,18 @@ public abstract class EntityMixin {
     @Inject(at = @At("TAIL"), method = "baseTick")
     void baseTick(CallbackInfo info) {
         if (this.isTouchingPoison()) {
-            if (!((EntityI) this).aType().isIn(Tags.POISON_IMMUNE)) {
-                if (((EntityI) this).iDamage(Main.POISON, 4.0F)) {
-                    ((EntityI) this).aWorld().playSound(null, ((EntityI) this).aBlockPos(), SoundEvents.ENTITY_GENERIC_BURN, ((EntityI) this).iGetSoundCategory(), 0.4F, 2.0F + this.random.nextFloat() * 0.4F);
+            if (!((InterfaceEntity) this).aType().isIn(Tags.POISON_IMMUNE)) {
+                if (((InterfaceEntity) this).iDamage(Main.POISON, 4.0F)) {
+                    ((InterfaceEntity) this).aWorld().playSound(null, ((InterfaceEntity) this).aBlockPos(), SoundEvents.ENTITY_GENERIC_BURN, ((InterfaceEntity) this).iGetSoundCategory(), 0.4F, 2.0F + this.random.nextFloat() * 0.4F);
                 }
-                ((EntityI) this).iDamage(Main.POISON, 4.0F);
+                ((InterfaceEntity) this).iDamage(Main.POISON, 4.0F);
             }
         }
     }
 
     @Inject(at = @At("HEAD"), method = "onSwimmingStart", cancellable = true)
     public void onSwimmingStart(CallbackInfo info) {
-        if (((EntityI) this).iUpdateMovementInFluid(Tags.POISON, 0.014D)) {
+        if (((InterfaceEntity) this).iUpdateMovementInFluid(Tags.POISON, 0.014D)) {
             // Do not show water splash particles
             info.cancel();
         }
@@ -42,7 +42,7 @@ public abstract class EntityMixin {
 
     @Inject(at = @At("HEAD"), method = "checkWaterState")
     void checkWaterState(CallbackInfo info) {
-        this.touchingPoison = ((EntityI) this).iUpdateMovementInFluid(Tags.POISON, 0.014D);
+        this.touchingPoison = ((InterfaceEntity) this).iUpdateMovementInFluid(Tags.POISON, 0.014D);
     }
 }
 

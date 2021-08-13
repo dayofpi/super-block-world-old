@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 import java.util.Map;
 
 @Mixin(EntityModelLoader.class)
-public interface EntityModelLoaderI {
+public interface InterfaceModelLoader {
     @Accessor
     Map<EntityModelLayer, TexturedModelData> getModelParts();
 

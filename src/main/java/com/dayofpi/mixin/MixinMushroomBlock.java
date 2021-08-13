@@ -1,4 +1,4 @@
-package com.dayofpi.mixin.gen;
+package com.dayofpi.mixin;
 
 import com.dayofpi.super_block_world.blocks.BlockTypes;
 import com.dayofpi.super_block_world.misc.worldgen.FeatureHelper;
@@ -18,8 +18,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.Random;
 
 @Mixin(MushroomPlantBlock.class)
-public class MushroomPlantBlockMixin extends PlantBlock {
-    public MushroomPlantBlockMixin(Settings settings) {
+public class MixinMushroomBlock extends PlantBlock {
+    public MixinMushroomBlock(Settings settings) {
         super(settings);
     }
 

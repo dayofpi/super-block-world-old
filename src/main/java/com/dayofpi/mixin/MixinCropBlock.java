@@ -10,8 +10,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(CropBlock.class)
-public class CropBlockMixin {
-    @Inject(at = @At("HEAD"), method = ("getAvailableMoisture(Lnet/minecraft/block/Block;Lnet/minecraft/world/BlockView/Lnet/minecraft/util/math/BlockPos;)Z"), cancellable = true)
+public class MixinCropBlock {
+    @Inject(at = @At("HEAD"), method = ("getAvailableMoisture(Lnet/minecraft/block/Block;Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;)F"))
     private static void getAvailableMoisture(Block block, BlockView world, BlockPos pos, CallbackInfoReturnable<Float> info) {
         float f = 1.0F;
         BlockPos blockPos = pos.down();
@@ -52,7 +52,7 @@ public class CropBlockMixin {
         info.setReturnValue(f);
     }
 
-    @Inject(at = @At("HEAD"), method = ("canPlantOnTop(Lnet/minecraft/block/BlockState;Lnet/minecraft/world/BlockView/Lnet/minecraft/util/math/BlockPos;)Z"), cancellable = true)
+    @Inject(at = @At("HEAD"), method = ("canPlantOnTop(Lnet/minecraft/block/BlockState;Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;)Z"), cancellable = true)
     private void canPlantOnTop(BlockState floor, BlockView world, BlockPos pos, CallbackInfoReturnable<Boolean> info) {
         info.setReturnValue(floor.isOf(Blocks.FARMLAND) || floor.isOf(BlockTypes.TOADSTOOL_FARMLAND));
         info.cancel();

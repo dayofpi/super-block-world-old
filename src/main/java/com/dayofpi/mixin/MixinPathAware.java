@@ -1,4 +1,4 @@
-package com.dayofpi.mixin.entity;
+package com.dayofpi.mixin;
 
 import com.dayofpi.super_block_world.misc.Tags;
 import net.minecraft.entity.EntityType;
@@ -9,10 +9,10 @@ import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(PathAwareEntity.class)
-public abstract class PathAwareEntityMixin extends MobEntity {
+public abstract class MixinPathAware extends MobEntity {
     public final SwimGoal swimGoal = new SwimGoal(this);
 
-    protected PathAwareEntityMixin(EntityType<? extends MobEntity> entityType, World world) {
+    protected MixinPathAware(EntityType<? extends MobEntity> entityType, World world) {
         super(entityType, world);
     }
 

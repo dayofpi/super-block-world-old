@@ -12,8 +12,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(StemBlock.class)
-public class StemBlockMixin {
-    @Inject(at = @At("HEAD"), method = ("canPlantOnTop(Lnet/minecraft/block/BlockState;Lnet/minecraft/world/BlockView/Lnet/minecraft/util/math/BlockPos;)Z"), cancellable = true)
+public class MixinStemBlock {
+    @Inject(at = @At("HEAD"), method = ("canPlantOnTop(Lnet/minecraft/block/BlockState;Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;)Z"), cancellable = true)
     private void canPlantOnTop(BlockState floor, BlockView world, BlockPos pos, CallbackInfoReturnable<Boolean> info) {
         info.setReturnValue(floor.isOf(Blocks.FARMLAND) || floor.isOf(BlockTypes.TOADSTOOL_FARMLAND));
         info.cancel();

@@ -1,7 +1,10 @@
 {
   "variants": {
-    "": {
+    "fancy=true": {
       "model": "super_block_world:block/leaves/fruiting_amanita_leaves"
+    },
+    "fancy=false": {
+      "model": "super_block_world:block/leaves/fruiting_amanita_leaves_fast"
     }
   }
 }

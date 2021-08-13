@@ -1,4 +1,4 @@
-package com.dayofpi.mixin.entity;
+package com.dayofpi.mixin;
 
 import com.dayofpi.super_block_world.entities.types.ModBoatEntity;
 import com.mojang.authlib.GameProfile;
@@ -12,15 +12,15 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ClientPlayerEntity.class)
-public class ClientPlayerEntityMixin extends AbstractClientPlayerEntity {
-    boolean riding = ((ClientPlayerEntityI) this).riding();
-    Input input = ((ClientPlayerEntityI) this).input();
+public class MixinClientPlayer extends AbstractClientPlayerEntity {
+    boolean riding = ((InterfaceClientPlayer) this).riding();
+    Input input = ((InterfaceClientPlayer) this).input();
 
-    public ClientPlayerEntityMixin(ClientWorld world, GameProfile profile) {
+    public MixinClientPlayer(ClientWorld world, GameProfile profile) {
         super(world, profile);
     }
 
-    @Inject(at = @At("HEAD"), method = "tickRiding()Z")
+    @Inject(at = @At("HEAD"), method = "tickRiding")
     public void tickRiding(CallbackInfo info) {
         if (this.getVehicle() instanceof ModBoatEntity boatEntity) {
             boatEntity.setInputs(this.input.pressingLeft, this.input.pressingRight, this.input.pressingForward, this.input.pressingBack);

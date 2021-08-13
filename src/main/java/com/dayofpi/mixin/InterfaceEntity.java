@@ -1,4 +1,4 @@
-package com.dayofpi.mixin.entity;
+package com.dayofpi.mixin;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 import org.spongepowered.asm.mixin.gen.Invoker;
 
 @Mixin(Entity.class)
-public interface EntityI {
+public interface InterfaceEntity {
     @Accessor("type")
     EntityType<?> aType();
 

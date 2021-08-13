@@ -1,4 +1,4 @@
-package com.dayofpi.mixin.gen;
+package com.dayofpi.mixin;
 
 import com.dayofpi.super_block_world.misc.worldgen.FeatureHelper;
 import net.minecraft.sound.BiomeMoodSound;
@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(DefaultBiomeCreator.class)
-public class DefaultBiomeCreatorMixin {
+public class MixinBiomeCreator {
 
     @Invoker("getSkyColor")
     static int invokeGetSkyColor(float temperature) {
