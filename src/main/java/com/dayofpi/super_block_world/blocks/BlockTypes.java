@@ -57,7 +57,7 @@ public class BlockTypes {
     public static final Block AMANITA_SIGN = new ModSign(FabricBlockSettings.copyOf(AMANITA_PLANKS).strength(1.0F).noCollision(), ModSignType.AMANITA);
     public static final Block AMANITA_WALL_SIGN = new ModWallSign(FabricBlockSettings.copyOf(AMANITA_PLANKS).strength(1.0F).noCollision(), ModSignType.AMANITA);
     public static final Block AMANITA_LEAVES = new LeavesBlock(FabricBlockSettings.of(Material.LEAVES).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(BlockTypes::canSpawnOnLeaves).suffocates(BlockTypes::never).blockVision(BlockTypes::never));
-    public static final Block FRUITING_AMANITA_LEAVES = new ModLeavesBlock(FabricBlockSettings.copyOf(AMANITA_LEAVES));
+    public static final Block FRUITING_AMANITA_LEAVES = new LeavesBlock(FabricBlockSettings.copyOf(AMANITA_LEAVES));
     public static final Block AMANITA_SAPLING = new ModSaplingBlock(new AmanitaTree(), FabricBlockSettings.of(Material.PLANT, MapColor.YELLOW).noCollision().ticksRandomly().sounds(BlockSoundGroup.GRASS));
     public static final Block MUSHROOM_STEM = new PillarBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F).sounds(BlockSoundGroup.NETHER_STEM));
     public static final Block BROWN_MUSHROOM_CAP = new MushroomCap(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.DIRT_BROWN).strength(1.0F).sounds(BlockSoundGroup.WART_BLOCK));
