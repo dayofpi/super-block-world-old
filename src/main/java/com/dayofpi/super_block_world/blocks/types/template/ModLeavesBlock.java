@@ -1,4 +1,4 @@
-package com.dayofpi.super_block_world.blocks.types;
+package com.dayofpi.super_block_world.blocks.types.template;
 
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.state.property.BooleanProperty;

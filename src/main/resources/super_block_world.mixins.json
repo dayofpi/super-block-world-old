@@ -9,6 +9,8 @@
     "fluid.PotatoesBlockMixin",
     "fluid.SpongeBlockMixin",
     "fluid.WaterFluidMixin",
+    "important.MixinModelLoader",
+    "important.MixinSpawnRestriction",
     "InterfaceClientPlayer",
     "InterfaceEntity",
     "InterfaceModelLoader",
