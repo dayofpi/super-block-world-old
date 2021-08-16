@@ -29,14 +29,14 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
-public abstract class AbstractBuzzyEntity extends TroopEntity {
+public abstract class AbstractBuzzy extends AbstractTroop {
     private static final TrackedData<Boolean> UPSIDE_DOWN;
 
     static {
-        UPSIDE_DOWN = DataTracker.registerData(AbstractBuzzyEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+        UPSIDE_DOWN = DataTracker.registerData(AbstractBuzzy.class, TrackedDataHandlerRegistry.BOOLEAN);
     }
 
-    public AbstractBuzzyEntity(EntityType<? extends AbstractBuzzyEntity> entityType, World world) {
+    public AbstractBuzzy(EntityType<? extends AbstractBuzzy> entityType, World world) {
         super(entityType, world);
     }
 
@@ -52,7 +52,7 @@ public abstract class AbstractBuzzyEntity extends TroopEntity {
     public static boolean canSpawn(ServerWorldAccess world, BlockPos pos, Random random) {
         boolean bool1 = isFloorValid(world.getBlockState(pos.down()));
         boolean bool2 = isFloorValid(world.getBlockState(pos.up()));
-        return TroopEntity.isSpawnDark(world, pos, random) && !world.isSkyVisible(pos) && (bool1 || bool2);
+        return AbstractTroop.isSpawnDark(world, pos, random) && !world.isSkyVisible(pos) && (bool1 || bool2);
     }
 
     private static boolean isFloorValid(BlockState state) {
@@ -108,7 +108,7 @@ public abstract class AbstractBuzzyEntity extends TroopEntity {
     public boolean damage(DamageSource source, float amount) {
         if (this.isInvulnerableTo(source)) {
             return false;
-        } else if (source instanceof ProjectileDamageSource || source.isFallingBlock() || source.getAttacker() != null && source.getAttacker() instanceof AbstractBuzzyEntity) {
+        } else if (source instanceof ProjectileDamageSource || source.isFallingBlock() || source.getAttacker() != null && source.getAttacker() instanceof AbstractBuzzy) {
             this.world.playSound(null, this.getBlockPos(), Sounds.BUZZY_BEETLE_BLOCK, SoundCategory.NEUTRAL, 1.0F, this.getSoundPitch());
             return false;
         } else {

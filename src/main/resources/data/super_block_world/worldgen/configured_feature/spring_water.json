@@ -42,7 +42,7 @@
                 },
                 "rock_count": 4,
                 "hole_count": 1,
-                "requires_block_below": false,
+                "requires_block_below": true,
                 "valid_blocks": [
                   "super_block_world:vanillate",
                   "super_block_world:topped_vanillate"

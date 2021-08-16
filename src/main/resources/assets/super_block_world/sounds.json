@@ -1,6 +1,14 @@
 {
-  "item_in": {
-    "subtitle": "item_in",
+  "ambient.loop": {
+    "sounds": [
+      {
+        "name": "super_block_world:ambient/loop",
+        "stream": true
+      }
+    ]
+  },
+  "block.item_in": {
+    "subtitle": "block.item_in",
     "sounds": [
       {
         "name": "super_block_world:random/item_in",
@@ -8,11 +16,49 @@
       }
     ]
   },
-  "item_out": {
-    "subtitle": "item_out",
+  "block.item_out": {
+    "subtitle": "block.item_out",
     "sounds": [
       {
         "name": "super_block_world:random/item_out",
+        "stream": true
+      }
+    ]
+  },
+  "block.coin": {
+    "subtitle": "block.coin",
+    "sounds": [
+      {
+        "name": "super_block_world:random/coin",
+        "stream": true
+      }
+    ]
+  },
+  "item.buzzy_shell": {
+    "subtitle": "item.buzzy_shell",
+    "sounds": [
+      {
+        "name": "minecraft:item/armor/equip_iron1",
+        "stream": true
+      },
+      {
+        "name": "minecraft:item/armor/equip_iron2",
+        "stream": true
+      },
+      {
+        "name": "minecraft:item/armor/equip_iron3",
+        "stream": true
+      },
+      {
+        "name": "minecraft:item/armor/equip_iron4",
+        "stream": true
+      },
+      {
+        "name": "minecraft:item/armor/equip_iron5",
+        "stream": true
+      },
+      {
+        "name": "minecraft:item/armor/equip_iron6",
         "stream": true
       }
     ]

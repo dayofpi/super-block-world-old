@@ -8,17 +8,15 @@ import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.util.ParticleUtil;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.World;
-import net.minecraft.world.explosion.Explosion;
 import org.jetbrains.annotations.Nullable;
-@SuppressWarnings("deprecation")
-public class QuestionBlock extends Block implements BlockEntityProvider {
+
+public class QuestionBlock extends ReactiveBlock implements BlockEntityProvider {
     public QuestionBlock(Settings settings) {
         super(settings);
     }
@@ -30,23 +28,7 @@ public class QuestionBlock extends Block implements BlockEntityProvider {
     }
 
     @Override
-    public void onDestroyedByExplosion(World world, BlockPos blockPos, Explosion explosion) {
-        this.releaseItem(world.getBlockState(blockPos), world, blockPos);
-    }
-
-    @Override
-    public void neighborUpdate(BlockState state, World world, BlockPos blockPos, Block block, BlockPos fromPos, boolean notify) {
-        if (world.isReceivingRedstonePower(blockPos)) {
-            this.releaseItem(world.getBlockState(blockPos), world, blockPos);
-        }
-    }
-
-    @Override
-    public void onBlockBreakStart(BlockState state, World world, BlockPos blockPos, PlayerEntity player) {
-        this.releaseItem(state, world, blockPos);
-    }
-
-    public void releaseItem(BlockState state, World world, BlockPos blockPos) {
+    public void activate(BlockState state, World world, BlockPos blockPos) {
         Inventory blockEntity = (Inventory) world.getBlockEntity(blockPos);
         BlockPos pos = blockPos.up();
         if (state.isSolidBlock(world, blockPos.up())) {

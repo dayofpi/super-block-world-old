@@ -6,7 +6,7 @@
   "disable_mob_generation": false,
   "noise_caves_enabled": false,
   "noodle_caves_enabled": false,
-  "aquifers_enabled": false,
+  "aquifers_enabled": true,
   "deepslate_enabled": false,
   "ore_veins_enabled": false,
   "default_block": {
@@ -19,8 +19,8 @@
     }
   },
   "noise": {
-    "min_y": 0,
-    "height": 256,
+    "min_y": -32,
+    "height": 320,
     "density_factor": 1,
     "density_offset": -0.46875,
     "size_horizontal": 1,
@@ -39,12 +39,18 @@
       "offset": 0
     },
     "top_slide": {
-      "target": -10,
+      "target": -9,
       "size": 3,
       "offset": 0
     }
   },
   "structures": {
-    "structures": {}
+    "structures": {
+      "minecraft:mineshaft": {
+        "spacing": 1,
+        "separation": 0,
+        "salt": 0
+      }
+    }
   }
 }

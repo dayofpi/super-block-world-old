@@ -31,6 +31,10 @@
             "features": [
               {
                 "chance": 0.1,
+                "feature": "super_block_world:mushrooms/pink_mushroom"
+              },
+              {
+                "chance": 0.1,
                 "feature": "minecraft:patch_brown_mushroom"
               }
             ],

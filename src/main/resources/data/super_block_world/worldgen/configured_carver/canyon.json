@@ -5,7 +5,7 @@
     "y": {
       "type": "minecraft:biased_to_bottom",
       "min_inclusive": {
-        "absolute": 20
+        "absolute": -30
       },
       "max_inclusive": {
         "absolute": 67
@@ -14,7 +14,7 @@
     },
     "yScale": 3,
     "lava_level": {
-      "above_bottom": 2
+      "above_bottom": 8
     },
     "aquifers_enabled": false,
     "debug_settings": {
@@ -69,7 +69,7 @@
         "type": "minecraft:uniform",
         "value": {
           "min_inclusive": 0.75,
-          "max_exclusive": 1
+          "max_exclusive": 2
         }
       },
       "vertical_radius_default_factor": 1,

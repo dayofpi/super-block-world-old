@@ -32,7 +32,7 @@ import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class BuzzyBeetleEntity extends AbstractBuzzyEntity implements ItemSteerable, Saddleable {
+public class BuzzyBeetleEntity extends AbstractBuzzy implements ItemSteerable, Saddleable {
     private static final TrackedData<Boolean> SADDLED;
     private static final TrackedData<Integer> BOOST_TIME;
 
@@ -192,6 +192,16 @@ public class BuzzyBeetleEntity extends AbstractBuzzyEntity implements ItemSteera
             d = -2D;
         }
         return super.getMountedHeightOffset() + d;
+    }
+
+    @Override
+    public void tickMovement() {
+        super.tickMovement();
+        if (this.hasVehicle() && this.getVehicle() instanceof BuzzyBeetleEntity buzzyBeetleEntity) {
+            if (buzzyBeetleEntity.isUpsideDown() && this.getBlockStateAtPos().isSolidBlock(this.world, this.getBlockPos())) {
+                this.dismountVehicle();
+            }
+        }
     }
 
     @Override

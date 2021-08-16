@@ -25,10 +25,10 @@
                 "height": {
                   "type": "minecraft:uniform",
                   "min_inclusive": {
-                    "above_bottom": 0
+                    "above_bottom": -30
                   },
                   "max_inclusive": {
-                    "absolute": 50
+                    "absolute": 60
                   }
                 }
               }
@@ -36,7 +36,7 @@
             "feature": {
               "type": "minecraft:ore",
               "config": {
-                "size": 8,
+                "size": 6,
                 "discard_chance_on_air_exposure": 0,
                 "targets": [
                   {

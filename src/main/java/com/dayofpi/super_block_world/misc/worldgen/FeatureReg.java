@@ -35,6 +35,9 @@ public class FeatureReg {
     public static final ConfiguredFeature<?, ?> HUGE_YELLOW_MUSHROOM_WIDE = Feature.HUGE_BROWN_MUSHROOM.configure(new HugeMushroomFeatureConfig(new SimpleBlockStateProvider(States.YELLOW_MUSHROOM_CAP), new SimpleBlockStateProvider(States.MUSHROOM_STEM), 3));
     public static final ConfiguredFeature<?, ?> HUGE_GREEN_MUSHROOM = Feature.HUGE_BROWN_MUSHROOM.configure(new HugeMushroomFeatureConfig(new SimpleBlockStateProvider(States.GREEN_MUSHROOM_CAP), new SimpleBlockStateProvider(States.MUSHROOM_STEM), 2));
     public static final ConfiguredFeature<?, ?> HUGE_GREEN_MUSHROOM_WIDE = Feature.HUGE_BROWN_MUSHROOM.configure(new HugeMushroomFeatureConfig(new SimpleBlockStateProvider(States.GREEN_MUSHROOM_CAP), new SimpleBlockStateProvider(States.MUSHROOM_STEM), 3));
+    public static final ConfiguredFeature<?, ?> HUGE_PINK_MUSHROOM_WIDE = Feature.HUGE_BROWN_MUSHROOM.configure(new HugeMushroomFeatureConfig(new SimpleBlockStateProvider(States.PINK_MUSHROOM_CAP), new SimpleBlockStateProvider(States.MUSHROOM_STEM), 3));
+    public static final ConfiguredFeature<?, ?> HUGE_PURPLE_MUSHROOM_WIDE = Feature.HUGE_BROWN_MUSHROOM.configure(new HugeMushroomFeatureConfig(new SimpleBlockStateProvider(States.PURPLE_MUSHROOM_CAP), new SimpleBlockStateProvider(States.MUSHROOM_STEM), 3));
+    public static final ConfiguredFeature<?, ?> HUGE_ORANGE_MUSHROOM_WIDE = Feature.HUGE_BROWN_MUSHROOM.configure(new HugeMushroomFeatureConfig(new SimpleBlockStateProvider(States.ORANGE_MUSHROOM_CAP), new SimpleBlockStateProvider(States.MUSHROOM_STEM), 4));
 
     public static void registerFeatures() {
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.MOD_ID, "amanita"), AMANITA);
@@ -43,12 +46,18 @@ public class FeatureReg {
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.MOD_ID, "huge_yellow_mushroom_wide"), HUGE_YELLOW_MUSHROOM_WIDE);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.MOD_ID, "huge_green_mushroom"), HUGE_GREEN_MUSHROOM);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.MOD_ID, "huge_green_mushroom_wide"), HUGE_GREEN_MUSHROOM_WIDE);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.MOD_ID, "huge_pink_mushroom_wide"), HUGE_PINK_MUSHROOM_WIDE);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.MOD_ID, "huge_purple_mushroom_wide"), HUGE_PURPLE_MUSHROOM_WIDE);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.MOD_ID, "huge_orange_mushroom_wide"), HUGE_ORANGE_MUSHROOM_WIDE);
         FeatureHelper.replaceFeatures();
     }
 
     public static final class States {
         private static final BlockState YELLOW_MUSHROOM_CAP = BlockTypes.YELLOW_MUSHROOM_CAP.getDefaultState().with(MushroomCap.DOWN, false);
         private static final BlockState GREEN_MUSHROOM_CAP = BlockTypes.GREEN_MUSHROOM_CAP.getDefaultState().with(MushroomCap.DOWN, false);
+        private static final BlockState PINK_MUSHROOM_CAP = BlockTypes.PINK_MUSHROOM_CAP.getDefaultState().with(MushroomCap.DOWN, false);
+        private static final BlockState PURPLE_MUSHROOM_CAP = BlockTypes.PURPLE_MUSHROOM_CAP.getDefaultState().with(MushroomCap.DOWN, false);
+        private static final BlockState ORANGE_MUSHROOM_CAP = BlockTypes.ORANGE_MUSHROOM_CAP.getDefaultState().with(MushroomCap.DOWN, false);
         private static final BlockState MUSHROOM_STEM = BlockTypes.MUSHROOM_STEM.getDefaultState();
         private static final BlockState AMANITA_LEAVES = BlockTypes.AMANITA_LEAVES.getDefaultState();
         private static final BlockState FRUITING_AMANITA_LEAVES = BlockTypes.FRUITING_AMANITA_LEAVES.getDefaultState();

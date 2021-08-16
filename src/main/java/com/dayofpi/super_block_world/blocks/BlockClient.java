@@ -25,9 +25,9 @@ public class BlockClient {
 
         BlockEntityRendererRegistry.INSTANCE.register(BlockEntities.MOD_SIGN, ModSignRender::new);
 
-        BlockRenderLayerMap.INSTANCE.putBlock(BlockTypes.TOADSTOOL_GRASS, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(BlockTypes.AMANITA_LEAVES, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(BlockTypes.FRUITING_AMANITA_LEAVES, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockTypes.TOADSTOOL_GRASS, RenderLayer.getCutoutMipped());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockTypes.AMANITA_LEAVES, RenderLayer.getCutoutMipped());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockTypes.FRUITING_AMANITA_LEAVES, RenderLayer.getCutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockTypes.STONE_TORCH, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockTypes.YELLOW_MUSHROOM, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockTypes.GREEN_MUSHROOM, RenderLayer.getCutout());

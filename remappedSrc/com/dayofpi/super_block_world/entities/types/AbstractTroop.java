@@ -17,8 +17,8 @@ import net.minecraft.world.*;
 
 import java.util.Random;
 
-public abstract class TroopEntity extends AnimalEntity implements Monster {
-    protected TroopEntity(EntityType<? extends TroopEntity> entityType, World world) {
+public abstract class AbstractTroop extends AnimalEntity implements Monster {
+    protected AbstractTroop(EntityType<? extends AbstractTroop> entityType, World world) {
         super(entityType, world);
         this.experiencePoints = 3;
     }

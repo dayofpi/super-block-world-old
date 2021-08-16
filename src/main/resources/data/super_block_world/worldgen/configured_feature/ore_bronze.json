@@ -40,6 +40,15 @@
                   {
                     "target": {
                       "predicate_type": "minecraft:block_match",
+                      "block": "super_block_world:gloomstone"
+                    },
+                    "state": {
+                      "Name": "super_block_world:gloomstone_bronze_ore"
+                    }
+                  },
+                  {
+                    "target": {
+                      "predicate_type": "minecraft:block_match",
                       "block": "super_block_world:vanillate"
                     },
                     "state": {

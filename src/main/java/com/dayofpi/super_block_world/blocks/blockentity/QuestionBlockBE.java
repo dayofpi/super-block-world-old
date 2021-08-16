@@ -18,10 +18,16 @@ import java.util.List;
 import java.util.Random;
 
 public class QuestionBlockBE extends BlockEntity implements ImplementedInventory {
-    List<Item> defaultItems = Arrays.asList(ItemTypes.BRONZE_INGOT, Items.GOLD_NUGGET, Items.DIAMOND, Items.DIRT, Items.AZALEA, Items.ELYTRA, Items.CHICKEN_SPAWN_EGG);
+    List<Item> defaultItems = Arrays.asList(
+            ItemTypes.SUPER_MUSHROOM,
+            Items.WOODEN_AXE);
+    List<Item> rareItems = Arrays.asList(
+            ItemTypes.ONE_UP,
+            ItemTypes.POISON_MUSHROOM);
     Random random = new Random();
-    int index = random.nextInt(7);
-    private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, new ItemStack(defaultItems.get(index)));
+    int index = random.nextInt(2);
+    Item prizes = random.nextInt(15) == 0 ? rareItems.get(index) : defaultItems.get(index);
+    private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, new ItemStack(prizes));
 
     public QuestionBlockBE(BlockPos pos, BlockState state) {
         super(BlockEntities.QUESTION_BLOCK, pos, state);

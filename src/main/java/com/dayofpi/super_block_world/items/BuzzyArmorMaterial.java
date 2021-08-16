@@ -1,10 +1,10 @@
 package com.dayofpi.super_block_world.items;
 
+import com.dayofpi.super_block_world.misc.Sounds;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
 
 public class BuzzyArmorMaterial implements ArmorMaterial {
     @Override
@@ -24,7 +24,7 @@ public class BuzzyArmorMaterial implements ArmorMaterial {
 
     @Override
     public SoundEvent getEquipSound() {
-        return SoundEvents.ITEM_ARMOR_EQUIP_IRON;
+        return Sounds.BUZZY_SHELL_EQUIP;
     }
 
     @Override

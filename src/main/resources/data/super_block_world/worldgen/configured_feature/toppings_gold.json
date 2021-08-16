@@ -21,12 +21,12 @@
               "type": "minecraft:range",
               "config": {
                 "height": {
-                  "type": "minecraft:uniform",
+                  "type": "minecraft:biased_to_bottom",
                   "min_inclusive": {
-                    "above_bottom": 0
+                    "absolute": -32
                   },
                   "max_inclusive": {
-                    "absolute": 31
+                    "absolute": 5
                   }
                 }
               }

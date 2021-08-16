@@ -17,6 +17,7 @@ public class BuzzyBeetleRender<T extends BuzzyBeetleEntity> extends MobEntityRen
     public BuzzyBeetleRender(EntityRendererFactory.Context context) {
         super(context, new BuzzyBeetleModel<>(context.getPart(ModelLayers.BUZZY_BEETLE)), 0.5F);
         this.addFeature(new SaddleFeatureRenderer<>(this, new BuzzyBeetleModel<>(context.getPart(ModelLayers.BUZZY_BEETLE_SADDLE)), new Identifier(Main.MOD_ID, "textures/entity/buzzy_beetle/buzzy_beetle_saddle.png")));
+        this.model.getSpike().forEach((spikeParts) -> spikeParts.visible = false);
     }
 
     @Override

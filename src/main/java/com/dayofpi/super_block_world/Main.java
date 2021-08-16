@@ -48,6 +48,10 @@ public class Main implements ModInitializer {
         return new EntityDamageSource("mob_drop", attacker);
     }
 
+    public static DamageSource spikyMob(LivingEntity attacker) {
+        return new EntityDamageSource("spiky_mob", attacker);
+    }
+
     @Override
     public void onInitialize() {
         BlockTypes.registerBlocks();

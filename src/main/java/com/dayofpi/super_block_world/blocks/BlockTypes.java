@@ -33,17 +33,18 @@ public class BlockTypes {
     public static final Block IRON_TOPPED_VANILLATE = new OreBlock(FabricBlockSettings.copyOf(TOPPED_VANILLATE).strength(1.5F, 6.0F), UniformIntProvider.create(0, 1));
     public static final Block GOLD_TOPPED_VANILLATE = new OreBlock(FabricBlockSettings.copyOf(TOPPED_VANILLATE).strength(1.5F, 6.0F), UniformIntProvider.create(0, 1));
     public static final Block BRONZE_ORE = new Block(FabricBlockSettings.copyOf(VANILLATE).strength(1.5F, 6.0F));
+    public static final Block GLOOMSTONE_BRONZE_ORE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.DARK_AQUA).requiresTool().strength(1.5F, 1.0F).sounds(BlockSoundGroup.DEEPSLATE));
     public static final Block BRONZE_BLOCK = new Block(FabricBlockSettings.of(Material.METAL, MapColor.TERRACOTTA_ORANGE).requiresTool().strength(5.0F, 8.0F));
     public static final Block BRONZE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(BRONZE_BLOCK));
     public static final Block BRONZE_STAIRS = new ModStairsBlock(BRONZE_BLOCK.getDefaultState(), FabricBlockSettings.copyOf(BRONZE_BLOCK));
-    //TODO: Used block
-    public static final Block QUESTION_BLOCK = new QuestionBlock(FabricBlockSettings.of(Material.METAL, MapColor.YELLOW).requiresTool().strength(3.0F, 1.0F).luminance(3));
-    public static final Block EMPTY_BLOCK = new EmptyBlock(FabricBlockSettings.of(Material.METAL, MapColor.SPRUCE_BROWN).requiresTool().strength(3.0F, 1.0F));
+    public static final Block QUESTION_BLOCK = new QuestionBlock(FabricBlockSettings.of(Material.METAL, MapColor.YELLOW).requiresTool().strength(3.0F, 200.0F).luminance(3));
+    public static final Block COIN_BLOCK = new CoinBlock(FabricBlockSettings.of(Material.METAL, MapColor.GOLD).requiresTool().strength(3.0F, 200.0F).luminance(3));
+    public static final Block EMPTY_BLOCK = new EmptyBlock(FabricBlockSettings.of(Material.METAL, MapColor.SPRUCE_BROWN).requiresTool().strength(3.0F, 200.0F));
     public static final Block TOADSTONE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_ORANGE).requiresTool().strength(1.2F, 1.0F));
     public static final Block TOADSTONE_BRICKS = new Block(FabricBlockSettings.copyOf(TOADSTONE));
     public static final Block GOLDEN_BRICKS = new Block(FabricBlockSettings.copyOf(TOADSTONE_BRICKS).sounds(BlockSoundGroup.METAL).mapColor(MapColor.GOLD));
     public static final Block CRYSTAL_BRICKS = new Block(FabricBlockSettings.copyOf(TOADSTONE_BRICKS).sounds(BlockSoundGroup.AMETHYST_BLOCK).mapColor(MapColor.PURPLE));
-    public static final Block GLOOMSTONE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.DARK_AQUA).requiresTool().strength(1.2F, 1.0F).sounds(BlockSoundGroup.DEEPSLATE));
+    public static final Block GLOOMSTONE = new Block(FabricBlockSettings.copyOf(GLOOMSTONE_BRONZE_ORE).strength(1.2F, 1.0F));
     public static final Block GLOOMSTONE_BRICKS = new Block(FabricBlockSettings.copyOf(GLOOMSTONE).sounds(BlockSoundGroup.DEEPSLATE_BRICKS));
     public static final Block TOADSTONE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(TOADSTONE));
     public static final Block TOADSTONE_STAIRS = new ModStairsBlock(TOADSTONE.getDefaultState(), FabricBlockSettings.copyOf(TOADSTONE));
@@ -64,6 +65,9 @@ public class BlockTypes {
     public static final Block RED_MUSHROOM_CAP = new MushroomCap(FabricBlockSettings.copyOf(BROWN_MUSHROOM_CAP).mapColor(MapColor.RED));
     public static final Block YELLOW_MUSHROOM_CAP = new MushroomCap(FabricBlockSettings.copyOf(BROWN_MUSHROOM_CAP).mapColor(MapColor.YELLOW));
     public static final Block GREEN_MUSHROOM_CAP = new MushroomCap(FabricBlockSettings.copyOf(BROWN_MUSHROOM_CAP).mapColor(MapColor.EMERALD_GREEN));
+    public static final Block PINK_MUSHROOM_CAP = new MushroomCap(FabricBlockSettings.copyOf(BROWN_MUSHROOM_CAP).mapColor(MapColor.PINK));
+    public static final Block PURPLE_MUSHROOM_CAP = new MushroomCap(FabricBlockSettings.copyOf(BROWN_MUSHROOM_CAP).mapColor(MapColor.PALE_PURPLE));
+    public static final Block ORANGE_MUSHROOM_CAP = new MushroomCap(FabricBlockSettings.copyOf(BROWN_MUSHROOM_CAP).mapColor(MapColor.ORANGE));
     public static final Block YELLOW_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.of(Material.PLANT, MapColor.YELLOW).noCollision().ticksRandomly().sounds(BlockSoundGroup.GRASS), () -> FeatureReg.HUGE_YELLOW_MUSHROOM);
     public static final Block GREEN_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.copyOf(YELLOW_MUSHROOM).mapColor(MapColor.EMERALD_GREEN).luminance(2), () -> FeatureReg.HUGE_GREEN_MUSHROOM);
     public static final Block YELLOW_FLOWERBED = new FlowerbedBlock(FabricBlockSettings.of(Material.PLANT, MapColor.YELLOW).noCollision().sounds(BlockSoundGroup.MOSS_CARPET));
@@ -100,10 +104,12 @@ public class BlockTypes {
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "iron_topped_vanillate"), IRON_TOPPED_VANILLATE);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "gold_topped_vanillate"), GOLD_TOPPED_VANILLATE);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "bronze_ore"), BRONZE_ORE);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "gloomstone_bronze_ore"), GLOOMSTONE_BRONZE_ORE);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "bronze_block"), BRONZE_BLOCK);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "bronze_slab"), BRONZE_SLAB);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "bronze_stairs"), BRONZE_STAIRS);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "question_block"), QUESTION_BLOCK);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "coin_block"), COIN_BLOCK);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "empty_block"), EMPTY_BLOCK);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstone"), TOADSTONE);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstone_bricks"), TOADSTONE_BRICKS);
@@ -130,6 +136,9 @@ public class BlockTypes {
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "red_mushroom_cap"), RED_MUSHROOM_CAP);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "yellow_mushroom_cap"), YELLOW_MUSHROOM_CAP);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "green_mushroom_cap"), GREEN_MUSHROOM_CAP);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "pink_mushroom_cap"), PINK_MUSHROOM_CAP);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "purple_mushroom_cap"), PURPLE_MUSHROOM_CAP);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "orange_mushroom_cap"), ORANGE_MUSHROOM_CAP);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "yellow_mushroom"), YELLOW_MUSHROOM);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "green_mushroom"), GREEN_MUSHROOM);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "yellow_flowerbed"), YELLOW_FLOWERBED);

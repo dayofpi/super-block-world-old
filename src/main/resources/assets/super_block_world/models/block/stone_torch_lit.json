@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"parent": "minecraft:block/block",
 	"textures": {
-		"fire": "block/fire_0",
+		"fire": "minecraft:block/fire_0",
 		"lower": "super_block_world:block/stone_torch_base",
 		"particle": "super_block_world:block/stone_torch",
 		"upper": "super_block_world:block/stone_torch"
@@ -35,31 +35,51 @@
 			}
 		},
 		{
-			"from": [-3, 8, 5],
-			"to": [9, 22, 5],
-			"shade": false,
-			"rotation": {"angle": 45, "axis": "y", "origin": [6, 12, 0], "rescale": true},
+			"from": [3, 9, 4],
+			"to": [13, 19, 4],
 			"faces": {
-				"north": {"uv": [0, 0, 14.4, 14], "texture": "#fire"},
-				"east": {"uv": [0, 0, 14.4, 14], "texture": "#fire"},
-				"south": {"uv": [0, 0, 14.4, 14], "texture": "#fire"},
-				"west": {"uv": [0, 0, 14.4, 14], "texture": "#fire"},
-				"up": {"uv": [0, 0, 14.4, 14], "texture": "#fire"},
-				"down": {"uv": [0, 0, 14.4, 14], "texture": "#fire"}
+				"north": {"uv": [0, 0, 16, 16], "texture": "#fire"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#fire"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#fire"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#fire"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#fire"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#fire"}
 			}
 		},
 		{
-			"from": [3, 8, 5],
-			"to": [3, 22, 17],
-			"shade": false,
-			"rotation": {"angle": 45, "axis": "y", "origin": [0, 8, 6], "rescale": true},
+			"from": [3, 9, 12],
+			"to": [13, 19, 12],
 			"faces": {
-				"north": {"uv": [0, 0, 14.4, 14], "texture": "#fire"},
-				"east": {"uv": [0, 0, 14.4, 14], "texture": "#fire"},
-				"south": {"uv": [0, 0, 14.4, 14], "texture": "#fire"},
-				"west": {"uv": [0, 0, 14.4, 14], "texture": "#fire"},
-				"up": {"uv": [0, 0, 14.4, 14], "texture": "#fire"},
-				"down": {"uv": [0, 0, 14.4, 14], "texture": "#fire"}
+				"north": {"uv": [0, 0, 16, 16], "texture": "#fire"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#fire"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#fire"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#fire"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#fire"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#fire"}
+			}
+		},
+		{
+			"from": [3, 9, 3],
+			"to": [3, 19, 13],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#fire"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#fire"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#fire"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#fire"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#fire"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#fire"}
+			}
+		},
+		{
+			"from": [12, 9, 3],
+			"to": [12, 19, 13],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#fire"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#fire"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#fire"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#fire"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#fire"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#fire"}
 			}
 		}
 	]
