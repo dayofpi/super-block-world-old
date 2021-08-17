@@ -4,8 +4,8 @@
     "decorator": {
       "type": "minecraft:count_extra",
       "config": {
-        "count": 8,
-        "extra_count": 5,
+        "count": 5,
+        "extra_count": 6,
         "extra_chance": 0.2
       }
     },
@@ -73,16 +73,6 @@
                           "weight": 3,
                           "data": {
                             "Name": "minecraft:amethyst_cluster",
-                            "Properties": {
-                              "facing": "down",
-                              "waterlogged": "false"
-                            }
-                          }
-                        },
-                        {
-                          "weight": 7,
-                          "data": {
-                            "Name": "minecraft:hanging_roots",
                             "Properties": {
                               "facing": "down",
                               "waterlogged": "false"

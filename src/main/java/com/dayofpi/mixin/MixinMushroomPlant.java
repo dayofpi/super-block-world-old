@@ -18,8 +18,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.Random;
 
 @Mixin(MushroomPlantBlock.class)
-public class MixinMushroomBlock extends PlantBlock {
-    public MixinMushroomBlock(Settings settings) {
+public class MixinMushroomPlant extends PlantBlock {
+    public MixinMushroomPlant(Settings settings) {
         super(settings);
     }
 

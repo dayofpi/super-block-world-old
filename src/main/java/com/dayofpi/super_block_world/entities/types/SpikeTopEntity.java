@@ -15,6 +15,7 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -69,6 +70,7 @@ public class SpikeTopEntity extends AbstractBuzzy {
         super.pushAwayFrom(entity);
         if (entity.getY() > this.getY() && entity.fallDistance > 0) {
             entity.damage(Main.spikyMob(this), 2);
+            this.playSound(SoundEvents.ENCHANT_THORNS_HIT, 1.0F, getSoundPitch());
         }
     }
 

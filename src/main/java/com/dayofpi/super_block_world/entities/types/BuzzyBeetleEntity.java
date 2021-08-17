@@ -68,11 +68,8 @@ public class BuzzyBeetleEntity extends AbstractBuzzy implements ItemSteerable, S
                     passiveEntity.setBreedingAge(-24000);
                     entityData = this.initializeRider(world, difficulty, passiveEntity);
                 }
-            } else {
-                entityData = new PassiveEntity.PassiveData(0.5F);
             }
-        }
-        return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
+        }return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
     }
 
     public void onTrackedDataSet(TrackedData<?> data) {

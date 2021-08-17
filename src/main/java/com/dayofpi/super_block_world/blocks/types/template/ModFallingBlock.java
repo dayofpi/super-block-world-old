@@ -12,7 +12,7 @@ public class ModFallingBlock extends FallingBlock {
 
     @Override
     public int getColor(BlockState state, BlockView world, BlockPos pos) {
-        return 12636090; // Fix this
+        return 12636090;
     }
 
 }

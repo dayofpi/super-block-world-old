@@ -4,7 +4,9 @@ import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.blocks.BlockTypes;
 import com.dayofpi.super_block_world.misc.Sounds;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -14,8 +16,12 @@ import net.minecraft.entity.damage.ProjectileDamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.server.world.ServerWorld;
@@ -23,6 +29,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -122,7 +129,25 @@ public abstract class AbstractBuzzy extends AbstractTroop {
         this.dataTracker.startTracking(UPSIDE_DOWN, false);
     }
 
-    @Override
+    @Nullable
+    public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
+        if (entityData == null) {
+            entityData = new AbstractBuzzy.BuzzyData(0.5F);
+            if (world.getRandom().nextFloat() < 0.2F * difficulty.getClampedLocalDifficulty()) {
+                ((AbstractBuzzy.BuzzyData)entityData).setEffect();
+            }
+        }
+
+        if (entityData instanceof AbstractBuzzy.BuzzyData) {
+            StatusEffect statusEffect = ((AbstractBuzzy.BuzzyData)entityData).effect;
+            if (statusEffect != null) {
+                this.addStatusEffect(new StatusEffectInstance(statusEffect, Integer.MAX_VALUE));
+            }
+        }
+        return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
+    }
+
+        @Override
     public boolean handleFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource) {
         if (this.isUpsideDown()) {
             if (!this.world.isClient()) {
@@ -146,5 +171,17 @@ public abstract class AbstractBuzzy extends AbstractTroop {
 
     public void setUpsideDown(boolean upsideDown) {
         this.dataTracker.set(UPSIDE_DOWN, upsideDown);
+    }
+
+    public static class BuzzyData extends PassiveData implements EntityData {
+        public StatusEffect effect;
+
+        public BuzzyData(float babyChance) {
+            super(babyChance);
+        }
+
+        public void setEffect() {
+            this.effect = StatusEffects.SPEED;
+        }
     }
 }

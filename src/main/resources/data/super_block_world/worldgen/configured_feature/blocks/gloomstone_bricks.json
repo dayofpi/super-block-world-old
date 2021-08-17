@@ -4,7 +4,7 @@
     "decorator": {
       "type": "minecraft:count",
       "config": {
-        "count": 18
+        "count": 3
       }
     },
     "feature": {
@@ -21,9 +21,9 @@
               "type": "minecraft:range",
               "config": {
                 "height": {
-                  "type": "minecraft:uniform",
+                  "type": "minecraft:trapezoid",
                   "min_inclusive": {
-                    "above_bottom": 0
+                    "absolute": -30
                   },
                   "max_inclusive": {
                     "absolute": 0
@@ -32,21 +32,15 @@
               }
             },
             "feature": {
-              "type": "minecraft:ore",
+              "type": "minecraft:random_selector",
               "config": {
-                "size": 25,
-                "discard_chance_on_air_exposure": 0,
-                "targets": [
+                "features": [
                   {
-                    "target": {
-                      "predicate_type": "minecraft:block_match",
-                      "block": "super_block_world:vanillate"
-                    },
-                    "state": {
-                      "Name": "super_block_world:gloomstone"
-                    }
+                    "chance": 0.45,
+                    "feature": "super_block_world:blocks/zspread_gloomstone"
                   }
-                ]
+                ],
+                "default": "super_block_world:blocks/xspread_gloomstone"
               }
             }
           }

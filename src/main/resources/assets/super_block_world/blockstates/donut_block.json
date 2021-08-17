@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "triggered=false": {
+      "model": "super_block_world:block/donut_block"
+    },
+    "triggered=true": {
+      "model": "super_block_world:block/donut_block_falling"
+    }
+  }
+}

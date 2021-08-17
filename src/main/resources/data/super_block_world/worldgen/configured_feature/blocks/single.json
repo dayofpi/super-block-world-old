@@ -59,7 +59,7 @@
                   }
                 },
                 {
-                  "weight": 5,
+                  "weight": 7,
                   "data": {
                     "Name": "super_block_world:coin_block",
                     "Properties": {
@@ -69,7 +69,7 @@
                   }
                 },
                 {
-                  "weight": 5,
+                  "weight": 7,
                   "data": {
                     "Name": "super_block_world:coin_block",
                     "Properties": {
@@ -79,7 +79,7 @@
                   }
                 },
                 {
-                  "weight": 5,
+                  "weight": 8,
                   "data": {
                     "Name": "super_block_world:coin_block",
                     "Properties": {
@@ -89,7 +89,7 @@
                   }
                 },
                 {
-                  "weight": 6,
+                  "weight": 8,
                   "data": {
                     "Name": "super_block_world:question_block"
                   }

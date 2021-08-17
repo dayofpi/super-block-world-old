@@ -23,6 +23,7 @@ public class ItemTypes {
     public static final Item GOLDEN_MUSHROOM = new Item(new FabricItemSettings().food(FoodComponents.GOLDEN_MUSHROOM).maxCount(16).group(Main.MOD_GROUP));
     public static final Item ONE_UP = new Item(new FabricItemSettings().food(FoodComponents.ONE_UP).maxCount(16).group(Main.MOD_GROUP));
     public static final Item COIN = new Item(new FabricItemSettings().group(Main.MOD_GROUP));
+    public static final Item RAW_BRONZE = new Item(new FabricItemSettings().group(Main.MOD_GROUP));
     public static final Item BRONZE_INGOT = new Item(new FabricItemSettings().group(Main.MOD_GROUP));
     public static final Item BUZZY_SHELL = new ArmorItem(BUZZY_ARMOR_MATERIAL, EquipmentSlot.HEAD, new FabricItemSettings().group(Main.MOD_GROUP));
     public static final Item BUZZY_SHELL_PIECE = new Item(new FabricItemSettings().group(Main.MOD_GROUP));
@@ -41,6 +42,7 @@ public class ItemTypes {
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "golden_mushroom"), GOLDEN_MUSHROOM);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "one_up"), ONE_UP);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "coin"), COIN);
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "raw_bronze"), RAW_BRONZE);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "bronze_ingot"), BRONZE_INGOT);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "buzzy_shell"), BUZZY_SHELL);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "buzzy_shell_piece"), BUZZY_SHELL_PIECE);
@@ -67,12 +69,14 @@ public class ItemTypes {
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "gold_topped_vanillate"), new BlockItem(BlockTypes.GOLD_TOPPED_VANILLATE, new FabricItemSettings().group(Main.MOD_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "bronze_ore"), new BlockItem(BlockTypes.BRONZE_ORE, new FabricItemSettings().group(Main.MOD_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "gloomstone_bronze_ore"), new BlockItem(BlockTypes.GLOOMSTONE_BRONZE_ORE, new FabricItemSettings().group(Main.MOD_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "raw_bronze_block"), new BlockItem(BlockTypes.RAW_BRONZE_BLOCK, new FabricItemSettings().group(Main.MOD_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "bronze_block"), new BlockItem(BlockTypes.BRONZE_BLOCK, new FabricItemSettings().group(Main.MOD_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "bronze_slab"), new BlockItem(BlockTypes.BRONZE_SLAB, new FabricItemSettings().group(Main.MOD_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "bronze_stairs"), new BlockItem(BlockTypes.BRONZE_STAIRS, new FabricItemSettings().group(Main.MOD_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "question_block"), new BlockItem(BlockTypes.QUESTION_BLOCK, new FabricItemSettings().group(Main.MOD_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "coin_block"), new BlockItem(BlockTypes.COIN_BLOCK, new FabricItemSettings().group(Main.MOD_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "empty_block"), new BlockItem(BlockTypes.EMPTY_BLOCK, new FabricItemSettings().group(Main.MOD_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "donut_block"), new BlockItem(BlockTypes.DONUT_BLOCK, new FabricItemSettings().group(Main.MOD_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "toadstone"), new BlockItem(BlockTypes.TOADSTONE, new FabricItemSettings().group(Main.MOD_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "toadstone_bricks"), new BlockItem(BlockTypes.TOADSTONE_BRICKS, new FabricItemSettings().group(Main.MOD_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "gloomstone"), new BlockItem(BlockTypes.GLOOMSTONE, new FabricItemSettings().group(Main.MOD_GROUP)));
@@ -103,9 +107,9 @@ public class ItemTypes {
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "orange_mushroom_cap"), new BlockItem(BlockTypes.ORANGE_MUSHROOM_CAP, new FabricItemSettings().group(Main.MOD_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "yellow_mushroom"), new BlockItem(BlockTypes.YELLOW_MUSHROOM, new FabricItemSettings().group(Main.MOD_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "green_mushroom"), new BlockItem(BlockTypes.GREEN_MUSHROOM, new FabricItemSettings().group(Main.MOD_GROUP)));
-        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "pink_mushroom"), new BlockItem(BlockTypes.PINK_MUSHROOM_CAP, new FabricItemSettings().group(Main.MOD_GROUP)));
-        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "purple_mushroom"), new BlockItem(BlockTypes.PURPLE_MUSHROOM_CAP, new FabricItemSettings().group(Main.MOD_GROUP)));
-        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "orange_mushroom"), new BlockItem(BlockTypes.ORANGE_MUSHROOM_CAP, new FabricItemSettings().group(Main.MOD_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "pink_mushroom"), new BlockItem(BlockTypes.PINK_MUSHROOM, new FabricItemSettings().group(Main.MOD_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "purple_mushroom"), new BlockItem(BlockTypes.PURPLE_MUSHROOM, new FabricItemSettings().group(Main.MOD_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "orange_mushroom"), new BlockItem(BlockTypes.ORANGE_MUSHROOM, new FabricItemSettings().group(Main.MOD_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "yellow_flowerbed"), new BlockItem(BlockTypes.YELLOW_FLOWERBED, new FabricItemSettings().group(Main.MOD_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "hardstone_bricks"), new BlockItem(BlockTypes.HARDSTONE_BRICKS, new FabricItemSettings().group(Main.MOD_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "cracked_hardstone_bricks"), new BlockItem(BlockTypes.CRACKED_HARDSTONE_BRICKS, new FabricItemSettings().group(Main.MOD_GROUP)));

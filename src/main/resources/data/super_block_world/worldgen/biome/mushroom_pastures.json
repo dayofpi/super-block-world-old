@@ -87,9 +87,8 @@
     [],
     [
       "super_block_world:blocks/single",
-      "super_block_world:blocks/default",
-      "super_block_world:blocks/gloomstone",
-      "super_block_world:ore_gloomstone",
+      "super_block_world:blocks/toadstone_bricks",
+      "super_block_world:blocks/gloomstone_bricks",
       "super_block_world:vanillate_topping"
     ],
     [
@@ -109,10 +108,12 @@
       "super_block_world:cave_ceiling",
       "super_block_world:cave_floor",
       "super_block_world:cave_lanterns",
-      "super_block_world:patch_toadstone",
       "super_block_world:patch_sugar_cane",
       "super_block_world:patch_pumpkin",
       "super_block_world:patch_stump",
+      "super_block_world:patch_vanillate",
+      "super_block_world:patch_toadstone",
+      "super_block_world:patch_gloomstone",
       "super_block_world:plants_main",
       "super_block_world:mushrooms_main",
       "super_block_world:spring_water",

@@ -31,6 +31,9 @@ public class BlockClient {
         BlockRenderLayerMap.INSTANCE.putBlock(BlockTypes.STONE_TORCH, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockTypes.YELLOW_MUSHROOM, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockTypes.GREEN_MUSHROOM, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockTypes.PINK_MUSHROOM, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockTypes.PURPLE_MUSHROOM, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockTypes.ORANGE_MUSHROOM, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockTypes.AMANITA_SAPLING, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockTypes.YELLOW_FLOWERBED, RenderLayer.getCutout());
     }
