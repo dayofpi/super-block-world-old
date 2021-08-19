@@ -21,7 +21,6 @@ public class BuzzyShellEntity extends Entity {
 
     @Override
     protected void initDataTracker() {
-
     }
 
     @Override

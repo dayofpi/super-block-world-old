@@ -12,6 +12,7 @@ import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
 import net.kyrptonaught.customportalapi.portal.PortalIgnitionSource;
 import net.minecraft.block.DispenserBlock;
+import net.minecraft.block.dispenser.BlockPlacementDispenserBehavior;
 import net.minecraft.block.dispenser.BoatDispenserBehavior;
 import net.minecraft.block.dispenser.DispenserBehavior;
 import net.minecraft.block.dispenser.ItemDispenserBehavior;
@@ -35,7 +36,8 @@ public class Main implements ModInitializer {
     // Mod ID
     public static final String MOD_ID = "super_block_world";
     // Item group
-    public static final ItemGroup MOD_GROUP = FabricItemGroupBuilder.build(new Identifier(MOD_ID, "item_group"), () -> new ItemStack(ItemTypes.POWER_STAR));
+    public static final ItemGroup BLOCK_GROUP = FabricItemGroupBuilder.build(new Identifier(MOD_ID, "block_group"), () -> new ItemStack(BlockTypes.QUESTION_BLOCK));
+    public static final ItemGroup ITEM_GROUP = FabricItemGroupBuilder.build(new Identifier(MOD_ID, "item_group"), () -> new ItemStack(ItemTypes.SUPER_MUSHROOM));
 
     public static final FlowableFluid STILL_POISON = new PoisonFluid.Still();
     public static final FlowableFluid FLOWING_POISON = new PoisonFluid.Flowing();
@@ -88,6 +90,6 @@ public class Main implements ModInitializer {
         };
         DispenserBlock.registerBehavior(ItemTypes.POISON_BUCKET, dispenserBehavior);
         DispenserBlock.registerBehavior(ItemTypes.AMANITA_BOAT, new BoatDispenserBehavior(BoatEntity.Type.OAK));
-
+        DispenserBlock.registerBehavior(BlockTypes.DONUT_BLOCK.asItem(), new BlockPlacementDispenserBehavior());
     }
 }

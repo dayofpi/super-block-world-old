@@ -64,15 +64,15 @@
                       "type": "minecraft:weighted_state_provider",
                       "entries": [
                         {
-                          "weight": 2,
+                          "weight": 4,
                           "data": {
                             "Name": "super_block_world:gloomstone"
                           }
                         },
                         {
-                          "weight": 2,
+                          "weight": 1,
                           "data": {
-                            "Name": "super_block_world:raw_bronze_block"
+                            "Name": "super_block_world:gloomstone_bronze_block"
                           }
                         },
                         {

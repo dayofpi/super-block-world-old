@@ -22,7 +22,7 @@ public class FoodComponents {
             .alwaysEdible().snack().build();
 
     public static final FoodComponent ONE_UP = new FoodComponent.Builder()
-            .statusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 5000, 4), 1F)
+            .statusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 6000, 4), 1F)
             .alwaysEdible().snack().build();
 
 }

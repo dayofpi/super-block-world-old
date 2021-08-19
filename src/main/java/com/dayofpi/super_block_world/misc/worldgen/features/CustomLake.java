@@ -121,6 +121,13 @@ public class CustomLake extends Feature<SingleStateFeatureConfig> {
                                         structureWorldAccess.setBlockState(blockPos5, Blocks.MYCELIUM.getDefaultState(), Block.NOTIFY_LISTENERS);
                                     } else if (biome.getGenerationSettings().getSurfaceConfig().getUnderwaterMaterial().isOf(BlockTypes.TOADSTOOL_SOIL)) {
                                         structureWorldAccess.setBlockState(blockPos5, BlockTypes.TOADSTOOL_FARMLAND.getDefaultState().with(FarmlandBlock.MOISTURE, 7), Block.NOTIFY_LISTENERS);
+                                        BlockState cropState = Blocks.WHEAT.getDefaultState();
+                                        if (random.nextInt(5) == 0) {
+                                            cropState = Blocks.CARROTS.getDefaultState();
+                                        }
+                                        if (random.nextInt(3) == 0) {
+                                            structureWorldAccess.setBlockState(blockPos5.up(), cropState.with(CropBlock.AGE, random.nextInt(3)), Block.NOTIFY_LISTENERS);
+                                        }
                                     } else {
                                         structureWorldAccess.setBlockState(blockPos5, BlockTypes.TOADSTOOL_GRASS.getDefaultState(), Block.NOTIFY_LISTENERS);
                                     }

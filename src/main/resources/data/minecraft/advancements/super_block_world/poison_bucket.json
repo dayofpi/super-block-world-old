@@ -1,0 +1,37 @@
+{
+  "display": {
+    "icon": {
+      "item": "super_block_world:poison_bucket"
+    },
+    "title": {
+      "translate": "advancements.sbw.poison_bucket.title"
+    },
+    "description": {
+      "translate": "advancements.sbw.poison_bucket.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "super_block_world/root",
+  "criteria": {
+    "poison_bucket": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "super_block_world:poison_bucket"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "poison_bucket"
+    ]
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "display": {
+    "icon": {
+      "item": "super_block_world:yellow_mushroom"
+    },
+    "title": {
+      "translate": "advancements.sbw.every_mushroom.title"
+    },
+    "description": {
+      "translate": "advancements.sbw.every_mushroom.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:super_block_world/root",
+  "criteria": {
+    "red_shroom": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:red_mushroom"
+            ]
+          }
+        ]
+      }
+    },
+    "brown_shroom": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:brown_mushroom"
+            ]
+          }
+        ]
+      }
+    },
+    "yellow_shroom": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "super_block_world:yellow_mushroom"
+            ]
+          }
+        ]
+      }
+    },
+    "green_shroom": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "super_block_world:green_mushroom"
+            ]
+          }
+        ]
+      }
+    },
+    "pink_shroom": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "super_block_world:pink_mushroom"
+            ]
+          }
+        ]
+      }
+    },
+    "purple_shroom": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "super_block_world:purple_mushroom"
+            ]
+          }
+        ]
+      }
+    },
+    "orange_shroom": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "super_block_world:orange_mushroom"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "red_shroom"
+    ],
+    [
+      "brown_shroom"
+    ],
+    [
+      "yellow_shroom"
+    ],
+    [
+      "green_shroom"
+    ],
+    [
+      "pink_shroom"
+    ],
+    [
+      "purple_shroom"
+    ],
+    [
+      "orange_shroom"
+    ]
+  ]
+}

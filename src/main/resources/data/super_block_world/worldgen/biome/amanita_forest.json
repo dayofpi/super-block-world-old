@@ -70,7 +70,6 @@
   "carvers": {
     "air": [
       "super_block_world:cave",
-      "super_block_world:cave_aquifers",
       "super_block_world:canyon"
     ]
   },
@@ -111,7 +110,7 @@
       "super_block_world:patch_sugar_cane",
       "super_block_world:patch_pumpkin",
       "super_block_world:patch_stump",
-      "super_block_world:patch_vanillate",
+      "super_block_world:patch_stone",
       "super_block_world:patch_toadstone",
       "super_block_world:patch_gloomstone",
       "super_block_world:mushrooms_forest",

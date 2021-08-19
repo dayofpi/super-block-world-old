@@ -15,8 +15,8 @@ public class MixinHugeMushroom {
         int i = random.nextInt(3) + 4;
         if (random.nextInt(12) == 0) {
             i *= 2;
-        } else if (random.nextInt(13) == 0) {
-            i *= 4;
+        } else if (random.nextInt(20) == 0) {
+            i *= 3;
         }
 
         info.setReturnValue(i);

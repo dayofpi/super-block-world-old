@@ -141,7 +141,7 @@ public abstract class AbstractBuzzy extends AbstractTroop {
         if (entityData instanceof AbstractBuzzy.BuzzyData) {
             StatusEffect statusEffect = ((AbstractBuzzy.BuzzyData)entityData).effect;
             if (statusEffect != null) {
-                this.addStatusEffect(new StatusEffectInstance(statusEffect, Integer.MAX_VALUE));
+                this.addStatusEffect(new StatusEffectInstance(statusEffect, Integer.MAX_VALUE, 1));
             }
         }
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);

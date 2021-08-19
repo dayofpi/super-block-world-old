@@ -1,9 +1,9 @@
 {
   "variants": {
-    "triggered=false": {
+    "will_fall=false": {
       "model": "super_block_world:block/donut_block"
     },
-    "triggered=true": {
+    "will_fall=true": {
       "model": "super_block_world:block/donut_block_falling"
     }
   }
