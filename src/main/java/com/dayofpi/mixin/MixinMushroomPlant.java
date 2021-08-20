@@ -1,8 +1,8 @@
 package com.dayofpi.mixin;
 
-import com.dayofpi.super_block_world.blocks.BlockTypes;
-import com.dayofpi.super_block_world.misc.worldgen.FeatureHelper;
-import com.dayofpi.super_block_world.misc.worldgen.FeatureReg;
+import com.dayofpi.super_block_world.block.registry.BlockList;
+import com.dayofpi.super_block_world.world.ReplacementFeatureList;
+import com.dayofpi.super_block_world.world.FeatureList;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.MushroomPlantBlock;
@@ -30,21 +30,21 @@ public class MixinMushroomPlant extends PlantBlock {
         world.removeBlock(pos, false);
         ConfiguredFeature<?, ?> mushroomFeature;
         if (this == Blocks.BROWN_MUSHROOM) {
-            mushroomFeature = FeatureHelper.HUGE_BROWN_MUSHROOM;
-        } else if (this == BlockTypes.YELLOW_MUSHROOM) {
+            mushroomFeature = ReplacementFeatureList.HUGE_BROWN_MUSHROOM;
+        } else if (this == BlockList.YELLOW_MUSHROOM) {
             if (random.nextInt(2) == 0) {
-                mushroomFeature = FeatureReg.HUGE_YELLOW_MUSHROOM;
-            } else mushroomFeature = FeatureReg.HUGE_YELLOW_MUSHROOM_WIDE;
-        } else if (this == BlockTypes.GREEN_MUSHROOM) {
+                mushroomFeature = FeatureList.HUGE_YELLOW_MUSHROOM;
+            } else mushroomFeature = FeatureList.HUGE_YELLOW_MUSHROOM_WIDE;
+        } else if (this == BlockList.GREEN_MUSHROOM) {
             if (random.nextInt(2) == 0) {
-                mushroomFeature = FeatureReg.HUGE_GREEN_MUSHROOM;
-            } else mushroomFeature = FeatureReg.HUGE_GREEN_MUSHROOM_WIDE;
+                mushroomFeature = FeatureList.HUGE_GREEN_MUSHROOM;
+            } else mushroomFeature = FeatureList.HUGE_GREEN_MUSHROOM_WIDE;
         } else {
             if (this != Blocks.RED_MUSHROOM) {
                 world.setBlockState(pos, state, 3);
                 info.setReturnValue(false);
             }
-            mushroomFeature = FeatureHelper.HUGE_RED_MUSHROOM;
+            mushroomFeature = ReplacementFeatureList.HUGE_RED_MUSHROOM;
         }
 
         if (mushroomFeature.generate(world, world.getChunkManager().getChunkGenerator(), random, pos)) {

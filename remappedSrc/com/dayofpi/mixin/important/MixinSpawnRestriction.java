@@ -1,7 +1,7 @@
 package com.dayofpi.mixin.important;
 
-import com.dayofpi.super_block_world.entities.EntityTypes;
-import com.dayofpi.super_block_world.entities.types.BuzzyBeetleEntity;
+import com.dayofpi.super_block_world.entity.EntityTypes;
+import com.dayofpi.super_block_world.entity.types.BuzzyBeetleEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.SpawnRestriction;

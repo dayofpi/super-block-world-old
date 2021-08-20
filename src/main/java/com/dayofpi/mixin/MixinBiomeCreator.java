@@ -1,6 +1,6 @@
 package com.dayofpi.mixin;
 
-import com.dayofpi.super_block_world.misc.worldgen.FeatureHelper;
+import com.dayofpi.super_block_world.world.ReplacementFeatureList;
 import net.minecraft.sound.BiomeMoodSound;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeEffects;
@@ -38,7 +38,7 @@ public class MixinBiomeCreator {
         DefaultBiomeFeatures.addDefaultLakes(builder2);
         DefaultBiomeFeatures.addAmethystGeodes(builder2);
         DefaultBiomeFeatures.addDungeons(builder2);
-        builder2.feature(GenerationStep.Feature.VEGETAL_DECORATION, hills ? FeatureHelper.DARK_FOREST_VEGETATION_RED : FeatureHelper.DARK_FOREST_VEGETATION_BROWN);
+        builder2.feature(GenerationStep.Feature.VEGETAL_DECORATION, hills ? ReplacementFeatureList.DARK_FOREST_VEGETATION_RED : ReplacementFeatureList.DARK_FOREST_VEGETATION_BROWN);
         DefaultBiomeFeatures.addForestFlowers(builder2);
         DefaultBiomeFeatures.addMineables(builder2);
         DefaultBiomeFeatures.addDefaultOres(builder2);
@@ -67,7 +67,7 @@ public class MixinBiomeCreator {
         DefaultBiomeFeatures.addMineables(builder2);
         DefaultBiomeFeatures.addDefaultOres(builder2);
         DefaultBiomeFeatures.addDefaultDisks(builder2);
-        FeatureHelper.addMushroomFieldsFeatures(builder2);
+        ReplacementFeatureList.addMushroomFieldsFeatures(builder2);
         DefaultBiomeFeatures.addDefaultMushrooms(builder2);
         DefaultBiomeFeatures.addDefaultVegetation(builder2);
         DefaultBiomeFeatures.addSprings(builder2);

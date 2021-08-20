@@ -1,8 +1,8 @@
-package com.dayofpi.super_block_world.entities;
+package com.dayofpi.super_block_world.entity;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.entities.types.BuzzyBeetleEntity;
-import com.dayofpi.super_block_world.entities.types.ModBoatEntity;
+import com.dayofpi.super_block_world.entity.types.BuzzyBeetleEntity;
+import com.dayofpi.super_block_world.entity.types.ModBoatEntity;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.Entity;

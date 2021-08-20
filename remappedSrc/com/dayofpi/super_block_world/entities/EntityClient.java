@@ -1,7 +1,7 @@
-package com.dayofpi.super_block_world.entities;
+package com.dayofpi.super_block_world.entity;
 
-import com.dayofpi.super_block_world.entities.renderers.BuzzyBeetleRender;
-import com.dayofpi.super_block_world.entities.renderers.ModBoatRender;
+import com.dayofpi.super_block_world.entity.renderer.BuzzyBeetleRender;
+import com.dayofpi.super_block_world.entity.renderer.ModBoatRender;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;

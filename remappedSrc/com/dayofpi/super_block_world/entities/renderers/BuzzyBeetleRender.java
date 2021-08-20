@@ -1,9 +1,9 @@
-package com.dayofpi.super_block_world.entities.renderers;
+package com.dayofpi.super_block_world.entity.renderer;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.entities.ModelLayers;
-import com.dayofpi.super_block_world.entities.models.BuzzyBeetleModel;
-import com.dayofpi.super_block_world.entities.types.BuzzyBeetleEntity;
+import com.dayofpi.super_block_world.entity.ModelLayers;
+import com.dayofpi.super_block_world.entity.model.BuzzyBeetleModel;
+import com.dayofpi.super_block_world.entity.types.BuzzyBeetleEntity;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.render.entity.feature.SaddleFeatureRenderer;

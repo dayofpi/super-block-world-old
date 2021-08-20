@@ -1,7 +1,7 @@
-package com.dayofpi.super_block_world.entities.types;
+package com.dayofpi.super_block_world.entity.types;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.blocks.BlockTypes;
+import com.dayofpi.super_block_world.block.BlockTypes;
 import com.dayofpi.super_block_world.misc.Sounds;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;

@@ -1,6 +1,6 @@
-package com.dayofpi.super_block_world.blocks.types;
+package com.dayofpi.super_block_world.block.types;
 
-import com.dayofpi.super_block_world.blocks.BlockTypes;
+import com.dayofpi.super_block_world.block.BlockTypes;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.PillarBlock;

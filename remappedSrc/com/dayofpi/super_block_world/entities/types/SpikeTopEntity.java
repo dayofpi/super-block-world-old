@@ -1,4 +1,4 @@
-package com.dayofpi.super_block_world.entities.types;
+package com.dayofpi.super_block_world.entity.types;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.PassiveEntity;

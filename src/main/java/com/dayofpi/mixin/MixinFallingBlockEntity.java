@@ -1,7 +1,8 @@
 package com.dayofpi.mixin;
 
-import com.dayofpi.super_block_world.blocks.BlockTypes;
-import com.dayofpi.super_block_world.items.ItemTypes;
+import com.dayofpi.super_block_world.block.registry.BlockList;
+import com.dayofpi.super_block_world.entity.types.AbstractBuzzy;
+import com.dayofpi.super_block_world.item.registry.ItemList;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.item.ItemStack;
@@ -31,9 +32,9 @@ public abstract class MixinFallingBlockEntity extends Entity  {
         List<Entity> list = this.world.getOtherEntities(this, boundingBox);
 
         for (Entity entity : list) {
-            if (entity instanceof LivingEntity livingEntity && !block().isAir() && !block().isOf(BlockTypes.DONUT_BLOCK)) {
+            if (entity instanceof LivingEntity livingEntity && !block().isAir() && !block().isOf(BlockList.DONUT_BLOCK)) {
                 ItemStack itemStack = livingEntity.getEquippedStack(EquipmentSlot.HEAD);
-                if (itemStack.isOf(ItemTypes.BUZZY_SHELL) && livingEntity.getY() < this.getY()) {
+                if (livingEntity instanceof  AbstractBuzzy || itemStack.isOf(ItemList.BUZZY_SHELL) && livingEntity.getY() < this.getY()) {
                     Vec3d vec3d = this.getVelocity();
                     this.setVelocity(vec3d.x, 0.0D, vec3d.z);
                     this.setPos(this.getX(), livingEntity.getBoundingBox().maxY, this.getZ());
@@ -44,6 +45,6 @@ public abstract class MixinFallingBlockEntity extends Entity  {
 
     @Override
     public boolean isCollidable() {
-        return this.block().isOf(BlockTypes.DONUT_BLOCK);
+        return this.block().isOf(BlockList.DONUT_BLOCK);
     }
 }

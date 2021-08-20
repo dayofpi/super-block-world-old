@@ -1,4 +1,4 @@
-package com.dayofpi.super_block_world.items;
+package com.dayofpi.super_block_world.item;
 
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorMaterial;

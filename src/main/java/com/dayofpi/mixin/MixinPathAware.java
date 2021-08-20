@@ -1,6 +1,6 @@
 package com.dayofpi.mixin;
 
-import com.dayofpi.super_block_world.misc.Tags;
+import com.dayofpi.super_block_world.misc.TagList;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.mob.MobEntity;
@@ -19,8 +19,8 @@ public abstract class MixinPathAware extends MobEntity {
     @Override
     public void tickMovement() {
         super.tickMovement();
-        boolean bl = this.getType().isIn(Tags.POISON_IMMUNE);
-        boolean bl2 = this.updateMovementInFluid(Tags.POISON, 0.014D);
+        boolean bl = this.getType().isIn(TagList.POISON_IMMUNE);
+        boolean bl2 = this.updateMovementInFluid(TagList.POISON, 0.014D);
         if (bl) {
             if (bl2) {
                 this.goalSelector.add(1, this.swimGoal);

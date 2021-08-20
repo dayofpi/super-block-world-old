@@ -1,6 +1,6 @@
-package com.dayofpi.super_block_world.blocks;
+package com.dayofpi.super_block_world.block;
 
-import com.dayofpi.super_block_world.entities.renderers.ModSignRender;
+import com.dayofpi.super_block_world.entity.renderer.ModSignRender;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;

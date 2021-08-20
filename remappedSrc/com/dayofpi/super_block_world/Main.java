@@ -1,12 +1,12 @@
 package com.dayofpi.super_block_world;
 
-import com.dayofpi.super_block_world.blocks.BlockTypes;
-import com.dayofpi.super_block_world.entities.EntityTypes;
-import com.dayofpi.super_block_world.items.ItemTypes;
+import com.dayofpi.super_block_world.block.BlockTypes;
+import com.dayofpi.super_block_world.entity.EntityTypes;
+import com.dayofpi.super_block_world.item.ItemTypes;
 import com.dayofpi.super_block_world.misc.Sounds;
 import com.dayofpi.super_block_world.misc.Tags;
-import com.dayofpi.super_block_world.misc.fluids.PoisonFluid;
-import com.dayofpi.super_block_world.misc.worldgen.FeatureReg;
+import com.dayofpi.super_block_world.world.fluid.PoisonFluid;
+import com.dayofpi.super_block_world.world.FeatureReg;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;

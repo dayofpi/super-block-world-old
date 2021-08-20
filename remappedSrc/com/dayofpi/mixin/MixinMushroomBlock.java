@@ -1,8 +1,8 @@
 package com.dayofpi.mixin;
 
-import com.dayofpi.super_block_world.blocks.BlockTypes;
-import com.dayofpi.super_block_world.misc.worldgen.FeatureHelper;
-import com.dayofpi.super_block_world.misc.worldgen.FeatureReg;
+import com.dayofpi.super_block_world.block.BlockTypes;
+import com.dayofpi.super_block_world.world.FeatureHelper;
+import com.dayofpi.super_block_world.world.FeatureReg;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.MushroomPlantBlock;

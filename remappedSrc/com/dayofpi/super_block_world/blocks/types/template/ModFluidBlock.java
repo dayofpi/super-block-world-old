@@ -1,6 +1,6 @@
-package com.dayofpi.super_block_world.blocks.types.template;
+package com.dayofpi.super_block_world.block.types.template;
 
-import com.dayofpi.super_block_world.blocks.BlockTypes;
+import com.dayofpi.super_block_world.block.BlockTypes;
 import com.dayofpi.super_block_world.misc.Tags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

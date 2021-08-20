@@ -1,10 +1,28 @@
 {
-  "variants": {
-    "lit=false": {
-      "model": "super_block_world:block/stone_torch"
+  "multipart": [
+    {
+      "when": {
+        "lit": "true"
+      },
+      "apply": {
+        "model": "super_block_world:block/stone_torch_fire"
+      }
     },
-    "lit=true": {
-      "model": "super_block_world:block/stone_torch_lit"
+    {
+      "when": {
+        "lit": "true"
+      },
+      "apply": {
+        "model": "super_block_world:block/stone_torch"
+      }
+    },
+    {
+      "when": {
+        "lit": "false"
+      },
+      "apply": {
+        "model": "super_block_world:block/stone_torch"
+      }
     }
-  }
+  ]
 }

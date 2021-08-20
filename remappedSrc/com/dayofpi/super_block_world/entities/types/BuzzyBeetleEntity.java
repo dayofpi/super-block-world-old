@@ -1,8 +1,8 @@
-package com.dayofpi.super_block_world.entities.types;
+package com.dayofpi.super_block_world.entity.types;
 
-import com.dayofpi.super_block_world.blocks.BlockTypes;
-import com.dayofpi.super_block_world.entities.EntityTypes;
-import com.dayofpi.super_block_world.items.ItemTypes;
+import com.dayofpi.super_block_world.block.BlockTypes;
+import com.dayofpi.super_block_world.entity.EntityTypes;
+import com.dayofpi.super_block_world.item.ItemTypes;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.AnimalMateGoal;
 import net.minecraft.entity.ai.goal.FollowParentGoal;

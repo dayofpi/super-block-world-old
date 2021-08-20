@@ -51,6 +51,7 @@
   "block.super_block_world.empty_block": "Empty Block",
   "block.super_block_world.question_block": "? Block",
   "block.super_block_world.coin_block": "Coin Block",
+  "block.super_block_world.trampoline": "Trampoline",
   "block.super_block_world.redstone_trampoline": "Redstone Trampoline",
   "block.super_block_world.stone_torch": "Stone Torch",
   "block.super_block_world.donut_block": "Donut Block",

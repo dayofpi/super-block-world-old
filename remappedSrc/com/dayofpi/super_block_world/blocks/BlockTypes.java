@@ -1,10 +1,10 @@
-package com.dayofpi.super_block_world.blocks;
+package com.dayofpi.super_block_world.block;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.blocks.types.*;
-import com.dayofpi.super_block_world.blocks.types.template.*;
-import com.dayofpi.super_block_world.misc.worldgen.FeatureReg;
-import com.dayofpi.super_block_world.misc.worldgen.features.AmanitaTree;
+import com.dayofpi.super_block_world.block.types.*;
+import com.dayofpi.super_block_world.block.types.template.*;
+import com.dayofpi.super_block_world.world.FeatureReg;
+import com.dayofpi.super_block_world.world.feature.AmanitaTree;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityType;

@@ -15,6 +15,7 @@
     "InterfaceEntity",
     "InterfaceModelLoader",
     "InterfaceSignType",
+    "BlockPlacerTypeMixin",
     "MixinAnimalEntity",
     "MixinArmorItem",
     "MixinBiomeCreator",

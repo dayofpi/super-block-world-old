@@ -1,4 +1,4 @@
-package com.dayofpi.super_block_world.blocks.types.template;
+package com.dayofpi.super_block_world.block.types.template;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;

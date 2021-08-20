@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world;
 
-import com.dayofpi.super_block_world.blocks.BlockClient;
-import com.dayofpi.super_block_world.entities.EntityClient;
+import com.dayofpi.super_block_world.block.BlockClient;
+import com.dayofpi.super_block_world.entity.EntityClient;
 import com.dayofpi.super_block_world.misc.SpawnPacket;
-import com.dayofpi.super_block_world.misc.fluids.FluidClient;
+import com.dayofpi.super_block_world.world.fluid.FluidClient;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

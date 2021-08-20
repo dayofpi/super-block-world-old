@@ -1,4 +1,4 @@
-package com.dayofpi.super_block_world.entities;
+package com.dayofpi.super_block_world.entity;
 
 
 import com.dayofpi.super_block_world.Main;

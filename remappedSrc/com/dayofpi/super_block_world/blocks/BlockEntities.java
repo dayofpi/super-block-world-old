@@ -1,8 +1,8 @@
-package com.dayofpi.super_block_world.blocks;
+package com.dayofpi.super_block_world.block;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.blocks.blockentity.ModSignBE;
-import com.dayofpi.super_block_world.blocks.blockentity.QuestionBlockBE;
+import com.dayofpi.super_block_world.block.block_entity.ModSignBE;
+import com.dayofpi.super_block_world.block.block_entity.QuestionBlockBE;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.util.Identifier;

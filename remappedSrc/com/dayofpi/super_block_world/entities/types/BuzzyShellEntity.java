@@ -1,7 +1,7 @@
-package com.dayofpi.super_block_world.entities.types;
+package com.dayofpi.super_block_world.entity.types;
 
 import com.dayofpi.super_block_world.Client;
-import com.dayofpi.super_block_world.items.ItemTypes;
+import com.dayofpi.super_block_world.item.ItemTypes;
 import com.dayofpi.super_block_world.misc.SpawnPacket;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;

@@ -1,6 +1,6 @@
-package com.dayofpi.super_block_world.misc.worldgen.features;
+package com.dayofpi.super_block_world.world.feature;
 
-import com.dayofpi.super_block_world.misc.worldgen.FeatureReg;
+import com.dayofpi.super_block_world.world.FeatureReg;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;

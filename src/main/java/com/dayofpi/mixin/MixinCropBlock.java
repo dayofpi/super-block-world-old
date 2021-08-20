@@ -1,6 +1,6 @@
 package com.dayofpi.mixin;
 
-import com.dayofpi.super_block_world.blocks.BlockTypes;
+import com.dayofpi.super_block_world.block.registry.BlockList;
 import net.minecraft.block.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
@@ -20,7 +20,7 @@ public class MixinCropBlock {
             for (int j = -1; j <= 1; ++j) {
                 float g = 0.0F;
                 BlockState blockState = world.getBlockState(blockPos.add(i, 0, j));
-                if (blockState.isOf(Blocks.FARMLAND) || blockState.isOf(BlockTypes.TOADSTOOL_FARMLAND)) {
+                if (blockState.isOf(Blocks.FARMLAND) || blockState.isOf(BlockList.TOADSTOOL_FARMLAND)) {
                     g = 1.0F;
                     if (blockState.get(FarmlandBlock.MOISTURE) > 0) {
                         g = 3.0F;
@@ -55,7 +55,7 @@ public class MixinCropBlock {
 
     @Inject(at = @At("HEAD"), method = ("canPlantOnTop(Lnet/minecraft/block/BlockState;Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;)Z"), cancellable = true)
     private void canPlantOnTop(BlockState floor, BlockView world, BlockPos pos, CallbackInfoReturnable<Boolean> info) {
-        info.setReturnValue(floor.isOf(Blocks.FARMLAND) || floor.isOf(BlockTypes.TOADSTOOL_FARMLAND));
+        info.setReturnValue(floor.isOf(Blocks.FARMLAND) || floor.isOf(BlockList.TOADSTOOL_FARMLAND));
         info.cancel();
     }
 }

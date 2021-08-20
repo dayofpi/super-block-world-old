@@ -1,10 +1,10 @@
-package com.dayofpi.super_block_world.entities.renderers;
+package com.dayofpi.super_block_world.entity.renderer;
 
-import com.dayofpi.super_block_world.blocks.blockentity.ModSignBE;
-import com.dayofpi.super_block_world.blocks.types.template.ModSign;
-import com.dayofpi.super_block_world.blocks.types.template.ModSignTemplate;
-import com.dayofpi.super_block_world.blocks.types.template.ModSignType;
-import com.dayofpi.super_block_world.blocks.types.template.ModWallSign;
+import com.dayofpi.super_block_world.block.block_entity.ModSignBE;
+import com.dayofpi.super_block_world.block.types.template.ModSign;
+import com.dayofpi.super_block_world.block.types.template.ModSignTemplate;
+import com.dayofpi.super_block_world.block.types.template.ModSignType;
+import com.dayofpi.super_block_world.block.types.template.ModWallSign;
 import com.google.common.collect.ImmutableMap;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

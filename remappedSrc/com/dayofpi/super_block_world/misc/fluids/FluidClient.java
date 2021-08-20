@@ -1,4 +1,4 @@
-package com.dayofpi.super_block_world.misc.fluids;
+package com.dayofpi.super_block_world.world.fluid;
 
 import com.dayofpi.super_block_world.Main;
 import net.fabricmc.api.EnvType;

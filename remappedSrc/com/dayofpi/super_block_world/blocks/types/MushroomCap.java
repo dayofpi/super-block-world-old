@@ -1,4 +1,4 @@
-package com.dayofpi.super_block_world.blocks.types;
+package com.dayofpi.super_block_world.block.types;
 
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;

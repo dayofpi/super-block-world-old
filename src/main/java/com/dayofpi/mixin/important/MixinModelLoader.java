@@ -1,9 +1,9 @@
 package com.dayofpi.mixin.important;
 
 import com.dayofpi.mixin.InterfaceModelLoader;
-import com.dayofpi.super_block_world.entities.ModelLayers;
-import com.dayofpi.super_block_world.entities.models.BuzzyBeetleModel;
-import com.dayofpi.super_block_world.entities.models.ModBoatModel;
+import com.dayofpi.super_block_world.entity.registry.ModelLayers;
+import com.dayofpi.super_block_world.entity.model.BuzzyBeetleModel;
+import com.dayofpi.super_block_world.entity.model.ModBoatModel;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.client.render.entity.model.EntityModelLoader;
 import net.minecraft.client.render.entity.model.EntityModels;

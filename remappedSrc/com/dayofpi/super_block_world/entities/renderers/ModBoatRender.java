@@ -1,9 +1,9 @@
-package com.dayofpi.super_block_world.entities.renderers;
+package com.dayofpi.super_block_world.entity.renderer;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.entities.ModelLayers;
-import com.dayofpi.super_block_world.entities.models.ModBoatModel;
-import com.dayofpi.super_block_world.entities.types.ModBoatEntity;
+import com.dayofpi.super_block_world.entity.ModelLayers;
+import com.dayofpi.super_block_world.entity.model.ModBoatModel;
+import com.dayofpi.super_block_world.entity.types.ModBoatEntity;
 import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.util.Pair;
 import net.fabricmc.api.EnvType;

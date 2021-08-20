@@ -1,7 +1,7 @@
-package com.dayofpi.super_block_world.blocks.types;
+package com.dayofpi.super_block_world.block.types;
 
-import com.dayofpi.super_block_world.blocks.BlockTypes;
-import com.dayofpi.super_block_world.blocks.blockentity.QuestionBlockBE;
+import com.dayofpi.super_block_world.block.BlockTypes;
+import com.dayofpi.super_block_world.block.block_entity.QuestionBlockBE;
 import com.dayofpi.super_block_world.misc.Sounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;

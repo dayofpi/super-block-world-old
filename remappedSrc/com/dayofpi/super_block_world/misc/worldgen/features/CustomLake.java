@@ -1,7 +1,7 @@
-package com.dayofpi.super_block_world.misc.worldgen.features;
+package com.dayofpi.super_block_world.world.feature;
 
 
-import com.dayofpi.super_block_world.blocks.BlockTypes;
+import com.dayofpi.super_block_world.block.BlockTypes;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.*;
 import net.minecraft.tag.BlockTags;

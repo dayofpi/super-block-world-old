@@ -1,8 +1,8 @@
-package com.dayofpi.super_block_world.misc.fluids;
+package com.dayofpi.super_block_world.world.fluid;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.blocks.BlockTypes;
-import com.dayofpi.super_block_world.items.ItemTypes;
+import com.dayofpi.super_block_world.block.BlockTypes;
+import com.dayofpi.super_block_world.item.ItemTypes;
 import com.dayofpi.super_block_world.misc.Tags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

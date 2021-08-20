@@ -1,8 +1,8 @@
-package com.dayofpi.super_block_world.misc.worldgen;
+package com.dayofpi.super_block_world.world;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.blocks.BlockTypes;
-import com.dayofpi.super_block_world.blocks.types.MushroomCap;
+import com.dayofpi.super_block_world.block.BlockTypes;
+import com.dayofpi.super_block_world.block.types.MushroomCap;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DataPool;

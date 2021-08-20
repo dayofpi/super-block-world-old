@@ -1,11 +1,11 @@
-package com.dayofpi.super_block_world.items;
+package com.dayofpi.super_block_world.item;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.blocks.BlockTypes;
-import com.dayofpi.super_block_world.entities.EntityTypes;
-import com.dayofpi.super_block_world.entities.types.ModBoatEntity;
-import com.dayofpi.super_block_world.items.types.ModBoatItem;
-import com.dayofpi.super_block_world.items.types.PowerStarItem;
+import com.dayofpi.super_block_world.block.BlockTypes;
+import com.dayofpi.super_block_world.entity.EntityTypes;
+import com.dayofpi.super_block_world.entity.types.ModBoatEntity;
+import com.dayofpi.super_block_world.item.types.ModBoatItem;
+import com.dayofpi.super_block_world.item.types.PowerStarItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.*;

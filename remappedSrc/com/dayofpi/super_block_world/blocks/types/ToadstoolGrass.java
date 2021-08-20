@@ -1,4 +1,4 @@
-package com.dayofpi.super_block_world.blocks.types;
+package com.dayofpi.super_block_world.block.types;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

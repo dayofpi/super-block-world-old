@@ -1,12 +1,12 @@
 package com.dayofpi.super_block_world;
 
-import com.dayofpi.super_block_world.blocks.BlockTypes;
-import com.dayofpi.super_block_world.entities.EntityTypes;
-import com.dayofpi.super_block_world.items.ItemTypes;
-import com.dayofpi.super_block_world.misc.Sounds;
-import com.dayofpi.super_block_world.misc.Tags;
-import com.dayofpi.super_block_world.misc.fluids.PoisonFluid;
-import com.dayofpi.super_block_world.misc.worldgen.FeatureReg;
+import com.dayofpi.super_block_world.block.registry.BlockList;
+import com.dayofpi.super_block_world.entity.registry.EntityList;
+import com.dayofpi.super_block_world.item.registry.ItemList;
+import com.dayofpi.super_block_world.misc.SoundList;
+import com.dayofpi.super_block_world.misc.TagList;
+import com.dayofpi.super_block_world.world.fluid.PoisonFluid;
+import com.dayofpi.super_block_world.world.FeatureList;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
@@ -35,37 +35,33 @@ import net.minecraft.world.World;
 public class Main implements ModInitializer {
     // Mod ID
     public static final String MOD_ID = "super_block_world";
-    // Item group
-    public static final ItemGroup BLOCK_GROUP = FabricItemGroupBuilder.build(new Identifier(MOD_ID, "block_group"), () -> new ItemStack(BlockTypes.QUESTION_BLOCK));
-    public static final ItemGroup ITEM_GROUP = FabricItemGroupBuilder.build(new Identifier(MOD_ID, "item_group"), () -> new ItemStack(ItemTypes.SUPER_MUSHROOM));
+    public static final ItemGroup BLOCK_GROUP = FabricItemGroupBuilder.build(new Identifier(MOD_ID, "block_group"), () -> new ItemStack(BlockList.QUESTION_BLOCK));
+    public static final ItemGroup ITEM_GROUP = FabricItemGroupBuilder.build(new Identifier(MOD_ID, "item_group"), () -> new ItemStack(ItemList.SUPER_MUSHROOM));
 
     public static final FlowableFluid STILL_POISON = new PoisonFluid.Still();
     public static final FlowableFluid FLOWING_POISON = new PoisonFluid.Flowing();
-
-
-    public static final DamageSource POISON = new DamageSource("poison") {
-    };
+    public static final DamageSource POISON = new DamageSource("poison") {};
 
     public static DamageSource mobDrop(LivingEntity attacker) {
         return new EntityDamageSource("mob_drop", attacker);
     }
-
     public static DamageSource spikyMob(LivingEntity attacker) {
         return new EntityDamageSource("spiky_mob", attacker);
     }
 
+
+
     @Override
     public void onInitialize() {
-        BlockTypes.registerBlocks();
-        ItemTypes.registerItems();
-        CustomPortalApiRegistry.addPortal(BlockTypes.WARP_FRAME, PortalIgnitionSource.ItemUseSource(ItemTypes.POWER_STAR), new Identifier(MOD_ID, "mushroom_kingdom"), 230, 200, 224);
-        EntityTypes.registerEntities();
-        FeatureReg.registerFeatures();
-        Tags.registerTags();
-        Sounds.registerSounds();
+        BlockList.registerBlocks();
+        ItemList.registerItems();
+        CustomPortalApiRegistry.addPortal(BlockList.WARP_FRAME, PortalIgnitionSource.ItemUseSource(ItemList.POWER_STAR), new Identifier(MOD_ID, "mushroom_kingdom"), 230, 200, 224);
+        EntityList.registerEntities();
+        FeatureList.registerFeatures();
+        TagList.registerTags();
+        SoundList.registerSounds();
         registerFluids();
         addDispenserBehaviors();
-
     }
 
     public static void registerFluids() {
@@ -88,8 +84,8 @@ public class Main implements ModInitializer {
 
             }
         };
-        DispenserBlock.registerBehavior(ItemTypes.POISON_BUCKET, dispenserBehavior);
-        DispenserBlock.registerBehavior(ItemTypes.AMANITA_BOAT, new BoatDispenserBehavior(BoatEntity.Type.OAK));
-        DispenserBlock.registerBehavior(BlockTypes.DONUT_BLOCK.asItem(), new BlockPlacementDispenserBehavior());
+        DispenserBlock.registerBehavior(ItemList.POISON_BUCKET, dispenserBehavior);
+        DispenserBlock.registerBehavior(ItemList.AMANITA_BOAT, new BoatDispenserBehavior(BoatEntity.Type.OAK));
+        DispenserBlock.registerBehavior(BlockList.DONUT_BLOCK.asItem(), new BlockPlacementDispenserBehavior());
     }
 }

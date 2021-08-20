@@ -1,8 +1,8 @@
 package com.dayofpi.mixin;
 
-import com.dayofpi.super_block_world.entities.types.AbstractBuzzy;
-import com.dayofpi.super_block_world.items.ItemTypes;
-import com.dayofpi.super_block_world.misc.Sounds;
+import com.dayofpi.super_block_world.entity.types.AbstractBuzzy;
+import com.dayofpi.super_block_world.item.registry.ItemList;
+import com.dayofpi.super_block_world.misc.SoundList;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.gen.Invoker;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -23,12 +24,15 @@ public abstract class MixinLivingEntity extends Entity {
         super(type, world);
     }
 
+    @Invoker("getEquippedStack")
+    public abstract ItemStack getEquippedStack(EquipmentSlot slot);
+
     @Inject(at = @At("HEAD"), method = "damage(Lnet/minecraft/entity/damage/DamageSource;F)Z", cancellable = true)
     private void damage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> info) {
         ItemStack itemStack = this.getEquippedStack(EquipmentSlot.HEAD);
-        if (itemStack.isOf(ItemTypes.BUZZY_SHELL)) {
+        if (itemStack.isOf(ItemList.BUZZY_SHELL)) {
             if (source instanceof ProjectileDamageSource && source.getPosition() != null && source.getPosition().y > this.getY() + 1.5 || source.isFallingBlock() || source.getAttacker() != null && source.getAttacker() instanceof AbstractBuzzy && ((AbstractBuzzy) source.getAttacker()).isUpsideDown() && source.getAttacker().fallDistance > 0) {
-                this.world.playSound(null, this.getBlockPos(), Sounds.BUZZY_BEETLE_BLOCK, SoundCategory.NEUTRAL, 0.6F, this.randomPitch());
+                this.world.playSound(null, this.getBlockPos(), SoundList.BUZZY_BEETLE_BLOCK, SoundCategory.NEUTRAL, 0.6F, this.randomPitch());
                 itemStack.setDamage(itemStack.getDamage() + random.nextInt(2));
                 if (itemStack.getDamage() >= itemStack.getMaxDamage()) {
                     this.sendEquipmentBreakStatus(EquipmentSlot.HEAD);
@@ -64,8 +68,6 @@ public abstract class MixinLivingEntity extends Entity {
                 return 47;
         }
     }
-
-    public abstract ItemStack getEquippedStack(EquipmentSlot slot);
 
     public float randomPitch() {
         return (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F;

@@ -1,6 +1,6 @@
 package com.dayofpi.mixin;
 
-import com.dayofpi.super_block_world.blocks.BlockTypes;
+import com.dayofpi.super_block_world.block.registry.BlockList;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
@@ -20,7 +20,7 @@ public class MixinRabbit {
     @Inject(at = @At("HEAD"), method = "canSpawn(Lnet/minecraft/entity/EntityType;Lnet/minecraft/world/WorldAccess;Lnet/minecraft/entity/SpawnReason;Lnet/minecraft/util/math/BlockPos;Ljava/util/Random;)Z", cancellable = true)
     private static void canSpawn(EntityType<RabbitEntity> entity, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random, CallbackInfoReturnable<Boolean> info) {
         BlockState blockState = world.getBlockState(pos.down());
-        info.setReturnValue(blockState.isOf(Blocks.GRASS_BLOCK) || blockState.isOf(Blocks.SNOW) || blockState.isOf(Blocks.SAND) || blockState.isOf(BlockTypes.TOADSTOOL_GRASS) && (world.getBaseLightLevel(pos, 0) > 8));
+        info.setReturnValue(blockState.isOf(Blocks.GRASS_BLOCK) || blockState.isOf(Blocks.SNOW) || blockState.isOf(Blocks.SAND) || blockState.isOf(BlockList.TOADSTOOL_GRASS) && (world.getBaseLightLevel(pos, 0) > 8));
         info.cancel();
     }
 }

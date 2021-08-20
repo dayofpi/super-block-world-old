@@ -1,9 +1,9 @@
-package com.dayofpi.super_block_world.entities.types;
+package com.dayofpi.super_block_world.entity.types;
 
 import com.dayofpi.super_block_world.Client;
-import com.dayofpi.super_block_world.blocks.BlockTypes;
-import com.dayofpi.super_block_world.entities.EntityTypes;
-import com.dayofpi.super_block_world.items.ItemTypes;
+import com.dayofpi.super_block_world.block.BlockTypes;
+import com.dayofpi.super_block_world.entity.EntityTypes;
+import com.dayofpi.super_block_world.item.ItemTypes;
 import com.dayofpi.super_block_world.misc.SpawnPacket;
 import com.google.common.collect.Lists;
 import net.minecraft.block.Block;
