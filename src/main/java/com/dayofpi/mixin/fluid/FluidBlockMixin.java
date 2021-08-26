@@ -40,7 +40,7 @@ public class FluidBlockMixin extends Block {
                     this.playExtinguishSound(world, pos);
                     info.setReturnValue(false);
                 } else if (world.getFluidState(blockPos).isIn(TagList.POISON)) {
-                    Block block = world.getFluidState(pos).isStill() ? BlockList.VANILLATE : BlockList.TOPPED_VANILLATE;
+                    Block block = BlockList.VANILLATE;
                     world.setBlockState(pos, block.getDefaultState());
                     this.playExtinguishSound(world, pos);
                     info.setReturnValue(false);

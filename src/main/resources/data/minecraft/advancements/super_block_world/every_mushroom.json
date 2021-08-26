@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "minecraft:super_block_world/root",
+  "parent": "minecraft:super_block_world/enter_kingdom",
   "criteria": {
     "red_shroom": {
       "trigger": "minecraft:inventory_changed",

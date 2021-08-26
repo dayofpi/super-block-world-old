@@ -38,7 +38,7 @@ public class ModFluidBlock extends FluidBlock {
 
     private boolean receiveNeighborFluids(World world, BlockPos pos) {
         if (this.fluid.isIn(TagList.POISON)) {
-            for (Direction direction : field_34006) {
+            for (Direction ignored : field_34006) {
                 BlockPos blockPos = pos.add(1, 1, 1);
                 if (world.getFluidState(blockPos).isIn(FluidTags.WATER) && !world.getFluidState(blockPos).isIn(TagList.POISON)) {
                     Block block = Blocks.AIR;
@@ -48,7 +48,7 @@ public class ModFluidBlock extends FluidBlock {
                 }
 
                 if (world.getFluidState(blockPos).isIn(FluidTags.LAVA)) {
-                    Block block = !world.getFluidState(pos).isStill() ? BlockList.VANILLATE_CRUMBLE : BlockList.TOPPED_VANILLATE;
+                    Block block = BlockList.VANILLATE_CRUMBLE;
                     world.setBlockState(pos, block.getDefaultState());
                     this.playExtinguishEvent(world, pos);
                     return false;

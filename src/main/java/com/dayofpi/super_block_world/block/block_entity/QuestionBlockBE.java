@@ -20,12 +20,18 @@ import java.util.Random;
 public class QuestionBlockBE extends BlockEntity implements ImplementedInventory {
     List<Item> defaultItems = Arrays.asList(
             ItemList.SUPER_MUSHROOM,
+            ItemList.SUPER_MUSHROOM,
+            ItemList.SUPER_MUSHROOM,
+            Items.WOODEN_AXE,
             Items.WOODEN_AXE);
     List<Item> rareItems = Arrays.asList(
             ItemList.ONE_UP,
+            ItemList.ONE_UP,
+            ItemList.GOLDEN_MUSHROOM,
+            ItemList.GOLDEN_MUSHROOM,
             ItemList.POISON_MUSHROOM);
     Random random = new Random();
-    int index = random.nextInt(2);
+    int index = random.nextInt(5);
     Item prizes = random.nextInt(15) == 0 ? rareItems.get(index) : defaultItems.get(index);
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, new ItemStack(prizes));
 

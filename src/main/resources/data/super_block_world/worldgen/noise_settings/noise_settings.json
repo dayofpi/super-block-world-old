@@ -46,7 +46,7 @@
   },
   "structures": {
     "structures": {
-      "minecraft:mineshaft": {
+      "super_block_world:mineshaft": {
         "spacing": 1,
         "separation": 0,
         "salt": 0

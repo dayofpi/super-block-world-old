@@ -1,7 +1,7 @@
 {
   "surface_builder": "super_block_world:pastures",
-  "depth": 0.125,
-  "scale": 0.02,
+  "depth": 0,
+  "scale": 0.01,
   "temperature": 0.9,
   "downfall": 0.4,
   "precipitation": "rain",
@@ -12,8 +12,8 @@
     "fog_color": 12891596,
     "water_color": 5295837,
     "water_fog_color": 5295837,
-    "grass_color": 10076701,
-    "foliage_color": 6788371,
+    "grass_color": 11651915,
+    "foliage_color": 9020218,
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000,
@@ -22,7 +22,7 @@
     }
   },
   "starts": [
-    "minecraft:mineshaft"
+    "super_block_world:amanita_mineshaft"
   ],
   "spawners": {
     "monster": [
@@ -85,14 +85,12 @@
     [],
     [],
     [
-      "super_block_world:blocks/single",
-      "super_block_world:blocks/toadstone_bricks",
-      "super_block_world:blocks/gloomstone_bricks",
+      "super_block_world:blocks/single_blocks",
+      "super_block_world:blocks/surface_blocks",
+      "super_block_world:blocks/cave_blocks",
       "super_block_world:vanillate_topping"
     ],
     [
-      "super_block_world:blocks/items",
-      "super_block_world:blocks/coins",
       "super_block_world:toppings_coal",
       "super_block_world:toppings_iron",
       "super_block_world:toppings_gold",
@@ -104,26 +102,24 @@
       "minecraft:prototype_underwater_magma"
     ],
     [
+      "minecraft:patch_grass_plain",
+
       "super_block_world:cave_ceiling",
       "super_block_world:cave_floor",
       "super_block_world:cave_lanterns",
-      "super_block_world:patch_sugar_cane",
-      "super_block_world:patch_pumpkin",
-      "super_block_world:patch_stump",
-      "super_block_world:patch_stone",
+      "super_block_world:spring_water",
+      "super_block_world:spring_poison",
       "super_block_world:patch_vanillate",
       "super_block_world:patch_toadstone",
       "super_block_world:patch_gloomstone",
-      "super_block_world:plants_pastures",
-      "super_block_world:mushrooms_main",
-      "super_block_world:spring_water",
-      "super_block_world:spring_poison",
-      "minecraft:classic_vines_cave_feature",
+
       "super_block_world:trees_main",
-      "minecraft:patch_grass_plain"
-    ],
-    [
-      "minecraft:freeze_top_layer"
+      "super_block_world:patch_bushes_extra",
+      "super_block_world:patch_horsetail_pastures",
+      "super_block_world:patch_sugar_cane",
+      "super_block_world:mushrooms_main",
+      "super_block_world:patch_pumpkin",
+      "super_block_world:patch_stump"
     ]
   ]
 }

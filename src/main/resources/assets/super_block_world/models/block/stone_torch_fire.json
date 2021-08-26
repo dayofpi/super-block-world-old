@@ -9,6 +9,7 @@
 			"name": "fire1",
 			"from": [2, 13, 3],
 			"to": [14, 23, 3],
+			"shade": false,
 			"faces": {
 				"north": {"uv": [2, 2, 14, 14], "texture": "#6"},
 				"east": {"uv": [2, 2, 14, 14], "texture": "#6"},
@@ -22,6 +23,7 @@
 			"name": "fire2",
 			"from": [2, 13, 13],
 			"to": [14, 23, 13],
+			"shade": false,
 			"faces": {
 				"north": {"uv": [2, 2, 14, 14], "texture": "#6"},
 				"east": {"uv": [2, 2, 14, 14], "texture": "#6"},

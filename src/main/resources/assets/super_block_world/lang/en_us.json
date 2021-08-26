@@ -8,6 +8,8 @@
 
   "advancements.sbw.root.title": "Super Block World",
   "advancements.sbw.root.description": "Let's-a go!",
+  "advancements.sbw.enter_kingdom.title": "1-1",
+  "advancements.sbw.enter_kingdom.description": "Step into the mushroom kingdom",
   "advancements.sbw.buzzy_shell.title": "Work Safety",
   "advancements.sbw.buzzy_shell.description": "Wear a buzzy shell to protect against any falling things",
   "advancements.sbw.poison_bucket.title": "Grape Flavored",
@@ -20,6 +22,8 @@
   "block.item_in": "Item in",
   "block.item_out": "Item out",
   "block.coin": "Coin releases",
+  "block.trampoline": "Spring jump",
+  "block.powered_trampoline": "Powered spring jump",
 
   "entity.buzzy_beetle.hurt": "Buzzy Beetle hurts",
   "entity.buzzy_beetle.death": "Buzzy Beetle dies",
@@ -37,6 +41,8 @@
   "item.super_block_world.bronze_ingot": "Bronze Ingot",
   "item.super_block_world.buzzy_shell": "Buzzy Shell",
   "item.super_block_world.buzzy_shell_piece": "Buzzy Shell Piece",
+  "item.super_block_world.cloud_puff": "Cloud Puff",
+  "item.super_block_world.spike": "Spike",
   "item.super_block_world.green_mushroom_on_a_stick": "Green Mushroom on a Stick",
   "item.super_block_world.poison_bucket": "Poison Bucket",
   "item.super_block_world.power_star": "Power Star",
@@ -59,6 +65,7 @@
   "block.super_block_world.toadstool_soil": "Toadstool Soil",
   "block.super_block_world.toadstool_farmland": "Toadstool Farmland",
   "block.super_block_world.toadstool_path": "Toadstool Path",
+  "block.super_block_world.cloud_block": "Cloud Block",
   "block.super_block_world.vanillate": "Vanillate",
   "block.super_block_world.vanillate_bricks": "Vanillate Bricks",
   "block.super_block_world.vanillate_crumble": "Vanillate Crumble",
@@ -80,6 +87,10 @@
   "block.super_block_world.toadstone_bricks": "Toadstone Bricks",
   "block.super_block_world.gloomstone": "Gloomstone",
   "block.super_block_world.gloomstone_bricks": "Gloomstone Bricks",
+  "block.super_block_world.hardstone": "Hardstone",
+  "block.super_block_world.polished_hardstone": "Polished Hardstone",
+  "block.super_block_world.hardstone_bricks": "Hardstone Bricks",
+  "block.super_block_world.cracked_hardstone_bricks": "Cracked Hardstone Bricks",
   "block.super_block_world.golden_bricks": "Golden Bricks",
   "block.super_block_world.crystal_bricks": "Crystal Bricks",
   "block.super_block_world.toadstone_slab": "Toadstone Slab",
@@ -98,8 +109,10 @@
   "block.super_block_world.amanita_sign": "Amanita Sign",
   "block.super_block_world.amanita_leaves": "Amanita Leaves",
   "block.super_block_world.fruiting_amanita_leaves": "Fruiting Amanita Leaves",
+  "block.super_block_world.amanita_carpet": "Amanita Carpet",
   "block.super_block_world.amanita_sapling": "Amanita Sapling",
   "block.super_block_world.horsetail": "Horsetail",
+  "block.super_block_world.bush": "Bush",
   "block.super_block_world.yellow_flowerbed": "Yellow Flowerbed",
   "block.super_block_world.mushroom_stem": "Mushroom Stem",
   "block.super_block_world.brown_mushroom_cap": "Brown Mushroom Cap",
@@ -113,8 +126,6 @@
   "block.super_block_world.green_mushroom": "Green Mushroom",
   "block.super_block_world.pink_mushroom": "Pink Mushroom",
   "block.super_block_world.purple_mushroom": "Purple Mushroom",
-  "block.super_block_world.orange_mushroom": "Orange Mushroom",
-  "block.super_block_world.hardstone_bricks": "Hardstone Bricks",
-  "block.super_block_world.cracked_hardstone_bricks": "Cracked Hardstone Bricks"
+  "block.super_block_world.orange_mushroom": "Orange Mushroom"
 
 }

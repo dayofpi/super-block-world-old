@@ -1,12 +1,4 @@
 {
-  "ambient.loop": {
-    "sounds": [
-      {
-        "name": "super_block_world:ambient/loop",
-        "stream": true
-      }
-    ]
-  },
   "block.item_in": {
     "subtitle": "block.item_in",
     "sounds": [
@@ -30,6 +22,24 @@
     "sounds": [
       {
         "name": "super_block_world:random/coin",
+        "stream": true
+      }
+    ]
+  },
+  "block.trampoline": {
+    "subtitle": "block.trampoline",
+    "sounds": [
+      {
+        "name": "super_block_world:random/trampoline",
+        "stream": true
+      }
+    ]
+  },
+  "block.powered_trampoline": {
+    "subtitle": "block.powered_trampoline",
+    "sounds": [
+      {
+        "name": "super_block_world:random/trampoline_powered",
         "stream": true
       }
     ]

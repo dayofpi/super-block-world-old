@@ -1,5 +1,6 @@
 package com.dayofpi.mixin;
 
+import com.dayofpi.super_block_world.block.registry.BlockList;
 import com.dayofpi.super_block_world.entity.types.AbstractBuzzy;
 import com.dayofpi.super_block_world.item.registry.ItemList;
 import com.dayofpi.super_block_world.misc.SoundList;
@@ -11,11 +12,14 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.ProjectileDamageSource;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Invoker;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
@@ -26,6 +30,16 @@ public abstract class MixinLivingEntity extends Entity {
 
     @Invoker("getEquippedStack")
     public abstract ItemStack getEquippedStack(EquipmentSlot slot);
+
+    @Inject(at = @At("HEAD"), method = "jump", cancellable = true)
+    protected void jump(CallbackInfo info) {
+        Vec3d vec3d = this.getVelocity();
+        BlockPos blockPos = this.getBlockPos();
+        if (world.getBlockState(blockPos.down()).isOf(BlockList.TRAMPOLINE)) {
+            this.setVelocity(vec3d.x, 1.3, vec3d.z);
+            info.cancel();
+        }
+    }
 
     @Inject(at = @At("HEAD"), method = "damage(Lnet/minecraft/entity/damage/DamageSource;F)Z", cancellable = true)
     private void damage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> info) {

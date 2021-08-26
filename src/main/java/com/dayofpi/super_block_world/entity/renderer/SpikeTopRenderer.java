@@ -2,7 +2,7 @@ package com.dayofpi.super_block_world.entity.renderer;
 
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.entity.registry.ModelLayers;
-import com.dayofpi.super_block_world.entity.model.BuzzyBeetleModel;
+import com.dayofpi.super_block_world.entity.model.AbstractBuzzyModel;
 import com.dayofpi.super_block_world.entity.types.SpikeTopEntity;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
@@ -10,11 +10,11 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3f;
 
-public class SpikeTopRenderer<T extends SpikeTopEntity> extends MobEntityRenderer<T, BuzzyBeetleModel<T>> {
+public class SpikeTopRenderer<T extends SpikeTopEntity> extends MobEntityRenderer<T, AbstractBuzzyModel<T>> {
     private static final Identifier TEXTURE = new Identifier(Main.MOD_ID, "textures/entity/buzzy_beetle/spike_top.png");
 
     public SpikeTopRenderer(EntityRendererFactory.Context context) {
-        super(context, new BuzzyBeetleModel<>(context.getPart(ModelLayers.BUZZY_BEETLE)), 0.5F);
+        super(context, new AbstractBuzzyModel<>(context.getPart(ModelLayers.BUZZY_BEETLE)), 0.5F);
         this.addFeature(new SpikeTopEyes<>(this));
     }
 

@@ -40,7 +40,7 @@ public class QuestionBlock extends ReactiveBlock implements BlockEntityProvider 
             if (!blockEntity.getStack(0).isEmpty()) {
                 Block.dropStack(world, pos, blockEntity.getStack(0));
                 blockEntity.removeStack(0);
-                world.setBlockState(blockPos, BlockList.EMPTY_BLOCK.getDefaultState(), 2);
+                world.setBlockState(blockPos, pushEntitiesUpBeforeBlockChange(state, BlockList.EMPTY_BLOCK.getDefaultState(), world, blockPos));
                 world.playSound(null, blockPos, SoundList.ITEM_OUT, SoundCategory.NEUTRAL, 2.0F, 1.0F);
                 ParticleUtil.spawnParticle(world, blockPos, ParticleTypes.WAX_OFF, UniformIntProvider.create(2, 3));
             }

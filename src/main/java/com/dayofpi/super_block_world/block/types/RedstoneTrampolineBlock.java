@@ -72,7 +72,7 @@ public class RedstoneTrampolineBlock extends Block {
         if (entity.bypassesLandingEffects()) {
             super.onEntityLand(world, entity);
         } else {
-            this.bounce(world, entity);
+            this.bounce(entity);
         }
 
     }
@@ -81,10 +81,15 @@ public class RedstoneTrampolineBlock extends Block {
         builder.add(POWERED);
     }
 
-    protected void bounce(BlockView world, Entity entity) {
+    protected void bounce(Entity entity) {
         Vec3d vec3d = entity.getVelocity();
-        if (vec3d.y < 0.0D && world.getBlockState(entity.getLandingPos()).get(POWERED)) {
-            entity.setVelocity(vec3d.x, 0.9, vec3d.z);
+        World world = entity.getEntityWorld();
+        BlockPos blockPos = entity.getLandingPos();
+        double jumpPower = world.getReceivedRedstonePower(blockPos);
+        if (world.getBlockState(blockPos).get(POWERED)) {
+            if (jumpPower < 5) {
+                entity.setVelocity(vec3d.x, jumpPower / 5, vec3d.z);
+            } else entity.setVelocity(vec3d.x, jumpPower / 10, vec3d.z);
         }
     }
 }

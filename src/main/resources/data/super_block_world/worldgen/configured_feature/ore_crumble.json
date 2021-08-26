@@ -34,7 +34,7 @@
             "feature": {
               "type": "minecraft:ore",
               "config": {
-                "size": 40,
+                "size": 46,
                 "discard_chance_on_air_exposure": 0,
                 "targets": [
                   {

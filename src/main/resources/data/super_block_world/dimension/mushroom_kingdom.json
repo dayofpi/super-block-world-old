@@ -37,7 +37,17 @@
       },
       "biomes": [
         {
-          "biome": "super_block_world:mushroom_heights",
+          "biome": "super_block_world:mushroom_falls",
+          "parameters": {
+            "altitude": 0.3,
+            "temperature": -0.2,
+            "humidity": 0.2,
+            "weirdness": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "super_block_world:mushroom_gorge",
           "parameters": {
             "altitude": 0.2,
             "temperature": -0.2,
@@ -83,7 +93,7 @@
             "temperature": 0.1,
             "humidity": 0.1,
             "weirdness": 0,
-            "offset": 0.2
+            "offset": 0.325
           }
         }
       ]

@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "super_block_world/root",
+  "parent": "super_block_world/enter_kingdom",
   "criteria": {
     "poison_bucket": {
       "trigger": "minecraft:inventory_changed",

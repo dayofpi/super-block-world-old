@@ -2,7 +2,7 @@ package com.dayofpi.mixin.important;
 
 import com.dayofpi.mixin.InterfaceModelLoader;
 import com.dayofpi.super_block_world.entity.registry.ModelLayers;
-import com.dayofpi.super_block_world.entity.model.BuzzyBeetleModel;
+import com.dayofpi.super_block_world.entity.model.AbstractBuzzyModel;
 import com.dayofpi.super_block_world.entity.model.ModBoatModel;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.client.render.entity.model.EntityModelLoader;
@@ -21,8 +21,9 @@ public abstract class MixinModelLoader {
         ((InterfaceModelLoader) this).setModelParts(new ImmutableMap.Builder<>()
                 .putAll(EntityModels.getModels())
                 .put(ModelLayers.MOD_BOAT, ModBoatModel.getTexturedModelData())
-                .put(ModelLayers.BUZZY_BEETLE, BuzzyBeetleModel.getTexturedModelData())
-                .put(ModelLayers.BUZZY_BEETLE_SADDLE, BuzzyBeetleModel.getTexturedModelData())
+                .put(ModelLayers.SHELL, AbstractBuzzyModel.getTexturedModelData())
+                .put(ModelLayers.BUZZY_BEETLE, AbstractBuzzyModel.getTexturedModelData())
+                .put(ModelLayers.BUZZY_BEETLE_SADDLE, AbstractBuzzyModel.getTexturedModelData())
                 .build());
     }
 }

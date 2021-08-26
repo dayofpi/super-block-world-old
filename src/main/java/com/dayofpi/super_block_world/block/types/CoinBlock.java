@@ -47,6 +47,6 @@ public class CoinBlock extends ReactiveBlock {
         ParticleUtil.spawnParticle(world, blockPos, ParticleTypes.WAX_OFF, UniformIntProvider.create(1, 2));
         if (state.get(COIN_COUNT) > 1) {
             world.setBlockState(blockPos, state.with(COIN_COUNT, i - 1));
-        } else world.setBlockState(blockPos, BlockList.EMPTY_BLOCK.getDefaultState(), 2);
+        } else world.setBlockState(blockPos, pushEntitiesUpBeforeBlockChange(state, BlockList.EMPTY_BLOCK.getDefaultState(), world, blockPos));
     }
 }

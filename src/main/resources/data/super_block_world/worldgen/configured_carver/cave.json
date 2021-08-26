@@ -57,8 +57,8 @@
     "vertical_radius_multiplier": {
       "type": "minecraft:uniform",
       "value": {
-        "min_inclusive": 0.8,
-        "max_exclusive": 1.5
+        "min_inclusive": 1.8,
+        "max_exclusive": 2.5
       }
     },
     "floor_level": {

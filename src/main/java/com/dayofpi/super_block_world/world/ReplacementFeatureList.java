@@ -3,12 +3,15 @@ package com.dayofpi.super_block_world.world;
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.block.registry.BlockList;
 import com.dayofpi.super_block_world.block.types.MushroomBlock;
-import com.dayofpi.super_block_world.world.feature.types.CustomLakeFeature;
+import com.dayofpi.super_block_world.world.feature.types.*;
 import com.google.common.collect.ImmutableList;
+import net.fabricmc.fabric.api.structure.v1.FabricStructureBuilder;
 import net.minecraft.block.BlockState;
+import net.minecraft.structure.StructurePieceType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.gen.GenerationStep;
@@ -17,7 +20,16 @@ import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 
 public class ReplacementFeatureList {
+    public  static final StructurePieceType MINESHAFT_CORRIDOR = CustomMineshaftGenerator.MineshaftCorridor::new;
+    public  static final StructurePieceType MINESHAFT_CROSSING = CustomMineshaftGenerator.MineshaftCrossing::new;
+    public  static final StructurePieceType MINESHAFT_ROOM = CustomMineshaftGenerator.MineshaftRoom::new;
+    public  static final StructurePieceType MINESHAFT_STAIRS = CustomMineshaftGenerator.MineshaftStairs::new;
+
+    public static final StructureFeature<CustomMineshaftFeatureConfig> MINESHAFT = new CustomMineshaftFeature(CustomMineshaftFeatureConfig.CODEC);
+    public static final ConfiguredStructureFeature<?,?> AMANITA_MINESHAFT = MINESHAFT.configure(new CustomMineshaftFeatureConfig(0.004F, CustomMineshaftFeature.Type.NORMAL));
+
     public static final Feature<SingleStateFeatureConfig> LAKE = new CustomLakeFeature(SingleStateFeatureConfig.CODEC);
+    public static final Feature<RandomPatchFeatureConfig> RANDOM_PATCH = new SuperRandomPatchFeature(RandomPatchFeatureConfig.CODEC);
 
     public static final ConfiguredFeature<?, ?> HUGE_BROWN_MUSHROOM = Feature.HUGE_BROWN_MUSHROOM.configure(new HugeMushroomFeatureConfig(new SimpleBlockStateProvider(States.BROWN_MUSHROOM_CAP), new SimpleBlockStateProvider(States.MUSHROOM_STEM), 3));
     public static final ConfiguredFeature<?, ?> HUGE_RED_MUSHROOM = Feature.HUGE_RED_MUSHROOM.configure(new HugeMushroomFeatureConfig(new SimpleBlockStateProvider(States.RED_MUSHROOM_CAP), new SimpleBlockStateProvider(States.MUSHROOM_STEM), 2));
@@ -32,7 +44,20 @@ public class ReplacementFeatureList {
     }
 
     public static void replaceFeatures() {
+        Registry.register(Registry.STRUCTURE_PIECE, new Identifier(Main.MOD_ID, "ms_corridor"), MINESHAFT_CORRIDOR);
+        Registry.register(Registry.STRUCTURE_PIECE, new Identifier(Main.MOD_ID, "ms_crossing"), MINESHAFT_CROSSING);
+        Registry.register(Registry.STRUCTURE_PIECE, new Identifier(Main.MOD_ID, "ms_room"), MINESHAFT_ROOM);
+        Registry.register(Registry.STRUCTURE_PIECE, new Identifier(Main.MOD_ID, "ms_stairs"), MINESHAFT_STAIRS);
+        FabricStructureBuilder.create(new Identifier(Main.MOD_ID, "mineshaft"), MINESHAFT)
+                .step(GenerationStep.Feature.UNDERGROUND_STRUCTURES)
+                .defaultConfig(32, 8, 12345)
+                .adjustsSurface()
+                .register();
+        RegistryKey<ConfiguredStructureFeature<?, ?>> amanitaMineshaft = RegistryKey.of(Registry.CONFIGURED_STRUCTURE_FEATURE_KEY, new Identifier(Main.MOD_ID, "amanita_mineshaft"));
+        BuiltinRegistries.add(BuiltinRegistries.CONFIGURED_STRUCTURE_FEATURE, amanitaMineshaft.getValue(), AMANITA_MINESHAFT);
+       
         Registry.register(Registry.FEATURE, new Identifier(Main.MOD_ID, "lake"), LAKE);
+        Registry.register(Registry.FEATURE, new Identifier(Main.MOD_ID, "random_patch"), RANDOM_PATCH);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.MOD_ID, "huge_brown_mushroom"), HUGE_BROWN_MUSHROOM);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.MOD_ID, "huge_red_mushroom"), HUGE_RED_MUSHROOM);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.MOD_ID, "dark_forest_vegetation_brown"), DARK_FOREST_VEGETATION_BROWN);

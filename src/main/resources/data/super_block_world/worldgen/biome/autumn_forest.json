@@ -22,7 +22,7 @@
     }
   },
   "starts": [
-    "minecraft:mineshaft"
+    "super_block_world:amanita_mineshaft"
   ],
   "spawners": {
     "monster": [
@@ -85,14 +85,12 @@
     [],
     [],
     [
-      "super_block_world:blocks/single",
-      "super_block_world:blocks/toadstone_bricks",
-      "super_block_world:blocks/gloomstone_bricks",
+      "super_block_world:blocks/single_blocks",
+      "super_block_world:blocks/surface_blocks",
+      "super_block_world:blocks/cave_blocks",
       "super_block_world:vanillate_topping"
     ],
     [
-      "super_block_world:blocks/items",
-      "super_block_world:blocks/coins",
       "super_block_world:toppings_coal",
       "super_block_world:toppings_iron",
       "super_block_world:toppings_gold",
@@ -109,8 +107,8 @@
       "super_block_world:cave_lanterns",
       "super_block_world:patch_sugar_cane",
       "super_block_world:patch_pumpkin",
+      "super_block_world:patch_bushes",
       "super_block_world:patch_stump",
-      "super_block_world:patch_stone",
       "super_block_world:patch_vanillate",
       "super_block_world:patch_toadstone",
       "super_block_world:patch_gloomstone",
@@ -123,6 +121,7 @@
       "minecraft:patch_grass_plain"
     ],
     [
+      "super_block_world:patch_amanita_carpets",
       "minecraft:freeze_top_layer"
     ]
   ]

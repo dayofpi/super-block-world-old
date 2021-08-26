@@ -9,14 +9,12 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 
 @Mixin(BlockPlacerType.class)
 public class BlockPlacerTypeMixin {
-    public static final BlockPlacerType<HorsetailBlockPlacer> HORSETAIL_PLACER;
-
     @Invoker("register")
     private static <P extends BlockPlacer> BlockPlacerType<P> register(String id, Codec<P> codec) {
         throw new AssertionError();
     }
 
     static {
-        HORSETAIL_PLACER = register("horsetail_placer", HorsetailBlockPlacer.CODEC);
+        HorsetailBlockPlacer.HORSETAIL_PLACER = register("horsetail_placer", HorsetailBlockPlacer.CODEC);
     }
 }

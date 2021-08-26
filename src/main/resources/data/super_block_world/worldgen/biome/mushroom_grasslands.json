@@ -12,8 +12,8 @@
     "fog_color": 12891596,
     "water_color": 44799,
     "water_fog_color": 1982868,
-    "grass_color": 6870302,
-    "foliage_color": 4168461,
+    "grass_color": 9561651,
+    "foliage_color": 5815828,
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000,
@@ -22,7 +22,7 @@
     }
   },
   "starts": [
-    "minecraft:mineshaft"
+    "super_block_world:amanita_mineshaft"
   ],
   "spawners": {
     "monster": [
@@ -85,14 +85,12 @@
     [],
     [],
     [
-      "super_block_world:blocks/single",
-      "super_block_world:blocks/toadstone_bricks",
-      "super_block_world:blocks/gloomstone_bricks",
+      "super_block_world:blocks/single_blocks",
+      "super_block_world:blocks/surface_blocks",
+      "super_block_world:blocks/cave_blocks",
       "super_block_world:vanillate_topping"
     ],
     [
-      "super_block_world:blocks/items",
-      "super_block_world:blocks/coins",
       "super_block_world:toppings_coal",
       "super_block_world:toppings_iron",
       "super_block_world:toppings_gold",
@@ -109,19 +107,18 @@
       "super_block_world:cave_lanterns",
       "super_block_world:patch_toadstone",
       "super_block_world:patch_gloomstone",
+      "super_block_world:patch_horsetail_grasslands",
       "super_block_world:patch_sugar_cane",
       "super_block_world:patch_pumpkin",
+      "super_block_world:patch_bushes_extra",
       "super_block_world:patch_stump",
-      "super_block_world:patch_stone",
       "super_block_world:patch_vanillate",
       "super_block_world:patch_toadstone",
       "super_block_world:patch_gloomstone",
-      "super_block_world:plants_main",
       "super_block_world:mushrooms_main",
       "super_block_world:spring_water",
       "super_block_world:spring_poison",
       "minecraft:patch_tall_grass_2",
-      "minecraft:classic_vines_cave_feature",
       "super_block_world:trees_main",
       "minecraft:patch_grass_plain"
     ],
