@@ -2,9 +2,11 @@
   "type": "minecraft:decorated",
   "config": {
     "decorator": {
-      "type": "minecraft:count",
+      "type": "minecraft:count_extra",
       "config": {
-        "count": 2
+        "count": 12,
+        "extra_count": 6,
+        "extra_chance": 0.5
       }
     },
     "feature": {
@@ -23,30 +25,25 @@
                 "height": {
                   "type": "minecraft:uniform",
                   "min_inclusive": {
-                    "above_bottom": 0
+                    "absolute": -40
                   },
                   "max_inclusive": {
-                    "below_top": 0
+                    "absolute": 60
                   }
                 }
               }
             },
             "feature": {
-              "type": "minecraft:spring_feature",
+              "type": "minecraft:decorated",
               "config": {
-                "state": {
-                  "Name": "super_block_world:poison",
-                  "Properties": {
-                    "falling": "true"
+                "decorator": {
+                  "type": "minecraft:cave_surface",
+                  "config": {
+                    "surface": "floor",
+                    "floor_to_ceiling_search_range": 12
                   }
                 },
-                "rock_count": 4,
-                "hole_count": 1,
-                "requires_block_below": true,
-                "valid_blocks": [
-                  "super_block_world:vanillate",
-                  "super_block_world:topped_vanillate"
-                ]
+                "feature": "super_block_world:beanstalk"
               }
             }
           }

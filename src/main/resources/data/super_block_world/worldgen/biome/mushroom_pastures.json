@@ -22,7 +22,6 @@
     }
   },
   "starts": [
-    "super_block_world:amanita_mineshaft"
   ],
   "spawners": {
     "monster": [
@@ -96,6 +95,7 @@
       "super_block_world:toppings_gold",
       "super_block_world:ore_bronze",
       "super_block_world:ore_crumble",
+      "super_block_world:ore_hardstone",
       "super_block_world:ore_soil"
     ],
     [
@@ -103,16 +103,15 @@
     ],
     [
       "minecraft:patch_grass_plain",
-
+      "super_block_world:huge_mushrooms_underground",
       "super_block_world:cave_ceiling",
       "super_block_world:cave_floor",
       "super_block_world:cave_lanterns",
       "super_block_world:spring_water",
-      "super_block_world:spring_poison",
+      "super_block_world:lake_poison",
       "super_block_world:patch_vanillate",
       "super_block_world:patch_toadstone",
       "super_block_world:patch_gloomstone",
-
       "super_block_world:trees_main",
       "super_block_world:patch_bushes_extra",
       "super_block_world:patch_horsetail_pastures",

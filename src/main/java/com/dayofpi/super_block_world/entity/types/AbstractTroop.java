@@ -25,7 +25,7 @@ public abstract class AbstractTroop extends AnimalEntity implements Monster {
 
     @Override
     public float getPathfindingFavor(BlockPos pos, WorldView world) {
-        return 0.0F;
+        return 0.5F - world.getBrightness(pos);
     }
 
     @Override
@@ -46,7 +46,7 @@ public abstract class AbstractTroop extends AnimalEntity implements Monster {
         return !this.isPersistent();
     }
 
-        @Override
+    @Override
     public boolean canSpawn(WorldAccess world, SpawnReason spawnReason) {
         return true;
     }

@@ -40,7 +40,7 @@ public class ShellItem<T extends AbstractShellEntity> extends ArmorItem {
         } else {
             BlockPos blockPos = hitResult.getBlockPos();
             EntityType<?> entityType = this.getEntityType(itemStack.getNbt());
-            if (entityType.spawnFromItemStack((ServerWorld) world, itemStack, user, blockPos, SpawnReason.SPAWN_EGG, false, false) == null) {
+            if (entityType.spawnFromItemStack((ServerWorld) world, itemStack, user, blockPos, SpawnReason.SPAWN_EGG, true, false) == null) {
                 return TypedActionResult.pass(itemStack);
             } else {
                 if (!user.getAbilities().creativeMode) {

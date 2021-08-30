@@ -60,7 +60,8 @@ public class AbstractBuzzyModel<T extends Entity> extends SinglePartEntityModel<
     public void setAngles(Entity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
         this.SPIKE_1.yaw = 0.7854F;
         this.SPIKE_2.yaw = -16.8333F;
-        this.SHELL.roll = 0.1F * MathHelper.sin(limbAngle * 1.5F) * limbDistance;
+        this.BODY.roll = 0.1F * MathHelper.sin(limbAngle) * limbDistance;
+        this.SHELL.roll = 0.1F * MathHelper.sin(limbAngle) * limbDistance;
         this.LEFT_FRONT_LEG.pitch = MathHelper.cos(limbAngle * 0.6662F) * 1.4F * limbDistance;
         this.RIGHT_FRONT_LEG.pitch = MathHelper.cos(limbAngle * 0.6662F + 3.1415927F) * 1.4F * limbDistance;
         this.LEFT_HIND_LEG.pitch = MathHelper.cos(limbAngle * 0.6662F + 3.1415927F) * 1.4F * limbDistance;

@@ -14,12 +14,13 @@ public class BuzzyShellEntity extends AbstractShellEntity {
         super(type, world);
     }
 
-    public Item asItem() {
-        return ItemList.BUZZY_SHELL;
-    }
-
     @Override
     protected void initDataTracker() {
+
+    }
+
+    public Item asItem() {
+        return ItemList.BUZZY_SHELL;
     }
 
     @Override

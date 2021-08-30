@@ -27,7 +27,7 @@ public abstract class ReactiveBlock extends Block {
 
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return Block.createCuboidShape(0.0D, 0.5D, 0.0D, 16.0D, 16.5D, 16.0D);
+        return Block.createCuboidShape(0.5D, 0.5D, 0.5D, 15.5D, 16D, 15.5D);
     }
 
     @Override
@@ -38,10 +38,11 @@ public abstract class ReactiveBlock extends Block {
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos blockPos, Entity entity) {
         boolean bool1 = entity.getY() < blockPos.getY();
-        boolean bool2 = entity instanceof AbstractShellEntity && entity.getY() == blockPos.getY();
+        boolean bool2 = entity instanceof AbstractShellEntity shellEntity && shellEntity.isSpinning() && entity.getBlockPos().getY() == blockPos.getY();
         if (bool1 || bool2) {
             this.activate(state, world, blockPos);
         }
+        super.onEntityCollision(state, world, blockPos, entity);
     }
 
     public void onProjectileHit(World world, BlockState state, BlockHitResult hit, ProjectileEntity projectile) {

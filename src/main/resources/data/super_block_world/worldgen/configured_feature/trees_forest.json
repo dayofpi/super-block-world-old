@@ -4,8 +4,8 @@
     "decorator": {
       "type": "minecraft:count_extra",
       "config": {
-        "count": 8,
-        "extra_count": 2,
+        "count": 10,
+        "extra_count": 4,
         "extra_chance": 0.5
       }
     },
@@ -42,6 +42,10 @@
           "type": "minecraft:random_selector",
           "config": {
             "features": [
+              {
+                "chance": 0.02,
+                "feature": "super_block_world:beanstalk"
+              },
               {
                 "chance": 0.3,
                 "feature": "super_block_world:trees/amanita_tall_fruits"

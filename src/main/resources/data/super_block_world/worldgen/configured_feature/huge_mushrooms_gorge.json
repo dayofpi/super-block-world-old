@@ -47,6 +47,10 @@
                 "feature": "super_block_world:trees/amanita_pine"
               },
               {
+                "chance": 0.3,
+                "feature": "super_block_world:beanstalk_tall"
+              },
+              {
                 "chance": 0.5,
                 "feature": "super_block_world:huge_red_mushroom_flat"
               },

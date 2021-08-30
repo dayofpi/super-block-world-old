@@ -4,7 +4,7 @@
     "decorator": {
       "type": "minecraft:count",
       "config": {
-        "count": 200
+        "count": 250
       }
     },
     "feature": {
@@ -26,7 +26,7 @@
                     "absolute": 60
                   },
                   "max_inclusive": {
-                    "below_top": 120
+                    "below_top": 200
                   }
                 }
               }

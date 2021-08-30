@@ -1,0 +1,50 @@
+{
+  "type": "minecraft:growing_plant",
+  "config": {
+    "direction": "up",
+    "allow_water": true,
+    "height_distribution": [
+      {
+        "weight": 1,
+        "data": {
+          "type": "minecraft:uniform",
+          "value": {
+            "min_inclusive": 1,
+            "max_inclusive": 25
+          }
+        }
+      }
+    ],
+    "body_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "super_block_world:beanstalk_plant"
+      }
+    },
+    "head_provider": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 5,
+          "data": {
+            "Name": "super_block_world:beanstalk",
+            "Properties": {
+              "age": "5"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "super_block_world:budding_beanstalk",
+            "Properties": {
+              "age": "0",
+              "count": "2",
+              "open": "false"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

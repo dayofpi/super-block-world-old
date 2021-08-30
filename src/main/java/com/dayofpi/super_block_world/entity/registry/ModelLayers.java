@@ -15,9 +15,10 @@ import java.util.stream.Stream;
 public class ModelLayers {
     private static final Set<EntityModelLayer> LAYERS = Sets.newHashSet();
     public static final EntityModelLayer MOD_BOAT = registerMain("boat");
-    public static final EntityModelLayer SHELL = registerMain("shell");
+    public static final EntityModelLayer BUZZY_SHELL = registerMain("buzzy_shell");
     public static final EntityModelLayer BUZZY_BEETLE = registerMain("buzzy_beetle");
     public static final EntityModelLayer BUZZY_BEETLE_SADDLE = registerMain("buzzy_beetle_saddle");
+    public static final EntityModelLayer NIPPER_PLANT = registerMain("nipper_plant");
 
 
     // Setup

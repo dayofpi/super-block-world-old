@@ -34,6 +34,7 @@
     "super_block_world:hardstone_bricks",
     "super_block_world:cracked_hardstone_bricks",
     "super_block_world:warp_frame",
-    "super_block_world:stone_torch"
+    "super_block_world:stone_torch",
+    "super_block_world:spike_trap"
   ]
 }

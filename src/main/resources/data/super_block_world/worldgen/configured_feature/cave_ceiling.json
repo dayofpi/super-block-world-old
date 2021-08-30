@@ -4,7 +4,7 @@
     "decorator": {
       "type": "minecraft:count_extra",
       "config": {
-        "count": 5,
+        "count": 9,
         "extra_count": 6,
         "extra_chance": 0.2
       }
@@ -89,6 +89,9 @@
                       },
                       {
                         "Name": "super_block_world:vanillate"
+                      },
+                      {
+                        "Name": "super_block_world:hardstone"
                       },
                       {
                         "Name": "super_block_world:vanillate_crumble"

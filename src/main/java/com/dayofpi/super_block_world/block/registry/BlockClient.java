@@ -29,10 +29,14 @@ public class BlockClient {
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.AMANITA_LEAVES, RenderLayer.getCutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.FRUITING_AMANITA_LEAVES, RenderLayer.getCutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.AMANITA_CARPET, RenderLayer.getCutoutMipped());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockList.SPIKE_TRAP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.STONE_TORCH, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.TRAMPOLINE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.HORSETAIL, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.BUSH, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockList.BEANSTALK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockList.BEANSTALK_PLANT, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockList.BUDDING_BEANSTALK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.YELLOW_FLOWERBED, RenderLayer.getCutout());BlockRenderLayerMap.INSTANCE.putBlock(BlockList.YELLOW_MUSHROOM, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.GREEN_MUSHROOM, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.PINK_MUSHROOM, RenderLayer.getCutout());

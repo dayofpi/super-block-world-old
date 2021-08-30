@@ -25,7 +25,7 @@
                 "outer": {
                   "type": "minecraft:water_depth_threshold",
                   "config": {
-                    "max_water_depth": 0
+                    "max_water_depth": 8
                   }
                 },
                 "inner": {
@@ -47,19 +47,11 @@
                 "feature": "super_block_world:amanita"
               },
               {
-                "chance": 0.3,
-                "feature": "super_block_world:huge_orange_mushroom"
-              },
-              {
-                "chance": 0.2,
-                "feature": "super_block_world:huge_purple_mushroom"
-              },
-              {
                 "chance": 0.1,
-                "feature": "super_block_world:huge_red_mushroom_flat"
+                "feature": "super_block_world:huge_yellow_mushroom"
               }
             ],
-            "default": "super_block_world:huge_green_mushroom_wide"
+            "default":  "super_block_world:huge_orange_mushroom"
           }
         }
       }

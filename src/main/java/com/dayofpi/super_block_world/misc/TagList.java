@@ -5,18 +5,25 @@ import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.fluid.Fluid;
+import net.minecraft.item.Item;
 import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
 
 public class TagList {
+    public static Tag<Item> SHELLMETS;
     public static Tag<Block> ALWAYS_CARVABLE;
     public static Tag<EntityType<?>> POISON_IMMUNE;
     public static Tag<Fluid> POISON;
 
     public static void registerTags() {
+        SHELLMETS = addItemTag("shellmets");
         ALWAYS_CARVABLE = addBlockTag("always_carvable");
         POISON_IMMUNE = addEntityTag("poison_immune");
         POISON = addFluidTag("poison");
+    }
+
+    private static Tag<Item> addItemTag(String id) {
+        return TagRegistry.item(new Identifier(Main.MOD_ID, id));
     }
 
     private static Tag<Block> addBlockTag(String id) {

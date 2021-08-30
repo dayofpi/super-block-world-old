@@ -1,7 +1,7 @@
 {
-  "surface_builder": "super_block_world:toadstool_grass",
+  "surface_builder": "super_block_world:gorge",
   "depth": 0.125,
-  "scale": 0.7,
+  "scale": 0.8,
   "temperature": 0.8,
   "downfall": 0.5,
   "precipitation": "rain",
@@ -12,7 +12,7 @@
     "fog_color": 12637889,
     "water_color": 5295837,
     "water_fog_color": 5295837,
-    "grass_color": 16754436,
+    "grass_color": 16743194,
     "foliage_color": 16756250,
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
@@ -21,9 +21,7 @@
       "offset": 2
     }
   },
-  "starts": [
-    "super_block_world:amanita_mineshaft"
-  ],
+  "starts": [],
   "spawners": {
     "monster": [
       {
@@ -92,12 +90,14 @@
       "super_block_world:toppings_gold",
       "super_block_world:ore_bronze",
       "super_block_world:ore_crumble",
+      "super_block_world:ore_hardstone",
       "super_block_world:ore_soil"
     ],
     [
       "minecraft:prototype_underwater_magma"
     ],
     [
+      "super_block_world:huge_mushrooms_underground",
       "super_block_world:cave_ceiling",
       "super_block_world:cave_floor",
       "super_block_world:cave_lanterns",
@@ -111,7 +111,7 @@
       "super_block_world:mushrooms_main",
       "super_block_world:spring_falls",
       "super_block_world:spring_water",
-      "super_block_world:spring_poison",
+      "super_block_world:lake_poison",
       "minecraft:patch_tall_grass_2",
       "minecraft:patch_grass_plain"
     ],

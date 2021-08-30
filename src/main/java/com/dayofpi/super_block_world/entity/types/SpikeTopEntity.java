@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.entity.types;
 
-import com.dayofpi.super_block_world.Main;
+import com.dayofpi.super_block_world.misc.DamageSources;
 import com.dayofpi.super_block_world.misc.SoundList;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -69,11 +69,11 @@ public class SpikeTopEntity extends AbstractBuzzy {
     public void pushAwayFrom(Entity entity) {
         super.pushAwayFrom(entity);
         if (entity.getY() > this.getY() && entity.fallDistance > 0) {
-            boolean bool = entity.damage(Main.spikyMob(this), entity.fallDistance);
+            boolean bool = entity.damage(DamageSources.spikyMob(this), entity.fallDistance);
             if (bool) {
                 this.playSound(SoundEvents.ENCHANT_THORNS_HIT, 1.0F, getSoundPitch());
             }
-            entity.damage(Main.spikyMob(this), entity.fallDistance);
+            entity.damage(DamageSources.spikyMob(this), entity.fallDistance);
         }
     }
 
@@ -83,7 +83,7 @@ public class SpikeTopEntity extends AbstractBuzzy {
             if (!this.world.isClient()) {
                 int i = this.computeFallDamage(fallDistance, damageMultiplier);
                 if (i > 0) {
-                    this.world.getOtherEntities(this, this.getBoundingBox().expand(3, 0, 3), EntityPredicates.EXCEPT_SPECTATOR).forEach((entity) -> entity.damage(Main.spikyMob(this), i * 2));
+                    this.world.getOtherEntities(this, this.getBoundingBox().expand(3, 0, 3), EntityPredicates.EXCEPT_SPECTATOR).forEach((entity) -> entity.damage(DamageSources.spikyMob(this), i * 2));
                     this.world.playSound(null, this.getBlockPos(), SoundList.BUZZY_BEETLE_LAND, SoundCategory.NEUTRAL, 3.0F, this.getSoundPitch());
                     ((ServerWorld) this.world).spawnParticles(ParticleTypes.EXPLOSION, this.getX(), this.getBodyY(0.5D), this.getZ(), 1, 0.0D, 0.0D, 0.0D, 0.0D);
                 }

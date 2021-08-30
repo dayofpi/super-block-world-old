@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.entity.renderer;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.entity.model.AbstractBuzzyModel;
+import com.dayofpi.super_block_world.entity.model.BuzzyShellModel;
 import com.dayofpi.super_block_world.entity.types.BuzzyShellEntity;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumer;
@@ -12,31 +12,33 @@ import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Vec3f;
 
-public class BuzzyShellRenderer extends EntityRenderer<BuzzyShellEntity> {
-    private static final Identifier TEXTURE = new Identifier(Main.MOD_ID, "textures/entity/buzzy_beetle/shell.png");
-    protected final EntityModel model;
+public class BuzzyShellRenderer<T extends BuzzyShellEntity> extends EntityRenderer<T> {
+    private static final Identifier TEXTURE = new Identifier(Main.MOD_ID, "textures/entity/buzzy_beetle/buzzy_shell.png");
+    protected final EntityModel<T> model;
 
-    public BuzzyShellRenderer(EntityRendererFactory.Context context, EntityModelLayer layer) {
-        super(context);
-        this.model = new AbstractBuzzyModel<>(context.getPart(layer));
-        ((AbstractBuzzyModel<?>) this.model).getSpike().forEach((spikeParts) -> spikeParts.visible = false);
-        ((AbstractBuzzyModel<?>) this.model).getLegs().forEach((legParts) -> legParts.visible = false);
+    public BuzzyShellRenderer(EntityRendererFactory.Context ctx, EntityModelLayer layer) {
+        super(ctx);
+        this.shadowRadius = 0.7F;
+        this.model = new BuzzyShellModel<>(ctx.getPart(layer));
     }
 
     @Override
-    public Identifier getTexture(BuzzyShellEntity entity) {
+    public void render(T entity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
+        matrixStack.push();
+        matrixStack.translate(0.0D, 1.0D, 0.0D);
+        matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0F - f));
+        matrixStack.scale(-0.8F, -0.8F, 0.8F);
+        VertexConsumer vertexConsumer = vertexConsumerProvider.getBuffer(model.getLayer(TEXTURE));
+        model.render(matrixStack, vertexConsumer, i, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, 1.0F);
+        model.setAngles(entity, g, 0.0F, -0.1F, 0.0F, 0.0F);
+        matrixStack.pop();
+        super.render(entity, f, g, matrixStack, vertexConsumerProvider, i);
+    }
+
+    @Override
+    public Identifier getTexture(T entity) {
         return TEXTURE;
-    }
-
-    @Override
-    public void render(BuzzyShellEntity entity, float f, float g, MatrixStack matrices, VertexConsumerProvider vertexConsumerProvider, int i) {
-        matrices.push();
-        matrices.scale(-1.0F, -1.0F, 1.0F);
-        matrices.translate(0.0D, -1.3F, 0.0D);
-        VertexConsumer vertexConsumer = vertexConsumerProvider.getBuffer(this.model.getLayer(this.getTexture(entity)));
-        this.model.render(matrices, vertexConsumer, i, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, 1.0F);
-        matrices.pop();
-        super.render(entity, f, g, matrices, vertexConsumerProvider, i);
     }
 }

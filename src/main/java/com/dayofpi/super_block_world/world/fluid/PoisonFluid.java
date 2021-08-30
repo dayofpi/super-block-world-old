@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world.world.fluid;
 
-import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.block.registry.BlockList;
 import com.dayofpi.super_block_world.item.registry.ItemList;
 import com.dayofpi.super_block_world.misc.TagList;
+import com.dayofpi.super_block_world.world.FluidList;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FluidBlock;
@@ -27,11 +27,11 @@ import java.util.Random;
 
 public abstract class PoisonFluid extends AbstractFluid {
     public Fluid getFlowing() {
-        return Main.FLOWING_POISON;
+        return FluidList.FLOWING_POISON;
     }
 
     public Fluid getStill() {
-        return Main.STILL_POISON;
+        return FluidList.STILL_POISON;
     }
 
     protected void flow(WorldAccess world, BlockPos pos, BlockState state, Direction direction, FluidState fluidState) {

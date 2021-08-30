@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.entity.types;
 
-import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.block.registry.BlockList;
+import com.dayofpi.super_block_world.misc.DamageSources;
 import com.dayofpi.super_block_world.misc.SoundList;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityData;
@@ -79,9 +79,9 @@ public abstract class AbstractBuzzy extends AbstractTroop {
     @Override
     public void initGoals() {
         this.goalSelector.add(8, new LookAroundGoal(this));
-        this.goalSelector.add(7, new WanderAroundFarGoal(this, 1.0D));
-        this.goalSelector.add(4, new MeleeAttackGoal(this, 1.0D, false));
         this.goalSelector.add(2, new AvoidSunlightGoal(this));
+        this.goalSelector.add(6, new WanderAroundFarGoal(this, 1.0D));
+        this.goalSelector.add(4, new MeleeAttackGoal(this, 1.0D, false));
         this.targetSelector.add(2, new RevengeGoal(this));
         this.targetSelector.add(1, new SwimGoal(this));
     }
@@ -108,7 +108,10 @@ public abstract class AbstractBuzzy extends AbstractTroop {
     }
 
     public boolean isOnCeiling(BlockPos pos) {
-        return world.getBlockState(pos).isSideSolidFullSquare(world, pos, Direction.DOWN) && !this.hasVehicle();
+        if (!this.isBaby()) {
+            return world.getBlockState(pos).isSideSolidFullSquare(world, pos, Direction.DOWN) && !this.hasVehicle();
+        }  else return world.getStatesInBox(this.getBoundingBox().offset(0.0D, 0.0D, 0.5D)).anyMatch(BlockState::isOpaque);
+
     }
 
     @Override
@@ -153,7 +156,7 @@ public abstract class AbstractBuzzy extends AbstractTroop {
             if (!this.world.isClient()) {
                 int i = this.computeFallDamage(fallDistance, damageMultiplier);
                 if (i > 0) {
-                    this.world.getOtherEntities(this, this.getBoundingBox().expand(3, 0, 3), EntityPredicates.EXCEPT_SPECTATOR).forEach((entity) -> entity.damage(Main.mobDrop(this), i + 1));
+                    this.world.getOtherEntities(this, this.getBoundingBox().expand(3, 0, 3), EntityPredicates.EXCEPT_SPECTATOR).forEach((entity) -> entity.damage(DamageSources.mobDrop(this), i + 1));
                     this.world.playSound(null, this.getBlockPos(), SoundList.BUZZY_BEETLE_LAND, SoundCategory.NEUTRAL, 3.0F, this.getSoundPitch());
                     ((ServerWorld) this.world).spawnParticles(ParticleTypes.EXPLOSION, this.getX(), this.getBodyY(0.5D), this.getZ(), 1, 0.0D, 0.0D, 0.0D, 0.0D);
                 }

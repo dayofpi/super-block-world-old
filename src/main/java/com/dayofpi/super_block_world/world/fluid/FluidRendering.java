@@ -1,6 +1,7 @@
 package com.dayofpi.super_block_world.world.fluid;
 
 import com.dayofpi.super_block_world.Main;
+import com.dayofpi.super_block_world.world.FluidList;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandler;
@@ -26,7 +27,7 @@ import java.util.function.Function;
 @Environment(EnvType.CLIENT)
 public class FluidRendering {
     public static void renderFluids() {
-        setupFluidRendering(Main.STILL_POISON, Main.FLOWING_POISON, new Identifier(Main.MOD_ID, "poison"), 0xFFFFFF);
+        setupFluidRendering(FluidList.STILL_POISON, FluidList.FLOWING_POISON, new Identifier(Main.MOD_ID, "poison"), 0xFFFFFF);
     }
 
     public static void setupFluidRendering(final Fluid still, final Fluid flowing, final Identifier textureFluidId, final int color) {
