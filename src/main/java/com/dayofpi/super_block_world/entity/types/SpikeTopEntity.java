@@ -73,7 +73,7 @@ public class SpikeTopEntity extends AbstractBuzzy {
             if (bool) {
                 this.playSound(SoundEvents.ENCHANT_THORNS_HIT, 1.0F, getSoundPitch());
             }
-            entity.damage(DamageSources.spikyMob(this), entity.fallDistance);
+            entity.damage(DamageSources.spikyMob(this), entity.fallDistance + 1);
         }
     }
 

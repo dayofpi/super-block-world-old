@@ -4,7 +4,7 @@ import com.dayofpi.super_block_world.entity.renderer.ModSignRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.FoliageColors;
@@ -19,11 +19,11 @@ public class BlockClient {
                 BlockList.TOADSTOOL_GRASS, BlockList.HORSETAIL);
         ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) ->
                         view != null && pos != null ? BiomeColors.getFoliageColor(view, pos) : FoliageColors.getColor(0.5D, 1.0D),
-                BlockList.AMANITA_LEAVES, BlockList.FRUITING_AMANITA_LEAVES, BlockList.AMANITA_CARPET);
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 7067428, BlockList.TOADSTOOL_GRASS);
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 7067428, BlockList.AMANITA_LEAVES, BlockList.FRUITING_AMANITA_LEAVES, BlockList.AMANITA_CARPET);
+                BlockList.AMANITA_LEAVES, BlockList.FRUITING_AMANITA_LEAVES, BlockList.AMANITA_CARPET, BlockList.BUSH);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 7067428, BlockList.TOADSTOOL_GRASS, BlockList.HORSETAIL);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 7067428, BlockList.AMANITA_LEAVES, BlockList.FRUITING_AMANITA_LEAVES, BlockList.AMANITA_CARPET, BlockList.BUSH);
 
-        BlockEntityRendererRegistry.INSTANCE.register(BlockEntityList.MOD_SIGN, ModSignRenderer::new);
+        BlockEntityRendererRegistry.register(BlockEntityList.MOD_SIGN, ModSignRenderer::new);
 
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.TOADSTOOL_GRASS, RenderLayer.getCutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.AMANITA_LEAVES, RenderLayer.getCutoutMipped());
@@ -44,6 +44,13 @@ public class BlockClient {
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.ORANGE_MUSHROOM, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.AMANITA_SAPLING, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.POTTED_AMANITA_SAPLING, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockList.POTTED_BEANSTALK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockList.POTTED_BUDDING_BEANSTALK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockList.POTTED_GREEN_MUSHROOM, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockList.POTTED_YELLOW_MUSHROOM, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockList.POTTED_PINK_MUSHROOM, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockList.POTTED_PURPLE_MUSHROOM, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockList.POTTED_ORANGE_MUSHROOM, RenderLayer.getCutout());
 
     }
 }

@@ -1,7 +1,7 @@
 {
   "surface_builder": "super_block_world:gorge",
   "depth": 0.125,
-  "scale": 0.8,
+  "scale": 1.0,
   "temperature": 0.8,
   "downfall": 0.5,
   "precipitation": "rain",
@@ -12,8 +12,8 @@
     "fog_color": 12637889,
     "water_color": 5295837,
     "water_fog_color": 5295837,
-    "grass_color": 16743194,
-    "foliage_color": 16756250,
+    "grass_color": 16687899,
+    "foliage_color": 16750863,
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000,
@@ -85,16 +85,19 @@
       "super_block_world:vanillate_topping"
     ],
     [
+      "super_block_world:disk_clay",
       "super_block_world:toppings_coal",
       "super_block_world:toppings_iron",
       "super_block_world:toppings_gold",
       "super_block_world:ore_bronze",
       "super_block_world:ore_crumble",
       "super_block_world:ore_hardstone",
-      "super_block_world:ore_soil"
+      "super_block_world:ore_soil",
+      "super_block_world:ore_gravel"
     ],
     [
-      "minecraft:prototype_underwater_magma"
+      "minecraft:prototype_underwater_magma",
+      "minecraft:rare_dripstone_cluster"
     ],
     [
       "super_block_world:huge_mushrooms_underground",
@@ -116,7 +119,6 @@
       "minecraft:patch_grass_plain"
     ],
     [
-      "super_block_world:patch_amanita_carpets",
       "minecraft:freeze_top_layer"
     ]
   ]

@@ -30,7 +30,7 @@ public class PotatoesBlockMixin extends CropBlock {
                 if (fluidState.isIn(TagList.POISON)) {
                     // If there is poison next to it, always drop a poisonous potato
                     world.breakBlock(pos, false);
-                    Block.dropStack(world, pos, new ItemStack(Items.POISONOUS_POTATO));
+                    Block.dropStack(world, pos, new ItemStack(Items.POISONOUS_POTATO, 2));
                 }
             }
         }

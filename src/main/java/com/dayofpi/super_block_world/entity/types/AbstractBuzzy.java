@@ -59,7 +59,9 @@ public abstract class AbstractBuzzy extends AbstractTroop {
     public static boolean canSpawn(ServerWorldAccess world, BlockPos pos, Random random) {
         boolean bool1 = isFloorValid(world.getBlockState(pos.down()));
         boolean bool2 = isFloorValid(world.getBlockState(pos.up()));
-        return AbstractTroop.isSpawnDark(world, pos, random) && !world.isSkyVisible(pos) && (bool1 || bool2);
+        boolean spawnUnderground = AbstractTroop.isSpawnDark(world, pos, random) && !world.isSkyVisible(pos) && (bool1 || bool2);
+        boolean spawnSurface = AbstractTroop.isSpawnDark(world, pos, random) && world.getBlockState(pos.down()).isOf(BlockList.TOADSTONE);
+        return spawnSurface || spawnUnderground;
     }
 
     private static boolean isFloorValid(BlockState state) {

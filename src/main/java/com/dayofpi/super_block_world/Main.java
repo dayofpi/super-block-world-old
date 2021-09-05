@@ -9,13 +9,13 @@ import com.dayofpi.super_block_world.misc.TagList;
 import com.dayofpi.super_block_world.world.FeatureList;
 import com.dayofpi.super_block_world.world.FluidList;
 import net.fabricmc.api.ModInitializer;
-import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
+import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
 import net.kyrptonaught.customportalapi.portal.PortalIgnitionSource;
 import net.minecraft.util.Identifier;
 
-@SuppressWarnings("deprecation")
 public class Main implements ModInitializer {
     public static final String MOD_ID = "super_block_world";
+    public static final Identifier DIMENSION_ID = new Identifier(MOD_ID, "mushroom_kingdom");
 
     @Override
     public void onInitialize() {
@@ -27,6 +27,6 @@ public class Main implements ModInitializer {
         SoundList.registerSounds();
         FluidList.registerFluids();
         DispenserBehaviors.addDispenserBehaviors();
-        CustomPortalApiRegistry.addPortal(BlockList.WARP_FRAME, PortalIgnitionSource.ItemUseSource(ItemList.POWER_STAR), new Identifier(MOD_ID, "mushroom_kingdom"), 230, 200, 224);
+        CustomPortalBuilder.beginPortal().frameBlock(BlockList.WARP_FRAME).ignitionSource(PortalIgnitionSource.FIRE).tintColor(188, 112, 255).destDimID(DIMENSION_ID).registerPortal();
     }
 }

@@ -31,7 +31,13 @@ public class MixinMushroomPlant extends PlantBlock {
         ConfiguredFeature<?, ?> mushroomFeature;
         if (this == Blocks.BROWN_MUSHROOM) {
             mushroomFeature = ReplacementFeatureList.HUGE_BROWN_MUSHROOM;
-        } else if (this == BlockList.YELLOW_MUSHROOM) {
+        } else if (this == BlockList.PINK_MUSHROOM) {
+            mushroomFeature = FeatureList.HUGE_PINK_MUSHROOM;
+        } else if (this == BlockList.PURPLE_MUSHROOM) {
+            mushroomFeature = FeatureList.HUGE_PURPLE_MUSHROOM;
+        } else if (this == BlockList.ORANGE_MUSHROOM) {
+            mushroomFeature = FeatureList.HUGE_ORANGE_MUSHROOM;
+        }else if (this == BlockList.YELLOW_MUSHROOM) {
             if (random.nextInt(2) == 0) {
                 mushroomFeature = FeatureList.HUGE_YELLOW_MUSHROOM_THIN;
             } else mushroomFeature = FeatureList.HUGE_YELLOW_MUSHROOM;

@@ -117,7 +117,7 @@ public class NipperPlantEntity extends AbstractTroop {
             }
 
             NipperPlantEntity.NipperJumpControl nipperJumpControl = (NipperPlantEntity.NipperJumpControl)this.jumpControl;
-            if (!nipperJumpControl.isActive()) {
+            if (nipperJumpControl.isInactive()) {
                 if (this.moveControl.isMoving() && this.ticksUntilJump == 0) {
                     Path path = this.navigation.getCurrentPath();
                     Vec3d vec3d = new Vec3d(this.moveControl.getTargetX(), this.moveControl.getTargetY(), this.moveControl.getTargetZ());
@@ -158,7 +158,6 @@ public class NipperPlantEntity extends AbstractTroop {
         } else {
             this.ticksUntilJump = 1;
         }
-
     }
 
     private void scheduleJump() {
@@ -196,8 +195,8 @@ public class NipperPlantEntity extends AbstractTroop {
             this.plantEntity = nipperPlant;
         }
 
-        public boolean isActive() {
-            return this.active;
+        public boolean isInactive() {
+            return !this.active;
         }
 
         public boolean method_27313() {
@@ -225,13 +224,13 @@ public class NipperPlantEntity extends AbstractTroop {
             super(owner);
             this.nipperPlant = owner;
         }
+
         public void tick() {
-            if (this.nipperPlant.onGround && !this.nipperPlant.jumping && !((NipperPlantEntity.NipperJumpControl)this.nipperPlant.jumpControl).isActive()) {
+            if (this.nipperPlant.onGround && !this.nipperPlant.jumping && ((NipperJumpControl) this.nipperPlant.jumpControl).isInactive()) {
                 this.nipperPlant.setSpeed(0.0D);
             } else if (this.isMoving()) {
                 this.nipperPlant.setSpeed(this.nipperSpeed);
             }
-
             super.tick();
         }
 

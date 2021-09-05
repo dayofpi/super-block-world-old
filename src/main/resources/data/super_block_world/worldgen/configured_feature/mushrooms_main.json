@@ -32,10 +32,6 @@
               {
                 "chance": 0.3,
                 "feature": "minecraft:patch_red_mushroom"
-              },
-              {
-                "chance": 0.1,
-                "feature": "minecraft:patch_brown_mushroom"
               }
             ],
             "default": "super_block_world:mushrooms/yellow_mushroom"

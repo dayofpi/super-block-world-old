@@ -2,8 +2,8 @@
   "surface_builder": "super_block_world:forest",
   "depth": 0.1,
   "scale": 0.04,
-  "temperature": 0.9,
-  "downfall": 0.8,
+  "temperature": 0.5,
+  "downfall": 0.5,
   "precipitation": "rain",
   "category": "forest",
   "player_spawn_friendly": false,
@@ -12,24 +12,13 @@
     "fog_color": 12637889,
     "water_color": 5295837,
     "water_fog_color": 5295837,
-    "grass_color": 14793525,
+    "grass_color": 16758835,
     "foliage_color": 14579203,
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000,
       "block_search_extent": 8,
       "offset": 2
-    },
-    "particle": {
-      "options": {
-        "type": "minecraft:block",
-        "Name": "minecraft:oak_leaves",
-        "Properties": {
-          "persistent": "false",
-          "distance": "7"
-        }
-      },
-      "probability": 0.006
     }
   },
   "starts": [],
@@ -100,16 +89,19 @@
       "super_block_world:vanillate_topping"
     ],
     [
+      "super_block_world:disk_clay",
       "super_block_world:toppings_coal",
       "super_block_world:toppings_iron",
       "super_block_world:toppings_gold",
       "super_block_world:ore_bronze",
       "super_block_world:ore_crumble",
       "super_block_world:ore_hardstone",
-      "super_block_world:ore_soil"
+      "super_block_world:ore_soil",
+      "super_block_world:ore_gravel"
     ],
     [
-      "minecraft:prototype_underwater_magma"
+      "minecraft:prototype_underwater_magma",
+      "minecraft:rare_dripstone_cluster"
     ],
     [
       "super_block_world:huge_mushrooms_underground",
@@ -132,7 +124,6 @@
       "minecraft:patch_grass_plain"
     ],
     [
-      "super_block_world:patch_amanita_carpets",
       "minecraft:freeze_top_layer"
     ]
   ]

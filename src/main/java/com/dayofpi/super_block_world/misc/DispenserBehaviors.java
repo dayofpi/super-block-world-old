@@ -2,18 +2,20 @@ package com.dayofpi.super_block_world.misc;
 
 import com.dayofpi.super_block_world.block.registry.BlockList;
 import com.dayofpi.super_block_world.item.registry.ItemList;
+import net.minecraft.block.AbstractFireBlock;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.DispenserBlock;
-import net.minecraft.block.dispenser.BlockPlacementDispenserBehavior;
-import net.minecraft.block.dispenser.BoatDispenserBehavior;
-import net.minecraft.block.dispenser.DispenserBehavior;
-import net.minecraft.block.dispenser.ItemDispenserBehavior;
+import net.minecraft.block.dispenser.*;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.FluidModificationItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPointer;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
 
 public class DispenserBehaviors {
     public static void addDispenserBehaviors() {
@@ -31,8 +33,33 @@ public class DispenserBehaviors {
 
             }
         };
+
+        DispenserBlock.registerBehavior(Items.FLINT_AND_STEEL, new FallibleItemDispenserBehavior() {
+            protected ItemStack dispenseSilently(BlockPointer pointer, ItemStack stack) {
+                World world = pointer.getWorld();
+                this.setSuccess(true);
+                Direction direction = pointer.getBlockState().get(DispenserBlock.FACING);
+                BlockPos blockPos = pointer.getPos().offset(direction);
+                BlockState blockState = world.getBlockState(blockPos);
+                if (AbstractFireBlock.canPlaceAt(world, blockPos, direction)) {
+                    world.setBlockState(blockPos, AbstractFireBlock.getState(world, blockPos));
+                    world.emitGameEvent(null, GameEvent.BLOCK_PLACE, blockPos);
+                } else if (blockState.isOf(BlockList.STONE_TORCH) && !blockState.get(Properties.LIT)) {
+                    world.setBlockState(blockPos, blockState.with(Properties.LIT, true));
+                    world.emitGameEvent(null, GameEvent.BLOCK_CHANGE, blockPos);
+                }
+
+                if (this.isSuccess() && stack.damage(1, world.random, null)) {
+                    stack.setCount(0);
+                }
+
+                return stack;
+            }
+        });
+
         DispenserBlock.registerBehavior(ItemList.POISON_BUCKET, dispenserBehavior);
         DispenserBlock.registerBehavior(ItemList.AMANITA_BOAT, new BoatDispenserBehavior(BoatEntity.Type.OAK));
         DispenserBlock.registerBehavior(BlockList.DONUT_BLOCK.asItem(), new BlockPlacementDispenserBehavior());
+        DispenserBlock.registerBehavior(BlockList.TRAMPOLINE.asItem(), new BlockPlacementDispenserBehavior());
     }
 }

@@ -7,6 +7,7 @@ import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -26,6 +27,10 @@ public class BeanstalkPlantBlock extends ModPlantPartBlock implements Fertilizab
 
     static {
         BUDDING = BooleanProperty.of("budding");
+    }
+
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(BUDDING);
     }
 
     public BeanstalkPlantBlock(AbstractBlock.Settings settings) {

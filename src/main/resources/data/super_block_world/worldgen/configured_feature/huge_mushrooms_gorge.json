@@ -48,18 +48,14 @@
               },
               {
                 "chance": 0.3,
-                "feature": "super_block_world:beanstalk_tall"
+                "feature": "super_block_world:beanstalk_picker_gorge"
               },
               {
                 "chance": 0.5,
                 "feature": "super_block_world:huge_red_mushroom_flat"
-              },
-              {
-                "chance": 0.1,
-                "feature": "super_block_world:huge_green_mushroom"
               }
             ],
-            "default": "super_block_world:huge_green_mushroom_wide"
+            "default": "super_block_world:huge_green_mushroom"
           }
         }
       }

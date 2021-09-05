@@ -27,7 +27,7 @@ public abstract class ReactiveBlock extends Block {
 
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return Block.createCuboidShape(0.5D, 0.5D, 0.5D, 15.5D, 16D, 15.5D);
+        return Block.createCuboidShape(0.0D, 0.2D, 0.0D, 16.0D, 16D, 16.0D);
     }
 
     @Override

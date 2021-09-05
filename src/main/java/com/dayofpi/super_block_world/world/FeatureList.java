@@ -44,10 +44,10 @@ public class FeatureList {
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.MOD_ID, "amanita"), AMANITA);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.MOD_ID, "amanita_fruits"), AMANITA_FRUITS);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.MOD_ID, "huge_red_mushroom_flat"), HUGE_RED_MUSHROOM_FLAT);
-        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.MOD_ID, "huge_yellow_mushroom"), HUGE_YELLOW_MUSHROOM_THIN);
-        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.MOD_ID, "huge_yellow_mushroom_wide"), HUGE_YELLOW_MUSHROOM);
-        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.MOD_ID, "huge_green_mushroom"), HUGE_GREEN_MUSHROOM_THIN);
-        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.MOD_ID, "huge_green_mushroom_wide"), HUGE_GREEN_MUSHROOM);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.MOD_ID, "huge_yellow_mushroom_thin"), HUGE_YELLOW_MUSHROOM_THIN);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.MOD_ID, "huge_yellow_mushroom"), HUGE_YELLOW_MUSHROOM);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.MOD_ID, "huge_green_mushroom_thin"), HUGE_GREEN_MUSHROOM_THIN);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.MOD_ID, "huge_green_mushroom"), HUGE_GREEN_MUSHROOM);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.MOD_ID, "huge_pink_mushroom"), HUGE_PINK_MUSHROOM);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.MOD_ID, "huge_purple_mushroom"), HUGE_PURPLE_MUSHROOM);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.MOD_ID, "huge_orange_mushroom"), HUGE_ORANGE_MUSHROOM);

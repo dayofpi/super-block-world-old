@@ -8,7 +8,6 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
@@ -22,16 +21,14 @@ public class QuestionBlockBE extends BlockEntity implements ImplementedInventory
             ItemList.SUPER_MUSHROOM,
             ItemList.SUPER_MUSHROOM,
             ItemList.SUPER_MUSHROOM,
-            Items.WOODEN_AXE,
-            Items.WOODEN_AXE);
+            ItemList.SUPER_MUSHROOM);
     List<Item> rareItems = Arrays.asList(
-            ItemList.ONE_UP,
             ItemList.ONE_UP,
             ItemList.GOLDEN_MUSHROOM,
             ItemList.GOLDEN_MUSHROOM,
             ItemList.POISON_MUSHROOM);
     Random random = new Random();
-    int index = random.nextInt(5);
+    int index = random.nextInt(4);
     Item prizes = random.nextInt(15) == 0 ? rareItems.get(index) : defaultItems.get(index);
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, new ItemStack(prizes));
 

@@ -33,8 +33,10 @@ public class BlockList {
     public static final Block TOADSTOOL_FARMLAND = new ToadstoolFarmlandBlock(FabricBlockSettings.copyOf(TOADSTOOL_SOIL).ticksRandomly());
     public static final Block TOADSTOOL_PATH = new ToadstoolPathBlock(FabricBlockSettings.copyOf(TOADSTOOL_SOIL).mapColor(MapColor.BROWN));
     public static final Block CLOUD_BLOCK = new CloudBlock(FabricBlockSettings.of(Material.SNOW_BLOCK, MapColor.WHITE).strength(0.1F).sounds(BlockSoundGroup.SNOW).nonOpaque());
+    public static final Block GRITZY_SAND = new ModFallingBlock(FabricBlockSettings.of(Material.AGGREGATE, MapColor.TERRACOTTA_YELLOW).strength(1.0F, 3.0F).sounds(BlockSoundGroup.SAND));
     public static final Block VANILLATE = new VanillateBlock(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_LIGHT_BLUE).requiresTool().strength(1.2F, 6.0F));
     public static final Block VANILLATE_BRICKS = new Block(FabricBlockSettings.copyOf(VANILLATE));
+    public static final Block VANILLATE_TILES = new Block(FabricBlockSettings.copyOf(VANILLATE));
     public static final Block VANILLATE_CRUMBLE = new ModFallingBlock(FabricBlockSettings.copyOf(VANILLATE).mapColor(MapColor.WHITE_GRAY));
     public static final Block VANILLATE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(VANILLATE));
     public static final Block VANILLATE_STAIRS = new StairsBlock(VANILLATE.getDefaultState(), FabricBlockSettings.copyOf(VANILLATE)){};
@@ -88,7 +90,8 @@ public class BlockList {
     public static final Block BUDDING_BEANSTALK = new BuddingBeanstalkBlock(FabricBlockSettings.of(Material.PLANT).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS).ticksRandomly());
     public static final Block AMANITA_CARPET = new CarpetBlock(FabricBlockSettings.of(Material.PLANT).noCollision().sounds(BlockSoundGroup.MOSS_CARPET));
     public static final Block YELLOW_FLOWERBED = new FlowerbedBlock(FabricBlockSettings.of(Material.PLANT, MapColor.YELLOW).noCollision().sounds(BlockSoundGroup.MOSS_CARPET));
-    public static final Block MUSHROOM_STEM = new PillarBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F).sounds(BlockSoundGroup.NETHER_STEM));
+    public static final Block BEANSTALK_BLOCK = new PillarBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.GREEN).strength(2.0F).sounds(BlockSoundGroup.NETHER_STEM));
+    public static final Block MUSHROOM_STEM = new PillarBlock(FabricBlockSettings.of(Material.WOOD, MapColor.OFF_WHITE).strength(2.0F).sounds(BlockSoundGroup.NETHER_STEM));
     public static final Block BROWN_MUSHROOM_CAP = new MushroomBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.DIRT_BROWN).strength(1.0F).sounds(BlockSoundGroup.WART_BLOCK));
     public static final Block RED_MUSHROOM_CAP = new BouncyMushroomBlock(FabricBlockSettings.copyOf(BROWN_MUSHROOM_CAP).mapColor(MapColor.RED));
     public static final Block YELLOW_MUSHROOM_CAP = new MushroomBlock(FabricBlockSettings.copyOf(BROWN_MUSHROOM_CAP).mapColor(MapColor.YELLOW));
@@ -97,13 +100,20 @@ public class BlockList {
     public static final Block PURPLE_MUSHROOM_CAP = new MushroomBlock(FabricBlockSettings.copyOf(BROWN_MUSHROOM_CAP).mapColor(MapColor.PURPLE));
     public static final Block ORANGE_MUSHROOM_CAP = new BouncyMushroomBlock(FabricBlockSettings.copyOf(BROWN_MUSHROOM_CAP).mapColor(MapColor.ORANGE));
     public static final Block YELLOW_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.of(Material.PLANT, MapColor.YELLOW).noCollision().ticksRandomly().sounds(BlockSoundGroup.GRASS), () -> FeatureList.HUGE_YELLOW_MUSHROOM_THIN);
-    public static final Block GREEN_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.copyOf(YELLOW_MUSHROOM).mapColor(MapColor.EMERALD_GREEN).luminance(2), () -> FeatureList.HUGE_GREEN_MUSHROOM_THIN);
+    public static final Block GREEN_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.copyOf(YELLOW_MUSHROOM).mapColor(MapColor.EMERALD_GREEN).luminance(4), () -> FeatureList.HUGE_GREEN_MUSHROOM_THIN);
     public static final Block PINK_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.copyOf(YELLOW_MUSHROOM).mapColor(MapColor.PINK), () -> FeatureList.HUGE_PINK_MUSHROOM);
     public static final Block PURPLE_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.copyOf(YELLOW_MUSHROOM).mapColor(MapColor.PURPLE), () -> FeatureList.HUGE_PURPLE_MUSHROOM);
     public static final Block ORANGE_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.copyOf(YELLOW_MUSHROOM).mapColor(MapColor.ORANGE), () -> FeatureList.HUGE_ORANGE_MUSHROOM);
     public static final Block STONE_TORCH = new StoneTorchBlock(FabricBlockSettings.copyOf(VANILLATE).nonOpaque().luminance(createLightLevelFromLitBlockState(15)));
     public static final Block POISON = new ModFluidBlock(FluidList.STILL_POISON, FabricBlockSettings.of(Material.LAVA, MapColor.PURPLE).noCollision().ticksRandomly().strength(100.0F).luminance(7));
     public static final Block POTTED_AMANITA_SAPLING = new FlowerPotBlock(AMANITA_SAPLING, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
+    public static final Block POTTED_YELLOW_MUSHROOM = new FlowerPotBlock(YELLOW_MUSHROOM, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
+    public static final Block POTTED_GREEN_MUSHROOM = new FlowerPotBlock(GREEN_MUSHROOM, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
+    public static final Block POTTED_PINK_MUSHROOM = new FlowerPotBlock(PINK_MUSHROOM, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
+    public static final Block POTTED_PURPLE_MUSHROOM = new FlowerPotBlock(PURPLE_MUSHROOM, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
+    public static final Block POTTED_ORANGE_MUSHROOM = new FlowerPotBlock(ORANGE_MUSHROOM, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
+    public static final Block POTTED_BEANSTALK = new FlowerPotBlock(BEANSTALK, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
+    public static final Block POTTED_BUDDING_BEANSTALK = new FlowerPotBlock(BUDDING_BEANSTALK, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     private static Boolean canSpawnOnLeaves(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) {
         return type == EntityType.OCELOT || type == EntityType.PARROT;
     }
@@ -133,9 +143,11 @@ public class BlockList {
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstool_soil"), TOADSTOOL_SOIL);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstool_farmland"), TOADSTOOL_FARMLAND);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstool_path"), TOADSTOOL_PATH);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "gritzy_sand"), GRITZY_SAND);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "cloud_block"), CLOUD_BLOCK);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "vanillate"), VANILLATE);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "vanillate_bricks"), VANILLATE_BRICKS);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "vanillate_tiles"), VANILLATE_TILES);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "vanillate_crumble"), VANILLATE_CRUMBLE);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "vanillate_slab"), VANILLATE_SLAB);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "vanillate_stairs"), VANILLATE_STAIRS);
@@ -186,6 +198,7 @@ public class BlockList {
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "beanstalk"), BEANSTALK);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "beanstalk_plant"), BEANSTALK_PLANT);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "budding_beanstalk"), BUDDING_BEANSTALK);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "beanstalk_block"), BEANSTALK_BLOCK);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "mushroom_stem"), MUSHROOM_STEM);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "brown_mushroom_cap"), BROWN_MUSHROOM_CAP);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "red_mushroom_cap"), RED_MUSHROOM_CAP);
@@ -202,7 +215,14 @@ public class BlockList {
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "amanita_carpet"), AMANITA_CARPET);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "yellow_flowerbed"), YELLOW_FLOWERBED);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "poison"), POISON);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "potted_yellow_mushroom"), POTTED_YELLOW_MUSHROOM);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "potted_green_mushroom"), POTTED_GREEN_MUSHROOM);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "potted_pink_mushroom"), POTTED_PINK_MUSHROOM);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "potted_purple_mushroom"), POTTED_PURPLE_MUSHROOM);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "potted_orange_mushroom"), POTTED_ORANGE_MUSHROOM);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "potted_amanita_sapling"), POTTED_AMANITA_SAPLING);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "potted_beanstalk"), POTTED_BEANSTALK);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "potted_budding_beanstalk"), POTTED_BUDDING_BEANSTALK);
         BlockEntityList.registerBlockEntities();
     }
 }

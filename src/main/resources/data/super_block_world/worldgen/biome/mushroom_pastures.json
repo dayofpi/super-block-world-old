@@ -12,8 +12,8 @@
     "fog_color": 12891596,
     "water_color": 5295837,
     "water_fog_color": 5295837,
-    "grass_color": 11651915,
-    "foliage_color": 9020218,
+    "grass_color": 7791156,
+    "foliage_color": 8761134,
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000,
@@ -46,7 +46,7 @@
         "maxCount": 3
       },
       {
-        "type": "minecraft:cow",
+        "type": "super_block_world:moo_moo",
         "weight": 5,
         "minCount": 2,
         "maxCount": 3
@@ -90,19 +90,22 @@
       "super_block_world:vanillate_topping"
     ],
     [
+      "super_block_world:disk_clay",
       "super_block_world:toppings_coal",
       "super_block_world:toppings_iron",
       "super_block_world:toppings_gold",
       "super_block_world:ore_bronze",
       "super_block_world:ore_crumble",
       "super_block_world:ore_hardstone",
-      "super_block_world:ore_soil"
+      "super_block_world:ore_soil",
+      "super_block_world:ore_gravel"
     ],
     [
-      "minecraft:prototype_underwater_magma"
+      "minecraft:prototype_underwater_magma",
+      "minecraft:rare_dripstone_cluster"
     ],
     [
-      "minecraft:patch_grass_plain",
+      "super_block_world:patch_grass",
       "super_block_world:huge_mushrooms_underground",
       "super_block_world:cave_ceiling",
       "super_block_world:cave_floor",

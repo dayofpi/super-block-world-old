@@ -19,7 +19,6 @@ import net.minecraft.world.World;
 import java.util.Random;
 @SuppressWarnings("deprecation")
 public class CoinBlock extends ReactiveBlock {
-    private boolean pause = true;
     public static final IntProperty COIN_COUNT;
     public static final IntProperty TYPE;
 
@@ -39,6 +38,11 @@ public class CoinBlock extends ReactiveBlock {
 
     @Override
     public void activate(BlockState state, World world, BlockPos blockPos) {
+        world.getBlockTickScheduler().schedule(blockPos, this, 2);
+    }
+
+    @Override
+    public void scheduledTick(BlockState state, ServerWorld world, BlockPos blockPos, Random random) {
         int i = state.get(COIN_COUNT);
         BlockPos pos = blockPos.add(0, 1, 0);
         if (state.isSolidBlock(world, blockPos.up())) {
@@ -46,7 +50,6 @@ public class CoinBlock extends ReactiveBlock {
                 pos = blockPos.add(0, -1, 0);
             }
         }
-        world.getBlockTickScheduler().schedule(blockPos, this, 1);
         Block.dropStack(world, pos, new ItemStack(ItemList.COIN));
         world.playSound(null, blockPos, SoundList.COIN, SoundCategory.NEUTRAL, 1.0F, 1.0F + (state.get(COIN_COUNT) * 0.2F));
         ParticleUtil.spawnParticle(world, blockPos, ParticleTypes.WAX_OFF, UniformIntProvider.create(1, 2));
@@ -54,13 +57,7 @@ public class CoinBlock extends ReactiveBlock {
             world.setBlockState(blockPos, state.with(COIN_COUNT, i - 1));
         } else
             world.setBlockState(blockPos, pushEntitiesUpBeforeBlockChange(state, BlockList.EMPTY_BLOCK.getDefaultState(), world, blockPos));
-    }
 
-    @Override
-    public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (!this.pause) {
-            this.pause = true;
-        }
 
     }
 }

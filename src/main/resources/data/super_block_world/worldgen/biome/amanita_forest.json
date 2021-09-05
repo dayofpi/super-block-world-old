@@ -3,7 +3,7 @@
   "depth": 0.1,
   "scale": 0.04,
   "temperature": 0.9,
-  "downfall": 0.8,
+  "downfall": 0.5,
   "precipitation": "rain",
   "category": "forest",
   "player_spawn_friendly": false,
@@ -90,16 +90,19 @@
       "super_block_world:vanillate_topping"
     ],
     [
+      "super_block_world:disk_clay",
       "super_block_world:toppings_coal",
       "super_block_world:toppings_iron",
       "super_block_world:toppings_gold",
       "super_block_world:ore_bronze",
       "super_block_world:ore_crumble",
       "super_block_world:ore_hardstone",
-      "super_block_world:ore_soil"
+      "super_block_world:ore_soil",
+      "super_block_world:ore_gravel"
     ],
     [
-      "minecraft:prototype_underwater_magma"
+      "minecraft:prototype_underwater_magma",
+      "minecraft:rare_dripstone_cluster"
     ],
     [
       "super_block_world:huge_mushrooms_underground",
