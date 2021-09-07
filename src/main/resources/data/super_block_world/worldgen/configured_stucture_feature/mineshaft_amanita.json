@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:mineshaft",
+  "config": {
+    "type": "amanita",
+    "probability": 0.004
+  }
+}

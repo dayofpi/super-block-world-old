@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.block.types;
 
-import com.dayofpi.super_block_world.misc.DamageSources;
+import com.dayofpi.super_block_world.misc.ModDamageSource;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
@@ -57,7 +57,7 @@ public class SpikeTrapBlock extends Block {
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         if (state.get(POWERED)) {
             if (entity instanceof LivingEntity || entity instanceof ItemEntity) {
-                entity.damage(DamageSources.SPIKES, 4F);
+                entity.damage(ModDamageSource.SPIKES, 4F);
             }
         }
     }

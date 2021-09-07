@@ -1,16 +1,25 @@
 package com.dayofpi.mixin;
 
 import com.dayofpi.super_block_world.block.registry.BlockList;
+import com.dayofpi.super_block_world.misc.TagList;
 import net.minecraft.block.*;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(CropBlock.class)
-public class MixinCropBlock {
+public class MixinCropBlock extends PlantBlock {
+    protected MixinCropBlock(Settings settings) {
+        super(settings);
+    }
+
     @Inject(at = @At("HEAD"), method = ("getAvailableMoisture(Lnet/minecraft/block/Block;Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;)F"), cancellable = true)
     private static void getAvailableMoisture(Block block, BlockView world, BlockPos pos, CallbackInfoReturnable<Float> info) {
         float f = 1.0F;
@@ -51,6 +60,18 @@ public class MixinCropBlock {
         }
         info.setReturnValue(f);
         info.cancel();
+    }
+
+    @Override
+    public void onBlockBreakStart(BlockState state, World world, BlockPos pos, PlayerEntity player) {
+        BlockPos blockPos = pos.down();
+        for (Direction direction : Direction.Type.HORIZONTAL) {
+            FluidState fluidState = world.getFluidState(blockPos.offset(direction));
+            if (fluidState.isIn(TagList.POISON)) {
+                // If there is poison next to it, drop nothing
+                world.breakBlock(pos, false);
+            }
+        }
     }
 
     @Inject(at = @At("HEAD"), method = ("canPlantOnTop(Lnet/minecraft/block/BlockState;Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;)Z"), cancellable = true)

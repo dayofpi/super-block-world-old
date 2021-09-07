@@ -12,7 +12,7 @@
     "fog_color": 11859964,
     "water_color": 1962492,
     "water_fog_color": 52959,
-    "grass_color": 9108237,
+    "grass_color": 10939141,
     "foliage_color": 4178950,
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
@@ -21,7 +21,9 @@
       "offset": 2
     }
   },
-  "starts": [],
+  "starts": [
+    "super_block_world:mineshaft_amanita"
+  ],
   "spawners": {
     "monster": [
       {
@@ -47,7 +49,7 @@
       {
         "type": "super_block_world:moo_moo",
         "weight": 1,
-        "minCount": 1,
+        "minCount": 2,
         "maxCount": 2
       }
     ],
@@ -96,8 +98,7 @@
       "super_block_world:ore_bronze",
       "super_block_world:ore_crumble",
       "super_block_world:ore_hardstone",
-      "super_block_world:ore_soil",
-      "super_block_world:ore_gravel"
+      "super_block_world:ore_soil"
     ],
     [
       "minecraft:prototype_underwater_magma",
@@ -108,7 +109,6 @@
       "super_block_world:cave_ceiling",
       "super_block_world:cave_floor",
       "super_block_world:cave_lanterns",
-      "super_block_world:patch_toadstone",
       "super_block_world:patch_gloomstone",
       "super_block_world:patch_horsetail_grasslands",
       "super_block_world:patch_sugar_cane",
@@ -116,7 +116,6 @@
       "super_block_world:patch_bushes_extra",
       "super_block_world:patch_stump",
       "super_block_world:patch_vanillate",
-      "super_block_world:patch_toadstone",
       "super_block_world:patch_gloomstone",
       "super_block_world:mushrooms_main",
       "super_block_world:spring_water",

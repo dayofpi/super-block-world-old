@@ -38,7 +38,7 @@ public class MooMooEntity extends CowEntity {
     }
 
     public float getPathfindingFavor(BlockPos pos, WorldView world) {
-        return world.getBlockState(pos.down()).isOf(BlockList.TOADSTOOL_GRASS) ? 10.0F : world.getBrightness(pos) - 0.5F;
+        return world.getBlockState(pos.down()).isOf(BlockList.TOADSTOOL_GRASS) ? 10.0F : world.getLightLevel(pos) - 0.5F;
     }
 
     public static DefaultAttributeContainer.Builder createAttributes() {
@@ -72,7 +72,7 @@ public class MooMooEntity extends CowEntity {
         if (this.isLying()) {
             if (this.touchingWater || !this.isOnGround() || this.isNavigating() || (random.nextInt(100000) == 0))
                 this.setLying(false);
-        } else if (random.nextInt(10000) == 0 && this.getVelocity().x == 0 && this.getVelocity().z == 0) {
+        } else if (random.nextInt(10000) == 0) {
             this.setLying(true);
         }
     }
@@ -84,7 +84,6 @@ public class MooMooEntity extends CowEntity {
     public void setLying(boolean lying) {
         this.dataTracker.set(LYING, lying);
     }
-
 
     public boolean isBreedingItem(ItemStack stack) {
         return BREEDING_INGREDIENT.test(stack);

@@ -2,7 +2,7 @@ package com.dayofpi.super_block_world.entity.types;
 
 import com.dayofpi.super_block_world.block.registry.BlockList;
 import com.dayofpi.super_block_world.item.registry.ItemList;
-import com.dayofpi.super_block_world.misc.DamageSources;
+import com.dayofpi.super_block_world.misc.ModDamageSource;
 import com.dayofpi.super_block_world.misc.SoundList;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -62,7 +62,7 @@ public abstract class AbstractShellEntity extends Entity {
             }
         } else if (!list.isEmpty() && this.isSpinning()) {
             for (Entity entity : list) {
-                entity.damage(DamageSources.SHELL, 5);
+                entity.damage(ModDamageSource.SHELL, 5);
                 if (entity instanceof LivingEntity livingEntity && livingEntity.canTakeDamage()) {
                     livingEntity.takeKnockback(0.5, this.getX(), this.getZ());
                 }

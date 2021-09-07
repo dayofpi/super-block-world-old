@@ -8,6 +8,7 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3f;
 
 public class SpikeTopRenderer<T extends SpikeTopEntity> extends MobEntityRenderer<T, AbstractBuzzyModel<T>> {
@@ -24,7 +25,10 @@ public class SpikeTopRenderer<T extends SpikeTopEntity> extends MobEntityRendere
             matrices.translate(0.0D, entity.getHeight() + 0.1F, 0.0D);
             matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(180.0F));
         } else if (entity.isClimbingWall()) {
-            matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(90.0F));
+            Direction moveDirection = entity.getMovementDirection();
+            if (moveDirection == Direction.NORTH || moveDirection == Direction.SOUTH)
+                matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(90.0F));
+            else matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(90.0F));
         }
         super.setupTransforms(entity, matrices, animationProgress, bodyYaw, tickDelta);
     }

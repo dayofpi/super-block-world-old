@@ -33,7 +33,7 @@
               "config": {}
             },
             "feature": {
-              "type": "minecraft:random_patch",
+              "type": "super_block_world:random_patch",
               "config": {
                 "can_replace": false,
                 "project": false,
@@ -43,10 +43,36 @@
                 "zspread": 7,
                 "tries": 16,
                 "state_provider": {
-                  "type": "minecraft:simple_state_provider",
-                  "state": {
-                    "Name": "super_block_world:bush"
-                  }
+                  "type": "minecraft:weighted_state_provider",
+                  "entries": [
+                    {
+                      "weight": 1,
+                      "data": {
+                        "Name": "super_block_world:bush",
+                        "Properties": {
+                          "fruits": "2"
+                        }
+                      }
+                    },
+                    {
+                      "weight": 2,
+                      "data": {
+                        "Name": "super_block_world:bush",
+                        "Properties": {
+                          "fruits": "1"
+                        }
+                      }
+                    },
+                    {
+                      "weight": 10,
+                      "data": {
+                        "Name": "super_block_world:bush",
+                        "Properties": {
+                          "fruits": "0"
+                        }
+                      }
+                    }
+                  ]
                 },
                 "block_placer": {
                   "type": "minecraft:simple_block_placer"

@@ -16,12 +16,12 @@ public class BlockClient {
     public static void setRenderLayers() {
         ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) ->
                         view != null && pos != null ? BiomeColors.getGrassColor(view, pos) : GrassColors.getColor(0.5D, 1.0D),
-                BlockList.TOADSTOOL_GRASS, BlockList.HORSETAIL);
+                BlockList.TOADSTOOL_GRASS, BlockList.HORSETAIL, BlockList.BUSH);
         ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) ->
                         view != null && pos != null ? BiomeColors.getFoliageColor(view, pos) : FoliageColors.getColor(0.5D, 1.0D),
-                BlockList.AMANITA_LEAVES, BlockList.FRUITING_AMANITA_LEAVES, BlockList.AMANITA_CARPET, BlockList.BUSH);
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 7067428, BlockList.TOADSTOOL_GRASS, BlockList.HORSETAIL);
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 7067428, BlockList.AMANITA_LEAVES, BlockList.FRUITING_AMANITA_LEAVES, BlockList.AMANITA_CARPET, BlockList.BUSH);
+                BlockList.AMANITA_LEAVES, BlockList.FRUITING_AMANITA_LEAVES, BlockList.AMANITA_CARPET);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 7067428, BlockList.TOADSTOOL_GRASS, BlockList.HORSETAIL, BlockList.BUSH);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 7067428, BlockList.AMANITA_LEAVES, BlockList.FRUITING_AMANITA_LEAVES, BlockList.AMANITA_CARPET);
 
         BlockEntityRendererRegistry.register(BlockEntityList.MOD_SIGN, ModSignRenderer::new);
 

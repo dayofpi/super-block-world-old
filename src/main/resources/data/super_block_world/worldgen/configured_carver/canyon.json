@@ -12,7 +12,7 @@
       },
       "inner": 8
     },
-    "yScale": 3,
+    "yScale": 5,
     "lava_level": {
       "above_bottom": 8
     },
@@ -45,7 +45,7 @@
       "type": "minecraft:uniform",
       "value": {
         "min_inclusive": -0.125,
-        "max_exclusive": 0.125
+        "max_exclusive": 0.25
       }
     },
     "shape": {
@@ -72,7 +72,7 @@
           "max_exclusive": 2
         }
       },
-      "vertical_radius_default_factor": 1,
+      "vertical_radius_default_factor": 2,
       "vertical_radius_center_factor": 0
     }
   }

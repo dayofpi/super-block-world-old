@@ -3,6 +3,7 @@ package com.dayofpi.mixin.important;
 import com.dayofpi.super_block_world.entity.registry.EntityList;
 import com.dayofpi.super_block_world.entity.types.AbstractBuzzy;
 import com.dayofpi.super_block_world.entity.types.MooMooEntity;
+import com.dayofpi.super_block_world.entity.types.SpikeTopEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.SpawnRestriction;
@@ -20,8 +21,11 @@ import java.util.Random;
 public class MixinSpawnRestriction {
     @Inject(at = @At("HEAD"), method = "canSpawn(Lnet/minecraft/entity/EntityType;Lnet/minecraft/world/ServerWorldAccess;Lnet/minecraft/entity/SpawnReason;Lnet/minecraft/util/math/BlockPos;Ljava/util/Random;)Z", cancellable = true)
     private static <T extends MobEntity> void canSpawn(EntityType<T> type, ServerWorldAccess world, SpawnReason reason, BlockPos pos, Random random, CallbackInfoReturnable<Boolean> info) {
-        if (type == EntityList.BUZZY_BEETLE || type == EntityList.SPIKE_TOP) {
+        if (type == EntityList.BUZZY_BEETLE) {
             info.setReturnValue(AbstractBuzzy.canSpawn(world, pos, random));
+            info.cancel();
+        } else if (type == EntityList.SPIKE_TOP) {
+            info.setReturnValue(SpikeTopEntity.canSpawn(world, pos, random));
             info.cancel();
         } else if (type == EntityList.MOO_MOO) {
             info.setReturnValue(MooMooEntity.canSpawn(world, pos));

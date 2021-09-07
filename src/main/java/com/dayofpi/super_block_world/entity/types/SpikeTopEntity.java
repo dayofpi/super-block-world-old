@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.entity.types;
 
-import com.dayofpi.super_block_world.misc.DamageSources;
+import com.dayofpi.super_block_world.misc.ModDamageSource;
 import com.dayofpi.super_block_world.misc.SoundList;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -16,8 +16,12 @@ import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Random;
 
 public class SpikeTopEntity extends AbstractBuzzy {
     private static final TrackedData<Byte> SPIKE_TOP_FLAGS;
@@ -35,6 +39,12 @@ public class SpikeTopEntity extends AbstractBuzzy {
         this.dataTracker.startTracking(SPIKE_TOP_FLAGS, (byte)0);
     }
 
+    public static boolean canSpawn(ServerWorldAccess world, BlockPos pos, Random random) {
+        boolean bool1 = isFloorValid(world.getBlockState(pos.down()));
+        boolean bool2 = isFloorValid(world.getBlockState(pos.up()));
+        return AbstractTroop.isSpawnDark(world, pos, random) && !world.isSkyVisible(pos) && (bool1 || bool2);
+    }
+
     protected EntityNavigation createNavigation(World world) {
         return new SpiderNavigation(this, world);
     }
@@ -44,7 +54,6 @@ public class SpikeTopEntity extends AbstractBuzzy {
         if (!this.world.isClient) {
             this.setClimbingWall(this.horizontalCollision);
         }
-
     }
 
     public boolean isClimbing() {
@@ -68,12 +77,12 @@ public class SpikeTopEntity extends AbstractBuzzy {
 
     public void pushAwayFrom(Entity entity) {
         super.pushAwayFrom(entity);
-        if (entity.getY() > this.getY() && entity.fallDistance > 0) {
-            boolean bool = entity.damage(DamageSources.spikyMob(this), entity.fallDistance);
-            if (bool) {
+        if (entity.getY() > this.getY() && !this.isUpsideDown()) {
+            boolean damaged = entity.damage(ModDamageSource.spikyMob(this), entity.fallDistance);
+            if (damaged) {
                 this.playSound(SoundEvents.ENCHANT_THORNS_HIT, 1.0F, getSoundPitch());
             }
-            entity.damage(DamageSources.spikyMob(this), entity.fallDistance + 1);
+            entity.damage(ModDamageSource.spikyMob(this), entity.fallDistance + 1);
         }
     }
 
@@ -83,7 +92,7 @@ public class SpikeTopEntity extends AbstractBuzzy {
             if (!this.world.isClient()) {
                 int i = this.computeFallDamage(fallDistance, damageMultiplier);
                 if (i > 0) {
-                    this.world.getOtherEntities(this, this.getBoundingBox().expand(3, 0, 3), EntityPredicates.EXCEPT_SPECTATOR).forEach((entity) -> entity.damage(DamageSources.spikyMob(this), i * 2));
+                    this.world.getOtherEntities(this, this.getBoundingBox().expand(3, 0, 3), EntityPredicates.EXCEPT_SPECTATOR).forEach((entity) -> entity.damage(ModDamageSource.spikyMob(this), i * 2));
                     this.world.playSound(null, this.getBlockPos(), SoundList.BUZZY_BEETLE_LAND, SoundCategory.NEUTRAL, 3.0F, this.getSoundPitch());
                     ((ServerWorld) this.world).spawnParticles(ParticleTypes.EXPLOSION, this.getX(), this.getBodyY(0.5D), this.getZ(), 1, 0.0D, 0.0D, 0.0D, 0.0D);
                 }

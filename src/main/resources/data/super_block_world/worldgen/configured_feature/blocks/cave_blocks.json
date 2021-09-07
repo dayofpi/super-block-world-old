@@ -38,23 +38,23 @@
               "config": {
                 "features": [
                   {
-                    "chance": 0.0025,
+                    "chance": 0.002,
                     "feature": "super_block_world:blocks/gold_z"
                   },
                   {
-                    "chance": 0.0025,
+                    "chance": 0.002,
                     "feature": "super_block_world:blocks/gold_x"
                   },
                   {
-                    "chance": 0.25,
+                    "chance": 0.2,
                     "feature": "super_block_world:blocks/crystal_z"
                   },
                   {
-                    "chance": 0.25,
+                    "chance": 0.2,
                     "feature": "super_block_world:blocks/crystal_x"
                   },
                   {
-                    "chance": 0.5,
+                    "chance": 0.298,
                     "feature": "super_block_world:blocks/toadstone_z"
                   }
                 ],

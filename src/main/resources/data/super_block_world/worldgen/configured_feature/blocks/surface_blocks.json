@@ -38,7 +38,7 @@
               "config": {
                 "features": [
                   {
-                    "chance": 0.45,
+                    "chance": 0.5,
                     "feature": "super_block_world:blocks/toadstone_z"
                   }
                 ],

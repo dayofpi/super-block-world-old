@@ -58,6 +58,17 @@ public class BuzzyBeetleEntity extends AbstractBuzzy implements ItemSteerable, S
     }
 
     @Override
+    public void tickMovement() {
+        super.tickMovement();
+        if (this.hasVehicle() && this.getVehicle() instanceof BuzzyBeetleEntity) {
+            // Dismounts if a block exists at its location. Prevents baby buzzies from suffocating.
+            if (this.getBlockStateAtPos().isSolidBlock(this.world, this.getBlockPos())) {
+                this.dismountVehicle();
+            }
+        }
+    }
+
+    @Override
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
         if (this.isBaby()) {
             return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
@@ -69,7 +80,23 @@ public class BuzzyBeetleEntity extends AbstractBuzzy implements ItemSteerable, S
                     entityData = this.initializeRider(world, difficulty, passiveEntity);
                 }
             }
-        }return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
+        }
+        return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
+    }
+
+    private EntityData initializeRider(ServerWorldAccess world, LocalDifficulty difficulty, MobEntity rider) {
+        rider.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), 0.0F);
+        rider.initialize(world, difficulty, SpawnReason.JOCKEY, null, null);
+        rider.startRiding(this, true);
+        return new PassiveEntity.PassiveData(0.0F);
+    }
+
+    @Override
+    public BuzzyBeetleEntity createChild(ServerWorld serverWorld, PassiveEntity passiveEntity) {
+        if (passiveEntity != null) {
+            passiveEntity.setPersistent();
+        }
+        return EntityList.BUZZY_BEETLE.create(serverWorld);
     }
 
     public void onTrackedDataSet(TrackedData<?> data) {
@@ -96,24 +123,9 @@ public class BuzzyBeetleEntity extends AbstractBuzzy implements ItemSteerable, S
         this.saddledComponent.readNbt(nbt);
     }
 
-    private EntityData initializeRider(ServerWorldAccess world, LocalDifficulty difficulty, MobEntity rider) {
-        rider.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), 0.0F);
-        rider.initialize(world, difficulty, SpawnReason.JOCKEY, null, null);
-        rider.startRiding(this, true);
-        return new PassiveEntity.PassiveData(0.0F);
-    }
-
     @Override
-    public BuzzyBeetleEntity createChild(ServerWorld serverWorld, PassiveEntity passiveEntity) {
-        if (passiveEntity != null) {
-            passiveEntity.setPersistent();
-        }
-        return EntityList.BUZZY_BEETLE.create(serverWorld);
-    }
-
-    @Nullable
-    public Entity getPrimaryPassenger() {
-        return this.getFirstPassenger();
+    public boolean isBreedingItem(ItemStack stack) {
+        return stack.isOf(BlockList.GREEN_MUSHROOM.asItem());
     }
 
     @Override
@@ -125,7 +137,7 @@ public class BuzzyBeetleEntity extends AbstractBuzzy implements ItemSteerable, S
             return livingEntity.getMainHandStack().isOf(ItemList.GREEN_MUSHROOM_ON_A_STICK) || livingEntity.getOffHandStack().isOf(ItemList.GREEN_MUSHROOM_ON_A_STICK);
         }
     }
-    
+
     @Override
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
         boolean bl = this.isBreedingItem(player.getStackInHand(hand));
@@ -144,11 +156,6 @@ public class BuzzyBeetleEntity extends AbstractBuzzy implements ItemSteerable, S
                 return actionResult;
             }
         }
-    }
-
-    @Override
-    public boolean isBreedingItem(ItemStack stack) {
-        return stack.isOf(BlockList.GREEN_MUSHROOM.asItem());
     }
 
     @Override
@@ -191,14 +198,9 @@ public class BuzzyBeetleEntity extends AbstractBuzzy implements ItemSteerable, S
         return super.getMountedHeightOffset() + d;
     }
 
-    @Override
-    public void tickMovement() {
-        super.tickMovement();
-        if (this.hasVehicle() && this.getVehicle() instanceof BuzzyBeetleEntity buzzyBeetleEntity) {
-            if (buzzyBeetleEntity.isUpsideDown() && this.getBlockStateAtPos().isSolidBlock(this.world, this.getBlockPos())) {
-                this.dismountVehicle();
-            }
-        }
+    @Nullable
+    public Entity getPrimaryPassenger() {
+        return this.getFirstPassenger();
     }
 
     @Override
@@ -243,6 +245,4 @@ public class BuzzyBeetleEntity extends AbstractBuzzy implements ItemSteerable, S
     public float getSaddledSpeed() {
         return (float) this.getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED) * 0.55F;
     }
-
-
 }

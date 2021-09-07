@@ -22,6 +22,7 @@
     }
   },
   "starts": [
+    "super_block_world:mineshaft_amanita"
   ],
   "spawners": {
     "monster": [
@@ -97,8 +98,7 @@
       "super_block_world:ore_bronze",
       "super_block_world:ore_crumble",
       "super_block_world:ore_hardstone",
-      "super_block_world:ore_soil",
-      "super_block_world:ore_gravel"
+      "super_block_world:ore_soil"
     ],
     [
       "minecraft:prototype_underwater_magma",
@@ -113,7 +113,6 @@
       "super_block_world:spring_water",
       "super_block_world:lake_poison",
       "super_block_world:patch_vanillate",
-      "super_block_world:patch_toadstone",
       "super_block_world:patch_gloomstone",
       "super_block_world:trees_main",
       "super_block_world:patch_bushes_extra",

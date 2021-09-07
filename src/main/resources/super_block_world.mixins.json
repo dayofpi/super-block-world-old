@@ -19,6 +19,8 @@
     "MixinAnimalEntity",
     "MixinArmorItem",
     "MixinBiomeCreator",
+    "enum_additions/MixinInstrument",
+    "enum_additions/MixinMineshaftFeature",
     "MixinCarver",
     "MixinClientPlayer",
     "MixinCropBlock",

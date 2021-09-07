@@ -4,7 +4,7 @@
     "decorator": {
       "type": "minecraft:count",
       "config": {
-        "count": 250
+        "count": 200
       }
     },
     "feature": {
@@ -41,13 +41,12 @@
                   }
                 },
                 "rock_count": 4,
-                "hole_count": 1,
+                "hole_count": 2,
                 "requires_block_below": true,
                 "valid_blocks": [
                   "super_block_world:toadstool_grass",
                   "super_block_world:toadstool_soil",
-                  "super_block_world:vanillate",
-                  "super_block_world:topped_vanillate"
+                  "super_block_world:vanillate"
                 ]
               }
             }

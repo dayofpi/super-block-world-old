@@ -12,12 +12,14 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
 @SuppressWarnings("deprecation")
 public class WoodBlock extends PillarBlock {
     public WoodBlock(Settings settings) {
         super(settings);
+        this.setDefaultState(this.getDefaultState().with(AXIS, Direction.Axis.Y));
     }
 
     @Override

@@ -12,8 +12,8 @@
     "fog_color": 16777215,
     "water_color": 241854,
     "water_fog_color": 1291214,
-    "grass_color": 4238865,
-    "foliage_color": 11403012,
+    "grass_color": 4702483,
+    "foliage_color": 12579345,
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000,
@@ -22,6 +22,7 @@
     }
   },
   "starts": [
+    "super_block_world:mineshaft_amanita"
   ],
   "spawners": {
     "monster": [
@@ -93,8 +94,7 @@
       "super_block_world:ore_bronze",
       "super_block_world:ore_crumble",
       "super_block_world:ore_hardstone",
-      "super_block_world:ore_soil",
-      "super_block_world:ore_gravel"
+      "super_block_world:ore_soil"
     ],
     [
       "minecraft:prototype_underwater_magma",
@@ -110,12 +110,11 @@
       "super_block_world:patch_bushes",
       "super_block_world:patch_stump",
       "super_block_world:patch_vanillate",
-      "super_block_world:patch_toadstone",
       "super_block_world:patch_gloomstone",
       "super_block_world:mushrooms_main",
       "super_block_world:spring_water",
       "super_block_world:lake_poison",
-      "minecraft:patch_grass_plain"
+      "super_block_world:patch_grass"
     ],
     [
       "minecraft:freeze_top_layer"

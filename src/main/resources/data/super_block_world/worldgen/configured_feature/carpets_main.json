@@ -25,21 +25,10 @@
       "type": "minecraft:simple_block",
       "config": {
         "to_place": {
-          "type": "minecraft:weighted_state_provider",
-          "entries": [
-            {
-              "weight": 2,
-              "data": {
-                "Name": "super_block_world:yellow_flowerbed"
-              }
-            },
-            {
-              "weight": 1,
-              "data": {
-                "Name": "super_block_world:amanita_carpet"
-              }
-            }
-          ]
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "super_block_world:yellow_flowerbed"
+          }
         },
         "place_on": [],
         "place_in": [],

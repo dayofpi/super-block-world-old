@@ -1,6 +1,6 @@
 package com.dayofpi.mixin;
 
-import com.dayofpi.super_block_world.misc.DamageSources;
+import com.dayofpi.super_block_world.misc.ModDamageSource;
 import com.dayofpi.super_block_world.misc.TagList;
 import net.minecraft.entity.Entity;
 import net.minecraft.sound.SoundEvents;
@@ -24,10 +24,10 @@ public abstract class MixinEntity {
     void baseTick(CallbackInfo info) {
         if (this.isTouchingPoison()) {
             if (!((InterfaceEntity) this).aType().isIn(TagList.POISON_IMMUNE)) {
-                if (((InterfaceEntity) this).iDamage(DamageSources.POISON, 4.0F)) {
+                if (((InterfaceEntity) this).iDamage(ModDamageSource.POISON, 4.0F)) {
                     ((InterfaceEntity) this).aWorld().playSound(null, ((InterfaceEntity) this).aBlockPos(), SoundEvents.ENTITY_GENERIC_BURN, ((InterfaceEntity) this).iGetSoundCategory(), 0.4F, 2.0F + this.random.nextFloat() * 0.4F);
                 }
-                ((InterfaceEntity) this).iDamage(DamageSources.POISON, 4.0F);
+                ((InterfaceEntity) this).iDamage(ModDamageSource.POISON, 4.0F);
             }
         }
     }
