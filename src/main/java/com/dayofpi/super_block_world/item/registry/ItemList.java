@@ -39,6 +39,8 @@ public class ItemList {
     public static final Item BUZZY_BEETLE_SPAWN_EGG = new SpawnEggItem(EntityList.BUZZY_BEETLE, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item SPIKE_TOP_SPAWN_EGG = new SpawnEggItem(EntityList.SPIKE_TOP, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item NIPPER_PLANT_SPAWN_EGG = new SpawnEggItem(EntityList.NIPPER_PLANT, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
+    public static final Item STINGBY_SPAWN_EGG = new SpawnEggItem(EntityList.STINGBY, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
+    public static final Item ROTTEN_MUSHROOM_SPAWN_EGG = new SpawnEggItem(EntityList.ROTTEN_MUSHROOM, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
 
     public static void registerItems() {
         registerBlockItems();
@@ -62,6 +64,8 @@ public class ItemList {
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "spawn_eggs/buzzy_beetle"), BUZZY_BEETLE_SPAWN_EGG);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "spawn_eggs/spike_top"), SPIKE_TOP_SPAWN_EGG);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "spawn_eggs/nipper_plant"), NIPPER_PLANT_SPAWN_EGG);
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "spawn_eggs/stingby"), STINGBY_SPAWN_EGG);
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "spawn_eggs/rotten_mushroom"), ROTTEN_MUSHROOM_SPAWN_EGG);
     }
 
     public static void registerBlockItems() {
@@ -102,6 +106,8 @@ public class ItemList {
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "toadstone_bricks"), new BlockItem(BlockList.TOADSTONE_BRICKS, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "toadstone_slab"), new BlockItem(BlockList.TOADSTONE_SLAB, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "toadstone_stairs"), new BlockItem(BlockList.TOADSTONE_STAIRS, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "toadstone_brick_slab"), new BlockItem(BlockList.TOADSTONE_BRICK_SLAB, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "toadstone_brick_stairs"), new BlockItem(BlockList.TOADSTONE_BRICK_STAIRS, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "gloomstone"), new BlockItem(BlockList.GLOOMSTONE, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "gloomstone_bricks"), new BlockItem(BlockList.GLOOMSTONE_BRICKS, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "gloomstone_slab"), new BlockItem(BlockList.GLOOMSTONE_SLAB, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));

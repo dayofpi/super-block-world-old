@@ -37,7 +37,7 @@ public abstract class AbstractBuzzy extends AbstractCeilingTroop {
                 .add(EntityAttributes.GENERIC_ARMOR, 10)
                 .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 0.2)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 3.0D)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2D);
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.25D);
     }
 
     public static boolean canSpawn(ServerWorldAccess world, BlockPos pos, Random random) {
@@ -52,6 +52,14 @@ public abstract class AbstractBuzzy extends AbstractCeilingTroop {
         return state.isOf(BlockList.VANILLATE) || state.isOf(BlockList.VANILLATE_CRUMBLE) || state.isOf(BlockList.TOPPED_VANILLATE);
     }
 
+    public void initGoals() {
+        this.goalSelector.add(4, new EscapeSunlightGoal(this, 1.0D));
+        this.goalSelector.add(5, new WanderAroundFarGoal(this, 1.0D));
+        this.goalSelector.add(2, new MeleeAttackGoal(this, 1.0D, false));
+        this.targetSelector.add(2, new RevengeGoal(this));
+        this.targetSelector.add(1, new SwimGoal(this));
+    }
+
     @Nullable
     protected SoundEvent getHurtSound(DamageSource source) {
         return SoundList.BUZZY_BEETLE_HURT;
@@ -60,16 +68,6 @@ public abstract class AbstractBuzzy extends AbstractCeilingTroop {
     @Nullable
     protected SoundEvent getDeathSound() {
         return SoundList.BUZZY_BEETLE_DEATH;
-    }
-
-    @Override
-    public void initGoals() {
-        this.goalSelector.add(8, new LookAroundGoal(this));
-        this.goalSelector.add(6, new EscapeSunlightGoal(this, 1.0D));
-        this.goalSelector.add(4, new WanderAroundFarGoal(this, 1.0D));
-        this.goalSelector.add(2, new MeleeAttackGoal(this, 1.0D, false));
-        this.targetSelector.add(2, new RevengeGoal(this));
-        this.targetSelector.add(1, new SwimGoal(this));
     }
 
     @Override

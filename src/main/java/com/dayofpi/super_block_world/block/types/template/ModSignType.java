@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.block.types.template;
 
-import com.dayofpi.mixin.InterfaceSignType;
+import com.dayofpi.mixin.interfaces.InterfaceSignType;
 import net.minecraft.util.SignType;
 
 public class ModSignType extends SignType {

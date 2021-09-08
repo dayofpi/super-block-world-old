@@ -77,7 +77,7 @@ public class SpikeTopEntity extends AbstractBuzzy {
 
     public void pushAwayFrom(Entity entity) {
         super.pushAwayFrom(entity);
-        if (entity.getY() > this.getY() && !this.isUpsideDown()) {
+        if (entity.getY() > this.getY() && !this.isUpsideDown() && entity.fallDistance > 0 && entity.getBlockX() == this.getBlockX() && !(entity instanceof AbstractBuzzy)) {
             boolean damaged = entity.damage(ModDamageSource.spikyMob(this), entity.fallDistance);
             if (damaged) {
                 this.playSound(SoundEvents.ENCHANT_THORNS_HIT, 1.0F, getSoundPitch());

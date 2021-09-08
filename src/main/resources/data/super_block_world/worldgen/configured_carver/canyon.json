@@ -3,7 +3,7 @@
   "config": {
     "probability": 0.02,
     "y": {
-      "type": "minecraft:biased_to_bottom",
+      "type": "minecraft:uniform",
       "min_inclusive": {
         "absolute": -30
       },
@@ -45,7 +45,7 @@
       "type": "minecraft:uniform",
       "value": {
         "min_inclusive": -0.125,
-        "max_exclusive": 0.25
+        "max_exclusive": 0.125
       }
     },
     "shape": {

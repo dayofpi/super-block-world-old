@@ -43,6 +43,18 @@
         "weight": 30,
         "minCount": 1,
         "maxCount": 2
+      },
+      {
+        "type": "super_block_world:stingby",
+        "weight": 10,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "super_block_world:rotten_mushroom",
+        "weight": 45,
+        "minCount": 1,
+        "maxCount": 1
       }
     ],
     "creature": [

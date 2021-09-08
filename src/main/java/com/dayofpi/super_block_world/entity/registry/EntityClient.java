@@ -14,5 +14,7 @@ public class EntityClient {
         EntityRendererRegistry.register(EntityList.BUZZY_BEETLE, BuzzyBeetleRenderer::new);
         EntityRendererRegistry.register(EntityList.SPIKE_TOP, SpikeTopRenderer::new);
         EntityRendererRegistry.register(EntityList.NIPPER_PLANT, NipperPlantRenderer::new);
+        EntityRendererRegistry.register(EntityList.STINGBY, StingbyRenderer::new);
+        EntityRendererRegistry.register(EntityList.ROTTEN_MUSHROOM, RottenMushroomRenderer::new);
     }
 }

@@ -20,6 +20,8 @@ public class ModelLayers {
     public static final EntityModelLayer BUZZY_BEETLE = registerMain("buzzy_beetle");
     public static final EntityModelLayer BUZZY_BEETLE_SADDLE = registerMain("buzzy_beetle_saddle");
     public static final EntityModelLayer NIPPER_PLANT = registerMain("nipper_plant");
+    public static final EntityModelLayer STINGBY = registerMain("stingby");
+    public static final EntityModelLayer ROTTEN_MUSHROOM = registerMain("rotten_mushroom");
 
 
     // Setup

@@ -57,6 +57,8 @@ public class BlockList {
     public static final Block TOADSTONE_BRICKS = new BrickBlock(FabricBlockSettings.copyOf(TOADSTONE));
     public static final Block TOADSTONE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(TOADSTONE));
     public static final Block TOADSTONE_STAIRS = new StairsBlock(TOADSTONE.getDefaultState(), FabricBlockSettings.copyOf(TOADSTONE)){};
+    public static final Block TOADSTONE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(TOADSTONE_BRICKS));
+    public static final Block TOADSTONE_BRICK_STAIRS = new StairsBlock(TOADSTONE_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(TOADSTONE_BRICKS)){};
     public static final Block GLOOMSTONE = new Block(FabricBlockSettings.copyOf(GLOOMSTONE_BRONZE_ORE).strength(1.2F, 1.0F));
     public static final Block GLOOMSTONE_BRICKS = new BrickBlock(FabricBlockSettings.copyOf(GLOOMSTONE).sounds(BlockSoundGroup.DEEPSLATE_BRICKS));
     public static final Block GLOOMSTONE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(GLOOMSTONE));
@@ -165,12 +167,14 @@ public class BlockList {
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "bronze_stairs"), BRONZE_STAIRS);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstone"), TOADSTONE);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstone_bricks"), TOADSTONE_BRICKS);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstone_slab"), TOADSTONE_SLAB);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstone_stairs"), TOADSTONE_STAIRS);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstone_brick_slab"), TOADSTONE_BRICK_SLAB);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstone_brick_stairs"), TOADSTONE_BRICK_STAIRS);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "gloomstone"), GLOOMSTONE);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "gloomstone_bricks"), GLOOMSTONE_BRICKS);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "golden_bricks"), GOLDEN_BRICKS);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "crystal_bricks"), CRYSTAL_BRICKS);
-        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstone_slab"), TOADSTONE_SLAB);
-        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstone_stairs"), TOADSTONE_STAIRS);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "gloomstone_slab"), GLOOMSTONE_SLAB);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "gloomstone_stairs"), GLOOMSTONE_STAIRS);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "hardstone"), HARDSTONE);

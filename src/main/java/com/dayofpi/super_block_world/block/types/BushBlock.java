@@ -6,6 +6,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.PlantBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
@@ -32,12 +33,22 @@ public class BushBlock extends PlantBlock {
         super(settings);
         this.setDefaultState(this.getDefaultState().with(FRUITS, 0));
     }
+
+    @Override
+    public void onBlockBreakStart(BlockState state, World world, BlockPos pos, PlayerEntity player) {
+        ItemStack itemStack = player.getStackInHand(player.preferredHand);
+        if (itemStack.isOf(Items.SHEARS)) {
+            Block.dropStack(world, pos, new ItemStack(ItemList.YOSHI_FRUIT, state.get(FRUITS)));
+        }
+
+    }
+
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (state.get(FRUITS) > 0) {
             world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.6F, 1.1F);
-            world.setBlockState(pos, state.cycle(FRUITS), 2);
-            Block.dropStack(world, pos, new ItemStack(ItemList.YOSHI_FRUIT, state.get(FRUITS)));
+            world.setBlockState(pos, state.with(FRUITS, state.get(FRUITS) - 1), 2);
+            Block.dropStack(world, pos, new ItemStack(ItemList.YOSHI_FRUIT, 1));
             return ActionResult.success(world.isClient);
         } else {
             return ActionResult.PASS;

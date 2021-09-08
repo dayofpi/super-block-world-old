@@ -1,11 +1,10 @@
 {
-	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
 		"particle": "super_block_world:block/spike_trap_top",
 		"top": "super_block_world:block/spike_trap_top",
 		"bottom": "super_block_world:block/bronze_block",
-		"side": "super_block_world:block/bronze_slab"
+		"side": "super_block_world:block/spike_trap_side"
 	},
 	"elements": [
 		{
