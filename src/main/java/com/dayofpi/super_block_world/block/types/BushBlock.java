@@ -29,7 +29,7 @@ public class BushBlock extends PlantBlock {
         builder.add(FRUITS);
     }
 
-    protected BushBlock(Settings settings) {
+    public BushBlock(Settings settings) {
         super(settings);
         this.setDefaultState(this.getDefaultState().with(FRUITS, 0));
     }

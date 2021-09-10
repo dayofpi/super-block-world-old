@@ -4,7 +4,7 @@
     "decorator": {
       "type": "minecraft:count",
       "config": {
-        "count": 30
+        "count": 7
       }
     },
     "feature": {
@@ -23,10 +23,10 @@
                 "height": {
                   "type": "minecraft:uniform",
                   "min_inclusive": {
-                    "above_bottom": 0
+                    "absolute": 50
                   },
                   "max_inclusive": {
-                    "absolute": 62
+                    "absolute": 80
                   }
                 }
               }

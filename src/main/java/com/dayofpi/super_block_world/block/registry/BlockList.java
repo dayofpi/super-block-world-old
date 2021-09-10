@@ -29,15 +29,16 @@ public class BlockList {
     public static final Block REDSTONE_TRAMPOLINE = new RedstoneTrampolineBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.GRAY).strength(1.0F).sounds(BlockSoundGroup.WART_BLOCK));
     public static final Block TRAMPOLINE = new TrampolineBlock(FabricBlockSettings.of(Material.WOOD, MapColor.GREEN).sounds(BlockSoundGroup.WOOD).nonOpaque());
     public static final Block TOADSTOOL_GRASS = new ToadstoolGrassBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.LIME).strength(0.5F, 4.0F).sounds(BlockSoundGroup.GRASS));
+    public static final Block TOADSTOOL_TURF = new Block(FabricBlockSettings.copyOf(TOADSTOOL_GRASS));
     public static final Block TOADSTOOL_SOIL = new ToadstoolSoilBlock(FabricBlockSettings.of(Material.SOIL, MapColor.TERRACOTTA_ORANGE).strength(0.5F, 4.0F).sounds(BlockSoundGroup.GRAVEL));
     public static final Block TOADSTOOL_FARMLAND = new ToadstoolFarmlandBlock(FabricBlockSettings.copyOf(TOADSTOOL_SOIL).ticksRandomly());
     public static final Block TOADSTOOL_PATH = new ToadstoolPathBlock(FabricBlockSettings.copyOf(TOADSTOOL_SOIL).mapColor(MapColor.BROWN));
     public static final Block CLOUD_BLOCK = new CloudBlock(FabricBlockSettings.of(Material.SNOW_BLOCK, MapColor.WHITE).strength(0.1F).sounds(BlockSoundGroup.SNOW).nonOpaque());
-    public static final Block GRITZY_SAND = new ModFallingBlock(FabricBlockSettings.of(Material.AGGREGATE, MapColor.TERRACOTTA_YELLOW).strength(1.0F, 3.0F).sounds(BlockSoundGroup.SAND));
+    public static final Block GRITZY_SAND = new SandBlock(16372053, FabricBlockSettings.of(Material.AGGREGATE, MapColor.TERRACOTTA_YELLOW).strength(1.0F, 3.0F).sounds(BlockSoundGroup.SAND));
     public static final Block VANILLATE = new VanillateBlock(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_LIGHT_BLUE).requiresTool().strength(1.2F, 6.0F));
     public static final Block VANILLATE_BRICKS = new Block(FabricBlockSettings.copyOf(VANILLATE));
     public static final Block VANILLATE_TILES = new Block(FabricBlockSettings.copyOf(VANILLATE));
-    public static final Block VANILLATE_CRUMBLE = new ModFallingBlock(FabricBlockSettings.copyOf(VANILLATE).mapColor(MapColor.WHITE_GRAY));
+    public static final Block VANILLATE_CRUMBLE = new SandBlock(12636090, FabricBlockSettings.copyOf(VANILLATE).mapColor(MapColor.WHITE_GRAY));
     public static final Block VANILLATE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(VANILLATE));
     public static final Block VANILLATE_STAIRS = new StairsBlock(VANILLATE.getDefaultState(), FabricBlockSettings.copyOf(VANILLATE)){};
     public static final Block VANILLATE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(VANILLATE_BRICKS));
@@ -49,7 +50,7 @@ public class BlockList {
     public static final Block BRONZE_ORE = new Block(FabricBlockSettings.copyOf(VANILLATE).strength(1.5F, 6.0F));
     public static final Block GLOOMSTONE_BRONZE_ORE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.DARK_AQUA).requiresTool().strength(1.5F, 1.0F).sounds(BlockSoundGroup.DEEPSLATE));
     public static final Block RAW_BRONZE_BLOCK = new Block(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_ORANGE).requiresTool().strength(5.0F, 6.0F));
-    public static final Block BRONZE_BLOCK = new Block(FabricBlockSettings.of(Material.METAL, MapColor.TERRACOTTA_ORANGE).requiresTool().strength(5.0F, 8.0F));
+    public static final Block BRONZE_BLOCK = new Block(FabricBlockSettings.of(Material.METAL, MapColor.TERRACOTTA_ORANGE).requiresTool().strength(5.0F, 8.0F).sounds(BlockSoundGroup.METAL));
     public static final Block BRONZE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(BRONZE_BLOCK));
     public static final Block BRONZE_STAIRS = new StairsBlock(BRONZE_BLOCK.getDefaultState(), FabricBlockSettings.copyOf(BRONZE_BLOCK)){};
     public static final Block DONUT_BLOCK = new DonutBlock(FabricBlockSettings.copyOf(TOADSTOOL_SOIL).strength(0.1F).nonOpaque());
@@ -86,7 +87,8 @@ public class BlockList {
     public static final Block FRUITING_AMANITA_LEAVES = new LeavesBlock(FabricBlockSettings.copyOf(AMANITA_LEAVES));
     public static final Block AMANITA_SAPLING = new SaplingBlock(new AmanitaSaplingGenerator(), FabricBlockSettings.of(Material.PLANT, MapColor.YELLOW).noCollision().ticksRandomly().sounds(BlockSoundGroup.GRASS)){};
     public static final Block HORSETAIL = new HorsetailBlock(FabricBlockSettings.of(Material.PLANT).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS));
-    public static final Block BUSH = new BushBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS)){};
+    public static final Block BUSH = new BushBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS));
+    public static final Block VEGETABLE = new VegetableBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT, MapColor.RED).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS)){};
     public static final Block BEANSTALK = new BeanstalkBlock(FabricBlockSettings.of(Material.PLANT).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS).ticksRandomly());
     public static final Block BEANSTALK_PLANT = new BeanstalkPlantBlock(FabricBlockSettings.of(Material.PLANT).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS));
     public static final Block BUDDING_BEANSTALK = new BuddingBeanstalkBlock(FabricBlockSettings.of(Material.PLANT).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS).ticksRandomly());
@@ -114,6 +116,8 @@ public class BlockList {
     public static final Block POTTED_PINK_MUSHROOM = new FlowerPotBlock(PINK_MUSHROOM, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block POTTED_PURPLE_MUSHROOM = new FlowerPotBlock(PURPLE_MUSHROOM, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block POTTED_ORANGE_MUSHROOM = new FlowerPotBlock(ORANGE_MUSHROOM, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
+    public static final Block POTTED_HORSETAIL = new FlowerPotBlock(HORSETAIL, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
+    public static final Block POTTED_BUSH = new FlowerPotBlock(BUSH, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block POTTED_BEANSTALK = new FlowerPotBlock(BEANSTALK, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block POTTED_BUDDING_BEANSTALK = new FlowerPotBlock(BUDDING_BEANSTALK, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     private static Boolean canSpawnOnLeaves(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) {
@@ -140,8 +144,10 @@ public class BlockList {
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "spike_trap"), SPIKE_TRAP);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "redstone_trampoline"), REDSTONE_TRAMPOLINE);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "stone_torch"), STONE_TORCH);
-        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "donut_block"), DONUT_BLOCK);Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "trampoline"), TRAMPOLINE);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "donut_block"), DONUT_BLOCK);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "trampoline"), TRAMPOLINE);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstool_grass"), TOADSTOOL_GRASS);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstool_turf"), TOADSTOOL_TURF);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstool_soil"), TOADSTOOL_SOIL);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstool_farmland"), TOADSTOOL_FARMLAND);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstool_path"), TOADSTOOL_PATH);
@@ -199,6 +205,7 @@ public class BlockList {
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "amanita_sapling"), AMANITA_SAPLING);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "horsetail"), HORSETAIL);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "bush"), BUSH);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "vegetable"), VEGETABLE);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "beanstalk"), BEANSTALK);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "beanstalk_plant"), BEANSTALK_PLANT);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "budding_beanstalk"), BUDDING_BEANSTALK);
@@ -225,6 +232,8 @@ public class BlockList {
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "potted_purple_mushroom"), POTTED_PURPLE_MUSHROOM);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "potted_orange_mushroom"), POTTED_ORANGE_MUSHROOM);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "potted_amanita_sapling"), POTTED_AMANITA_SAPLING);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "potted_horsetail"), POTTED_HORSETAIL);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "potted_bush"), POTTED_BUSH);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "potted_beanstalk"), POTTED_BEANSTALK);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "potted_budding_beanstalk"), POTTED_BUDDING_BEANSTALK);
         BlockEntityList.registerBlockEntities();

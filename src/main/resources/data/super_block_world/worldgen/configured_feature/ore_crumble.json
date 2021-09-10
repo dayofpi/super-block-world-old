@@ -4,7 +4,7 @@
     "decorator": {
       "type": "minecraft:count",
       "config": {
-        "count": 7
+        "count": 200
       }
     },
     "feature": {
@@ -34,13 +34,22 @@
             "feature": {
               "type": "minecraft:ore",
               "config": {
-                "size": 46,
+                "size": 8,
                 "discard_chance_on_air_exposure": 0,
                 "targets": [
                   {
                     "target": {
                       "predicate_type": "minecraft:block_match",
                       "block": "super_block_world:vanillate"
+                    },
+                    "state": {
+                      "Name": "super_block_world:vanillate_crumble"
+                    }
+                  },
+                  {
+                    "target": {
+                      "predicate_type": "minecraft:block_match",
+                      "block": "super_block_world:topped_vanillate"
                     },
                     "state": {
                       "Name": "super_block_world:vanillate_crumble"

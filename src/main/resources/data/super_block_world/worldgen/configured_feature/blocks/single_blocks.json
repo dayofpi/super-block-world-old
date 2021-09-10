@@ -89,7 +89,7 @@
                   }
                 },
                 {
-                  "weight": 8,
+                  "weight": 16,
                   "data": {
                     "Name": "super_block_world:question_block"
                   }

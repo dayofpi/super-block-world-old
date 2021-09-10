@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "minecraft:super_block_world/every_mushroom",
+  "parent": "minecraft:super_block_world/hit_block",
   "criteria": {
     "super_mushroom": {
       "trigger": "minecraft:inventory_changed",

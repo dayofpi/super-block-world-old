@@ -4,9 +4,7 @@ import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.block.registry.BlockList;
 import com.dayofpi.super_block_world.entity.registry.EntityList;
 import com.dayofpi.super_block_world.entity.types.ModBoatEntity;
-import com.dayofpi.super_block_world.item.types.ModBoatItem;
-import com.dayofpi.super_block_world.item.types.PowerStarItem;
-import com.dayofpi.super_block_world.item.types.ShellItem;
+import com.dayofpi.super_block_world.item.types.*;
 import com.dayofpi.super_block_world.world.FluidList;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.entity.EquipmentSlot;
@@ -21,6 +19,9 @@ public class ItemList {
 
     public static final Item POWER_STAR = new PowerStarItem(new FabricItemSettings().rarity(Rarity.RARE).group(CreativeTabs.ITEM_GROUP));
     public static final Item YOSHI_FRUIT = new Item(new FabricItemSettings().food(FoodComponents.YOSHI_FRUIT).group(CreativeTabs.ITEM_GROUP));
+    public static final Item TURNIP = new TurnipItem(new FabricItemSettings().maxCount(16).group(CreativeTabs.ITEM_GROUP));
+    public static final Item HAMMER = new HammerItem(new FabricItemSettings().maxCount(16).group(CreativeTabs.ITEM_GROUP));
+    public static final Item BOMB = new BombItem(new FabricItemSettings().maxCount(16).group(CreativeTabs.ITEM_GROUP));
     public static final Item SUPER_MUSHROOM = new Item(new FabricItemSettings().food(FoodComponents.SUPER_MUSHROOM).maxCount(16).group(CreativeTabs.ITEM_GROUP));
     public static final Item GOLDEN_MUSHROOM = new Item(new FabricItemSettings().food(FoodComponents.GOLDEN_MUSHROOM).maxCount(16).group(CreativeTabs.ITEM_GROUP).rarity(Rarity.UNCOMMON));
     public static final Item ONE_UP = new Item(new FabricItemSettings().food(FoodComponents.ONE_UP).maxCount(16).group(CreativeTabs.ITEM_GROUP).rarity(Rarity.UNCOMMON));
@@ -46,6 +47,10 @@ public class ItemList {
         registerBlockItems();
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "power_star"), POWER_STAR);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "yoshi_fruit"), YOSHI_FRUIT);
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "turnip"), TURNIP);
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "hammer"), HAMMER);
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "bomb"), BOMB);
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "buzzy_shell"), BUZZY_SHELL);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "super_mushroom"), SUPER_MUSHROOM);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "golden_mushroom"), GOLDEN_MUSHROOM);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "one_up"), ONE_UP);
@@ -56,7 +61,6 @@ public class ItemList {
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "cloud_puff"), CLOUD_PUFF);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "spike"), SPIKE);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "buzzy_shell_piece"), BUZZY_SHELL_PIECE);
-        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "buzzy_shell"), BUZZY_SHELL);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "green_mushroom_on_a_stick"), GREEN_MUSHROOM_ON_A_STICK);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "amanita_boat"), AMANITA_BOAT);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "poison_bucket"), POISON_BUCKET);
@@ -79,6 +83,7 @@ public class ItemList {
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "stone_torch"), new BlockItem(BlockList.STONE_TORCH, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "donut_block"), new BlockItem(BlockList.DONUT_BLOCK, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "toadstool_grass"), new BlockItem(BlockList.TOADSTOOL_GRASS, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "toadstool_turf"), new BlockItem(BlockList.TOADSTOOL_TURF, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "toadstool_soil"), new BlockItem(BlockList.TOADSTOOL_SOIL, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "toadstool_farmland"), new BlockItem(BlockList.TOADSTOOL_FARMLAND, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "toadstool_path"), new BlockItem(BlockList.TOADSTOOL_PATH, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
@@ -137,6 +142,7 @@ public class ItemList {
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "yellow_flowerbed"), new BlockItem(BlockList.YELLOW_FLOWERBED, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "horsetail"), new BlockItem(BlockList.HORSETAIL, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "bush"), new BlockItem(BlockList.BUSH, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "vegetable"), new BlockItem(BlockList.VEGETABLE, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "beanstalk"), new BlockItem(BlockList.BEANSTALK, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "budding_beanstalk"), new BlockItem(BlockList.BUDDING_BEANSTALK, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "beanstalk_block"), new BlockItem(BlockList.BEANSTALK_BLOCK, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));

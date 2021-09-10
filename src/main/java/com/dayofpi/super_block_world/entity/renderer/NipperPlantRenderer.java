@@ -3,7 +3,7 @@ package com.dayofpi.super_block_world.entity.renderer;
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.entity.model.NipperPlantModel;
 import com.dayofpi.super_block_world.entity.registry.ModelLayers;
-import com.dayofpi.super_block_world.entity.types.NipperPlantEntity;
+import com.dayofpi.super_block_world.entity.types.mobs.NipperPlantEntity;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.util.Identifier;

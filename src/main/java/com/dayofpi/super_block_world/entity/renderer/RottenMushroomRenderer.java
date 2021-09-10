@@ -3,7 +3,7 @@ package com.dayofpi.super_block_world.entity.renderer;
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.entity.model.RottenMushroomModel;
 import com.dayofpi.super_block_world.entity.registry.ModelLayers;
-import com.dayofpi.super_block_world.entity.types.RottenMushroomEntity;
+import com.dayofpi.super_block_world.entity.types.mobs.RottenMushroomEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;

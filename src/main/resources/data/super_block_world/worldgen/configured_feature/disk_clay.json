@@ -42,9 +42,6 @@
             "Name": "super_block_world:toadstool_soil"
           },
           {
-            "Name": "super_block_world:gritzy_sand"
-          },
-          {
             "Name": "super_block_world:hardstone",
             "Properties": {
               "axis": "y"

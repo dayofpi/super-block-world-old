@@ -4,7 +4,7 @@
   "sea_level": 63,
   "min_surface_level": 0,
   "disable_mob_generation": false,
-  "noise_caves_enabled": false,
+  "noise_caves_enabled": true,
   "noodle_caves_enabled": false,
   "aquifers_enabled": true,
   "deepslate_enabled": false,
@@ -39,8 +39,8 @@
       "offset": 0
     },
     "top_slide": {
-      "target": -9,
-      "size": 3,
+      "target": -2,
+      "size": 5,
       "offset": 0
     }
   },

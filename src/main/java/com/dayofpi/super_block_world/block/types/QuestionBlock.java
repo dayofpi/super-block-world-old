@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.block.types;
 
-import com.dayofpi.super_block_world.block.registry.BlockList;
 import com.dayofpi.super_block_world.block.block_entity.QuestionBlockBE;
+import com.dayofpi.super_block_world.block.registry.BlockList;
 import com.dayofpi.super_block_world.misc.SoundList;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
@@ -9,12 +9,21 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.util.ParticleUtil;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.loot.LootTable;
+import net.minecraft.loot.context.LootContext;
+import net.minecraft.loot.context.LootContextParameters;
+import net.minecraft.loot.context.LootContextTypes;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class QuestionBlock extends ReactiveBlock implements BlockEntityProvider {
     public QuestionBlock(Settings settings) {
@@ -25,6 +34,14 @@ public class QuestionBlock extends ReactiveBlock implements BlockEntityProvider 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new QuestionBlockBE(pos, state);
+    }
+
+    public static List<ItemStack> defaultItems(ServerWorld world, BlockState state, BlockPos blockPos) {
+        LootContext lootContext = new LootContext.Builder(world).parameter(LootContextParameters.BLOCK_STATE, state).parameter(LootContextParameters.TOOL, ItemStack.EMPTY).parameter(LootContextParameters.ORIGIN, Vec3d.ofCenter(blockPos)).build(LootContextTypes.BLOCK);
+        ServerWorld serverWorld = lootContext.getWorld();
+
+        LootTable lootTable = serverWorld.getServer().getLootManager().getTable(state.getBlock().getLootTableId());
+        return lootTable.generateLoot(lootContext);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.dayofpi.super_block_world.block.types;
 
-import com.dayofpi.super_block_world.entity.types.AbstractShellEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
@@ -37,9 +36,8 @@ public abstract class ReactiveBlock extends Block {
 
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos blockPos, Entity entity) {
-        boolean bool1 = entity.getY() < blockPos.getY();
-        boolean bool2 = entity instanceof AbstractShellEntity shellEntity && shellEntity.isSpinning() && entity.getBlockPos().getY() == blockPos.getY();
-        if (bool1 || bool2) {
+        boolean jumpUnder = entity.getY() < blockPos.getY();
+        if (jumpUnder) {
             this.activate(state, world, blockPos);
         }
         super.onEntityCollision(state, world, blockPos, entity);

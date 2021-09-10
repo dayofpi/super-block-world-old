@@ -3,7 +3,7 @@ package com.dayofpi.super_block_world.entity.renderer;
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.entity.model.AbstractBuzzyModel;
 import com.dayofpi.super_block_world.entity.registry.ModelLayers;
-import com.dayofpi.super_block_world.entity.types.SpikeTopEntity;
+import com.dayofpi.super_block_world.entity.types.mobs.SpikeTopEntity;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
@@ -26,7 +26,7 @@ public class SpikeTopRenderer<T extends SpikeTopEntity> extends MobEntityRendere
         if (entity.isUpsideDown()) {
             matrices.translate(0.0D, entity.getHeight() + 0.1F, 0.0D);
             matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(180.0F));
-        } else if (entity.isClimbingWall()) {
+        } else if (entity.isClimbingWall() && !entity.isOnGround()) {
             World world = entity.getEntityWorld();
             BlockPos blockPos = entity.getBlockPos().down();
             float climbAngle = 90.0F;

@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
-		"particle": "super_block_world:block/spike_trap_top",
-		"top": "super_block_world:block/spike_trap_top",
+		"particle": "super_block_world:block/spike_trap_side",
+		"top": "super_block_world:block/spike_trap_on",
 		"bottom": "super_block_world:block/bronze_block",
 		"side": "super_block_world:block/spike_trap_side",
 		"spikes": "super_block_world:block/spikes"

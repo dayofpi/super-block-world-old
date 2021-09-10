@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.entity.model;
 
-import com.dayofpi.super_block_world.entity.types.StingbyEntity;
+import com.dayofpi.super_block_world.entity.types.mobs.StingbyEntity;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.util.math.MathHelper;

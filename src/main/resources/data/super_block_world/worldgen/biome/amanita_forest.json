@@ -28,7 +28,7 @@
     "monster": [
       {
         "type": "minecraft:enderman",
-        "weight": 20,
+        "weight": 10,
         "minCount": 2,
         "maxCount": 2
       },
@@ -78,7 +78,16 @@
     ],
     "misc": []
   },
-  "spawn_costs": {},
+  "spawn_costs": {
+    "super_block_world:stingby": {
+      "energy_budget": 0.15,
+      "charge": 0.7
+    },
+    "super_block_world:rotten_mushroom": {
+      "energy_budget": 0.15,
+      "charge": 0.7
+    }
+  },
   "carvers": {
     "air": [
       "super_block_world:cave",
@@ -99,12 +108,14 @@
     [
       "super_block_world:blocks/single_blocks",
       "super_block_world:blocks/surface_blocks",
+      "super_block_world:blocks/grounded_blocks",
       "super_block_world:blocks/cave_blocks",
       "super_block_world:forest_paths",
       "super_block_world:vanillate_topping"
     ],
     [
       "super_block_world:disk_clay",
+      "super_block_world:disk_sand",
       "super_block_world:toppings_coal",
       "super_block_world:toppings_iron",
       "super_block_world:toppings_gold",
@@ -118,7 +129,6 @@
       "minecraft:rare_dripstone_cluster"
     ],
     [
-      "super_block_world:huge_mushrooms_underground",
       "super_block_world:cave_ceiling",
       "super_block_world:cave_floor",
       "super_block_world:cave_lanterns",
@@ -127,13 +137,13 @@
       "super_block_world:patch_pumpkin",
       "super_block_world:patch_bushes",
       "super_block_world:patch_stump",
-      "super_block_world:patch_gloomstone",
+      "super_block_world:patch_veggies",
       "super_block_world:mushrooms_forest",
       "super_block_world:spring_water",
       "super_block_world:lake_poison",
       "minecraft:patch_tall_grass_2",
-      "minecraft:classic_vines_cave_feature",
       "super_block_world:trees_forest",
+      "super_block_world:seagrass",
       "minecraft:patch_grass_plain"
     ],
     [

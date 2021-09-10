@@ -2,17 +2,18 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "rolls": 1.0,
-      "bonus_rolls": 0.0,
+      "rolls": 1,
+      "bonus_rolls": 0,
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "super_block_world:empty_block"
-        }
-      ],
-      "conditions": [
+          "weight": 20,
+          "name": "super_block_world:super_mushroom"
+        },
         {
-          "condition": "minecraft:survives_explosion"
+          "type": "minecraft:item",
+          "weight": 1,
+          "name": "super_block_world:one_up"
         }
       ]
     }

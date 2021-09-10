@@ -119,7 +119,7 @@ public class CustomLakeFeature extends Feature<SingleStateFeatureConfig> {
                                     Biome biome = structureWorldAccess.getBiome(blockPos5);
                                     if (biome.getGenerationSettings().getSurfaceConfig().getTopMaterial().isOf(Blocks.MYCELIUM)) {
                                         structureWorldAccess.setBlockState(blockPos5, Blocks.MYCELIUM.getDefaultState(), Block.NOTIFY_LISTENERS);
-                                    } else if (biome.getGenerationSettings().getSurfaceConfig().getUnderwaterMaterial().isOf(BlockList.TOADSTOOL_SOIL)) {
+                                    } else if (biome.getGenerationSettings().getSurfaceConfig().getTopMaterial().isOf(BlockList.TOADSTOOL_GRASS) && biome.getGenerationSettings().getSurfaceConfig().getUnderwaterMaterial().isOf(BlockList.TOADSTOOL_SOIL)) {
                                         structureWorldAccess.setBlockState(blockPos5, BlockList.TOADSTOOL_FARMLAND.getDefaultState().with(FarmlandBlock.MOISTURE, 7), Block.NOTIFY_LISTENERS);
                                     } else {
                                         structureWorldAccess.setBlockState(blockPos5, BlockList.TOADSTOOL_GRASS.getDefaultState(), Block.NOTIFY_LISTENERS);

@@ -1,7 +1,7 @@
 package com.dayofpi.mixin;
 
 import com.dayofpi.super_block_world.block.registry.BlockList;
-import com.dayofpi.super_block_world.entity.types.AbstractBuzzy;
+import com.dayofpi.super_block_world.entity.types.mobs.AbstractBuzzy;
 import com.dayofpi.super_block_world.item.registry.ItemList;
 import com.dayofpi.super_block_world.misc.SoundList;
 import net.minecraft.entity.Entity;

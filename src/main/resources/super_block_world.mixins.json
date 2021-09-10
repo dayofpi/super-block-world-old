@@ -4,25 +4,29 @@
   "package": "com.dayofpi.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "add_entity.MixinModelLoader",
+    "add_entity.MixinSpawnRestriction",
 
     "crops.MixinCropBlock",
     "crops.MixinPotatoesBlock",
     "crops.MixinStemBlock",
+
     "mushroom_revamp.MixinBiomeCreator",
     "mushroom_revamp.MixinHugeMushroom",
     "mushroom_revamp.MixinMushroomPlant",
     "enum_additions.MixinInstrument",
     "enum_additions.MixinMineshaftFeature",
+
     "fluid.FluidBlockI",
     "fluid.FluidBlockMixin",
     "fluid.SpongeBlockMixin",
     "fluid.WaterFluidMixin",
-    "add_entity.MixinModelLoader",
-    "add_entity.MixinSpawnRestriction",
+
     "interfaces.InterfaceClientPlayer",
     "interfaces.InterfaceEntity",
     "interfaces.InterfaceModelLoader",
     "interfaces.InterfaceSignType",
+
     "BlockPlacerTypeMixin",
     "MixinAnimalEntity",
     "MixinArmorItem",

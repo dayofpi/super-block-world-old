@@ -4,7 +4,7 @@
     "decorator": {
       "type": "minecraft:count",
       "config": {
-        "count": 36
+        "count": 20
       }
     },
     "feature": {
@@ -26,7 +26,7 @@
                     "above_bottom": 0
                   },
                   "max_inclusive": {
-                    "absolute": 62
+                    "below_top": 0
                   }
                 }
               }
@@ -53,8 +53,8 @@
                     "xz_radius": {
                       "type": "minecraft:uniform",
                       "value": {
-                        "min_inclusive": 4,
-                        "max_inclusive": 8
+                        "min_inclusive": 6,
+                        "max_inclusive": 12
                       }
                     },
                     "replaceable": "super_block_world:apply_topping_to",

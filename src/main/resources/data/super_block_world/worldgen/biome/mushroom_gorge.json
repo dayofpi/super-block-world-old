@@ -6,14 +6,14 @@
   "downfall": 0.4,
   "precipitation": "rain",
   "category": "extreme_hills",
-  "player_spawn_friendly": true,
+  "player_spawn_friendly": false,
   "effects": {
     "sky_color": 1550278,
     "fog_color": 16777215,
     "water_color": 241854,
     "water_fog_color": 1291214,
-    "grass_color": 4702483,
-    "foliage_color": 12579345,
+    "grass_color": 4499737,
+    "foliage_color": 10868020,
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000,
@@ -88,6 +88,7 @@
     ],
     [
       "super_block_world:disk_clay",
+      "super_block_world:disk_sand",
       "super_block_world:toppings_coal",
       "super_block_world:toppings_iron",
       "super_block_world:toppings_gold",
@@ -101,19 +102,17 @@
       "minecraft:rare_dripstone_cluster"
     ],
     [
-      "super_block_world:huge_mushrooms_underground",
       "super_block_world:cave_ceiling",
       "super_block_world:cave_floor",
       "super_block_world:cave_lanterns",
       "super_block_world:patch_sugar_cane",
       "super_block_world:patch_pumpkin",
       "super_block_world:patch_bushes",
-      "super_block_world:patch_stump",
-      "super_block_world:patch_vanillate",
-      "super_block_world:patch_gloomstone",
+      "super_block_world:patch_veggies",
       "super_block_world:mushrooms_main",
       "super_block_world:spring_water",
       "super_block_world:lake_poison",
+      "super_block_world:seagrass",
       "super_block_world:patch_grass"
     ],
     [

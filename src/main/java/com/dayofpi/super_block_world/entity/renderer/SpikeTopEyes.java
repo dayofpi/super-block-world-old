@@ -2,7 +2,7 @@ package com.dayofpi.super_block_world.entity.renderer;
 
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.entity.model.AbstractBuzzyModel;
-import com.dayofpi.super_block_world.entity.types.AbstractBuzzy;
+import com.dayofpi.super_block_world.entity.types.mobs.AbstractBuzzy;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.feature.EyesFeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;

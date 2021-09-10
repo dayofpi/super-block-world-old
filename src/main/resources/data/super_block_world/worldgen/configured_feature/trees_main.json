@@ -43,7 +43,7 @@
           "config": {
             "features": [
               {
-                "chance": 0.11,
+                "chance": 0.15,
                 "feature": "super_block_world:beanstalk_picker_forest"
               },
               {

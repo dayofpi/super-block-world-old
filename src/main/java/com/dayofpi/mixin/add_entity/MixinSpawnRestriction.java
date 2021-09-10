@@ -1,7 +1,7 @@
 package com.dayofpi.mixin.add_entity;
 
 import com.dayofpi.super_block_world.entity.registry.EntityList;
-import com.dayofpi.super_block_world.entity.types.*;
+import com.dayofpi.super_block_world.entity.types.mobs.*;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.SpawnRestriction;

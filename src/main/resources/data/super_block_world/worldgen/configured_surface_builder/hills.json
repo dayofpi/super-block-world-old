@@ -1,0 +1,14 @@
+{
+  "config": {
+    "top_material": {
+      "Name": "super_block_world:toadstool_turf"
+    },
+    "under_material": {
+      "Name": "super_block_world:toadstool_grass"
+    },
+    "underwater_material": {
+      "Name": "super_block_world:toadstool_soil"
+    }
+  },
+  "type": "minecraft:nether_forest"
+}

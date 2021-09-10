@@ -2,7 +2,7 @@ package com.dayofpi.super_block_world.block.types;
 
 import com.dayofpi.super_block_world.block.registry.BlockList;
 import com.dayofpi.super_block_world.entity.registry.EntityList;
-import com.dayofpi.super_block_world.entity.types.NipperPlantEntity;
+import com.dayofpi.super_block_world.entity.types.mobs.NipperPlantEntity;
 import net.minecraft.block.*;
 import net.minecraft.client.util.ParticleUtil;
 import net.minecraft.fluid.Fluids;

@@ -26,6 +26,15 @@
       }
     ]
   },
+  "block.pluck": {
+    "subtitle": "block.pluck",
+    "sounds": [
+      {
+        "name": "super_block_world:random/pluck",
+        "stream": true
+      }
+    ]
+  },
   "block.trampoline": {
     "subtitle": "block.trampoline",
     "sounds": [
@@ -69,6 +78,99 @@
       },
       {
         "name": "minecraft:item/armor/equip_iron6",
+        "stream": true
+      }
+    ]
+  },
+  "item.throw": {
+    "subtitle": "item.throw",
+    "sounds": [
+      {
+        "name": "super_block_world:random/throw",
+        "stream": true
+      }
+    ]
+  },
+  "entity.moo_moo.idle": {
+    "subtitle": "entity.moo_moo.idle",
+    "sounds": [
+      {
+        "name": "mob/cow/say1",
+        "stream": true
+      },
+      {
+        "name": "mob/cow/say2",
+        "stream": true
+      },
+      {
+        "name": "mob/cow/say3",
+        "stream": true
+      },
+      {
+        "name": "mob/cow/say4",
+        "stream": true
+      }
+    ]
+  },
+  "entity.moo_moo.hurt": {
+    "subtitle": "entity.moo_moo.hurt",
+    "sounds": [
+      {
+        "name": "mob/cow/hurt1",
+        "stream": true
+      },
+      {
+        "name": "mob/cow/hurt2",
+        "stream": true
+      },
+      {
+        "name": "mob/cow/hurt3",
+        "stream": true
+      }
+    ]
+  },
+  "entity.moo_moo.death": {
+    "subtitle": "entity.moo_moo.death",
+    "sounds": [
+      {
+        "name": "mob/cow/hurt1",
+        "stream": true
+      },
+      {
+        "name": "mob/cow/hurt2",
+        "stream": true
+      },
+      {
+        "name": "mob/cow/hurt3",
+        "stream": true
+      }
+    ]
+  },
+  "entity.moo_moo.step": {
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      {
+        "name": "mob/cow/step1",
+        "stream": true
+      },
+      {
+        "name": "mob/cow/step2",
+        "stream": true
+      },
+      {
+        "name": "mob/cow/step3",
+        "stream": true
+      },
+      {
+        "name": "super_block_world:entity/moo_moo/bell1",
+        "stream": true
+      },
+      {
+        "name": "super_block_world:entity/moo_moo/bell2",
+        "stream": true
+      },
+      {
+        "name": "super_block_world:entity/moo_moo/bell3",
         "stream": true
       }
     ]

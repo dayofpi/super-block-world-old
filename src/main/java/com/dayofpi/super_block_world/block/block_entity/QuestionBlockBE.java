@@ -1,36 +1,19 @@
 package com.dayofpi.super_block_world.block.block_entity;
 
 import com.dayofpi.super_block_world.block.registry.BlockEntityList;
-import com.dayofpi.super_block_world.item.registry.ItemList;
+import com.dayofpi.super_block_world.block.types.QuestionBlock;
 import com.dayofpi.super_block_world.misc.ImplementedInventory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.inventory.Inventories;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
-
 public class QuestionBlockBE extends BlockEntity implements ImplementedInventory {
-    List<Item> defaultItems = Arrays.asList(
-            ItemList.SUPER_MUSHROOM,
-            ItemList.SUPER_MUSHROOM,
-            ItemList.SUPER_MUSHROOM,
-            ItemList.SUPER_MUSHROOM);
-    List<Item> rareItems = Arrays.asList(
-            ItemList.ONE_UP,
-            ItemList.GOLDEN_MUSHROOM,
-            ItemList.GOLDEN_MUSHROOM,
-            ItemList.POISON_MUSHROOM);
-    Random random = new Random();
-    int index = random.nextInt(4);
-    Item prizes = random.nextInt(15) == 0 ? rareItems.get(index) : defaultItems.get(index);
-    private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, new ItemStack(prizes));
+    private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, ItemStack.EMPTY);
 
     public QuestionBlockBE(BlockPos pos, BlockState state) {
         super(BlockEntityList.QUESTION_BLOCK, pos, state);
@@ -40,6 +23,9 @@ public class QuestionBlockBE extends BlockEntity implements ImplementedInventory
     @Override
     public NbtCompound writeNbt(NbtCompound tag) {
         Inventories.writeNbt(tag, items);
+        if (this.getItems().isEmpty() && this.world != null && !this.world.isClient()) {
+            this.setStack(0, QuestionBlock.defaultItems((ServerWorld) world, world.getBlockState(getPos()), getPos()).iterator().next());
+        }
         return super.writeNbt(tag);
     }
 
@@ -48,6 +34,7 @@ public class QuestionBlockBE extends BlockEntity implements ImplementedInventory
     public void readNbt(NbtCompound tag) {
         super.readNbt(tag);
         Inventories.readNbt(tag, items);}
+
 
     @Override
     public DefaultedList<ItemStack> getItems() {
