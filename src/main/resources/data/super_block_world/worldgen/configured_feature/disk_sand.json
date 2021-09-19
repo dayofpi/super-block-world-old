@@ -21,7 +21,7 @@
       }
     },
     "feature": {
-      "type": "minecraft:disk",
+      "type": "super_block_world:disk",
       "config": {
         "state": {
           "Name": "super_block_world:gritzy_sand"

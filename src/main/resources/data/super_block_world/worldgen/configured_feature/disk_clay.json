@@ -21,7 +21,7 @@
       }
     },
     "feature": {
-      "type": "minecraft:disk",
+      "type": "super_block_world:disk",
       "config": {
         "state": {
           "Name": "minecraft:clay"
@@ -37,9 +37,6 @@
         "targets": [
           {
             "Name": "super_block_world:vanillate"
-          },
-          {
-            "Name": "super_block_world:toadstool_soil"
           },
           {
             "Name": "super_block_world:hardstone",

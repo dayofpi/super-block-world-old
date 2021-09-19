@@ -53,31 +53,38 @@
       }
     ]
   },
-  "item.buzzy_shell": {
-    "subtitle": "item.buzzy_shell",
+  "item.jump": {
+    "subtitle": "item.jump",
     "sounds": [
       {
-        "name": "minecraft:item/armor/equip_iron1",
+        "name": "super_block_world:random/jump",
         "stream": true
-      },
+      }
+    ]
+  },
+  "item.stomp": {
+    "subtitle": "item.stomp",
+    "sounds": [
       {
-        "name": "minecraft:item/armor/equip_iron2",
+        "name": "super_block_world:random/stomp",
         "stream": true
-      },
+      }
+    ]
+  },
+  "item.bounce": {
+    "subtitle": "item.bounce",
+    "sounds": [
       {
-        "name": "minecraft:item/armor/equip_iron3",
+        "name": "super_block_world:random/bounce",
         "stream": true
-      },
+      }
+    ]
+  },
+  "item.one_up": {
+    "subtitle": "item.one_up",
+    "sounds": [
       {
-        "name": "minecraft:item/armor/equip_iron4",
-        "stream": true
-      },
-      {
-        "name": "minecraft:item/armor/equip_iron5",
-        "stream": true
-      },
-      {
-        "name": "minecraft:item/armor/equip_iron6",
+        "name": "super_block_world:random/1up",
         "stream": true
       }
     ]

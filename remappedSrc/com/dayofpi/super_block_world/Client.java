@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world;
 
-import com.dayofpi.super_block_world.block.BlockClient;
-import com.dayofpi.super_block_world.entity.EntityClient;
+import com.dayofpi.super_block_world.block.registry.BlockClient;
+import com.dayofpi.super_block_world.entity.registry.EntityClient;
 import com.dayofpi.super_block_world.misc.SpawnPacket;
-import com.dayofpi.super_block_world.world.fluid.FluidClient;
+import com.dayofpi.super_block_world.world.fluid.FluidRendering;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -27,7 +27,7 @@ public class Client implements ClientModInitializer {
         receiveEntityPacket();
         BlockClient.setRenderLayers();
         EntityClient.registerEntityRenderers();
-        FluidClient.renderFluids();
+        FluidRendering.renderFluids();
     }
 
     public void receiveEntityPacket() {

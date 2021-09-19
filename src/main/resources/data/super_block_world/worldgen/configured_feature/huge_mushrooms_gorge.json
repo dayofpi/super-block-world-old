@@ -25,7 +25,7 @@
                 "outer": {
                   "type": "minecraft:water_depth_threshold",
                   "config": {
-                    "max_water_depth": 0
+                    "max_water_depth": 2
                   }
                 },
                 "inner": {

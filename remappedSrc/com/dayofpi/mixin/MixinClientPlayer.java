@@ -1,5 +1,6 @@
 package com.dayofpi.mixin;
 
+import com.dayofpi.mixin.interfaces.InterfaceClientPlayer;
 import com.dayofpi.super_block_world.entity.types.ModBoatEntity;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.client.input.Input;

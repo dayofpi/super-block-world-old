@@ -32,9 +32,9 @@
               }
             },
             "feature": {
-              "type": "minecraft:ore",
+              "type": "minecraft:scattered_ore",
               "config": {
-                "size": 8,
+                "size": 20,
                 "discard_chance_on_air_exposure": 0,
                 "targets": [
                   {

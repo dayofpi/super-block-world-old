@@ -12,8 +12,8 @@
     "fog_color": 12637889,
     "water_color": 5295837,
     "water_fog_color": 5295837,
-    "grass_color": 15961605,
-    "foliage_color": 16359936,
+    "grass_color": 15425843,
+    "foliage_color": 16677684,
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000,
@@ -115,6 +115,7 @@
     [
       "super_block_world:cave_ceiling",
       "super_block_world:cave_floor",
+      "super_block_world:cave_floor_rare",
       "super_block_world:cave_lanterns",
       "super_block_world:patch_sugar_cane",
       "super_block_world:patch_pumpkin",

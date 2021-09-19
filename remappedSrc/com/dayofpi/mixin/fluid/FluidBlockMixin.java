@@ -1,7 +1,7 @@
 package com.dayofpi.mixin.fluid;
 
-import com.dayofpi.super_block_world.block.BlockTypes;
-import com.dayofpi.super_block_world.misc.Tags;
+import com.dayofpi.super_block_world.block.registry.BlockList;
+import com.dayofpi.super_block_world.misc.TagList;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -34,13 +34,13 @@ public class FluidBlockMixin extends Block {
 
             for (Direction direction : ((FluidBlockI) this).aDirection()) {
                 BlockPos blockPos = pos.offset(direction.getOpposite());
-                if (world.getFluidState(blockPos).isIn(FluidTags.WATER) && !world.getFluidState(blockPos).isIn(Tags.POISON)) {
+                if (world.getFluidState(blockPos).isIn(FluidTags.WATER) && !world.getFluidState(blockPos).isIn(TagList.POISON)) {
                     Block block = world.getFluidState(pos).isStill() ? Blocks.OBSIDIAN : Blocks.COBBLESTONE;
                     world.setBlockState(pos, block.getDefaultState());
                     this.playExtinguishSound(world, pos);
                     info.setReturnValue(false);
-                } else if (world.getFluidState(blockPos).isIn(Tags.POISON)) {
-                    Block block = world.getFluidState(pos).isStill() ? BlockTypes.VANILLATE : BlockTypes.TOPPED_VANILLATE;
+                } else if (world.getFluidState(blockPos).isIn(TagList.POISON)) {
+                    Block block = BlockList.VANILLATE;
                     world.setBlockState(pos, block.getDefaultState());
                     this.playExtinguishSound(world, pos);
                     info.setReturnValue(false);

@@ -1,16 +1,7 @@
 {
   "variants": {
-    "axis=x": {
-      "model": "super_block_world:block/hardstone_horizontal",
-      "x": 90,
-      "y": 90
-    },
-    "axis=y": {
+    "": {
       "model": "super_block_world:block/hardstone"
-    },
-    "axis=z": {
-      "model": "super_block_world:block/hardstone_horizontal",
-      "x": 90
     }
   }
 }

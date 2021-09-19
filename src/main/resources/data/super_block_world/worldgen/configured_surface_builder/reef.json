@@ -1,0 +1,14 @@
+{
+  "config": {
+    "top_material": {
+      "Name": "super_block_world:toadstool_grass"
+    },
+    "under_material": {
+      "Name": "super_block_world:gritzy_sand"
+    },
+    "underwater_material": {
+      "Name": "super_block_world:gritzy_sand"
+    }
+  },
+  "type": "minecraft:nether_forest"
+}

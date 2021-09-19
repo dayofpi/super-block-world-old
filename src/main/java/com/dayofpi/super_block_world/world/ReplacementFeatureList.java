@@ -3,7 +3,9 @@ package com.dayofpi.super_block_world.world;
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.block.registry.BlockList;
 import com.dayofpi.super_block_world.block.types.MushroomBlock;
+import com.dayofpi.super_block_world.world.feature.types.ColumnCoralFeature;
 import com.dayofpi.super_block_world.world.feature.types.CustomLakeFeature;
+import com.dayofpi.super_block_world.world.feature.types.CustomUnderwaterDiskFeature;
 import com.dayofpi.super_block_world.world.feature.types.SuperRandomPatchFeature;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.block.BlockState;
@@ -19,6 +21,8 @@ import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 
 public class ReplacementFeatureList {
     public static final Feature<SingleStateFeatureConfig> LAKE = new CustomLakeFeature(SingleStateFeatureConfig.CODEC);
+    public static final Feature<DiskFeatureConfig> DISK = new CustomUnderwaterDiskFeature(DiskFeatureConfig.CODEC);
+    public static final Feature<DefaultFeatureConfig> COLUMN_CORAL = new ColumnCoralFeature(DefaultFeatureConfig.CODEC);
     public static final Feature<RandomPatchFeatureConfig> RANDOM_PATCH = new SuperRandomPatchFeature(RandomPatchFeatureConfig.CODEC);
 
     public static final ConfiguredFeature<?, ?> HUGE_BROWN_MUSHROOM = Feature.HUGE_BROWN_MUSHROOM.configure(new HugeMushroomFeatureConfig(new SimpleBlockStateProvider(States.BROWN_MUSHROOM_CAP), new SimpleBlockStateProvider(States.MUSHROOM_STEM), 3));
@@ -35,6 +39,8 @@ public class ReplacementFeatureList {
 
     public static void replaceFeatures() {
         Registry.register(Registry.FEATURE, new Identifier(Main.MOD_ID, "lake"), LAKE);
+        Registry.register(Registry.FEATURE, new Identifier(Main.MOD_ID, "disk"), DISK);
+        Registry.register(Registry.FEATURE, new Identifier(Main.MOD_ID, "column_coral"), COLUMN_CORAL);
         Registry.register(Registry.FEATURE, new Identifier(Main.MOD_ID, "random_patch"), RANDOM_PATCH);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.MOD_ID, "huge_brown_mushroom"), HUGE_BROWN_MUSHROOM);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.MOD_ID, "huge_red_mushroom"), HUGE_RED_MUSHROOM);

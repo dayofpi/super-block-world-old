@@ -42,7 +42,7 @@
     "creature": [
       {
         "type": "minecraft:fox",
-        "weight": 1,
+        "weight": 2,
         "minCount": 1,
         "maxCount": 1
       },
@@ -115,6 +115,7 @@
       "super_block_world:patch_grass",
       "super_block_world:cave_ceiling",
       "super_block_world:cave_floor",
+      "super_block_world:cave_floor_rare",
       "super_block_world:cave_lanterns",
       "super_block_world:spring_water",
       "super_block_world:lake_poison",

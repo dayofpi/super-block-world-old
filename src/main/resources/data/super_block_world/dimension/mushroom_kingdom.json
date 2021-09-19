@@ -37,6 +37,16 @@
       },
       "biomes": [
         {
+          "biome": "super_block_world:cheep_cheep_reef",
+          "parameters": {
+            "altitude": -0.1,
+            "temperature": 0,
+            "humidity": 0.5,
+            "weirdness": 0,
+            "offset": 0
+          }
+        },
+        {
           "biome": "super_block_world:mushroom_grasslands",
           "parameters": {
             "altitude": 0,

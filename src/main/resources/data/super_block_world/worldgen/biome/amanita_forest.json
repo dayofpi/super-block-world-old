@@ -131,6 +131,7 @@
     [
       "super_block_world:cave_ceiling",
       "super_block_world:cave_floor",
+      "super_block_world:cave_floor_rare",
       "super_block_world:cave_lanterns",
       "super_block_world:cave_beanstalks",
       "super_block_world:patch_sugar_cane",
@@ -138,6 +139,7 @@
       "super_block_world:patch_bushes",
       "super_block_world:patch_stump",
       "super_block_world:patch_veggies",
+      "super_block_world:patch_forest_flowers",
       "super_block_world:mushrooms_forest",
       "super_block_world:spring_water",
       "super_block_world:lake_poison",

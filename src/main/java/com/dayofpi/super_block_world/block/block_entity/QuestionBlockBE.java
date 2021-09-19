@@ -1,14 +1,12 @@
 package com.dayofpi.super_block_world.block.block_entity;
 
 import com.dayofpi.super_block_world.block.registry.BlockEntityList;
-import com.dayofpi.super_block_world.block.types.QuestionBlock;
 import com.dayofpi.super_block_world.misc.ImplementedInventory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 
@@ -23,9 +21,6 @@ public class QuestionBlockBE extends BlockEntity implements ImplementedInventory
     @Override
     public NbtCompound writeNbt(NbtCompound tag) {
         Inventories.writeNbt(tag, items);
-        if (this.getItems().isEmpty() && this.world != null && !this.world.isClient()) {
-            this.setStack(0, QuestionBlock.defaultItems((ServerWorld) world, world.getBlockState(getPos()), getPos()).iterator().next());
-        }
         return super.writeNbt(tag);
     }
 

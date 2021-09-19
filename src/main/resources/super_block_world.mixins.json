@@ -14,6 +14,8 @@
     "mushroom_revamp.MixinBiomeCreator",
     "mushroom_revamp.MixinHugeMushroom",
     "mushroom_revamp.MixinMushroomPlant",
+
+    "enum_additions.MixinBoatEntity",
     "enum_additions.MixinInstrument",
     "enum_additions.MixinMineshaftFeature",
 
@@ -34,7 +36,6 @@
     "MixinClientPlayer",
     "MixinDeadBushBlock",
     "MixinEntity",
-    "MixinFallingBlockEntity",
     "MixinLivingEntity",
     "MixinPathAware",
     "MixinRabbit",

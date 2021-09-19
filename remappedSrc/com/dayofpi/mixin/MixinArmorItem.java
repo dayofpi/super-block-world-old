@@ -1,6 +1,6 @@
 package com.dayofpi.mixin;
 
-import com.dayofpi.super_block_world.item.ItemTypes;
+import com.dayofpi.super_block_world.item.registry.ItemList;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.entity.EquipmentSlot;
@@ -32,7 +32,7 @@ public abstract class MixinArmorItem {
     private void constructor(ArmorMaterial material, EquipmentSlot slot, Item.Settings settings, CallbackInfo ci) {
         UUID uUID = MODIFIERS[slot.getEntitySlotId()];
 
-        if (material == ItemTypes.BUZZY_ARMOR_MATERIAL) {
+        if (material == ItemList.BUZZY_ARMOR_MATERIAL) {
             ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
 
             this.attributeModifiers.forEach(builder::put);

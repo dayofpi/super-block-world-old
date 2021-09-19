@@ -1,6 +1,6 @@
 package com.dayofpi.mixin;
 
-import com.dayofpi.super_block_world.block.BlockTypes;
+import com.dayofpi.super_block_world.block.registry.BlockList;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
@@ -18,7 +18,7 @@ import java.util.Random;
 public class MixinAnimalEntity {
     @Inject(at = @At("HEAD"), method = "isValidNaturalSpawn(Lnet/minecraft/entity/EntityType;Lnet/minecraft/world/WorldAccess;Lnet/minecraft/entity/SpawnReason;Lnet/minecraft/util/math/BlockPos;Ljava/util/Random;)Z", cancellable = true)
     private static void isValidNaturalSpawn(EntityType<? extends AnimalEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random, CallbackInfoReturnable<Boolean> info) {
-        info.setReturnValue(world.getBlockState(pos.down()).isOf(Blocks.GRASS_BLOCK) || world.getBlockState(pos.down()).isOf(BlockTypes.TOADSTOOL_GRASS) && world.getBaseLightLevel(pos, 0) > 8);
+        info.setReturnValue(world.getBlockState(pos.down()).isOf(Blocks.GRASS_BLOCK) || world.getBlockState(pos.down()).isOf(BlockList.TOADSTOOL_GRASS) && world.getBaseLightLevel(pos, 0) > 8);
         info.cancel();
     }
 }

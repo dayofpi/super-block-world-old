@@ -1,8 +1,7 @@
 {
   "surface_builder": "super_block_world:forest",
   "depth": 0.1,
-  "scale": 0.04,
-  "temperature": 0.5,
+  "scale": 0.04,"temperature": 0.5,
   "downfall": 0.5,
   "precipitation": "rain",
   "category": "forest",
@@ -131,6 +130,7 @@
     [
       "super_block_world:cave_ceiling",
       "super_block_world:cave_floor",
+      "super_block_world:cave_floor_rare",
       "super_block_world:cave_lanterns",
       "super_block_world:patch_sugar_cane",
       "super_block_world:patch_pumpkin",

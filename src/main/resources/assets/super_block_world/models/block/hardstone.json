@@ -1,7 +1,6 @@
 {
-  "parent": "minecraft:block/cube_column",
+  "parent": "minecraft:block/cube_all",
   "textures": {
-    "end": "super_block_world:block/hardstone_top",
-    "side": "super_block_world:block/hardstone"
+    "all": "super_block_world:block/hardstone"
   }
 }
