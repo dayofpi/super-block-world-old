@@ -2,8 +2,6 @@
   "surface_builder": "super_block_world:hills",
   "temperature": 0.8,
   "downfall": 0.4,
-  "depth": 0.152,
-  "scale": 0.4,
   "precipitation": "rain",
   "category": "plains",
   "player_spawn_friendly": true,
@@ -90,7 +88,8 @@
     ],
     [
       "minecraft:prototype_underwater_magma",
-      "minecraft:rare_dripstone_cluster"
+      "super_block_world:warp_pipes",
+      "super_block_world:warp_pipes_ceiling"
     ],
     [
       "super_block_world:huge_mushrooms_hills",
@@ -98,6 +97,7 @@
       "super_block_world:cave_floor",
       "super_block_world:cave_floor_rare",
       "super_block_world:cave_lanterns",
+      "super_block_world:cave_beanstalks",
       "super_block_world:patch_sugar_cane",
       "super_block_world:patch_pumpkin",
       "super_block_world:patch_bushes_extra",

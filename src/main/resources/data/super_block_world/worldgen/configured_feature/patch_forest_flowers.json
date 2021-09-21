@@ -33,7 +33,7 @@
               "config": {}
             },
             "feature": {
-              "type": "super_block_world:random_patch",
+              "type": "minecraft:random_patch",
               "config": {
                 "can_replace": false,
                 "project": false,
@@ -41,7 +41,7 @@
                 "xspread": 14,
                 "yspread": 6,
                 "zspread": 14,
-                "tries": 50,
+                "tries": 32,
                 "state_provider": {
                   "type": "minecraft:weighted_state_provider",
                   "entries": [
@@ -64,9 +64,9 @@
                       }
                     },
                     {
-                      "weight": 1,
+                      "weight": 10,
                       "data": {
-                        "Name": "super_block_world:fire_tulip"
+                        "Name": "minecraft:lily_of_the_valley"
                       }
                     },
                     {

@@ -99,13 +99,15 @@
     ],
     [
       "minecraft:prototype_underwater_magma",
-      "minecraft:rare_dripstone_cluster"
+      "super_block_world:warp_pipes",
+      "super_block_world:warp_pipes_ceiling"
     ],
     [
       "super_block_world:cave_ceiling",
       "super_block_world:cave_floor",
       "super_block_world:cave_floor_rare",
       "super_block_world:cave_lanterns",
+      "super_block_world:cave_beanstalks",
       "super_block_world:patch_sugar_cane",
       "super_block_world:patch_pumpkin",
       "super_block_world:patch_bushes",

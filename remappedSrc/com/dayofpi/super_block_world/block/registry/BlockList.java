@@ -20,8 +20,11 @@ import net.minecraft.world.BlockView;
 
 import java.util.function.ToIntFunction;
 
+@SuppressWarnings("SameReturnValue")
 public class BlockList {
     public static final Block WARP_FRAME = new PillarBlock(FabricBlockSettings.of(Material.METAL, MapColor.GOLD).requiresTool().strength(3.0F, 200F));
+    public static final Block WARP_PIPE = new WarpPipeBlock(FabricBlockSettings.of(Material.METAL, MapColor.GREEN).requiresTool().strength(3.0F, 20.0F).nonOpaque().sounds(BlockSoundGroup.METAL));
+    public static final Block WARP_PIPE_BODY = new WarpPipeBodyBlock(FabricBlockSettings.copyOf(WARP_PIPE));
     public static final Block EMPTY_BLOCK = new EmptyBlock(FabricBlockSettings.of(Material.METAL, MapColor.SPRUCE_BROWN).requiresTool().strength(3.0F, 200.0F));
     public static final Block QUESTION_BLOCK = new QuestionBlock(FabricBlockSettings.of(Material.METAL, MapColor.YELLOW).requiresTool().strength(3.0F, 200.0F).luminance(3));
     public static final Block COIN_BLOCK = new CoinBlock(FabricBlockSettings.of(Material.METAL, MapColor.GOLD).requiresTool().strength(3.0F, 200.0F).luminance(3));
@@ -32,10 +35,13 @@ public class BlockList {
     public static final Block TOADSTOOL_GRASS = new ToadstoolGrassBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.LIME).strength(0.5F, 4.0F).sounds(BlockSoundGroup.GRASS));
     public static final Block TOADSTOOL_TURF = new Block(FabricBlockSettings.copyOf(TOADSTOOL_GRASS));
     public static final Block TOADSTOOL_SOIL = new ToadstoolSoilBlock(FabricBlockSettings.of(Material.SOIL, MapColor.TERRACOTTA_ORANGE).strength(0.5F, 4.0F).sounds(BlockSoundGroup.GRAVEL));
+    public static final Block COARSE_TOADSTOOL_SOIL = new ToadstoolSoilBlock(FabricBlockSettings.copyOf(TOADSTOOL_SOIL));
     public static final Block TOADSTOOL_FARMLAND = new ToadstoolFarmlandBlock(FabricBlockSettings.copyOf(TOADSTOOL_SOIL).ticksRandomly());
     public static final Block TOADSTOOL_PATH = new ToadstoolPathBlock(FabricBlockSettings.copyOf(TOADSTOOL_SOIL).mapColor(MapColor.BROWN));
     public static final Block CLOUD_BLOCK = new CloudBlock(FabricBlockSettings.of(Material.SNOW_BLOCK, MapColor.WHITE).strength(0.1F).sounds(BlockSoundGroup.SNOW).nonOpaque());
     public static final Block GRITZY_SAND = new SandBlock(16372053, FabricBlockSettings.of(Material.AGGREGATE, MapColor.TERRACOTTA_YELLOW).strength(1.0F, 3.0F).sounds(BlockSoundGroup.SAND));
+    public static final Block SEASTONE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.EMERALD_GREEN).sounds(BlockSoundGroup.CALCITE).strength(1.0F).requiresTool());
+    public static final Block SEASTONE_BRICKS = new BrickBlock(FabricBlockSettings.copyOf(SEASTONE));
     public static final Block STRAWBERRY_CORAL = new StrawberryCoralBlock(FabricBlockSettings.of(Material.PLANT, MapColor.PINK).strength(0.2F).sounds(BlockSoundGroup.CORAL).nonOpaque());
     public static final Block STRAWBERRY_CORAL_BLOCK = new Block(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.PINK).strength(0.4F).requiresTool());
     public static final Block VANILLATE = new VanillateBlock(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_LIGHT_BLUE).requiresTool().strength(1.2F, 6.0F));
@@ -67,9 +73,13 @@ public class BlockList {
     public static final Block TOADSTONE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(TOADSTONE_BRICKS));
     public static final Block TOADSTONE_BRICK_STAIRS = new StairsBlock(TOADSTONE_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(TOADSTONE_BRICKS)){};
     public static final Block GLOOMSTONE = new Block(FabricBlockSettings.copyOf(GLOOMSTONE_BRONZE_ORE).strength(1.2F, 1.0F));
+    public static final Block SMOOTH_GLOOMSTONE = new Block(FabricBlockSettings.copyOf(GLOOMSTONE).sounds(BlockSoundGroup.DEEPSLATE_BRICKS));
+    public static final Block CHISELED_GLOOMSTONE = new Block(FabricBlockSettings.copyOf(GLOOMSTONE).sounds(BlockSoundGroup.DEEPSLATE_BRICKS));
     public static final Block GLOOMSTONE_BRICKS = new BrickBlock(FabricBlockSettings.copyOf(GLOOMSTONE).sounds(BlockSoundGroup.DEEPSLATE_BRICKS));
     public static final Block GLOOMSTONE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(GLOOMSTONE));
     public static final Block GLOOMSTONE_STAIRS = new StairsBlock(GLOOMSTONE.getDefaultState(), FabricBlockSettings.copyOf(GLOOMSTONE)){};
+    public static final Block GLOOMSTONE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(GLOOMSTONE_BRICKS));
+    public static final Block GLOOMSTONE_BRICK_STAIRS = new StairsBlock(GLOOMSTONE_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(GLOOMSTONE_BRICKS)){};
     public static final Block HARDSTONE = new PillarBlock(FabricBlockSettings.of(Material.STONE, MapColor.LIGHT_GRAY).requiresTool().strength(4.0F, 10.0F));
     public static final Block POLISHED_HARDSTONE = new Block(FabricBlockSettings.copyOf(HARDSTONE));
     public static final Block HARDSTONE_BRICKS = new Block(FabricBlockSettings.copyOf(HARDSTONE));
@@ -122,6 +132,12 @@ public class BlockList {
     public static final Block ORANGE_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.copyOf(YELLOW_MUSHROOM).mapColor(MapColor.ORANGE), () -> FeatureList.HUGE_ORANGE_MUSHROOM);
     public static final Block POISON = new ModFluidBlock(FluidList.STILL_POISON, FabricBlockSettings.of(Material.LAVA, MapColor.PURPLE).noCollision().ticksRandomly().strength(100.0F).luminance(7));
     public static final Block POTTED_AMANITA_SAPLING = new FlowerPotBlock(AMANITA_SAPLING, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
+    public static final Block POTTED_FIRE_TULIP = new FlowerPotBlock(FIRE_TULIP, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque().emissiveLighting(BlockList::always));
+    public static final Block POTTED_MUNCHER = new FlowerPotBlock(MUNCHER, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
+    public static final Block POTTED_PAWFLOWER = new FlowerPotBlock(PAWFLOWER, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
+    public static final Block POTTED_BLUE_SONGFLOWER = new FlowerPotBlock(BLUE_SONGFLOWER, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
+    public static final Block POTTED_PINK_SONGFLOWER = new FlowerPotBlock(PINK_SONGFLOWER, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
+    public static final Block POTTED_YELLOW_SONGFLOWER = new FlowerPotBlock(YELLOW_SONGFLOWER, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block POTTED_YELLOW_MUSHROOM = new FlowerPotBlock(YELLOW_MUSHROOM, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block POTTED_GREEN_MUSHROOM = new FlowerPotBlock(GREEN_MUSHROOM, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block POTTED_PINK_MUSHROOM = new FlowerPotBlock(PINK_MUSHROOM, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
@@ -153,6 +169,8 @@ public class BlockList {
 
     public static void registerBlocks() {
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "warp_frame"), WARP_FRAME);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "warp_pipe"), WARP_PIPE);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "warp_pipe_body"), WARP_PIPE_BODY);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "empty_block"), EMPTY_BLOCK);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "question_block"), QUESTION_BLOCK);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "coin_block"), COIN_BLOCK);
@@ -165,6 +183,7 @@ public class BlockList {
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstool_grass"), TOADSTOOL_GRASS);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstool_turf"), TOADSTOOL_TURF);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstool_soil"), TOADSTOOL_SOIL);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "coarse_toadstool_soil"), COARSE_TOADSTOOL_SOIL);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstool_farmland"), TOADSTOOL_FARMLAND);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstool_path"), TOADSTOOL_PATH);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "gritzy_sand"), GRITZY_SAND);
@@ -196,11 +215,15 @@ public class BlockList {
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstone_brick_slab"), TOADSTONE_BRICK_SLAB);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstone_brick_stairs"), TOADSTONE_BRICK_STAIRS);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "gloomstone"), GLOOMSTONE);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "smooth_gloomstone"), SMOOTH_GLOOMSTONE);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "chiseled_gloomstone"), CHISELED_GLOOMSTONE);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "gloomstone_bricks"), GLOOMSTONE_BRICKS);
-        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "golden_bricks"), GOLDEN_BRICKS);
-        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "crystal_bricks"), CRYSTAL_BRICKS);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "gloomstone_slab"), GLOOMSTONE_SLAB);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "gloomstone_stairs"), GLOOMSTONE_STAIRS);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "gloomstone_brick_slab"), GLOOMSTONE_BRICK_SLAB);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "gloomstone_brick_stairs"), GLOOMSTONE_BRICK_STAIRS);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "golden_bricks"), GOLDEN_BRICKS);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "crystal_bricks"), CRYSTAL_BRICKS);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "hardstone"), HARDSTONE);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "polished_hardstone"), POLISHED_HARDSTONE);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "hardstone_bricks"), HARDSTONE_BRICKS);
@@ -227,9 +250,11 @@ public class BlockList {
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "beanstalk"), BEANSTALK);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "beanstalk_plant"), BEANSTALK_PLANT);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "budding_beanstalk"), BUDDING_BEANSTALK);
-        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "muncher"), BUDDING_BEANSTALK);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "muncher"), MUNCHER);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "strawberry_coral"), STRAWBERRY_CORAL);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "strawberry_coral_block"), STRAWBERRY_CORAL_BLOCK);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "seastone"), SEASTONE);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "seastone_bricks"), SEASTONE_BRICKS);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "beanstalk_block"), BEANSTALK_BLOCK);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "mushroom_stem"), MUSHROOM_STEM);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "brown_mushroom_cap"), BROWN_MUSHROOM_CAP);
@@ -252,7 +277,12 @@ public class BlockList {
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "pawflower"), PAWFLOWER);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "fire_tulip"), FIRE_TULIP);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "poison"), POISON);
-        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "potted_yellow_mushroom"), POTTED_YELLOW_MUSHROOM);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "potted_fire_tulip"), POTTED_FIRE_TULIP);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "potted_muncher"), POTTED_MUNCHER);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "potted_blue_songflower"), POTTED_BLUE_SONGFLOWER);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "potted_pink_songflower"), POTTED_PINK_SONGFLOWER);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "potted_yellow_songflower"), POTTED_YELLOW_SONGFLOWER);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "potted_pawflower"), POTTED_PAWFLOWER);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "potted_green_mushroom"), POTTED_GREEN_MUSHROOM);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "potted_pink_mushroom"), POTTED_PINK_MUSHROOM);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "potted_purple_mushroom"), POTTED_PURPLE_MUSHROOM);

@@ -14,7 +14,6 @@
     "super_block_world:iron_topped_vanillate",
     "super_block_world:gold_topped_vanillate",
     "super_block_world:bronze_ore",
-    "super_block_world:gloomstone_bronze_ore",
     "super_block_world:raw_bronze_block",
     "super_block_world:bronze_block",
     "super_block_world:bronze_slab",
@@ -47,6 +46,8 @@
     "super_block_world:seastone",
     "super_block_world:seastone_bricks",
     "super_block_world:warp_frame",
+    "super_block_world:warp_pipe",
+    "super_block_world:warp_pipe_body",
     "super_block_world:stone_torch",
     "super_block_world:spike_trap"
   ]

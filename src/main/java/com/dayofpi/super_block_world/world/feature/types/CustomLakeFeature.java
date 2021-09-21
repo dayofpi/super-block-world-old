@@ -1,7 +1,6 @@
 package com.dayofpi.super_block_world.world.feature.types;
 
 
-import com.dayofpi.super_block_world.block.registry.BlockList;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -35,7 +34,7 @@ public class CustomLakeFeature extends Feature<SingleStateFeatureConfig> {
         Random $$3 = context.getRandom();
 
         SingleStateFeatureConfig $$4;
-        for($$4 = (SingleStateFeatureConfig)context.getConfig(); $$1.getY() > $$2.getBottomY() + 5 && $$2.isAir($$1); $$1 = $$1.down()) {
+        for($$4 = context.getConfig(); $$1.getY() > $$2.getBottomY() + 5 && $$2.isAir($$1); $$1 = $$1.down()) {
         }
 
         if ($$1.getY() <= $$2.getBottomY() + 4) {
@@ -118,8 +117,6 @@ public class CustomLakeFeature extends Feature<SingleStateFeatureConfig> {
                                     Biome $$35 = $$2.getBiome($$34);
                                     if ($$35.getGenerationSettings().getSurfaceConfig().getTopMaterial().isOf(Blocks.MYCELIUM)) {
                                         $$2.setBlockState($$34, Blocks.MYCELIUM.getDefaultState(), 2);
-                                    } else {
-                                        $$2.setBlockState($$34, BlockList.TOADSTONE.getDefaultState(), 2);
                                     }
                                 }
                             }

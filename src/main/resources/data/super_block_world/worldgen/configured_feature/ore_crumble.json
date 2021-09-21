@@ -54,6 +54,15 @@
                     "state": {
                       "Name": "super_block_world:vanillate_crumble"
                     }
+                  },
+                  {
+                    "target": {
+                      "predicate_type": "minecraft:block_match",
+                      "block": "super_block_world:toadstool_soil"
+                    },
+                    "state": {
+                      "Name": "super_block_world:coarse_toadstool_soil"
+                    }
                   }
                 ]
               }

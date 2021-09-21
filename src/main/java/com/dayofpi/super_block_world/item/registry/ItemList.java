@@ -20,6 +20,7 @@ public class ItemList {
 
     public static final Item POWER_STAR = new PowerStarItem(new FabricItemSettings().rarity(Rarity.RARE).group(CreativeTabs.ITEM_GROUP));
     public static final Item YOSHI_FRUIT = new Item(new FabricItemSettings().food(FoodComponents.YOSHI_FRUIT).group(CreativeTabs.ITEM_GROUP));
+    public static final Item YOSHI_COOKIE = new Item(new FabricItemSettings().food(FoodComponents.YOSHI_COOKIE).group(CreativeTabs.ITEM_GROUP));
     public static final Item TURNIP = new TurnipItem(new FabricItemSettings().maxCount(16).group(CreativeTabs.ITEM_GROUP));
     public static final Item HAMMER = new HammerItem(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP).maxDamage(50));
     public static final Item BOMB = new BombItem(new FabricItemSettings().maxCount(16).group(CreativeTabs.ITEM_GROUP));
@@ -50,6 +51,7 @@ public class ItemList {
         registerBlockItems();
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "power_star"), POWER_STAR);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "yoshi_fruit"), YOSHI_FRUIT);
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "yoshi_cookie"), YOSHI_COOKIE);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "turnip"), TURNIP);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "hammer"), HAMMER);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "bomb"), BOMB);
@@ -79,6 +81,8 @@ public class ItemList {
 
     public static void registerBlockItems() {
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "warp_frame"), new BlockItem(BlockList.WARP_FRAME, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "warp_pipe"), new BlockItem(BlockList.WARP_PIPE, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "warp_pipe_body"), new BlockItem(BlockList.WARP_PIPE_BODY, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "empty_block"), new BlockItem(BlockList.EMPTY_BLOCK, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "question_block"), new BlockItem(BlockList.QUESTION_BLOCK, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP).rarity(Rarity.UNCOMMON)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "coin_block"), new BlockItem(BlockList.COIN_BLOCK, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP).rarity(Rarity.UNCOMMON)));
@@ -91,6 +95,7 @@ public class ItemList {
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "toadstool_grass"), new BlockItem(BlockList.TOADSTOOL_GRASS, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "toadstool_turf"), new BlockItem(BlockList.TOADSTOOL_TURF, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "toadstool_soil"), new BlockItem(BlockList.TOADSTOOL_SOIL, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "coarse_toadstool_soil"), new BlockItem(BlockList.COARSE_TOADSTOOL_SOIL, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "toadstool_farmland"), new BlockItem(BlockList.TOADSTOOL_FARMLAND, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "toadstool_path"), new BlockItem(BlockList.TOADSTOOL_PATH, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "gritzy_sand"), new BlockItem(BlockList.GRITZY_SAND, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
@@ -110,7 +115,6 @@ public class ItemList {
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "iron_topped_vanillate"), new BlockItem(BlockList.IRON_TOPPED_VANILLATE, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "gold_topped_vanillate"), new BlockItem(BlockList.GOLD_TOPPED_VANILLATE, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "bronze_ore"), new BlockItem(BlockList.BRONZE_ORE, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
-        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "gloomstone_bronze_ore"), new BlockItem(BlockList.GLOOMSTONE_BRONZE_ORE, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "raw_bronze_block"), new BlockItem(BlockList.RAW_BRONZE_BLOCK, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "bronze_block"), new BlockItem(BlockList.BRONZE_BLOCK, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "bronze_slab"), new BlockItem(BlockList.BRONZE_SLAB, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));

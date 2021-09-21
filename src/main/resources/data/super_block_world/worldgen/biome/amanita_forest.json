@@ -1,7 +1,5 @@
 {
   "surface_builder": "super_block_world:forest",
-  "depth": 0.1,
-  "scale": 0.04,
   "temperature": 0.9,
   "downfall": 0.5,
   "precipitation": "rain",
@@ -66,6 +64,7 @@
       }
     ],
     "ambient": [],
+    "axolotls": [],
     "underground_water_creature": [],
     "water_creature": [],
     "water_ambient": [
@@ -126,8 +125,8 @@
     ],
     [
       "minecraft:prototype_underwater_magma",
-      "minecraft:rare_dripstone_cluster"
-    ],
+      "super_block_world:warp_pipes",
+      "super_block_world:warp_pipes_ceiling"],
     [
       "super_block_world:cave_ceiling",
       "super_block_world:cave_floor",

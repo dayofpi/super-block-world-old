@@ -49,11 +49,8 @@ public class BuzzyModel<T extends Entity> extends SinglePartEntityModel<T> {
         return this.BODY;
     }
 
-    public Iterable<ModelPart> getSpike() {
+    public Iterable<ModelPart> getSpikeParts() {
         return ImmutableList.of(this.SPIKE_1, this.SPIKE_2, this.SUPPORT);
-    }
-    public Iterable<ModelPart> getLegs() {
-        return ImmutableList.of(this.LEFT_FRONT_LEG, this.LEFT_HIND_LEG, this.RIGHT_FRONT_LEG, this.RIGHT_HIND_LEG);
     }
 
     @Override

@@ -35,7 +35,7 @@ public class CustomLakeFeature extends Feature<SingleStateFeatureConfig> {
         Random $$3 = context.getRandom();
 
         SingleStateFeatureConfig $$4;
-        for($$4 = (SingleStateFeatureConfig)context.getConfig(); $$1.getY() > $$2.getBottomY() + 5 && $$2.isAir($$1); $$1 = $$1.down()) {
+        for($$4 = context.getConfig(); $$1.getY() > $$2.getBottomY() + 5 && $$2.isAir($$1); $$1 = $$1.down()) {
         }
 
         if ($$1.getY() <= $$2.getBottomY() + 4) {

@@ -49,9 +49,9 @@
                     "can_replace": false,
                     "project": false,
                     "need_water": false,
-                    "xspread": 1,
+                    "xspread": 0,
                     "yspread": 0,
-                    "zspread": 1,
+                    "zspread": 0,
                     "tries": 16,
                     "state_provider": {
                       "type": "minecraft:weighted_state_provider",
@@ -60,12 +60,6 @@
                           "weight": 1,
                           "data": {
                             "Name": "super_block_world:fire_tulip"
-                          }
-                        },
-                        {
-                          "weight": 1,
-                          "data": {
-                            "Name": "super_block_world:muncher"
                           }
                         }
                       ]

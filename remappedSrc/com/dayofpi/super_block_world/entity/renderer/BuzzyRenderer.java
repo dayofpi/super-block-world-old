@@ -19,7 +19,7 @@ public class BuzzyRenderer<T extends BuzzyEntity> extends MobEntityRenderer<T, B
         super(context, new BuzzyModel<>(context.getPart(ModelLayers.BUZZY_BEETLE)), 0.5F);
         this.addFeature(new SaddleFeatureRenderer<>(this, new BuzzyModel<>(context.getPart(ModelLayers.BUZZY_BEETLE_SADDLE)), new Identifier(Main.MOD_ID, "textures/entity/buzzy_beetle/buzzy_saddle.png")));
         this.addFeature(new BuzzyEyes<>(this));
-        this.model.getSpike().forEach((spikeParts) -> spikeParts.visible = false);
+        this.model.getSpikeParts().forEach((spikeParts) -> spikeParts.visible = false);
     }
 
     @Override

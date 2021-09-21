@@ -14,6 +14,7 @@ public class SoundList {
     protected static final Identifier PLUCK_ID = new Identifier(Main.MOD_ID, "block.pluck");
     protected static final Identifier TRAMPOLINE_ID = new Identifier(Main.MOD_ID, "block.trampoline");
     protected static final Identifier POWERED_TRAMPOLINE_ID = new Identifier(Main.MOD_ID, "block.powered_trampoline");
+    protected static final Identifier ONE_UP_ID = new Identifier(Main.MOD_ID, "item.one_up");
     protected static final Identifier THROW_ID = new Identifier(Main.MOD_ID, "item.throw");
     protected static final Identifier BREAK_ID = new Identifier(Main.MOD_ID, "item.break");
     protected static final Identifier JUMP_ID = new Identifier(Main.MOD_ID, "item.jump");
@@ -36,6 +37,7 @@ public class SoundList {
     public static final SoundEvent PLUCK = new SoundEvent(PLUCK_ID);
     public static final SoundEvent TRAMPOLINE = new SoundEvent(TRAMPOLINE_ID);
     public static final SoundEvent POWERED_TRAMPOLINE = new SoundEvent(POWERED_TRAMPOLINE_ID);
+    public static final SoundEvent ONE_UP = new SoundEvent(ONE_UP_ID);
     public static final SoundEvent THROW = new SoundEvent(THROW_ID);
     public static final SoundEvent BREAK = new SoundEvent(BREAK_ID);
     public static final SoundEvent JUMP = new SoundEvent(JUMP_ID);
@@ -58,6 +60,7 @@ public class SoundList {
         Registry.register(Registry.SOUND_EVENT, PLUCK_ID, PLUCK);
         Registry.register(Registry.SOUND_EVENT, TRAMPOLINE_ID, TRAMPOLINE);
         Registry.register(Registry.SOUND_EVENT, POWERED_TRAMPOLINE_ID, POWERED_TRAMPOLINE);
+        Registry.register(Registry.SOUND_EVENT, ONE_UP_ID, ONE_UP);
         Registry.register(Registry.SOUND_EVENT, THROW_ID, THROW);
         Registry.register(Registry.SOUND_EVENT, BREAK_ID, BREAK);
         Registry.register(Registry.SOUND_EVENT, JUMP_ID, JUMP);

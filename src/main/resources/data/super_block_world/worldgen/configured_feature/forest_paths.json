@@ -4,7 +4,7 @@
     "decorator": {
       "type": "minecraft:count",
       "config": {
-        "count": 7
+        "count": 5
       }
     },
     "feature": {
@@ -54,7 +54,7 @@
                       "type": "minecraft:uniform",
                       "value": {
                         "min_inclusive": 4,
-                        "max_inclusive": 8
+                        "max_inclusive": 5
                       }
                     },
                     "replaceable": "super_block_world:apply_path_to",

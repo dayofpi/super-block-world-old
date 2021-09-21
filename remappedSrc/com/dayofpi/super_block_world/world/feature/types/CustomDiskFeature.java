@@ -1,33 +1,30 @@
 package com.dayofpi.super_block_world.world.feature.types;
 
-import com.dayofpi.super_block_world.block.registry.BlockList;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FallingBlock;
-import net.minecraft.class_6577;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.StructureWorldAccess;
+import net.minecraft.world.gen.feature.DiskFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
 
-import java.util.Iterator;
-
-public class CustomDiskFeature extends Feature<class_6577> {
-   public CustomDiskFeature(Codec<class_6577> codec) {
+public class CustomDiskFeature extends Feature<DiskFeatureConfig> {
+   public CustomDiskFeature(Codec<DiskFeatureConfig> codec) {
       super(codec);
    }
 
-   public boolean generate(FeatureContext<class_6577> context) {
-      class_6577 diskFeatureConfig = context.getConfig();
+   public boolean generate(FeatureContext<DiskFeatureConfig> context) {
+      DiskFeatureConfig diskFeatureConfig = context.getConfig();
       BlockPos blockPos = context.getOrigin();
       StructureWorldAccess structureWorldAccess = context.getWorld();
       boolean bl = false;
       int i = blockPos.getY();
-      int j = i + diskFeatureConfig.comp_82();
-      int k = i - diskFeatureConfig.comp_82() - 1;
-      boolean bl2 = diskFeatureConfig.comp_80().getBlock() instanceof FallingBlock;
-      int l = diskFeatureConfig.comp_81().get(context.getRandom());
+      int j = i + diskFeatureConfig.halfHeight();
+      int k = i - diskFeatureConfig.halfHeight() - 1;
+      boolean bl2 = diskFeatureConfig.state().getBlock() instanceof FallingBlock;
+      int l = diskFeatureConfig.radius().get(context.getRandom());
 
       for(int m = blockPos.getX() - l; m <= blockPos.getX() + l; ++m) {
          for(int n = blockPos.getZ() - l; n <= blockPos.getZ() + l; ++n) {
@@ -42,12 +39,10 @@ public class CustomDiskFeature extends Feature<class_6577> {
                   Block block = blockState.getBlock();
                   boolean bl4 = false;
                   if (q > k) {
-                     Iterator var21 = diskFeatureConfig.comp_83().iterator();
 
-                     while(var21.hasNext()) {
-                        BlockState blockState2 = (BlockState)var21.next();
+                     for (BlockState blockState2 : diskFeatureConfig.targets()) {
                         if (blockState2.isOf(block)) {
-                           structureWorldAccess.setBlockState(blockPos2, diskFeatureConfig.comp_80(), Block.NOTIFY_LISTENERS);
+                           structureWorldAccess.setBlockState(blockPos2, diskFeatureConfig.state(), Block.NOTIFY_LISTENERS);
                            this.markBlocksAboveForPostProcessing(structureWorldAccess, blockPos2);
                            bl = true;
                            bl4 = true;
@@ -57,7 +52,7 @@ public class CustomDiskFeature extends Feature<class_6577> {
                   }
 
                   if (bl2 && bl3 && blockState.isAir()) {
-                     BlockState blockState3 = BlockList.TOADSTONE.getDefaultState();
+                     BlockState blockState3 = diskFeatureConfig.state();
                      structureWorldAccess.setBlockState(new BlockPos(m, q + 1, n), blockState3, Block.NOTIFY_LISTENERS);
                   }
 

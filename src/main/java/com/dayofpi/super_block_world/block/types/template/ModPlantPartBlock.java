@@ -43,7 +43,7 @@ public abstract class ModPlantPartBlock extends Block {
         if (!this.canAttachTo(blockState)) {
             return false;
         } else {
-            return world.getBlockState(blockPos).isOf(this.getStem(state)) || blockState.isOf(this.getPlant()) || blockState.isSideSolidFullSquare(world, blockPos, this.growthDirection);
+            return world.getBlockState(blockPos).isOf(this.getStem(state)) || blockState.isOf(this.getPlant()) || blockState.isFullCube(world, blockPos);
         }
     }
 

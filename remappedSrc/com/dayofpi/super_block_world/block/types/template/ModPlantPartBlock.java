@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
+@SuppressWarnings("deprecation")
 public abstract class ModPlantPartBlock extends Block {
     protected final Direction growthDirection;
     protected final boolean tickWater;

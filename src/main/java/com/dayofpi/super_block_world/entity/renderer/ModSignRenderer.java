@@ -127,7 +127,7 @@ public class ModSignRenderer implements BlockEntityRenderer<ModSignBE> {
         int j = (int) ((double) NativeImage.getRed(i) * d);
         int k = (int) ((double) NativeImage.getGreen(i) * d);
         int l = (int) ((double) NativeImage.getBlue(i) * d);
-        return i == DyeColor.BLACK.getSignColor() && sign.isGlowingText() ? -988212 : NativeImage.getAbgrColor(0, l, k, j);
+        return i == DyeColor.BLACK.getSignColor() && sign.isGlowingText() ? -988212 : NativeImage.packColor(0, l, k, j);
     }
 
     private static boolean shouldRender(ModSignBE sign, int signColor) {

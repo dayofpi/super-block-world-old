@@ -21,24 +21,24 @@ import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
 public class FeatureList {
     public static final ConfiguredFeature<TreeFeatureConfig, ?> AMANITA = Feature.TREE.configure((new TreeFeatureConfig.Builder(
-           BlockStateProvider.method_38433(States.AMANITA_LOG), new StraightTrunkPlacer(3, 2, 1),
-           BlockStateProvider.method_38433(States.AMANITA_LEAVES),
-           BlockStateProvider.method_38433(States.AMANITA_SAPLING), new LargeOakFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3), new TwoLayersFeatureSize(1, 0, 1))).ignoreVines().dirtProvider(BlockStateProvider.method_38433(BlockList.TOADSTOOL_GRASS.getDefaultState())).build());
+            BlockStateProvider.of(States.AMANITA_LOG), new StraightTrunkPlacer(3, 2, 1),
+            BlockStateProvider.of(States.AMANITA_LEAVES),
+            BlockStateProvider.of(States.AMANITA_SAPLING), new LargeOakFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3), new TwoLayersFeatureSize(1, 0, 1))).ignoreVines().dirtProvider(BlockStateProvider.of(BlockList.TOADSTOOL_GRASS.getDefaultState())).build());
 
     public static final ConfiguredFeature<TreeFeatureConfig, ?> AMANITA_FRUITS = Feature.TREE.configure((new TreeFeatureConfig.Builder(
-           BlockStateProvider.method_38433(States.AMANITA_LOG), new StraightTrunkPlacer(3, 2, 1),
+            BlockStateProvider.of(States.AMANITA_LOG), new StraightTrunkPlacer(3, 2, 1),
             new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(States.AMANITA_LEAVES, 3).add(States.FRUITING_AMANITA_LEAVES, 1).build()),
-           BlockStateProvider.method_38433(States.AMANITA_SAPLING), new LargeOakFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3), new TwoLayersFeatureSize(1, 0, 1))).ignoreVines().dirtProvider(BlockStateProvider.method_38433(BlockList.TOADSTOOL_GRASS.getDefaultState())).build());
+            BlockStateProvider.of(States.AMANITA_SAPLING), new LargeOakFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3), new TwoLayersFeatureSize(1, 0, 1))).ignoreVines().dirtProvider(BlockStateProvider.of(BlockList.TOADSTOOL_GRASS.getDefaultState())).build());
 
 
-    public static final ConfiguredFeature<?, ?> HUGE_RED_MUSHROOM_FLAT = Feature.HUGE_BROWN_MUSHROOM.configure(new HugeMushroomFeatureConfig(BlockStateProvider.method_38433(States.RED_MUSHROOM_CAP),BlockStateProvider.method_38433(States.MUSHROOM_STEM), 3));
-    public static final ConfiguredFeature<?, ?> HUGE_YELLOW_MUSHROOM_THIN = Feature.HUGE_BROWN_MUSHROOM.configure(new HugeMushroomFeatureConfig(BlockStateProvider.method_38433(States.YELLOW_MUSHROOM_CAP),BlockStateProvider.method_38433(States.MUSHROOM_STEM), 2));
-    public static final ConfiguredFeature<?, ?> HUGE_YELLOW_MUSHROOM = Feature.HUGE_BROWN_MUSHROOM.configure(new HugeMushroomFeatureConfig(BlockStateProvider.method_38433(States.YELLOW_MUSHROOM_CAP),BlockStateProvider.method_38433(States.MUSHROOM_STEM), 3));
-    public static final ConfiguredFeature<?, ?> HUGE_GREEN_MUSHROOM_THIN = Feature.HUGE_BROWN_MUSHROOM.configure(new HugeMushroomFeatureConfig(BlockStateProvider.method_38433(States.GREEN_MUSHROOM_CAP),BlockStateProvider.method_38433(States.MUSHROOM_STEM), 2));
-    public static final ConfiguredFeature<?, ?> HUGE_GREEN_MUSHROOM = Feature.HUGE_BROWN_MUSHROOM.configure(new HugeMushroomFeatureConfig(BlockStateProvider.method_38433(States.GREEN_MUSHROOM_CAP),BlockStateProvider.method_38433(States.MUSHROOM_STEM), 3));
-    public static final ConfiguredFeature<?, ?> HUGE_PINK_MUSHROOM = Feature.HUGE_BROWN_MUSHROOM.configure(new HugeMushroomFeatureConfig(BlockStateProvider.method_38433(States.PINK_MUSHROOM_CAP),BlockStateProvider.method_38433(States.MUSHROOM_STEM), 3));
-    public static final ConfiguredFeature<?, ?> HUGE_PURPLE_MUSHROOM = Feature.HUGE_BROWN_MUSHROOM.configure(new HugeMushroomFeatureConfig(BlockStateProvider.method_38433(States.PURPLE_MUSHROOM_CAP),BlockStateProvider.method_38433(States.MUSHROOM_STEM), 3));
-    public static final ConfiguredFeature<?, ?> HUGE_ORANGE_MUSHROOM = Feature.HUGE_BROWN_MUSHROOM.configure(new HugeMushroomFeatureConfig(BlockStateProvider.method_38433(States.ORANGE_MUSHROOM_CAP),BlockStateProvider.method_38433(States.MUSHROOM_STEM), 4));
+    public static final ConfiguredFeature<?, ?> HUGE_RED_MUSHROOM_FLAT = Feature.HUGE_BROWN_MUSHROOM.configure(new HugeMushroomFeatureConfig(BlockStateProvider.of(States.RED_MUSHROOM_CAP), BlockStateProvider.of(States.MUSHROOM_STEM), 3));
+    public static final ConfiguredFeature<?, ?> HUGE_YELLOW_MUSHROOM_THIN = Feature.HUGE_BROWN_MUSHROOM.configure(new HugeMushroomFeatureConfig(BlockStateProvider.of(States.YELLOW_MUSHROOM_CAP), BlockStateProvider.of(States.MUSHROOM_STEM), 2));
+    public static final ConfiguredFeature<?, ?> HUGE_YELLOW_MUSHROOM = Feature.HUGE_BROWN_MUSHROOM.configure(new HugeMushroomFeatureConfig(BlockStateProvider.of(States.YELLOW_MUSHROOM_CAP), BlockStateProvider.of(States.MUSHROOM_STEM), 3));
+    public static final ConfiguredFeature<?, ?> HUGE_GREEN_MUSHROOM_THIN = Feature.HUGE_BROWN_MUSHROOM.configure(new HugeMushroomFeatureConfig(BlockStateProvider.of(States.GREEN_MUSHROOM_CAP), BlockStateProvider.of(States.MUSHROOM_STEM), 2));
+    public static final ConfiguredFeature<?, ?> HUGE_GREEN_MUSHROOM = Feature.HUGE_BROWN_MUSHROOM.configure(new HugeMushroomFeatureConfig(BlockStateProvider.of(States.GREEN_MUSHROOM_CAP), BlockStateProvider.of(States.MUSHROOM_STEM), 3));
+    public static final ConfiguredFeature<?, ?> HUGE_PINK_MUSHROOM = Feature.HUGE_BROWN_MUSHROOM.configure(new HugeMushroomFeatureConfig(BlockStateProvider.of(States.PINK_MUSHROOM_CAP), BlockStateProvider.of(States.MUSHROOM_STEM), 3));
+    public static final ConfiguredFeature<?, ?> HUGE_PURPLE_MUSHROOM = Feature.HUGE_BROWN_MUSHROOM.configure(new HugeMushroomFeatureConfig(BlockStateProvider.of(States.PURPLE_MUSHROOM_CAP), BlockStateProvider.of(States.MUSHROOM_STEM), 3));
+    public static final ConfiguredFeature<?, ?> HUGE_ORANGE_MUSHROOM = Feature.HUGE_BROWN_MUSHROOM.configure(new HugeMushroomFeatureConfig(BlockStateProvider.of(States.ORANGE_MUSHROOM_CAP), BlockStateProvider.of(States.MUSHROOM_STEM), 4));
 
     public static void registerFeatures() {
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.MOD_ID, "amanita"), AMANITA);

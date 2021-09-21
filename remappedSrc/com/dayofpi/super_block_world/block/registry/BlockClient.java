@@ -57,6 +57,12 @@ public class BlockClient {
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.POTTED_BUSH, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.POTTED_BEANSTALK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.POTTED_BUDDING_BEANSTALK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockList.POTTED_FIRE_TULIP, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockList.POTTED_MUNCHER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockList.POTTED_BLUE_SONGFLOWER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockList.POTTED_PINK_SONGFLOWER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockList.POTTED_YELLOW_SONGFLOWER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockList.POTTED_PAWFLOWER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.POTTED_GREEN_MUSHROOM, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.POTTED_YELLOW_MUSHROOM, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.POTTED_PINK_MUSHROOM, RenderLayer.getCutout());

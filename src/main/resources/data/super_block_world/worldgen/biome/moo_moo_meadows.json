@@ -109,7 +109,8 @@
     ],
     [
       "minecraft:prototype_underwater_magma",
-      "minecraft:rare_dripstone_cluster"
+      "super_block_world:warp_pipes",
+      "super_block_world:warp_pipes_ceiling"
     ],
     [
       "super_block_world:patch_grass",
@@ -117,6 +118,7 @@
       "super_block_world:cave_floor",
       "super_block_world:cave_floor_rare",
       "super_block_world:cave_lanterns",
+      "super_block_world:cave_beanstalks",
       "super_block_world:spring_water",
       "super_block_world:lake_poison",
       "super_block_world:patch_veggies",

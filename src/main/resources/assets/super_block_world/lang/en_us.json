@@ -43,6 +43,7 @@
   "entity.buzzy_beetle.block": "Buzzy Beetle blocks",
 
   "item.super_block_world.yoshi_fruit": "Yoshi Fruit",
+  "item.super_block_world.yoshi_cookie": "Yoshi Cookie",
   "item.super_block_world.turnip": "Turnip",
   "item.super_block_world.hammer": "Hammer",
   "item.super_block_world.bomb": "Bomb",
@@ -78,6 +79,8 @@
   "entity.super_block_world.rotten_mushroom": "Rotten Mushroom",
 
   "block.super_block_world.warp_frame": "Warp Frame",
+  "block.super_block_world.warp_pipe": "Warp Pipe",
+  "block.super_block_world.warp_pipe_body": "Warp Pipe Body",
   "block.super_block_world.empty_block": "Empty Block",
   "block.super_block_world.question_block": "? Block",
   "block.super_block_world.coin_block": "Coin Block",
@@ -89,6 +92,7 @@
   "block.super_block_world.donut_block": "Donut Block",
   "block.super_block_world.toadstool_grass": "Toadstool Grass",
   "block.super_block_world.toadstool_turf": "Toadstool Turf",
+  "block.super_block_world.coarse_toadstool_soil": "Coarse Toadstool Soil",
   "block.super_block_world.toadstool_soil": "Toadstool Soil",
   "block.super_block_world.toadstool_farmland": "Toadstool Farmland",
   "block.super_block_world.toadstool_path": "Toadstool Path",

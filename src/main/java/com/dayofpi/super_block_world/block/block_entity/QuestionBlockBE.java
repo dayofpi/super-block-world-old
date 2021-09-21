@@ -19,9 +19,9 @@ public class QuestionBlockBE extends BlockEntity implements ImplementedInventory
 
     // Serialize the BlockEntity
     @Override
-    public NbtCompound writeNbt(NbtCompound tag) {
+    public void writeNbt(NbtCompound tag) {
+        super.writeNbt(tag);
         Inventories.writeNbt(tag, items);
-        return super.writeNbt(tag);
     }
 
     // Deserialize the BlockEntity

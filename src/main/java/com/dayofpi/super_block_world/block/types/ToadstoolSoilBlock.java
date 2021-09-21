@@ -32,7 +32,7 @@ public class ToadstoolSoilBlock extends Block implements Fertilizable {
 
     @Override
     public boolean canGrow(World world, Random random, BlockPos pos, BlockState state) {
-        return true;
+        return !state.isOf(BlockList.COARSE_TOADSTOOL_SOIL);
     }
 
     @Override

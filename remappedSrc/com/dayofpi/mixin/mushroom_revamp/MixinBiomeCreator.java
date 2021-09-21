@@ -19,13 +19,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class MixinBiomeCreator {
 
     @Invoker("getSkyColor")
-    static int invokeGetSkyColor(float temperature) {
+    static int getSkyColor(float temperature) {
         throw new AssertionError();
     }
 
     // Replace natural huge mushrooms with the mod ones
-    @Inject(at = @At("HEAD"), method = "createDarkForest(Z)Lnet/minecraft/world/biome/Biome;", cancellable = true)
-    public static void createDarkForest(boolean red, CallbackInfoReturnable<Biome> info) {
+    @Inject(at = @At("HEAD"), method = "createDarkForest(FFZ)Lnet/minecraft/world/biome/Biome;", cancellable = true)
+    private static void createDarkForest(boolean red, CallbackInfoReturnable<Biome> info) {
         SpawnSettings.Builder $$1 = new SpawnSettings.Builder();
         DefaultBiomeFeatures.addFarmAnimals($$1);
         DefaultBiomeFeatures.addBatsAndMonsters($$1);
@@ -45,7 +45,7 @@ public class MixinBiomeCreator {
         DefaultBiomeFeatures.addDefaultVegetation($$2);
         DefaultBiomeFeatures.addSprings($$2);
         DefaultBiomeFeatures.addFrozenTopLayer($$2);
-        info.setReturnValue((new net.minecraft.world.biome.Biome.Builder()).precipitation(Biome.Precipitation.RAIN).category(Biome.Category.FOREST).temperature(0.7F).downfall(0.8F).effects((new net.minecraft.world.biome.BiomeEffects.Builder()).waterColor(4159204).waterFogColor(329011).fogColor(12638463).skyColor(invokeGetSkyColor(0.7F)).grassColorModifier(BiomeEffects.GrassColorModifier.DARK_FOREST).moodSound(BiomeMoodSound.CAVE).build()).spawnSettings($$1.build()).generationSettings($$2.build()).build());
+        info.setReturnValue((new net.minecraft.world.biome.Biome.Builder()).precipitation(Biome.Precipitation.RAIN).category(Biome.Category.FOREST).temperature(0.7F).downfall(0.8F).effects((new net.minecraft.world.biome.BiomeEffects.Builder()).waterColor(4159204).waterFogColor(329011).fogColor(12638463).skyColor(getSkyColor(0.7F)).grassColorModifier(BiomeEffects.GrassColorModifier.DARK_FOREST).moodSound(BiomeMoodSound.CAVE).build()).spawnSettings($$1.build()).generationSettings($$2.build()).build());
         info.cancel();
     }
 
@@ -61,11 +61,12 @@ public class MixinBiomeCreator {
         DefaultBiomeFeatures.addMineables($$1);
         DefaultBiomeFeatures.addDefaultOres($$1);
         DefaultBiomeFeatures.addDefaultDisks($$1);
-        DefaultBiomeFeatures.addMushroomFieldsFeatures($$1);
+        ReplacementFeatureList.addMushroomFieldsFeatures($$1);
         DefaultBiomeFeatures.addDefaultMushrooms($$1);
         DefaultBiomeFeatures.addDefaultVegetation($$1);
         DefaultBiomeFeatures.addSprings($$1);
         DefaultBiomeFeatures.addFrozenTopLayer($$1);
-        info.setReturnValue((new net.minecraft.world.biome.Biome.Builder()).precipitation(Biome.Precipitation.RAIN).category(Biome.Category.MUSHROOM).temperature(0.9F).downfall(1.0F).effects((new net.minecraft.world.biome.BiomeEffects.Builder()).waterColor(4159204).waterFogColor(329011).fogColor(12638463).skyColor(invokeGetSkyColor(0.9F)).moodSound(BiomeMoodSound.CAVE).build()).spawnSettings($$0.build()).generationSettings($$1.build()).build());
+        info.setReturnValue((new net.minecraft.world.biome.Biome.Builder()).precipitation(Biome.Precipitation.RAIN).category(Biome.Category.MUSHROOM).temperature(0.9F).downfall(1.0F).effects((new net.minecraft.world.biome.BiomeEffects.Builder()).waterColor(4159204).waterFogColor(329011).fogColor(12638463).skyColor(getSkyColor(0.9F)).moodSound(BiomeMoodSound.CAVE).build()).spawnSettings($$0.build()).generationSettings($$1.build()).build());
+        info.cancel();
     }
 }

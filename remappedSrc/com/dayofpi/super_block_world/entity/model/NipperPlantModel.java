@@ -6,7 +6,6 @@ import net.minecraft.entity.Entity;
 
 public class NipperPlantModel<T extends Entity> extends SinglePartEntityModel<T> {
     private final ModelPart ROOT;
-    private final ModelPart STEM;
     private final ModelPart HEAD;
     private final ModelPart JAW;
     private final ModelPart LEFT_LEAF;
@@ -14,7 +13,7 @@ public class NipperPlantModel<T extends Entity> extends SinglePartEntityModel<T>
 
     public NipperPlantModel(ModelPart root) {
         this.ROOT = root;
-        this.STEM = root.getChild("stem");
+        ModelPart STEM = root.getChild("stem");
         this.HEAD = root.getChild("head");
         this.JAW = HEAD.getChild("jaw");
         this.LEFT_LEAF = STEM.getChild("left_leaf");

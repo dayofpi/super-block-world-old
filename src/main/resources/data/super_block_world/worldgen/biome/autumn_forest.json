@@ -1,7 +1,6 @@
 {
   "surface_builder": "super_block_world:forest",
-  "depth": 0.1,
-  "scale": 0.04,"temperature": 0.5,
+  "temperature": 0.5,
   "downfall": 0.5,
   "precipitation": "rain",
   "category": "forest",
@@ -12,7 +11,7 @@
     "water_color": 5295837,
     "water_fog_color": 5295837,
     "grass_color": 16758835,
-    "foliage_color": 14579203,
+    "foliage_color": 16765486,
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000,
@@ -40,12 +39,6 @@
       {
         "type": "super_block_world:spike_top",
         "weight": 30,
-        "minCount": 1,
-        "maxCount": 2
-      },
-      {
-        "type": "super_block_world:stingby",
-        "weight": 50,
         "minCount": 1,
         "maxCount": 2
       },
@@ -125,17 +118,20 @@
     ],
     [
       "minecraft:prototype_underwater_magma",
-      "minecraft:rare_dripstone_cluster"
+      "super_block_world:warp_pipes",
+      "super_block_world:warp_pipes_ceiling"
     ],
     [
       "super_block_world:cave_ceiling",
       "super_block_world:cave_floor",
       "super_block_world:cave_floor_rare",
       "super_block_world:cave_lanterns",
+      "super_block_world:cave_beanstalks",
       "super_block_world:patch_sugar_cane",
       "super_block_world:patch_pumpkin",
       "super_block_world:patch_bushes",
       "super_block_world:patch_stump",
+      "super_block_world:patch_forest_flowers",
       "super_block_world:patch_veggies",
       "super_block_world:mushrooms_main",
       "super_block_world:spring_water",

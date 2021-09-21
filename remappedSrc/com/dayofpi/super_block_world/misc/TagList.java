@@ -2,7 +2,6 @@ package com.dayofpi.super_block_world.misc;
 
 import com.dayofpi.super_block_world.Main;
 import net.fabricmc.fabric.api.tag.TagFactory;
-import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.fluid.Fluid;

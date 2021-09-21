@@ -1,6 +1,7 @@
 package com.dayofpi.mixin;
 
 import com.dayofpi.super_block_world.block.registry.BlockList;
+import com.dayofpi.super_block_world.block.types.WarpPipeBlock;
 import com.dayofpi.super_block_world.entity.types.mobs.AbstractBuzzy;
 import com.dayofpi.super_block_world.item.registry.ItemList;
 import com.dayofpi.super_block_world.misc.ModDamageSource;
@@ -15,6 +16,7 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.ProjectileDamageSource;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -27,6 +29,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
 public abstract class MixinLivingEntity extends Entity {
+    private int pipeCooldown;
     public MixinLivingEntity(EntityType<?> type, World world) {
         super(type, world);
     }
@@ -38,6 +41,44 @@ public abstract class MixinLivingEntity extends Entity {
     private boolean isWearingTheBoots() {
         ItemStack feetSlot = this.getEquippedStack(EquipmentSlot.FEET);
         return (feetSlot.isOf(ItemList.JUMP_BOOTS));
+    }
+
+    public int getPipeCooldown() {
+        return pipeCooldown;
+    }
+
+    public void setPipeCooldown(int cooldown) {
+        this.pipeCooldown = cooldown;
+    }
+
+    public void setSneaking(boolean sneaking) {
+        if (sneaking) {
+            this.warpToPipe();
+        }
+        super.setSneaking(sneaking);
+    }
+
+    public void warpToPipe() {
+        BlockPos currentPos = this.getBlockPos().down();
+
+        if (this.getPipeCooldown() == 0 && world.getBlockState(currentPos).isOf(BlockList.WARP_PIPE)) {
+            BlockPos newPos = WarpPipeBlock.warpPipeTree.getNearestBlock(currentPos, world, this.getHeadYaw());
+            if (newPos != null && newPos != currentPos) {
+                this.setPipeCooldown(10);
+                this.requestTeleport(newPos.getX() + 0.5, newPos.getY() + 1.0F, newPos.getZ() + 0.5);
+                world.sendEntityStatus(this, (byte) 46);
+                if (world.isClient)
+                    this.playSound(SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, 1.0F, 1.0F);
+            }
+
+        }
+    }
+
+    @Inject(at = @At("TAIL"), method = "baseTick")
+    void baseTick(CallbackInfo info) {
+        if (this.getPipeCooldown() > 0) {
+            --this.pipeCooldown;
+        }
     }
 
     @Inject(at = @At("HEAD"), method = "jump", cancellable = true)

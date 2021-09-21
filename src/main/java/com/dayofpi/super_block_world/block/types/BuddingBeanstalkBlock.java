@@ -81,7 +81,7 @@ public class BuddingBeanstalkBlock extends AbstractPlantStemBlock {
                 } else multiplier = 1;
                 BlockPos soil = pos.add(random.nextInt(2) * multiplier, random.nextInt(4) * -1, random.nextInt(2) * multiplier);
                 NipperPlantEntity entity = EntityList.NIPPER_PLANT.create(world);
-                if (world.getBlockState(soil).isIn(BlockTags.DIRT) && world.getBlockState(soil.up()).isAir() && (entity != null)) {
+                if (world.getBlockState(soil).isIn(BlockTags.DIRT) && !world.getBlockState(soil.up()).isFullCube(world, pos) && (entity != null)) {
                     entity.refreshPositionAndAngles((double) soil.getX() + 0.5D, soil.getY() + 1D, (double) soil.getZ() + 0.5D, 0.0F, 0.0F);
                     world.spawnEntity(entity);
                     ParticleUtil.spawnParticle(world, soil.up(), ParticleTypes.HAPPY_VILLAGER, UniformIntProvider.create(2, 3));

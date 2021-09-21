@@ -2,11 +2,10 @@
   "bedrock_roof_position": -2147483648,
   "bedrock_floor_position": 0,
   "sea_level": 63,
-  "min_surface_level": 0,
   "disable_mob_generation": false,
-  "noise_caves_enabled": true,
+  "noise_caves_enabled": false,
   "noodle_caves_enabled": false,
-  "aquifers_enabled": true,
+  "aquifers_enabled": false,
   "deepslate_enabled": false,
   "ore_veins_enabled": false,
   "default_block": {
@@ -16,6 +15,74 @@
     "Name": "minecraft:water",
     "Properties": {
       "level": "0"
+    }
+  },
+  "octaves": {
+    "erosion": {
+      "firstOctave": -9,
+      "amplitudes": [
+        1.0,
+        1.0,
+        0.0,
+        1.0,
+        1.0
+      ]
+    },
+    "weirdness": {
+      "firstOctave": -7,
+      "amplitudes": [
+        1.0,
+        2.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "shift": {
+      "firstOctave": -3,
+      "amplitudes": [
+        1.0,
+        1.0,
+        1.0,
+        0.0
+      ]
+    },
+    "temperature": {
+      "firstOctave": -9,
+      "amplitudes": [
+        1.5,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "humidity": {
+      "firstOctave": -7,
+      "amplitudes": [
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "continentalness": {
+      "firstOctave": -9,
+      "amplitudes": [
+        1.0,
+        1.0,
+        2.0,
+        2.0,
+        2.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
     }
   },
   "noise": {

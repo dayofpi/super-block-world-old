@@ -6,7 +6,10 @@ import net.minecraft.item.FoodComponent;
 
 public class FoodComponents {
     public static final FoodComponent YOSHI_FRUIT = new FoodComponent.Builder()
-            .hunger(2).saturationModifier(0.6F).build();
+            .hunger(2).saturationModifier(0.3F).snack().build();
+
+    public static final FoodComponent YOSHI_COOKIE = new FoodComponent.Builder()
+            .hunger(4).saturationModifier(0.6F).build();
 
     public static final FoodComponent SUPER_MUSHROOM = new FoodComponent.Builder()
             .statusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 2, 0), 1F)
