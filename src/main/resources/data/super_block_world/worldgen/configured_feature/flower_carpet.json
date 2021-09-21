@@ -25,10 +25,21 @@
       "type": "minecraft:simple_block",
       "config": {
         "to_place": {
-          "type": "minecraft:simple_state_provider",
-          "state": {
-            "Name": "super_block_world:yellow_flowerbed"
-          }
+          "type": "minecraft:weighted_state_provider",
+          "entries": [
+            {
+              "weight": 1,
+              "data": {
+                "Name": "minecraft:dandelion"
+              }
+            },
+            {
+              "weight": 10,
+              "data": {
+                "Name": "super_block_world:yellow_flowerbed"
+              }
+            }
+          ]
         },
         "place_on": [],
         "place_in": [],

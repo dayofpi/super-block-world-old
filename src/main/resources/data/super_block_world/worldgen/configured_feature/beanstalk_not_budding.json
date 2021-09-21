@@ -9,8 +9,8 @@
         "data": {
           "type": "minecraft:uniform",
           "value": {
-            "min_inclusive": 5,
-            "max_inclusive": 20
+            "min_inclusive": 1,
+            "max_inclusive": 10
           }
         }
       }
@@ -20,33 +20,19 @@
       "state": {
         "Name": "super_block_world:beanstalk_plant",
         "Properties": {
-        "budding": "true"
+          "budding": "false"
         }
-
       }
     },
     "head_provider": {
       "type": "minecraft:weighted_state_provider",
       "entries": [
         {
-          "weight": 2,
+          "weight": 5,
           "data": {
-            "Name": "super_block_world:budding_beanstalk",
+            "Name": "super_block_world:beanstalk",
             "Properties": {
-              "age": "5",
-              "count": "0",
-              "open": "false"
-            }
-          }
-        },
-        {
-          "weight": 2,
-          "data": {
-            "Name": "super_block_world:budding_beanstalk",
-            "Properties": {
-              "age": "5",
-              "count": "0",
-              "open": "true"
+              "age": "5"
             }
           }
         }

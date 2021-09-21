@@ -80,7 +80,7 @@ public abstract class AbstractBuzzy extends AbstractCeilingTroop {
     }
 
     static boolean checkValidBlock(BlockState state) {
-        return state.isOf(BlockList.VANILLATE) || state.isOf(BlockList.TOPPED_VANILLATE);
+        return state.isOf(BlockList.VANILLATE) || state.isOf(BlockList.GLOOMSTONE);
     }
     protected SoundEvent getHurtSound(DamageSource source) {
         return SoundList.BUZZY_BEETLE_HURT;

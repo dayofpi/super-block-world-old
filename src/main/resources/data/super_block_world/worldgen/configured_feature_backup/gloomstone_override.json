@@ -4,7 +4,7 @@
     "decorator": {
       "type": "minecraft:count",
       "config": {
-        "count": 10
+        "count": 200
       }
     },
     "feature": {
@@ -23,7 +23,7 @@
                 "height": {
                   "type": "minecraft:uniform",
                   "min_inclusive": {
-                    "absolute": 40
+                    "absolute": 0
                   },
                   "max_inclusive": {
                     "below_top": 0
@@ -34,7 +34,7 @@
             "feature": {
               "type": "minecraft:ore",
               "config": {
-                "size": 44,
+                "size": 64,
                 "discard_chance_on_air_exposure": 0,
                 "targets": [
                   {
@@ -43,7 +43,25 @@
                       "block": "super_block_world:vanillate"
                     },
                     "state": {
-                      "Name": "super_block_world:toadstool_soil"
+                      "Name": "super_block_world:smooth_gloomstone"
+                    }
+                  },
+                  {
+                    "target": {
+                      "predicate_type": "minecraft:block_match",
+                      "block": "super_block_world:vanillate_crumble"
+                    },
+                    "state": {
+                      "Name": "super_block_world:gloomstone_bricks"
+                    }
+                  },
+                  {
+                    "target": {
+                      "predicate_type": "minecraft:block_match",
+                      "block": "super_block_world:topped_vanillate"
+                    },
+                    "state": {
+                      "Name": "super_block_world:gloomstone"
                     }
                   }
                 ]

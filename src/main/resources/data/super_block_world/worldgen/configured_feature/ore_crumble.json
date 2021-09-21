@@ -49,15 +49,6 @@
                   {
                     "target": {
                       "predicate_type": "minecraft:block_match",
-                      "block": "super_block_world:topped_vanillate"
-                    },
-                    "state": {
-                      "Name": "super_block_world:vanillate_crumble"
-                    }
-                  },
-                  {
-                    "target": {
-                      "predicate_type": "minecraft:block_match",
                       "block": "super_block_world:toadstool_soil"
                     },
                     "state": {

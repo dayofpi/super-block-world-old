@@ -4,7 +4,7 @@
     "decorator": {
       "type": "minecraft:count",
       "config": {
-        "count": 2
+        "count": 1
       }
     },
     "feature": {
@@ -36,7 +36,7 @@
               "type": "minecraft:random_patch",
               "config": {
                 "can_replace": false,
-                "project": false,
+                "project": true,
                 "need_water": false,
                 "xspread": 8,
                 "yspread": 6,
@@ -67,6 +67,12 @@
                       "weight": 1,
                       "data": {
                         "Name": "minecraft:oxeye_daisy"
+                      }
+                    },
+                    {
+                      "weight": 1,
+                      "data": {
+                        "Name": "minecraft:dandelion"
                       }
                     }
                   ]

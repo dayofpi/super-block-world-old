@@ -63,7 +63,7 @@ public abstract class MixinLivingEntity extends Entity {
 
         if (this.getPipeCooldown() == 0 && world.getBlockState(currentPos).isOf(BlockList.WARP_PIPE)) {
             BlockPos newPos = WarpPipeBlock.warpPipeTree.getNearestBlock(currentPos, world, this.getHeadYaw());
-            if (newPos != null && newPos != currentPos) {
+            if (newPos != null) {
                 this.setPipeCooldown(10);
                 this.requestTeleport(newPos.getX() + 0.5, newPos.getY() + 1.0F, newPos.getZ() + 0.5);
                 world.sendEntityStatus(this, (byte) 46);
