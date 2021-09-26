@@ -2,8 +2,11 @@ package com.dayofpi.super_block_world.entity.types.mobs;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.attribute.DefaultAttributeContainer;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
@@ -16,34 +19,15 @@ import net.minecraft.world.*;
 import java.util.Random;
 
 @SuppressWarnings("deprecation")
-public abstract class AbstractTroop extends AnimalEntity {
-    protected AbstractTroop(EntityType<? extends AbstractTroop> entityType, World world) {
+public abstract class EnemyEntity extends PathAwareEntity {
+    protected EnemyEntity(EntityType<? extends EnemyEntity> entityType, World world) {
         super(entityType, world);
         this.experiencePoints = 3;
     }
 
-    @Override
-    public float getPathfindingFavor(BlockPos pos, WorldView world) {
-        return 0.5F - world.getBrightness(pos);
-    }
-
-    @Override
-    public ActionResult interactMob(PlayerEntity player, Hand hand) {
-        ActionResult actionResult = super.interactMob(player, hand);
-        if (actionResult.isAccepted()) {
-            this.setPersistent();
-        }
-        return super.interactMob(player, hand);
-    }
-
-    @Override
-    public boolean canImmediatelyDespawn(double distanceSquared) {
-        return !this.isPersistent();
-    }
-
-    @Override
-    public boolean canSpawn(WorldAccess world, SpawnReason spawnReason) {
-        return true;
+    public static DefaultAttributeContainer.Builder createAttributes() {
+        return MobEntity.createMobAttributes()
+                .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 10);
     }
 
     public static boolean isSpawnDark(ServerWorldAccess world, BlockPos pos, Random random) {
@@ -56,9 +40,33 @@ public abstract class AbstractTroop extends AnimalEntity {
     }
 
     @Override
+    public float getPathfindingFavor(BlockPos pos, WorldView world) {
+        return 0.5F - world.getBrightness(pos);
+    }
+
+    @Override
+    public boolean canSpawn(WorldAccess world, SpawnReason spawnReason) {
+        return true;
+    }
+
+    @Override
+    public boolean canImmediatelyDespawn(double distanceSquared) {
+        return !this.isPersistent();
+    }
+
+    @Override
     protected boolean isDisallowedInPeaceful() {
         return false;
     } // Troops can spawn in peaceful
+
+    @Override
+    public ActionResult interactMob(PlayerEntity player, Hand hand) {
+        ActionResult actionResult = super.interactMob(player, hand);
+        if (actionResult.isAccepted()) {
+            this.setPersistent();
+        }
+        return super.interactMob(player, hand);
+    }
 
     @Override
     public boolean canBeLeashedBy(PlayerEntity player) {

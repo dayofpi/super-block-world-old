@@ -49,14 +49,14 @@
     "horizontal_radius_multiplier": {
       "type": "minecraft:uniform",
       "value": {
-        "min_inclusive": 0.7,
+        "min_inclusive": 1,
         "max_exclusive": 2
       }
     },
     "vertical_radius_multiplier": {
       "type": "minecraft:uniform",
       "value": {
-        "min_inclusive": 0.8,
+        "min_inclusive": 1,
         "max_exclusive": 2
       }
     },

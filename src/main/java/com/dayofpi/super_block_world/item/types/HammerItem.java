@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.item.types;
 
 import com.dayofpi.super_block_world.block.types.BrickBlock;
-import com.dayofpi.super_block_world.entity.types.HammerEntity;
+import com.dayofpi.super_block_world.entity.types.projectiles.HammerEntity;
 import com.dayofpi.super_block_world.item.registry.ItemList;
 import com.dayofpi.super_block_world.misc.SoundList;
 import com.google.common.collect.ImmutableMultimap;

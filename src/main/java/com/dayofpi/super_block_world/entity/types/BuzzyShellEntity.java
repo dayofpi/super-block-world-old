@@ -19,10 +19,6 @@ public class BuzzyShellEntity extends AbstractShell {
 
     }
 
-    public Item asItem() {
-        return ItemList.BUZZY_SHELL;
-    }
-
     @Override
     protected void readCustomDataFromNbt(NbtCompound nbt) {
 
@@ -36,5 +32,9 @@ public class BuzzyShellEntity extends AbstractShell {
     @Override
     public Packet<?> createSpawnPacket() {
         return SpawnPacket.create(this, Client.PacketID);
+    }
+
+    public Item asItem() {
+        return ItemList.BUZZY_SHELL;
     }
 }

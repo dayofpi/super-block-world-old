@@ -20,10 +20,13 @@ public class MixinSpawnRestriction {
     @Inject(at = @At("HEAD"), method = "canSpawn(Lnet/minecraft/entity/EntityType;Lnet/minecraft/world/ServerWorldAccess;Lnet/minecraft/entity/SpawnReason;Lnet/minecraft/util/math/BlockPos;Ljava/util/Random;)Z", cancellable = true)
     private static <T extends MobEntity> void canSpawn(EntityType<T> type, ServerWorldAccess world, SpawnReason reason, BlockPos pos, Random random, CallbackInfoReturnable<Boolean> info) {
         if (type == EntityList.BUZZY_BEETLE) {
-            info.setReturnValue(AbstractBuzzy.canSpawn(world, pos, random));
+            info.setReturnValue(AbstractBuzzy.canSpawn(world, pos, random, type));
             info.cancel();
         } else if (type == EntityList.SPIKE_TOP) {
-            info.setReturnValue(SpikeTopEntity.canSpawn(world, pos, random));
+            info.setReturnValue(SpikeTopEntity.canSpawn(world, pos, random, type));
+            info.cancel();
+        } else if (type == EntityList.GOOMBA) {
+            info.setReturnValue(GoombaEntity.canSpawn(world, pos, type));
             info.cancel();
         } else if (type == EntityList.STINGBY) {
             info.setReturnValue(StingbyEntity.canSpawn(world, pos));
@@ -33,6 +36,9 @@ public class MixinSpawnRestriction {
             info.cancel();
         } else if (type == EntityList.ROTTEN_MUSHROOM) {
             info.setReturnValue(RottenMushroomEntity.canSpawn(world, pos, random));
+            info.cancel();
+        } else if (type == EntityList.NIPPER_PLANT) {
+            info.setReturnValue(NipperPlantEntity.canSpawn(world, pos));
             info.cancel();
         }
     }

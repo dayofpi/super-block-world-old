@@ -2,20 +2,22 @@ package com.dayofpi.super_block_world.block.types;
 
 import com.dayofpi.super_block_world.block.block_entity.WarpPipeBE;
 import com.dayofpi.super_block_world.block.block_entity.WarpPipeTree;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.BubbleColumnBlock;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.world.BlockView;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Random;
 
 @SuppressWarnings("deprecation")
 public class WarpPipeBlock extends WarpPipeBodyBlock implements BlockEntityProvider {
-    protected static final VoxelShape SHAPE = Block.createCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
 
     public static final WarpPipeTree warpPipeTree = new WarpPipeTree();
 
@@ -24,15 +26,24 @@ public class WarpPipeBlock extends WarpPipeBodyBlock implements BlockEntityProvi
     }
 
     @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return SHAPE;
-    }
-
-    @Override
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify)
     {
         super.onBlockAdded(state, world, pos, oldState, notify);
+        world.getBlockTickScheduler().schedule(pos, this, 20);
         warpPipeTree.addBlockToChunk(pos.getX()/16, pos.getZ()/16, pos); //Add to list
+    }
+
+    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+        if (direction == Direction.UP && neighborState.isOf(Blocks.WATER)) {
+            world.getBlockTickScheduler().schedule(pos, this, 20);
+        }
+        warpPipeTree.addBlockToChunk(pos.getX()/16, pos.getZ()/16, pos); //Add to list
+
+        return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+    }
+
+    public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        BubbleColumnBlock.update(world, pos.up(), state);
     }
 
     @Override
@@ -41,7 +52,6 @@ public class WarpPipeBlock extends WarpPipeBodyBlock implements BlockEntityProvi
         if (state.hasBlockEntity() && !state.isOf(newState.getBlock())) {
             warpPipeTree.removeBlockFromChunk(pos.getX()/16, pos.getZ()/16, pos); //if destroyed, remove from list
         }
-
     }
 
     @Nullable

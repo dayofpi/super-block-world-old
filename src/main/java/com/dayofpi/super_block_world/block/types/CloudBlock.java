@@ -6,7 +6,6 @@ import net.minecraft.block.EntityShapeContext;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -25,7 +24,11 @@ public class CloudBlock extends Block {
     }
 
     public boolean isSideInvisible(BlockState state, BlockState stateFrom, Direction direction) {
-        return false;
+        return stateFrom.isOf(this) || super.isSideInvisible(state, stateFrom, direction);
+    }
+
+    public VoxelShape getCullingShape(BlockState state, BlockView world, BlockPos pos) {
+        return VoxelShapes.empty();
     }
 
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -51,17 +54,5 @@ public class CloudBlock extends Block {
 
     public VoxelShape getCameraCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return VoxelShapes.empty();
-    }
-
-    public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
-        return true;
-    }
-
-    public float getAmbientOcclusionLightLevel(BlockState state, BlockView world, BlockPos pos) {
-        return 0.2F;
-    }
-
-    public boolean isTranslucent(BlockState state, BlockView world, BlockPos pos) {
-        return true;
     }
 }

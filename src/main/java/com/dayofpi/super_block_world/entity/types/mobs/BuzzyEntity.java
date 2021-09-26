@@ -6,8 +6,12 @@ import com.dayofpi.super_block_world.item.registry.ItemList;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.AnimalMateGoal;
 import net.minecraft.entity.ai.goal.FollowParentGoal;
+import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.ai.goal.TemptGoal;
+import net.minecraft.entity.attribute.EntityAttributeInstance;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
@@ -32,13 +36,20 @@ import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.UUID;
+
 public class BuzzyEntity extends AbstractBuzzy implements ItemSteerable, Saddleable {
+    private static final TrackedData<Boolean> HIDING;
     private static final TrackedData<Boolean> SADDLED;
     private static final TrackedData<Integer> BOOST_TIME;
+    private static final EntityAttributeModifier COVERED_ARMOR_BONUS;
+    private int hidingTime;
 
     static {
+        HIDING = DataTracker.registerData(BuzzyEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
         SADDLED = DataTracker.registerData(BuzzyEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
         BOOST_TIME = DataTracker.registerData(BuzzyEntity.class, TrackedDataHandlerRegistry.INTEGER);
+        COVERED_ARMOR_BONUS = new EntityAttributeModifier(UUID.randomUUID(), "Covered armor bonus", 10.0D, EntityAttributeModifier.Operation.ADDITION);
     }
 
     private final SaddledComponent saddledComponent;
@@ -55,17 +66,6 @@ public class BuzzyEntity extends AbstractBuzzy implements ItemSteerable, Saddlea
         this.goalSelector.add(3, new TemptGoal(this, 1.25D, Ingredient.ofItems(BlockList.GREEN_MUSHROOM), false));
         this.goalSelector.add(5, new FollowParentGoal(this, 1.1D));
         super.initGoals();
-    }
-
-    @Override
-    public void tickMovement() {
-        super.tickMovement();
-        if (this.hasVehicle() && this.getVehicle() instanceof BuzzyEntity) {
-            // Dismounts if a block exists at its location. Prevents baby buzzies from suffocating.
-            if (this.getBlockStateAtPos().isSolidBlock(this.world, this.getBlockPos())) {
-                this.dismountVehicle();
-            }
-        }
     }
 
     @Override
@@ -99,20 +99,6 @@ public class BuzzyEntity extends AbstractBuzzy implements ItemSteerable, Saddlea
         return EntityList.BUZZY_BEETLE.create(serverWorld);
     }
 
-    public void onTrackedDataSet(TrackedData<?> data) {
-        if (BOOST_TIME.equals(data) && this.world.isClient) {
-            this.saddledComponent.boost();
-        }
-
-        super.onTrackedDataSet(data);
-    }
-
-    protected void initDataTracker() {
-        super.initDataTracker();
-        this.dataTracker.startTracking(SADDLED, false);
-        this.dataTracker.startTracking(BOOST_TIME, 0);
-    }
-
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
         this.saddledComponent.writeNbt(nbt);
@@ -123,9 +109,62 @@ public class BuzzyEntity extends AbstractBuzzy implements ItemSteerable, Saddlea
         this.saddledComponent.readNbt(nbt);
     }
 
+    public boolean isHiding() {
+        return this.dataTracker.get(HIDING);
+    }
+
+    public void setHiding(boolean hiding) {
+        if (hiding) {
+            this.hidingTime = 100 + random.nextInt(50);
+        } else {
+            this.hidingTime = 0;
+        }
+        this.dataTracker.set(HIDING, hiding);
+    }
+
     @Override
-    public boolean isBreedingItem(ItemStack stack) {
-        return stack.isOf(BlockList.GREEN_MUSHROOM.asItem());
+    public void tickMovement() {
+        super.tickMovement();
+        EntityAttributeInstance attribute = this.getAttributeInstance(EntityAttributes.GENERIC_ARMOR);
+        if (hidingTime > 0) {
+            --hidingTime;
+        }
+
+        if (this.isHiding()) {
+            if (this.hidingTime == 1) {
+                this.setHiding(false);
+            }
+
+            if (!attribute.hasModifier(COVERED_ARMOR_BONUS)) {
+                attribute.addTemporaryModifier(COVERED_ARMOR_BONUS);
+            } else if (attribute.hasModifier(COVERED_ARMOR_BONUS)) {
+                attribute.removeModifier(COVERED_ARMOR_BONUS);
+            }
+        }
+    }
+
+    public void onTrackedDataSet(TrackedData<?> data) {
+        if (BOOST_TIME.equals(data) && this.world.isClient) {
+            this.saddledComponent.boost();
+        }
+
+        super.onTrackedDataSet(data);
+    }
+
+    @Override
+    public boolean damage(DamageSource source, float amount) {
+        Entity attacker = source.getAttacker();
+        if (attacker != null && attacker.isLiving() && super.damage(source, amount)) {
+            // Hides if attacked by a mob
+            this.setHiding(true);
+        }
+        return super.damage(source, amount);
+    }
+
+    protected void updateGoalControls() {
+        if (this.isHiding()) {
+            this.goalSelector.setControlEnabled(Goal.Control.MOVE, false);
+        }
     }
 
     @Override
@@ -136,6 +175,11 @@ public class BuzzyEntity extends AbstractBuzzy implements ItemSteerable, Saddlea
         } else {
             return livingEntity.getMainHandStack().isOf(ItemList.GREEN_MUSHROOM_ON_A_STICK) || livingEntity.getOffHandStack().isOf(ItemList.GREEN_MUSHROOM_ON_A_STICK);
         }
+    }
+
+    @Override
+    public boolean isBreedingItem(ItemStack stack) {
+        return stack.isOf(BlockList.GREEN_MUSHROOM.asItem());
     }
 
     @Override
@@ -156,6 +200,13 @@ public class BuzzyEntity extends AbstractBuzzy implements ItemSteerable, Saddlea
                 return actionResult;
             }
         }
+    }
+
+    protected void initDataTracker() {
+        super.initDataTracker();
+        this.dataTracker.startTracking(SADDLED, false);
+        this.dataTracker.startTracking(HIDING, false);
+        this.dataTracker.startTracking(BOOST_TIME, 0);
     }
 
     @Override

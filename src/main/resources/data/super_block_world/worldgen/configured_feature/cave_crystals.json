@@ -1,0 +1,132 @@
+{
+  "type": "minecraft:decorated",
+  "config": {
+    "decorator": {
+      "type": "minecraft:count",
+      "config": {
+        "count": 20
+      }
+    },
+    "feature": {
+      "type": "minecraft:decorated",
+      "config": {
+        "decorator": {
+          "type": "minecraft:square",
+          "config": {}
+        },
+        "feature": {
+          "type": "minecraft:decorated",
+          "config": {
+            "decorator": {
+              "type": "minecraft:range",
+              "config": {
+                "height": {
+                  "type": "minecraft:uniform",
+                  "min_inclusive": {
+                    "above_bottom": 0
+                  },
+                  "max_inclusive": {
+                    "below_top": 0
+                  }
+                }
+              }
+            },
+            "feature": {
+              "type": "minecraft:random_selector",
+              "config": {
+                "features": [
+                  {
+                    "chance": 0.2,
+                    "feature": {
+                      "type": "minecraft:decorated",
+                      "config": {
+                        "decorator": {
+                          "type": "minecraft:cave_surface",
+                          "config": {
+                            "surface": "floor",
+                            "floor_to_ceiling_search_range": 12
+                          }
+                        },
+                        "feature": {
+                          "type": "minecraft:random_patch",
+                          "config": {
+                            "can_replace": false,
+                            "project": false,
+                            "need_water": false,
+                            "xspread": 7,
+                            "yspread": 3,
+                            "zspread": 7,
+                            "tries": 50,
+                            "state_provider": {
+                              "type": "minecraft:simple_state_provider",
+                              "state": {
+                                "Name": "minecraft:amethyst_cluster",
+                                "Properties": {
+                                  "waterlogged": "false",
+                                  "facing": "up"
+                                }
+                              }
+                            },
+                            "block_placer": {
+                              "type": "minecraft:simple_block_placer"
+                            },
+                            "whitelist": [
+                              {
+                                "Name": "super_block_world:vanillate"
+                              },
+                              {
+                                "Name": "super_block_world:topped_vanillate"
+                              }
+                            ],
+                            "blacklist": []
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "default": {
+                  "type": "minecraft:decorated",
+                  "config": {
+                    "decorator": {
+                      "type": "minecraft:cave_surface",
+                      "config": {
+                        "surface": "ceiling",
+                        "floor_to_ceiling_search_range": 12
+                      }
+                    },
+                    "feature": {
+                      "type": "minecraft:simple_block",
+                      "config": {
+                        "to_place": {
+                          "type": "minecraft:simple_state_provider",
+                          "state": {
+                            "Name": "minecraft:amethyst_cluster",
+                            "Properties": {
+                              "facing": "down",
+                              "waterlogged": "false"
+                            }
+                          }
+                        },
+                        "place_on": [],
+                        "place_in": [],
+                        "place_under": [
+                          {
+                            "Name": "super_block_world:topped_vanillate"
+                          },
+                          {
+                            "Name": "super_block_world:vanillate"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

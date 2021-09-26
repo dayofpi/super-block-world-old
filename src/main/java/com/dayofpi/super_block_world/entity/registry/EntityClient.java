@@ -15,6 +15,7 @@ public class EntityClient {
         EntityRendererRegistry.register(EntityList.MOD_BOAT, ModBoatRenderer::new);
         EntityRendererRegistry.register(EntityList.BUZZY_SHELL, (context) -> new BuzzyShellRenderer<>(context, ModelLayers.BUZZY_SHELL));
         EntityRendererRegistry.register(EntityList.MOO_MOO, MooMooRenderer::new);
+        EntityRendererRegistry.register(EntityList.GOOMBA, GoombaRenderer::new);
         EntityRendererRegistry.register(EntityList.BUZZY_BEETLE, BuzzyRenderer::new);
         EntityRendererRegistry.register(EntityList.SPIKE_TOP, SpikeTopRenderer::new);
         EntityRendererRegistry.register(EntityList.NIPPER_PLANT, NipperPlantRenderer::new);

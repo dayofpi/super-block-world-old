@@ -10,7 +10,7 @@
     "fog_color": 11859964,
     "water_color": 1962492,
     "water_fog_color": 52959,
-    "grass_color": 8841014,
+    "grass_color": 9500475,
     "foliage_color": 4178950,
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
@@ -22,15 +22,27 @@
   "spawners": {
     "monster": [
       {
+        "type": "minecraft:enderman",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "super_block_world:goomba",
+        "weight": 50,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
         "type": "super_block_world:buzzy_beetle",
         "weight": 100,
-        "minCount": 1,
+        "minCount": 2,
         "maxCount": 4
       },
       {
         "type": "super_block_world:spike_top",
         "weight": 20,
-        "minCount": 1,
+        "minCount": 2,
         "maxCount": 4
       }
     ],
@@ -57,7 +69,12 @@
       }
     ]
   },
-  "spawn_costs": {},
+  "spawn_costs": {
+    "super_block_world:goomba": {
+      "energy_budget": 0.15,
+      "charge": 0.7
+    }
+  },
   "carvers": {
     "air": [
       "super_block_world:cave",
@@ -74,13 +91,16 @@
     [
       "super_block_world:hill_grassland"
     ],
-    [],
+    [
+      "super_block_world:block_single"
+    ],
     [],
     [
       "super_block_world:vanillate_topping"
     ],
     [
       "super_block_world:ore_bronze",
+      "super_block_world:ore_amethyst",
       "super_block_world:ore_hardstone",
       "super_block_world:ore_crumble",
       "super_block_world:toppings_coal",
@@ -89,11 +109,16 @@
     ],
     [
       "super_block_world:disk_sand",
-      "super_block_world:disk_clay"
+      "super_block_world:cave_crystals",
+      "super_block_world:stone_torches",
+      "super_block_world:warp_pipe_normal",
+      "super_block_world:mushroom_underground"
     ],
     [
+      "super_block_world:plant_grassland",
+      "super_block_world:flower_grassland",
+      "super_block_world:mushroom_grassland",
       "super_block_world:vegetation_grassland"
-    ],
-    []
+    ]
   ]
 }

@@ -5,8 +5,8 @@
       "type": "minecraft:count_extra",
       "config": {
         "count": 0,
-        "extra_count": 6,
-        "extra_chance": 0.2
+        "extra_count": 4,
+        "extra_chance": 0.1
       }
     },
     "feature": {
@@ -43,12 +43,16 @@
           "config": {
             "features": [
               {
-                "chance": 0.15,
-                "feature": "super_block_world:beanstalk_picker_forest"
+                "chance": 0.05,
+                "feature": "super_block_world:beanstalk_not_budding"
+              },
+              {
+                "chance": 0.05,
+                "feature": "super_block_world:beanstalk_budding"
               },
               {
                 "chance": 0.4,
-                "feature": "super_block_world:flower_carpet"
+                "feature": "super_block_world:flowerbed"
               },
               {
                 "chance": 0.4,

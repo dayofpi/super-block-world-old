@@ -37,7 +37,6 @@ public abstract class MixinLivingEntity extends Entity {
     @Invoker("getEquippedStack")
     public abstract ItemStack getEquippedStack(EquipmentSlot slot);
 
-
     private boolean isWearingTheBoots() {
         ItemStack feetSlot = this.getEquippedStack(EquipmentSlot.FEET);
         return (feetSlot.isOf(ItemList.JUMP_BOOTS));

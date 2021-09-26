@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.item.types;
 
-import com.dayofpi.super_block_world.entity.types.TurnipEntity;
+import com.dayofpi.super_block_world.entity.types.projectiles.TurnipEntity;
 import com.dayofpi.super_block_world.misc.SoundList;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;

@@ -4,9 +4,9 @@
     "decorator": {
       "type": "minecraft:count_extra",
       "config": {
-        "count": 0,
+        "count": 1,
         "extra_count": 2,
-        "extra_chance": 0.1
+        "extra_chance": 0.2
       }
     },
     "feature": {
@@ -55,16 +55,6 @@
                     "Properties": {
                       "type": "3",
                       "coin_count": "15"
-                    }
-                  }
-                },
-                {
-                  "weight": 7,
-                  "data": {
-                    "Name": "super_block_world:coin_block",
-                    "Properties": {
-                      "type": "1",
-                      "coin_count": "5"
                     }
                   }
                 },

@@ -1,7 +1,11 @@
 package com.dayofpi.super_block_world.block.types;
 
 import com.dayofpi.super_block_world.block.registry.BlockList;
-import net.minecraft.block.*;
+import com.dayofpi.super_block_world.block.types.template.ModPlantStemBlock;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.VineLogic;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -10,7 +14,7 @@ import net.minecraft.world.WorldAccess;
 
 import java.util.Random;
 
-public class BeanstalkBlock extends AbstractPlantStemBlock {
+public class BeanstalkBlock extends ModPlantStemBlock {
     public static final VoxelShape SHAPE = Block.createCuboidShape(4.0D, 0.0D, 4.0D, 12.0D, 15.0D, 12.0D);
 
     public BeanstalkBlock(AbstractBlock.Settings settings) {

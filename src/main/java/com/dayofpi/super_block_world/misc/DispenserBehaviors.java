@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.misc;
 
 import com.dayofpi.super_block_world.block.registry.BlockList;
-import com.dayofpi.super_block_world.entity.types.HammerEntity;
-import com.dayofpi.super_block_world.entity.types.TurnipEntity;
+import com.dayofpi.super_block_world.entity.types.projectiles.HammerEntity;
+import com.dayofpi.super_block_world.entity.types.projectiles.TurnipEntity;
 import com.dayofpi.super_block_world.item.registry.ItemList;
 import net.minecraft.block.AbstractFireBlock;
 import net.minecraft.block.BlockState;

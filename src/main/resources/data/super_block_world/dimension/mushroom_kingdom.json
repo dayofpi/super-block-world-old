@@ -8,16 +8,28 @@
       "type": "minecraft:multi_noise",
       "biomes": [
         {
+          "biome": "super_block_world:mushroom_grasslands",
           "parameters": {
-            "erosion": [ -1.0, -0.375 ],
-            "depth": 0.0,
+            "temperature": [
+              -0.45,
+              -0.15
+            ],
+            "humidity": [
+              -1,
+              -0.3
+            ],
+            "continentalness": [
+              -0.19,
+              -0.11
+            ],
+            "erosion": [
+              -1,
+              -0.375
+            ],
             "weirdness": -0.93333334,
-            "offset": 0.0,
-            "temperature": [ -0.45, -0.15 ],
-            "humidity": [ -1.0, -0.3 ],
-            "continentalness": [ -0.19, -0.11 ]
-          },
-          "biome": "super_block_world:mushroom_grasslands"
+            "depth": 0,
+            "offset": 0
+          }
         }
       ]
     }

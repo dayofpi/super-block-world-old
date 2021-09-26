@@ -1,6 +1,7 @@
 package com.dayofpi.super_block_world.block.registry;
 
 import com.dayofpi.super_block_world.Main;
+import com.dayofpi.super_block_world.block.types.CloudSlabBlock;
 import com.dayofpi.super_block_world.block.types.*;
 import com.dayofpi.super_block_world.block.types.MushroomBlock;
 import com.dayofpi.super_block_world.block.types.template.*;
@@ -39,12 +40,14 @@ public class BlockList {
     public static final Block COARSE_TOADSTOOL_SOIL = new ToadstoolSoilBlock(FabricBlockSettings.copyOf(TOADSTOOL_SOIL));
     public static final Block TOADSTOOL_FARMLAND = new ToadstoolFarmlandBlock(FabricBlockSettings.copyOf(TOADSTOOL_SOIL).ticksRandomly());
     public static final Block TOADSTOOL_PATH = new ToadstoolPathBlock(FabricBlockSettings.copyOf(TOADSTOOL_SOIL).mapColor(MapColor.BROWN));
-    public static final Block CLOUD_BLOCK = new CloudBlock(FabricBlockSettings.of(Material.SNOW_BLOCK, MapColor.WHITE).strength(0.1F).sounds(BlockSoundGroup.SNOW).nonOpaque());
+    public static final Block HAPPY_CLOUD = new HappyCloudBlock(FabricBlockSettings.of(Material.SNOW_BLOCK, MapColor.WHITE).strength(0.1F).sounds(BlockSoundGroup.SNOW).dynamicBounds());
+    public static final Block CLOUD_BLOCK = new CloudBlock(FabricBlockSettings.copyOf(HAPPY_CLOUD));
+    public static final Block CLOUD_SLAB = new CloudSlabBlock(FabricBlockSettings.copyOf(CLOUD_BLOCK));
     public static final Block GRITZY_SAND = new SandBlock(16372053, FabricBlockSettings.of(Material.AGGREGATE, MapColor.TERRACOTTA_YELLOW).strength(1.0F, 3.0F).sounds(BlockSoundGroup.SAND));
     public static final Block SEASTONE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.EMERALD_GREEN).sounds(BlockSoundGroup.CALCITE).strength(1.0F).requiresTool());
     public static final Block SEASTONE_BRICKS = new BrickBlock(FabricBlockSettings.copyOf(SEASTONE));
     public static final Block STRAWBERRY_CORAL = new StrawberryCoralBlock(FabricBlockSettings.of(Material.PLANT, MapColor.PINK).strength(0.2F).sounds(BlockSoundGroup.CORAL).nonOpaque());
-    public static final Block STRAWBERRY_CORAL_BLOCK = new Block(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.PINK).strength(0.4F).requiresTool());
+    public static final Block STRAWBERRY_CORAL_BLOCK = new Block(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.PINK).strength(0.4F).requiresTool().sounds(BlockSoundGroup.CORAL));
     public static final Block VANILLATE = new VanillateBlock(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_LIGHT_BLUE).requiresTool().strength(1.2F, 6.0F));
     public static final Block VANILLATE_BRICKS = new Block(FabricBlockSettings.copyOf(VANILLATE));
     public static final Block VANILLATE_TILES = new Block(FabricBlockSettings.copyOf(VANILLATE));
@@ -58,6 +61,7 @@ public class BlockList {
     public static final Block IRON_TOPPED_VANILLATE = new OreBlock(FabricBlockSettings.copyOf(TOPPED_VANILLATE).strength(1.5F, 6.0F), UniformIntProvider.create(0, 1));
     public static final Block GOLD_TOPPED_VANILLATE = new OreBlock(FabricBlockSettings.copyOf(TOPPED_VANILLATE).strength(1.5F, 6.0F), UniformIntProvider.create(0, 1));
     public static final Block BRONZE_ORE = new Block(FabricBlockSettings.copyOf(VANILLATE).strength(1.5F, 6.0F));
+    public static final Block AMETHYST_ORE = new Block(FabricBlockSettings.copyOf(VANILLATE).strength(1.5F, 6.0F).luminance(10));
     public static final Block GLOOMSTONE_BRONZE_ORE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.DARK_AQUA).requiresTool().strength(1.5F, 1.0F).sounds(BlockSoundGroup.DEEPSLATE));
     public static final Block RAW_BRONZE_BLOCK = new Block(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_ORANGE).requiresTool().strength(5.0F, 6.0F));
     public static final Block BRONZE_BLOCK = new Block(FabricBlockSettings.of(Material.METAL, MapColor.TERRACOTTA_ORANGE).requiresTool().strength(5.0F, 8.0F).sounds(BlockSoundGroup.METAL));
@@ -83,6 +87,8 @@ public class BlockList {
     public static final Block GLOOMSTONE_BRICK_STAIRS = new StairsBlock(GLOOMSTONE_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(GLOOMSTONE_BRICKS)){};
     public static final Block HARDSTONE = new PillarBlock(FabricBlockSettings.of(Material.STONE, MapColor.LIGHT_GRAY).requiresTool().strength(4.0F, 10.0F));
     public static final Block POLISHED_HARDSTONE = new Block(FabricBlockSettings.copyOf(HARDSTONE));
+    public static final Block CHISELED_HARDSTONE = new Block(FabricBlockSettings.copyOf(HARDSTONE));
+    public static final Block HARDSTONE_PILLAR = new PillarBlock(FabricBlockSettings.copyOf(HARDSTONE));
     public static final Block HARDSTONE_BRICKS = new Block(FabricBlockSettings.copyOf(HARDSTONE));
     public static final Block CRACKED_HARDSTONE_BRICKS = new Block(FabricBlockSettings.copyOf(HARDSTONE_BRICKS).strength(2.0F, 5.0F));
     public static final Block GOLDEN_BRICKS = new BrickBlock(FabricBlockSettings.copyOf(TOADSTONE_BRICKS).sounds(BlockSoundGroup.METAL).mapColor(MapColor.GOLD));
@@ -127,7 +133,7 @@ public class BlockList {
     public static final Block PURPLE_MUSHROOM_CAP = new MushroomBlock(FabricBlockSettings.copyOf(BROWN_MUSHROOM_CAP).mapColor(MapColor.PURPLE));
     public static final Block ORANGE_MUSHROOM_CAP = new BouncyMushroomBlock(FabricBlockSettings.copyOf(BROWN_MUSHROOM_CAP).mapColor(MapColor.ORANGE));
     public static final Block YELLOW_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.of(Material.PLANT, MapColor.YELLOW).noCollision().ticksRandomly().sounds(BlockSoundGroup.GRASS), () -> FeatureList.HUGE_YELLOW_MUSHROOM_THIN);
-    public static final Block GREEN_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.copyOf(YELLOW_MUSHROOM).mapColor(MapColor.EMERALD_GREEN).luminance(4), () -> FeatureList.HUGE_GREEN_MUSHROOM_THIN);
+    public static final Block GREEN_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.copyOf(YELLOW_MUSHROOM).mapColor(MapColor.EMERALD_GREEN).luminance(6), () -> FeatureList.HUGE_GREEN_MUSHROOM_THIN);
     public static final Block PINK_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.copyOf(YELLOW_MUSHROOM).mapColor(MapColor.PINK), () -> FeatureList.HUGE_PINK_MUSHROOM);
     public static final Block PURPLE_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.copyOf(YELLOW_MUSHROOM).mapColor(MapColor.PURPLE), () -> FeatureList.HUGE_PURPLE_MUSHROOM);
     public static final Block ORANGE_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.copyOf(YELLOW_MUSHROOM).mapColor(MapColor.ORANGE), () -> FeatureList.HUGE_ORANGE_MUSHROOM);
@@ -188,7 +194,9 @@ public class BlockList {
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstool_farmland"), TOADSTOOL_FARMLAND);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstool_path"), TOADSTOOL_PATH);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "gritzy_sand"), GRITZY_SAND);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "happy_cloud"), HAPPY_CLOUD);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "cloud_block"), CLOUD_BLOCK);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "cloud_slab"), CLOUD_SLAB);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "vanillate"), VANILLATE);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "vanillate_bricks"), VANILLATE_BRICKS);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "vanillate_tiles"), VANILLATE_TILES);
@@ -202,6 +210,7 @@ public class BlockList {
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "iron_topped_vanillate"), IRON_TOPPED_VANILLATE);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "gold_topped_vanillate"), GOLD_TOPPED_VANILLATE);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "bronze_ore"), BRONZE_ORE);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "amethyst_ore"), AMETHYST_ORE);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "gloomstone_bronze_ore"), GLOOMSTONE_BRONZE_ORE);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "raw_bronze_block"), RAW_BRONZE_BLOCK);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "bronze_block"), BRONZE_BLOCK);
@@ -227,6 +236,8 @@ public class BlockList {
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "crystal_bricks"), CRYSTAL_BRICKS);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "hardstone"), HARDSTONE);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "polished_hardstone"), POLISHED_HARDSTONE);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "chiseled_hardstone"), CHISELED_HARDSTONE);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "hardstone_pillar"), HARDSTONE_PILLAR);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "hardstone_bricks"), HARDSTONE_BRICKS);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "cracked_hardstone_bricks"), CRACKED_HARDSTONE_BRICKS);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "amanita_log"), AMANITA_LOG);

@@ -1,9 +1,13 @@
 package com.dayofpi.super_block_world.block.types;
 
 import com.dayofpi.super_block_world.block.registry.BlockList;
+import com.dayofpi.super_block_world.block.types.template.ModPlantStemBlock;
 import com.dayofpi.super_block_world.entity.registry.EntityList;
 import com.dayofpi.super_block_world.entity.types.mobs.NipperPlantEntity;
-import net.minecraft.block.*;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.VineLogic;
 import net.minecraft.client.util.ParticleUtil;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.particle.ParticleTypes;
@@ -13,7 +17,6 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
@@ -23,7 +26,7 @@ import net.minecraft.world.WorldAccess;
 
 import java.util.Random;
 
-public class BuddingBeanstalkBlock extends AbstractPlantStemBlock {
+public class BuddingBeanstalkBlock extends ModPlantStemBlock {
     public static final VoxelShape SHAPE = Block.createCuboidShape(4.0D, 0.0D, 4.0D, 12.0D, 15.0D, 12.0D);
     public static final BooleanProperty OPEN;
 
@@ -71,7 +74,7 @@ public class BuddingBeanstalkBlock extends AbstractPlantStemBlock {
         boolean hasLight = world.getLightLevel(pos.up()) >= 9;
         boolean isOpen = world.getBlockState(pos).get(OPEN);
         if (isOpen) {
-            if (!hasLight) {
+            if (!hasLight || random.nextInt(7) == 0) {
                 world.setBlockState(pos, state.with(OPEN, false));
             }
             if (hasLight) {
@@ -79,13 +82,16 @@ public class BuddingBeanstalkBlock extends AbstractPlantStemBlock {
                 if (random.nextInt(2) == 0) {
                     multiplier = -1;
                 } else multiplier = 1;
-                BlockPos soil = pos.add(random.nextInt(2) * multiplier, random.nextInt(4) * -1, random.nextInt(2) * multiplier);
-                NipperPlantEntity entity = EntityList.NIPPER_PLANT.create(world);
-                if (world.getBlockState(soil).isIn(BlockTags.DIRT) && !world.getBlockState(soil.up()).isFullCube(world, pos) && (entity != null)) {
+                BlockPos soil = pos.add(random.nextInt(2) * multiplier, random.nextInt(8) * -1, random.nextInt(2) * multiplier);
+                NipperPlantEntity entity = EntityList.NIPPER_PLANT.create(world.toServerWorld());
+                if (!world.getBlockState(soil.down()).isAir() && !world.getBlockState(soil.up()).isOpaque() && (entity != null)) {
                     entity.refreshPositionAndAngles((double) soil.getX() + 0.5D, soil.getY() + 1D, (double) soil.getZ() + 0.5D, 0.0F, 0.0F);
                     world.spawnEntity(entity);
                     ParticleUtil.spawnParticle(world, soil.up(), ParticleTypes.HAPPY_VILLAGER, UniformIntProvider.create(2, 3));
                     world.playSound(null, soil, SoundEvents.ITEM_BONE_MEAL_USE, SoundCategory.NEUTRAL, 2.0F, 1.0F);
+                    if (random.nextInt(2) == 0) {
+                        world.setBlockState(pos, state.with(OPEN, false));
+                    }
                 }
             }
         } else if (hasLight && random.nextInt(7) == 0) {

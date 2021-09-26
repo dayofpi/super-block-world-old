@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.item.types;
 
-import com.dayofpi.super_block_world.entity.types.BombEntity;
+import com.dayofpi.super_block_world.entity.types.projectiles.BombEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
