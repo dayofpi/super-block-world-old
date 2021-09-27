@@ -56,10 +56,10 @@
               },
               {
                 "chance": 0.4,
-                "feature": "super_block_world:amanita_fruits"
+                "feature": "super_block_world:amanita_fruit_checked"
               }
             ],
-            "default": "super_block_world:amanita"
+            "default": "super_block_world:amanita_checked"
           }
         }
       }

@@ -17,6 +17,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
@@ -84,7 +85,7 @@ public class BuddingBeanstalkBlock extends ModPlantStemBlock {
                 } else multiplier = 1;
                 BlockPos soil = pos.add(random.nextInt(2) * multiplier, random.nextInt(8) * -1, random.nextInt(2) * multiplier);
                 NipperPlantEntity entity = EntityList.NIPPER_PLANT.create(world.toServerWorld());
-                if (!world.getBlockState(soil.down()).isAir() && !world.getBlockState(soil.up()).isOpaque() && (entity != null)) {
+                if (world.getBlockState(soil.down()).isIn(BlockTags.DIRT) && !world.getBlockState(soil.up()).isOpaque() && (entity != null)) {
                     entity.refreshPositionAndAngles((double) soil.getX() + 0.5D, soil.getY() + 1D, (double) soil.getZ() + 0.5D, 0.0F, 0.0F);
                     world.spawnEntity(entity);
                     ParticleUtil.spawnParticle(world, soil.up(), ParticleTypes.HAPPY_VILLAGER, UniformIntProvider.create(2, 3));

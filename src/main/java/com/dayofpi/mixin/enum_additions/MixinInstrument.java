@@ -1,7 +1,7 @@
 package com.dayofpi.mixin.enum_additions;
 
 import com.dayofpi.super_block_world.block.registry.BlockList;
-import com.dayofpi.super_block_world.misc.SoundList;
+import com.dayofpi.super_block_world.SoundList;
 import com.dayofpi.super_block_world.misc.EnumInstruments;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.enums.Instrument;

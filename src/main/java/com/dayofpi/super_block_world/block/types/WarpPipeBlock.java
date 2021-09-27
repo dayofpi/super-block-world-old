@@ -4,17 +4,12 @@ import com.dayofpi.super_block_world.block.block_entity.WarpPipeBE;
 import com.dayofpi.super_block_world.block.block_entity.WarpPipeTree;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.BubbleColumnBlock;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Random;
 
 @SuppressWarnings("deprecation")
 public class WarpPipeBlock extends WarpPipeBodyBlock implements BlockEntityProvider {
@@ -34,16 +29,9 @@ public class WarpPipeBlock extends WarpPipeBodyBlock implements BlockEntityProvi
     }
 
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        if (direction == Direction.UP && neighborState.isOf(Blocks.WATER)) {
-            world.getBlockTickScheduler().schedule(pos, this, 20);
-        }
         warpPipeTree.addBlockToChunk(pos.getX()/16, pos.getZ()/16, pos); //Add to list
 
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
-    }
-
-    public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        BubbleColumnBlock.update(world, pos.up(), state);
     }
 
     @Override

@@ -2,10 +2,12 @@ package com.dayofpi.super_block_world.entity.types.mobs;
 
 import com.dayofpi.super_block_world.entity.registry.EntityList;
 import com.dayofpi.super_block_world.item.registry.ItemList;
+import com.dayofpi.super_block_world.SoundList;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
@@ -13,6 +15,7 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.loot.LootTables;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
@@ -39,7 +42,7 @@ public class GoombaEntity extends EnemyEntity {
     }
 
     public static DefaultAttributeContainer.Builder createAttributes() {
-        return EnemyEntity.createAttributes()
+        return EnemyEntity.createEnemyAttributes()
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE);
     }
@@ -56,6 +59,26 @@ public class GoombaEntity extends EnemyEntity {
 
     public static boolean canSpawn(ServerWorldAccess world, BlockPos pos, EntityType<? extends MobEntity> type) {
         return world.getBlockState(pos.down()).allowsSpawning(world, pos, type) && !(world.getLightLevel(LightType.BLOCK, pos) > 0);
+    }
+
+    public float getSoundPitch() {
+        return (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.5F - (this.getSize() * 0.5F);
+    }
+
+    public int getMinAmbientSoundDelay() {
+        return 100;
+    }
+
+    protected SoundEvent getAmbientSound() {
+        return SoundList.GOOMBA_IDLE;
+    }
+
+    protected SoundEvent getHurtSound(DamageSource source) {
+        return SoundList.GOOMBA_HURT;
+    }
+
+    protected SoundEvent getDeathSound() {
+        return SoundList.GOOMBA_DEATH;
     }
 
     public boolean tryAttack(Entity target) {

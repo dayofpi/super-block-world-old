@@ -4,8 +4,6 @@ import com.dayofpi.super_block_world.block.registry.BlockList;
 import com.dayofpi.super_block_world.entity.registry.EntityList;
 import com.dayofpi.super_block_world.item.registry.ItemList;
 import com.dayofpi.super_block_world.misc.DispenserBehaviors;
-import com.dayofpi.super_block_world.misc.SoundList;
-import com.dayofpi.super_block_world.misc.TagList;
 import com.dayofpi.super_block_world.world.FeatureList;
 import com.dayofpi.super_block_world.world.FluidList;
 import net.fabricmc.api.ModInitializer;

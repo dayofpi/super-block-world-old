@@ -23,6 +23,7 @@ public abstract class MixinModelLoader {
                 .put(ModelLayers.BUZZY_SHELL, BuzzyShellModel.getTexturedModelData())
                 .put(ModelLayers.MOO_MOO, MooMooModel.getTexturedModelData())
                 .put(ModelLayers.GOOMBA, GoombaModel.getTexturedModelData())
+                .put(ModelLayers.BOO, BooModel.getTexturedModelData())
                 .put(ModelLayers.BUZZY_BEETLE, BuzzyModel.getTexturedModelData())
                 .put(ModelLayers.BUZZY_BEETLE_SADDLE, BuzzyModel.getTexturedModelData())
                 .put(ModelLayers.NIPPER_PLANT, NipperPlantModel.getTexturedModelData())

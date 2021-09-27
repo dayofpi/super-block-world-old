@@ -91,11 +91,44 @@
   },
   "item.throw": {
     "subtitle": "item.throw",
+    "sounds": [ "minecraft:random/bow" ]
+  },
+  "entity.boo.ambient": {
+    "subtitle": "entity.boo.ambient",
     "sounds": [
-      {
-        "name": "super_block_world:random/throw",
-        "stream": true
-      }
+      "super_block_world:entity/boo/say1",
+      "super_block_world:entity/boo/say2",
+      "super_block_world:entity/boo/say3",
+      "super_block_world:entity/boo/say4"
+    ]
+  },
+  "entity.boo.hurt": {
+    "subtitle": "entity.boo.hurt",
+    "sounds": [
+      "super_block_world:entity/boo/hurt1",
+      "super_block_world:entity/boo/hurt2",
+      "super_block_world:entity/boo/hurt3"
+    ]
+  },
+  "entity.boo.death": {
+    "subtitle": "entity.boo.death",
+    "sounds": [
+      "super_block_world:entity/boo/death1",
+      "super_block_world:entity/boo/death2",
+      "super_block_world:entity/boo/death3"
+    ]
+  },
+  "entity.boo.laugh": {
+    "subtitle": "entity.boo.laugh",
+    "sounds": [
+      "super_block_world:entity/boo/laugh1",
+      "super_block_world:entity/boo/laugh2"
+    ]
+  },
+  "entity.boo.shy": {
+    "subtitle": "entity.boo.shy",
+    "sounds": [
+      "super_block_world:entity/boo/scared"
     ]
   },
   "entity.moo_moo.idle": {
@@ -178,6 +211,49 @@
       },
       {
         "name": "super_block_world:entity/moo_moo/bell3",
+        "stream": true
+      }
+    ]
+  },
+  "entity.goomba.idle": {
+    "subtitle": "entity.goomba.idle",
+    "sounds": [
+      {
+        "name": "super_block_world:entity/goomba/say1",
+        "stream": true
+      },
+      {
+        "name": "super_block_world:entity/goomba/say2",
+        "stream": true
+      }
+    ]
+  },
+  "entity.goomba.hurt": {
+    "subtitle": "entity.goomba.hurt",
+    "sounds": [
+      {
+        "name": "super_block_world:entity/goomba/hurt1",
+        "stream": true
+      },
+      {
+        "name": "super_block_world:entity/goomba/hurt2",
+        "stream": true
+      },
+      {
+        "name": "super_block_world:entity/goomba/hurt3",
+        "stream": true
+      }
+    ]
+  },
+  "entity.goomba.death": {
+    "subtitle": "entity.goomba.death",
+    "sounds": [
+      {
+        "name": "super_block_world:entity/goomba/death1",
+        "stream": true
+      },
+      {
+        "name": "super_block_world:entity/goomba/death2",
         "stream": true
       }
     ]

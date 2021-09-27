@@ -2,7 +2,7 @@ package com.dayofpi.mixin;
 
 import com.dayofpi.mixin.interfaces.InterfaceEntity;
 import com.dayofpi.super_block_world.misc.ModDamageSource;
-import com.dayofpi.super_block_world.misc.TagList;
+import com.dayofpi.super_block_world.TagList;
 import net.minecraft.entity.Entity;
 import net.minecraft.sound.SoundEvents;
 import org.spongepowered.asm.mixin.Mixin;

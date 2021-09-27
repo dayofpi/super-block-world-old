@@ -7,15 +7,7 @@
       "Name": "super_block_world:toadstool_soil"
     },
     "underwater_material": {
-      "Name": "super_block_world:brown_mushroom_cap",
-      "Properties": {
-        "down": "true",
-        "east": "true",
-        "north": "true",
-        "south": "true",
-        "up": "true",
-        "west": "true"
-      }
+      "Name": "super_block_world:coarse_toadstool_soil"
     }
   },
   "type": "minecraft:nether_forest"

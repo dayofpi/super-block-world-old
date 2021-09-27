@@ -25,7 +25,7 @@ public abstract class EnemyEntity extends PathAwareEntity {
         this.experiencePoints = 3;
     }
 
-    public static DefaultAttributeContainer.Builder createAttributes() {
+    public static DefaultAttributeContainer.Builder createEnemyAttributes() {
         return MobEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 10);
     }

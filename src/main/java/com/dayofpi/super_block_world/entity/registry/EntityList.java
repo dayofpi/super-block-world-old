@@ -21,6 +21,8 @@ public class EntityList {
     public static final EntityType<HammerEntity> HAMMER = FabricEntityTypeBuilder.<HammerEntity>create(SpawnGroup.MISC, HammerEntity::new).dimensions(EntityDimensions.fixed(0.8F, 0.8F)).trackRangeBlocks(4).trackedUpdateRate(10).build();
     public static final EntityType<BombEntity> BOMB = FabricEntityTypeBuilder.<BombEntity>create(SpawnGroup.MISC, BombEntity::new).dimensions(EntityDimensions.fixed(0.8F, 0.8F)).trackRangeBlocks(4).trackedUpdateRate(10).build();
 
+    public static final EntityType<GhostEntity> GHOST = FabricEntityTypeBuilder.<GhostEntity>create(SpawnGroup.MISC, GhostEntity::new).dimensions(EntityDimensions.fixed(0.8F, 0.8F)).trackRangeBlocks(10).trackedUpdateRate(10).fireImmune().build();
+
     public static final EntityType<ModBoatEntity> MOD_BOAT = FabricEntityTypeBuilder.<ModBoatEntity>create(SpawnGroup.MISC, ModBoatEntity::new).dimensions(EntityDimensions.fixed(1.375F, 0.5625F)).build();
     public static final EntityType<BuzzyShellEntity> BUZZY_SHELL = FabricEntityTypeBuilder.create(SpawnGroup.MISC, BuzzyShellEntity::new).dimensions(EntityDimensions.fixed(1.0F, 0.8F)).build();
 
@@ -30,6 +32,8 @@ public class EntityList {
     public static final EntityType<GoombaEntity> GOOMBA = FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, GoombaEntity::new)
             .dimensions(EntityDimensions.changing(0.9F, 0.9F)).build();
 
+    public static final EntityType<BooEntity> BOO = FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, BooEntity::new)
+            .fireImmune().dimensions(EntityDimensions.fixed(0.7F,0.7F)).build();
 
     public static final EntityType<BuzzyEntity> BUZZY_BEETLE = FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, BuzzyEntity::new)
             .dimensions(EntityDimensions.changing(1.2F, 0.9F)).build();
@@ -50,10 +54,12 @@ public class EntityList {
         register("turnip", TURNIP);
         register("hammer", HAMMER);
         register("bomb", BOMB);
+        register("ghost", GHOST);
         register("mod_boat", MOD_BOAT);
         register("buzzy_shell", BUZZY_SHELL);
         register("moo_moo", MOO_MOO);
         register("goomba", GOOMBA);
+        register("boo", BOO);
         register("buzzy_beetle", BUZZY_BEETLE);
         register("spike_top", SPIKE_TOP);
         register("nipper_plant", NIPPER_PLANT);
@@ -61,6 +67,7 @@ public class EntityList {
         register("rotten_mushroom", ROTTEN_MUSHROOM);
         FabricDefaultAttributeRegistry.register(MOO_MOO, MooMooEntity.createAttributes());
         FabricDefaultAttributeRegistry.register(GOOMBA, GoombaEntity.createAttributes());
+        FabricDefaultAttributeRegistry.register(BOO, BooEntity.createAttributes());
         FabricDefaultAttributeRegistry.register(BUZZY_BEETLE, BuzzyEntity.createAttributes());
         FabricDefaultAttributeRegistry.register(SPIKE_TOP, SpikeTopEntity.createAttributes());
         FabricDefaultAttributeRegistry.register(NIPPER_PLANT, NipperPlantEntity.createAttributes());

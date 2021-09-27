@@ -4,7 +4,7 @@ import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.block.registry.BlockList;
 import com.dayofpi.super_block_world.entity.registry.EntityList;
 import com.dayofpi.super_block_world.item.registry.ItemList;
-import com.dayofpi.super_block_world.misc.SoundList;
+import com.dayofpi.super_block_world.SoundList;
 import com.google.common.collect.Maps;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityData;

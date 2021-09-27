@@ -3,7 +3,7 @@ package com.dayofpi.super_block_world.item.types;
 import com.dayofpi.super_block_world.block.types.BrickBlock;
 import com.dayofpi.super_block_world.entity.types.projectiles.HammerEntity;
 import com.dayofpi.super_block_world.item.registry.ItemList;
-import com.dayofpi.super_block_world.misc.SoundList;
+import com.dayofpi.super_block_world.SoundList;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.block.BlockState;
@@ -30,7 +30,7 @@ public class HammerItem extends Item {
       super(settings);
       ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
       builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", 4.0D, EntityAttributeModifier.Operation.ADDITION));
-      builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(ATTACK_SPEED_MODIFIER_ID, "Tool modifier", -3.2F, EntityAttributeModifier.Operation.ADDITION));
+      builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(ATTACK_SPEED_MODIFIER_ID, "Tool modifier", -3.0F, EntityAttributeModifier.Operation.ADDITION));
       this.attributeModifiers = builder.build();
    }
 
@@ -61,14 +61,6 @@ public class HammerItem extends Item {
 
    public int getEnchantability() {
       return 1;
-   }
-
-   public boolean isSuitableFor(BlockState state) {
-      return state.getBlock() instanceof BrickBlock;
-   }
-
-   public float getMiningSpeedMultiplier(ItemStack stack, BlockState state) {
-      return state.getBlock() instanceof BrickBlock ? 12.0F : 1.0F;
    }
 
    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {

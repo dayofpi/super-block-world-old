@@ -1,11 +1,11 @@
 package com.dayofpi.super_block_world.entity.model;
 
+import com.dayofpi.super_block_world.entity.types.mobs.GoombaEntity;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
 
-public class GoombaModel<T extends Entity> extends SinglePartEntityModel<T> {
+public class GoombaModel<T extends GoombaEntity> extends SinglePartEntityModel<T> {
     private final ModelPart ROOT;
     private final ModelPart HEAD;
     private final ModelPart LEFT_FOOT;
@@ -28,7 +28,7 @@ public class GoombaModel<T extends Entity> extends SinglePartEntityModel<T> {
         return TexturedModelData.of(modelData, 64, 32);
     }
 
-        @Override
+    @Override
     public ModelPart getPart() {
         return ROOT;
     }

@@ -164,7 +164,7 @@ public class BuzzyEntity extends AbstractBuzzy implements ItemSteerable, Saddlea
     protected void updateGoalControls() {
         if (this.isHiding()) {
             this.goalSelector.setControlEnabled(Goal.Control.MOVE, false);
-        }
+        } else super.updateGoalControls();
     }
 
     @Override

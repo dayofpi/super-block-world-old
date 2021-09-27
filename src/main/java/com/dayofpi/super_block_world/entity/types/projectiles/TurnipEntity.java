@@ -77,8 +77,4 @@ public class TurnipEntity extends ThrownItemEntity {
     public Packet<?> createSpawnPacket() {
         return SpawnPacket.create(this, Client.PacketID);
     }
-
-    protected float getGravity() {
-        return 0.06F;
-    }
 }

@@ -36,7 +36,7 @@ public class StingbyEntity extends EnemyEntity implements Flutterer {
     }
 
     public static DefaultAttributeContainer.Builder createAttributes() {
-        return EnemyEntity.createAttributes()
+        return EnemyEntity.createEnemyAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 15.0D)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2D)
                 .add(EntityAttributes.GENERIC_FLYING_SPEED, 0.6D)

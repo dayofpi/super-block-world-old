@@ -1,6 +1,6 @@
 package com.dayofpi.mixin;
 
-import com.dayofpi.super_block_world.misc.TagList;
+import com.dayofpi.super_block_world.TagList;
 import net.minecraft.block.BlockState;
 import net.minecraft.world.gen.carver.Carver;
 import org.spongepowered.asm.mixin.Mixin;

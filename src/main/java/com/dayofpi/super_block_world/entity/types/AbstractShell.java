@@ -3,7 +3,7 @@ package com.dayofpi.super_block_world.entity.types;
 import com.dayofpi.super_block_world.block.registry.BlockList;
 import com.dayofpi.super_block_world.item.registry.ItemList;
 import com.dayofpi.super_block_world.misc.ModDamageSource;
-import com.dayofpi.super_block_world.misc.SoundList;
+import com.dayofpi.super_block_world.SoundList;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;

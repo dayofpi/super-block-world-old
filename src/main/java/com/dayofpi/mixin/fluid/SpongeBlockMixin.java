@@ -1,6 +1,6 @@
 package com.dayofpi.mixin.fluid;
 
-import com.dayofpi.super_block_world.misc.TagList;
+import com.dayofpi.super_block_world.TagList;
 import com.google.common.collect.Lists;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;

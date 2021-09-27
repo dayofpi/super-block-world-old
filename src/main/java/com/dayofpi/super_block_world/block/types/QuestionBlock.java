@@ -2,7 +2,7 @@ package com.dayofpi.super_block_world.block.types;
 
 import com.dayofpi.super_block_world.block.block_entity.QuestionBlockBE;
 import com.dayofpi.super_block_world.block.registry.BlockList;
-import com.dayofpi.super_block_world.misc.SoundList;
+import com.dayofpi.super_block_world.SoundList;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;

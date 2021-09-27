@@ -4,6 +4,7 @@ import com.dayofpi.super_block_world.Client;
 import com.dayofpi.super_block_world.entity.registry.EntityList;
 import com.dayofpi.super_block_world.item.registry.ItemList;
 import com.dayofpi.super_block_world.misc.SpawnPacket;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -57,11 +58,9 @@ public class HammerEntity extends ThrownItemEntity {
         if (!this.world.isClient) {
             if (hitResult.getType() == HitResult.Type.BLOCK) {
                 BlockPos blockPos = ((BlockHitResult) hitResult).getBlockPos();
-                if (world.getBlockState(blockPos).getBlock().getHardness() <= 1.2F) {
+                BlockState blockState = world.getBlockState(blockPos);
+                if (blockState.getBlock().getHardness() <= 1.2F && blockState.getMaterial().isSolid()) {
                     world.breakBlock(blockPos, true);
-                }
-                if (world.getBlockState(blockPos.up()).getBlock().getHardness() == 0.0F) {
-                    world.breakBlock(blockPos.up(), true);
                 }
             }
             this.world.sendEntityStatus(this, (byte) 3);

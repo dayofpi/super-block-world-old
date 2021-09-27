@@ -1,7 +1,8 @@
 package com.dayofpi.super_block_world.entity.types.mobs;
 
+import com.dayofpi.super_block_world.block.registry.BlockList;
 import com.dayofpi.super_block_world.misc.ModDamageSource;
-import com.dayofpi.super_block_world.misc.SoundList;
+import com.dayofpi.super_block_world.SoundList;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.ai.goal.EscapeSunlightGoal;
@@ -41,8 +42,8 @@ public abstract class AbstractBuzzy extends CeilingEntity {
     }
 
     public static boolean canSpawn(ServerWorldAccess world, BlockPos pos, Random random, EntityType<? extends MobEntity> type) {
-        boolean floorValid = world.getBlockState(pos.down()).allowsSpawning(world, pos, type);
-        boolean ceilingValid = world.getBlockState(pos.up()).allowsSpawning(world, pos, type);
+        boolean floorValid = world.getBlockState(pos.down()).isOf(BlockList.VANILLATE) || world.getBlockState(pos.down()).isOf(BlockList.TOPPED_VANILLATE);
+        boolean ceilingValid = world.getBlockState(pos.up()).isOf(BlockList.VANILLATE) || world.getBlockState(pos.down()).isOf(BlockList.TOPPED_VANILLATE);
         return CeilingEntity.isSpawnDark(world, pos, random) && !world.isSkyVisible(pos) && (floorValid || ceilingValid);
     }
 
@@ -75,7 +76,7 @@ public abstract class AbstractBuzzy extends CeilingEntity {
     public void doLandingEffects(float fallDistance, float damageMultiplier) {
         int i = this.computeFallDamage(fallDistance, damageMultiplier);
         if (i > 0) {
-            world.getOtherEntities(this, this.getBoundingBox().expand(3, 0, 3), EntityPredicates.EXCEPT_SPECTATOR).forEach((entity) -> entity.damage(ModDamageSource.mobDrop(this), i + 1));
+            world.getOtherEntities(this, this.getBoundingBox().expand(3, 0, 3), EntityPredicates.EXCEPT_CREATIVE_OR_SPECTATOR).forEach((entity) -> entity.damage(ModDamageSource.mobDrop(this), i + 1));
             this.playSound(this.getLandingSound(), this.getSoundVolume(), this.getSoundPitch());
             ((ServerWorld) world).spawnParticles(ParticleTypes.EXPLOSION, this.getX(), this.getBodyY(0.5D), this.getZ(), 1, 0.0D, 0.0D, 0.0D, 0.0D);
         }
@@ -96,7 +97,7 @@ public abstract class AbstractBuzzy extends CeilingEntity {
         Box detectionRange = this.getBoundingBox().expand(0, 32, 0).offset(0, -32, 0);
 
         boolean blockBelow = world.getBlockState(floor).isSideSolidFullSquare(world, floor, Direction.UP);
-        boolean playerBelow = world.getClosestEntity(PlayerEntity.class, TargetPredicate.createNonAttackable(), this, this.getX(), this.getY(), this.getZ(), detectionRange) != null;
+        boolean playerBelow = world.getClosestEntity(PlayerEntity.class, TargetPredicate.createAttackable(), this, this.getX(), this.getY(), this.getZ(), detectionRange) != null;
         if (this.isOnCeiling(blockPos) && hurtTime == 0) {
             if (!playerBelow && !blockBelow) {
                 this.setVelocity(this.getVelocity().multiply(1.0F, 0.0F, 1.0F));

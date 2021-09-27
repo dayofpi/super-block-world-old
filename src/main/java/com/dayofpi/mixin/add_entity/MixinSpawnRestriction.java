@@ -28,6 +28,9 @@ public class MixinSpawnRestriction {
         } else if (type == EntityList.GOOMBA) {
             info.setReturnValue(GoombaEntity.canSpawn(world, pos, type));
             info.cancel();
+        } else if (type == EntityList.BOO) {
+            info.setReturnValue(BooEntity.canSpawn(world, reason, pos, random));
+            info.cancel();
         } else if (type == EntityList.STINGBY) {
             info.setReturnValue(StingbyEntity.canSpawn(world, pos));
             info.cancel();

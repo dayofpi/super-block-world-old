@@ -2,7 +2,7 @@ package com.dayofpi.super_block_world.world.fluid;
 
 import com.dayofpi.super_block_world.block.registry.BlockList;
 import com.dayofpi.super_block_world.item.registry.ItemList;
-import com.dayofpi.super_block_world.misc.TagList;
+import com.dayofpi.super_block_world.TagList;
 import com.dayofpi.super_block_world.world.FluidList;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
