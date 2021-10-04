@@ -1,7 +1,7 @@
 package com.dayofpi.mixin.enum_additions;
 
 import com.dayofpi.super_block_world.block.registry.BlockList;
-import com.dayofpi.super_block_world.misc.SoundList;
+import com.dayofpi.super_block_world.SoundList;
 import com.dayofpi.super_block_world.misc.EnumInstruments;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.enums.Instrument;
@@ -37,9 +37,9 @@ public class MixinInstrument {
             target = "Lnet/minecraft/block/enums/Instrument;field_12652:[Lnet/minecraft/block/enums/Instrument;",
             shift = At.Shift.AFTER))
     private static void addCustomInstrument(CallbackInfo info) {
-        ArrayList variants = new ArrayList<>(Arrays.asList(field_12652));
-        Instrument last = variants.get(variants.size() - 1);
-        Instrument bling = newInstrument("BLING", last.ordinal() + 1, "bling", SoundList.COIN);
+        var variants = new ArrayList<>(Arrays.asList(field_12652));
+        var last = variants.get(variants.size() - 1);
+        var bling = newInstrument("BLING", last.ordinal() + 1, "bling", SoundList.blockCoin);
         EnumInstruments.BLING = bling;
         variants.add(bling);
 

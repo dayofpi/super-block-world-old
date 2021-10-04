@@ -1,6 +1,6 @@
 package com.dayofpi.mixin;
 
-import com.dayofpi.super_block_world.misc.TagList;
+import com.dayofpi.super_block_world.TagList;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.mob.MobEntity;
@@ -18,6 +18,7 @@ public abstract class MixinPathAware extends MobEntity {
 
     @Override
     public void tickMovement() {
+        // This makes it so mobs that are immune to poison can swim in it
         super.tickMovement();
         boolean bl = this.getType().isIn(TagList.POISON_IMMUNE);
         boolean bl2 = this.updateMovementInFluid(TagList.POISON, 0.014D);

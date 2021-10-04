@@ -36,7 +36,7 @@ public class BuzzyModel<T extends Entity> extends SinglePartEntityModel<T> {
         ModelPartData shell = body.addChild("shell", ModelPartBuilder.create().uv(0, 0).cuboid(-9.0F, -9.8333F, -9.0F, 18.0F, 9.0F, 18.0F).uv(0, 27).cuboid(-9.0F, -0.8333F, -9.0F, 4.0F, 7.0F, 18.0F).mirrored().uv(0, 27).cuboid(5.0F, -0.8333F, -9.0F, 4.0F, 7.0F, 18.0F), ModelTransform.pivot(0.0F, -9.1667F, 0.0F));
         body.addChild("left_front_leg", ModelPartBuilder.create().uv(54, 0).cuboid(-2.5F, -1.0F, -2.5F, 5.0F, 6.0F, 5.0F), ModelTransform.pivot(5.5F, -5.0F, -2.5F));
         body.addChild("right_front_leg", ModelPartBuilder.create().uv(54, 0).cuboid(-2.5F, -1.0F, -2.5F, 5.0F, 6.0F, 5.0F), ModelTransform.pivot(-5.5F, -5.0F, -2.5F));
-        body.addChild("left_hind_leg", ModelPartBuilder.create().uv(54, 0).cuboid(-2.5F, -1.0F, -2.5F, 5.0F, 6.0F, 5.0F), ModelTransform.pivot(5.5F, -5.0F, 5.5F));
+        body.addChild("left_hind_leg", ModelPartBuilder.create().uv(54, 0).cuboid(-2.5F, -1.0F, -2F, 5.0F, 6.0F, 5.0F), ModelTransform.pivot(5.5F, -5.0F, 5.5F));
         body.addChild("right_hind_leg", ModelPartBuilder.create().uv(54, 0).cuboid(-2.5F, -1.0F, -2.5F, 5.0F, 6.0F, 5.0F), ModelTransform.pivot(-5.5F, -5.0F, 5.5F));
         shell.addChild("spike_1", ModelPartBuilder.create().uv(72, 17).cuboid(-5.0F, -5.0F, 0.0F, 10.0F, 10.0F, 0.0F), ModelTransform.pivot(0.0F, -16.8333F, 0.0F));
         shell.addChild("spike_2", ModelPartBuilder.create().uv(72, 17).cuboid(-5.0F, -5.0F, 0.0F, 10.0F, 10.0F, 0.0F), ModelTransform.pivot(0.0F, -16.8333F, 0.0F));
@@ -57,7 +57,7 @@ public class BuzzyModel<T extends Entity> extends SinglePartEntityModel<T> {
     public void setAngles(Entity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
         this.SPIKE_1.yaw = 0.7854F;
         this.SPIKE_2.yaw = -16.8333F;
-        this.BODY.roll = 0.1F * MathHelper.sin(limbAngle) * limbDistance;
+        this.BODY.setAngles(0F, 0F, 0.1F * MathHelper.sin(limbAngle) * limbDistance);
         this.SHELL.roll = 0.1F * MathHelper.sin(limbAngle) * limbDistance;
         this.LEFT_FRONT_LEG.pitch = MathHelper.cos(limbAngle * 0.6662F) * 1.4F * limbDistance;
         this.RIGHT_FRONT_LEG.pitch = MathHelper.cos(limbAngle * 0.6662F + 3.1415927F) * 1.4F * limbDistance;

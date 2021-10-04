@@ -3,7 +3,7 @@ package com.dayofpi.super_block_world.entity.types;
 import com.dayofpi.super_block_world.block.registry.BlockList;
 import com.dayofpi.super_block_world.item.registry.ItemList;
 import com.dayofpi.super_block_world.misc.ModDamageSource;
-import com.dayofpi.super_block_world.misc.SoundList;
+import com.dayofpi.super_block_world.SoundList;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -58,7 +58,7 @@ public abstract class AbstractShell extends Entity {
             for (Entity entity : list) {
                 this.pushAwayFrom(entity);
                 this.setVelocity(this.getVelocity().multiply(4.5, 1.0D, 4.5D));
-                world.playSound(null, blockPos, SoundList.BUZZY_BEETLE_DROP, this.getSoundCategory(), 1.0F, 1.0F);
+                world.playSound(null, blockPos, SoundList.buzzyDrop, this.getSoundCategory(), 1.0F, 1.0F);
             }
         } else if (!list.isEmpty() && this.isSpinning()) {
             for (Entity entity : list) {
@@ -71,23 +71,16 @@ public abstract class AbstractShell extends Entity {
         super.tick();
     }
 
-    private void spawnBreakParticles() {
-        if (this.world instanceof ServerWorld) {
-            ((ServerWorld)this.world).spawnParticles(new BlockStateParticleEffect(ParticleTypes.BLOCK, BlockList.GLOOMSTONE.getDefaultState()), this.getX(), this.getBodyY(0.6666666666666666D), this.getZ(), 10, this.getWidth() / 4.0F, this.getHeight() / 4.0F, this.getWidth() / 4.0F, 0.05D);
-        }
-
-    }
-
     public boolean isSpinning() {
         return this.getVelocity().x != 0 || this.getVelocity().z != 0;
     }
 
-    public boolean shouldSpawnSprintingParticles() {
-        return this.isSpinning();
-    }
-
     protected Entity.MoveEffect getMoveEffect() {
         return MoveEffect.EVENTS;
+    }
+
+    public boolean shouldSpawnSprintingParticles() {
+        return this.isSpinning();
     }
 
     public boolean damage(DamageSource source, float amount) {
@@ -99,7 +92,7 @@ public abstract class AbstractShell extends Entity {
             if (!bl && this.world.getGameRules().getBoolean(GameRules.DO_ENTITY_DROPS)) {
                 ItemStack itemStack = new ItemStack(this.asItem());
                 this.dropStack(itemStack);
-                world.playSound(null, this.getBlockPos(), SoundList.BUZZY_BEETLE_DROP, this.getSoundCategory(), 1.0F, 1.0F);
+                world.playSound(null, this.getBlockPos(), SoundList.buzzyDrop, this.getSoundCategory(), 1.0F, 1.0F);
             }
             this.discard();
             return true;
@@ -128,5 +121,12 @@ public abstract class AbstractShell extends Entity {
 
     public Item asItem() {
         return ItemList.BUZZY_SHELL;
+    }
+
+    private void spawnBreakParticles() {
+        if (this.world instanceof ServerWorld) {
+            ((ServerWorld) this.world).spawnParticles(new BlockStateParticleEffect(ParticleTypes.BLOCK, BlockList.GLOOMSTONE.getDefaultState()), this.getX(), this.getBodyY(0.6666666666666666D), this.getZ(), 10, this.getWidth() / 4.0F, this.getHeight() / 4.0F, this.getWidth() / 4.0F, 0.05D);
+        }
+
     }
 }

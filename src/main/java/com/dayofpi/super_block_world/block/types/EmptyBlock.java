@@ -35,7 +35,7 @@ public class EmptyBlock  extends Block {
                     player.getStackInHand(hand).setCount(0);
                 }
             }
-            world.playSound(null, blockPos, SoundList.ITEM_IN, SoundCategory.NEUTRAL, 2.0F, 1.0F);
+            world.playSound(null, blockPos, SoundList.blockItemIn, SoundCategory.NEUTRAL, 2.0F, 1.0F);
             ParticleUtil.spawnParticle(world, blockPos, ParticleTypes.WAX_ON, UniformIntProvider.create(3, 5));
             return ActionResult.success(world.isClient);
         } else return ActionResult.PASS;

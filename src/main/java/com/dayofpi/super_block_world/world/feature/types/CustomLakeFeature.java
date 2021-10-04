@@ -1,6 +1,7 @@
 package com.dayofpi.super_block_world.world.feature.types;
 
 
+import com.dayofpi.super_block_world.block.registry.BlockList;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -29,61 +30,61 @@ public class CustomLakeFeature extends Feature<SingleStateFeatureConfig> {
     }
 
     public boolean generate(FeatureContext<SingleStateFeatureConfig> context) {
-        BlockPos $$1 = context.getOrigin();
-        StructureWorldAccess $$2 = context.getWorld();
-        Random $$3 = context.getRandom();
+        BlockPos blockPos = context.getOrigin();
+        StructureWorldAccess structureWorldAccess = context.getWorld();
+        Random random = context.getRandom();
 
-        SingleStateFeatureConfig $$4;
-        for($$4 = context.getConfig(); $$1.getY() > $$2.getBottomY() + 5 && $$2.isAir($$1); $$1 = $$1.down()) {
+        SingleStateFeatureConfig singleStateFeatureConfig;
+        for(singleStateFeatureConfig = context.getConfig(); blockPos.getY() > structureWorldAccess.getBottomY() + 5 && structureWorldAccess.isAir(blockPos); blockPos = blockPos.down()) {
         }
 
-        if ($$1.getY() <= $$2.getBottomY() + 4) {
+        if (blockPos.getY() <= structureWorldAccess.getBottomY() + 4) {
             return false;
         } else {
-            $$1 = $$1.down(4);
-            if ($$2.getStructures(ChunkSectionPos.from($$1), StructureFeature.VILLAGE).findAny().isPresent()) {
+            blockPos = blockPos.down(4);
+            if (!structureWorldAccess.getStructures(ChunkSectionPos.from(blockPos), StructureFeature.VILLAGE).isEmpty()) {
                 return false;
             } else {
-                boolean[] $$5 = new boolean[2048];
-                int $$6 = $$3.nextInt(4) + 4;
+                boolean[] bls = new boolean[2048];
+                int i = random.nextInt(4) + 4;
 
-                int $$31;
-                for($$31 = 0; $$31 < $$6; ++$$31) {
-                    double $$8 = $$3.nextDouble() * 6.0D + 3.0D;
-                    double $$9 = $$3.nextDouble() * 4.0D + 2.0D;
-                    double $$10 = $$3.nextDouble() * 6.0D + 3.0D;
-                    double $$11 = $$3.nextDouble() * (16.0D - $$8 - 2.0D) + 1.0D + $$8 / 2.0D;
-                    double $$12 = $$3.nextDouble() * (8.0D - $$9 - 4.0D) + 2.0D + $$9 / 2.0D;
-                    double $$13 = $$3.nextDouble() * (16.0D - $$10 - 2.0D) + 1.0D + $$10 / 2.0D;
+                int y;
+                for(y = 0; y < i; ++y) {
+                    double d = random.nextDouble() * 6.0D + 3.0D;
+                    double e = random.nextDouble() * 4.0D + 2.0D;
+                    double f = random.nextDouble() * 6.0D + 3.0D;
+                    double g = random.nextDouble() * (16.0D - d - 2.0D) + 1.0D + d / 2.0D;
+                    double h = random.nextDouble() * (8.0D - e - 4.0D) + 2.0D + e / 2.0D;
+                    double k = random.nextDouble() * (16.0D - f - 2.0D) + 1.0D + f / 2.0D;
 
-                    for(int $$14 = 1; $$14 < 15; ++$$14) {
-                        for(int $$15 = 1; $$15 < 15; ++$$15) {
-                            for(int $$16 = 1; $$16 < 7; ++$$16) {
-                                double $$17 = ((double)$$14 - $$11) / ($$8 / 2.0D);
-                                double $$18 = ((double)$$16 - $$12) / ($$9 / 2.0D);
-                                double $$19 = ((double)$$15 - $$13) / ($$10 / 2.0D);
-                                double $$20 = $$17 * $$17 + $$18 * $$18 + $$19 * $$19;
-                                if ($$20 < 1.0D) {
-                                    $$5[($$14 * 16 + $$15) * 8 + $$16] = true;
+                    for(int l = 1; l < 15; ++l) {
+                        for(int m = 1; m < 15; ++m) {
+                            for(int n = 1; n < 7; ++n) {
+                                double o = ((double)l - g) / (d / 2.0D);
+                                double p = ((double)n - h) / (e / 2.0D);
+                                double q = ((double)m - k) / (f / 2.0D);
+                                double r = o * o + p * p + q * q;
+                                if (r < 1.0D) {
+                                    bls[(l * 16 + m) * 8 + n] = true;
                                 }
                             }
                         }
                     }
                 }
 
-                int $$33;
-                int $$32;
-                for($$31 = 0; $$31 < 16; ++$$31) {
-                    for($$32 = 0; $$32 < 16; ++$$32) {
-                        for($$33 = 0; $$33 < 8; ++$$33) {
-                            boolean $$24 = !$$5[($$31 * 16 + $$32) * 8 + $$33] && ($$31 < 15 && $$5[(($$31 + 1) * 16 + $$32) * 8 + $$33] || $$31 > 0 && $$5[(($$31 - 1) * 16 + $$32) * 8 + $$33] || $$32 < 15 && $$5[($$31 * 16 + $$32 + 1) * 8 + $$33] || $$32 > 0 && $$5[($$31 * 16 + ($$32 - 1)) * 8 + $$33] || $$33 < 7 && $$5[($$31 * 16 + $$32) * 8 + $$33 + 1] || $$33 > 0 && $$5[($$31 * 16 + $$32) * 8 + ($$33 - 1)]);
-                            if ($$24) {
-                                Material $$25 = $$2.getBlockState($$1.add($$31, $$33, $$32)).getMaterial();
-                                if ($$33 >= 4 && $$25.isLiquid()) {
+                int aa;
+                int z;
+                for(y = 0; y < 16; ++y) {
+                    for(z = 0; z < 16; ++z) {
+                        for(aa = 0; aa < 8; ++aa) {
+                            boolean bl = !bls[(y * 16 + z) * 8 + aa] && (y < 15 && bls[((y + 1) * 16 + z) * 8 + aa] || y > 0 && bls[((y - 1) * 16 + z) * 8 + aa] || z < 15 && bls[(y * 16 + z + 1) * 8 + aa] || z > 0 && bls[(y * 16 + (z - 1)) * 8 + aa] || aa < 7 && bls[(y * 16 + z) * 8 + aa + 1] || aa > 0 && bls[(y * 16 + z) * 8 + (aa - 1)]);
+                            if (bl) {
+                                Material material = structureWorldAccess.getBlockState(blockPos.add(y, aa, z)).getMaterial();
+                                if (aa >= 4 && material.isLiquid()) {
                                     return false;
                                 }
 
-                                if ($$33 < 4 && !$$25.isSolid() && $$2.getBlockState($$1.add($$31, $$33, $$32)) != $$4.state) {
+                                if (aa < 4 && !material.isSolid() && structureWorldAccess.getBlockState(blockPos.add(y, aa, z)) != singleStateFeatureConfig.state) {
                                     return false;
                                 }
                             }
@@ -91,32 +92,34 @@ public class CustomLakeFeature extends Feature<SingleStateFeatureConfig> {
                     }
                 }
 
-                BlockPos $$34;
-                for($$31 = 0; $$31 < 16; ++$$31) {
-                    for($$32 = 0; $$32 < 16; ++$$32) {
-                        for($$33 = 0; $$33 < 8; ++$$33) {
-                            if ($$5[($$31 * 16 + $$32) * 8 + $$33]) {
-                                $$34 = $$1.add($$31, $$33, $$32);
-                                boolean $$30 = $$33 >= 4;
-                                $$2.setBlockState($$34, $$30 ? CAVE_AIR : $$4.state, 2);
-                                if ($$30) {
-                                    $$2.getBlockTickScheduler().schedule($$34, CAVE_AIR.getBlock(), 0);
-                                    this.markBlocksAboveForPostProcessing($$2, $$34);
+                BlockPos blockPos3;
+                for(y = 0; y < 16; ++y) {
+                    for(z = 0; z < 16; ++z) {
+                        for(aa = 0; aa < 8; ++aa) {
+                            if (bls[(y * 16 + z) * 8 + aa]) {
+                                blockPos3 = blockPos.add(y, aa, z);
+                                boolean bl2 = aa >= 4;
+                                structureWorldAccess.setBlockState(blockPos3, bl2 ? CAVE_AIR : singleStateFeatureConfig.state, 2);
+                                if (bl2) {
+                                    structureWorldAccess.getBlockTickScheduler().schedule(blockPos3, CAVE_AIR.getBlock(), 0);
+                                    this.markBlocksAboveForPostProcessing(structureWorldAccess, blockPos3);
                                 }
                             }
                         }
                     }
                 }
 
-                for($$31 = 0; $$31 < 16; ++$$31) {
-                    for($$32 = 0; $$32 < 16; ++$$32) {
-                        for($$33 = 4; $$33 < 8; ++$$33) {
-                            if ($$5[($$31 * 16 + $$32) * 8 + $$33]) {
-                                $$34 = $$1.add($$31, $$33 - 1, $$32);
-                                if (isSoil($$2.getBlockState($$34)) && $$2.getLightLevel(LightType.SKY, $$1.add($$31, $$33, $$32)) > 0) {
-                                    Biome $$35 = $$2.getBiome($$34);
-                                    if ($$35.getGenerationSettings().getSurfaceConfig().getTopMaterial().isOf(Blocks.MYCELIUM)) {
-                                        $$2.setBlockState($$34, Blocks.MYCELIUM.getDefaultState(), 2);
+                for(y = 0; y < 16; ++y) {
+                    for(z = 0; z < 16; ++z) {
+                        for(aa = 4; aa < 8; ++aa) {
+                            if (bls[(y * 16 + z) * 8 + aa]) {
+                                blockPos3 = blockPos.add(y, aa - 1, z);
+                                if (isSoil(structureWorldAccess.getBlockState(blockPos3)) && structureWorldAccess.getLightLevel(LightType.SKY, blockPos.add(y, aa, z)) > 0) {
+                                    Biome biome = structureWorldAccess.getBiome(blockPos3);
+                                    if (biome.getGenerationSettings().getSurfaceConfig().getTopMaterial().isOf(Blocks.MYCELIUM)) {
+                                        structureWorldAccess.setBlockState(blockPos3, Blocks.MYCELIUM.getDefaultState(), 2);
+                                    } else {
+                                        structureWorldAccess.setBlockState(blockPos3, BlockList.TOADSTOOL_GRASS.getDefaultState(), 2);
                                     }
                                 }
                             }
@@ -124,12 +127,12 @@ public class CustomLakeFeature extends Feature<SingleStateFeatureConfig> {
                     }
                 }
 
-                if ($$4.state.getMaterial() == Material.WATER) {
-                    for($$31 = 0; $$31 < 16; ++$$31) {
-                        for($$32 = 0; $$32 < 16; ++$$32) {
-                            $$34 = $$1.add($$31, 4, $$32);
-                            if ($$2.getBiome($$34).canSetIce($$2, $$34, false)) {
-                                $$2.setBlockState($$34, Blocks.ICE.getDefaultState(), 2);
+                if (singleStateFeatureConfig.state.getMaterial() == Material.WATER) {
+                    for(y = 0; y < 16; ++y) {
+                        for(z = 0; z < 16; ++z) {
+                            blockPos3 = blockPos.add(y, 4, z);
+                            if (structureWorldAccess.getBiome(blockPos3).canSetIce(structureWorldAccess, blockPos3, false)) {
+                                structureWorldAccess.setBlockState(blockPos3, Blocks.ICE.getDefaultState(), 2);
                             }
                         }
                     }
@@ -139,5 +142,4 @@ public class CustomLakeFeature extends Feature<SingleStateFeatureConfig> {
             }
         }
     }
-
 }

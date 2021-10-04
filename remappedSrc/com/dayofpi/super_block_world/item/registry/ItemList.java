@@ -28,6 +28,7 @@ public class ItemList {
     public static final Item GOLDEN_MUSHROOM = new Item(new FabricItemSettings().food(FoodComponents.GOLDEN_MUSHROOM).maxCount(16).group(CreativeTabs.ITEM_GROUP).rarity(Rarity.UNCOMMON));
     public static final Item ONE_UP = new OneUpItem(new FabricItemSettings().food(FoodComponents.ONE_UP).maxCount(16).group(CreativeTabs.ITEM_GROUP).rarity(Rarity.UNCOMMON));
     public static final Item POISON_MUSHROOM = new Item(new FabricItemSettings().food(FoodComponents.POISON_MUSHROOM).maxCount(16).group(CreativeTabs.ITEM_GROUP).rarity(Rarity.UNCOMMON));
+    public static final Item FIRE_FLOWER = new FireFlowerItem(new FabricItemSettings().maxDamage(16).group(CreativeTabs.ITEM_GROUP));
     public static final Item COIN = new Item(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item RAW_BRONZE = new Item(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item BRONZE_INGOT = new Item(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
@@ -37,10 +38,13 @@ public class ItemList {
     public static final Item BUZZY_SHELL_PIECE = new Item(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item BUZZY_SHELL = new ArmorItem(BUZZY_ARMOR_MATERIAL, EquipmentSlot.HEAD, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item JUMP_BOOTS = new ArmorItem(JUMP_ARMOR_MATERIAL, EquipmentSlot.FEET, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
+    public static final Item BOTTLE_O_GHOST = new Item(new FabricItemSettings().recipeRemainder(Items.GLASS_BOTTLE).group(CreativeTabs.ITEM_GROUP));
     public static final Item GREEN_MUSHROOM_ON_A_STICK = new OnAStickItem<>(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP).maxDamage(25), EntityList.BUZZY_BEETLE, 2);
     public static final Item AMANITA_BOAT = new ModBoatItem(ModBoatEntity.Type.AMANITA, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP).maxCount(1));
     public static final Item POISON_BUCKET = new BucketItem(FluidList.STILL_POISON, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1).group(CreativeTabs.ITEM_GROUP));
     public static final Item MOO_MOO_SPAWN_EGG = new SpawnEggItem(EntityList.MOO_MOO, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
+    public static final Item GOOMBA_SPAWN_EGG = new SpawnEggItem(EntityList.GOOMBA, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
+    public static final Item BOO_SPAWN_EGG = new SpawnEggItem(EntityList.BOO, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item BUZZY_BEETLE_SPAWN_EGG = new SpawnEggItem(EntityList.BUZZY_BEETLE, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item SPIKE_TOP_SPAWN_EGG = new SpawnEggItem(EntityList.SPIKE_TOP, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item NIPPER_PLANT_SPAWN_EGG = new SpawnEggItem(EntityList.NIPPER_PLANT, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
@@ -61,6 +65,7 @@ public class ItemList {
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "golden_mushroom"), GOLDEN_MUSHROOM);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "one_up"), ONE_UP);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "poison_mushroom"), POISON_MUSHROOM);
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "fire_flower"), FIRE_FLOWER);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "coin"), COIN);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "raw_bronze"), RAW_BRONZE);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "bronze_ingot"), BRONZE_INGOT);
@@ -70,8 +75,11 @@ public class ItemList {
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "buzzy_shell_piece"), BUZZY_SHELL_PIECE);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "green_mushroom_on_a_stick"), GREEN_MUSHROOM_ON_A_STICK);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "amanita_boat"), AMANITA_BOAT);
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "bottle_o_ghost"), BOTTLE_O_GHOST);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "poison_bucket"), POISON_BUCKET);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "spawn_eggs/moo_moo"), MOO_MOO_SPAWN_EGG);
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "spawn_eggs/goomba"), GOOMBA_SPAWN_EGG);
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "spawn_eggs/boo"), BOO_SPAWN_EGG);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "spawn_eggs/buzzy_beetle"), BUZZY_BEETLE_SPAWN_EGG);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "spawn_eggs/spike_top"), SPIKE_TOP_SPAWN_EGG);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "spawn_eggs/nipper_plant"), NIPPER_PLANT_SPAWN_EGG);
@@ -91,6 +99,7 @@ public class ItemList {
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "redstone_trampoline"), new BlockItem(BlockList.REDSTONE_TRAMPOLINE, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "trampoline"), new BlockItem(BlockList.TRAMPOLINE, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "stone_torch"), new BlockItem(BlockList.STONE_TORCH, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "boo_lantern"), new BlockItem(BlockList.BOO_LANTERN, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "donut_block"), new BlockItem(BlockList.DONUT_BLOCK, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "toadstool_grass"), new BlockItem(BlockList.TOADSTOOL_GRASS, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "toadstool_turf"), new BlockItem(BlockList.TOADSTOOL_TURF, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
@@ -101,7 +110,9 @@ public class ItemList {
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "gritzy_sand"), new BlockItem(BlockList.GRITZY_SAND, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "seastone"), new BlockItem(BlockList.SEASTONE, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "seastone_bricks"), new BlockItem(BlockList.SEASTONE_BRICKS, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "happy_cloud"), new BlockItem(BlockList.HAPPY_CLOUD, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "cloud_block"), new BlockItem(BlockList.CLOUD_BLOCK, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "cloud_slab"), new BlockItem(BlockList.CLOUD_SLAB, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "vanillate"), new BlockItem(BlockList.VANILLATE, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "vanillate_bricks"), new BlockItem(BlockList.VANILLATE_BRICKS, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "vanillate_tiles"), new BlockItem(BlockList.VANILLATE_TILES, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
@@ -114,6 +125,7 @@ public class ItemList {
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "coal_topped_vanillate"), new BlockItem(BlockList.COAL_TOPPED_VANILLATE, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "iron_topped_vanillate"), new BlockItem(BlockList.IRON_TOPPED_VANILLATE, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "gold_topped_vanillate"), new BlockItem(BlockList.GOLD_TOPPED_VANILLATE, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "amethyst_ore"), new BlockItem(BlockList.AMETHYST_ORE, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "bronze_ore"), new BlockItem(BlockList.BRONZE_ORE, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "raw_bronze_block"), new BlockItem(BlockList.RAW_BRONZE_BLOCK, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "bronze_block"), new BlockItem(BlockList.BRONZE_BLOCK, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
@@ -137,10 +149,20 @@ public class ItemList {
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "gloomstone_brick_stairs"), new BlockItem(BlockList.GLOOMSTONE_BRICK_STAIRS, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "hardstone"), new BlockItem(BlockList.HARDSTONE, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "polished_hardstone"), new BlockItem(BlockList.POLISHED_HARDSTONE, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "chiseled_hardstone"), new BlockItem(BlockList.CHISELED_HARDSTONE, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "hardstone_pillar"), new BlockItem(BlockList.HARDSTONE_PILLAR, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "hardstone_bricks"), new BlockItem(BlockList.HARDSTONE_BRICKS, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "cracked_hardstone_bricks"), new BlockItem(BlockList.CRACKED_HARDSTONE_BRICKS, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "polished_hardstone_slab"), new BlockItem(BlockList.POLISHED_HARDSTONE_SLAB, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "polished_hardstone_stairs"), new BlockItem(BlockList.POLISHED_HARDSTONE_STAIRS, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "hardstone_brick_slab"), new BlockItem(BlockList.HARDSTONE_BRICK_SLAB, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "hardstone_brick_stairs"), new BlockItem(BlockList.HARDSTONE_BRICK_STAIRS, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "golden_bricks"), new BlockItem(BlockList.GOLDEN_BRICKS, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "golden_brick_slab"), new BlockItem(BlockList.GOLDEN_BRICK_SLAB, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "golden_brick_stairs"), new BlockItem(BlockList.GOLDEN_BRICK_STAIRS, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "crystal_bricks"), new BlockItem(BlockList.CRYSTAL_BRICKS, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "crystal_brick_slab"), new BlockItem(BlockList.CRYSTAL_BRICK_SLAB, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "crystal_brick_stairs"), new BlockItem(BlockList.CRYSTAL_BRICK_STAIRS, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "amanita_log"), new BlockItem(BlockList.AMANITA_LOG, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "amanita_wood"), new BlockItem(BlockList.AMANITA_WOOD, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "stripped_amanita_log"), new BlockItem(BlockList.STRIPPED_AMANITA_LOG, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
@@ -152,6 +174,8 @@ public class ItemList {
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "amanita_fence_gate"), new BlockItem(BlockList.AMANITA_FENCE_GATE, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "amanita_door"), new BlockItem(BlockList.AMANITA_DOOR, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "amanita_trapdoor"), new BlockItem(BlockList.AMANITA_TRAPDOOR, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "amanita_button"), new BlockItem(BlockList.AMANITA_BUTTON, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "amanita_pressure_plate"), new BlockItem(BlockList.AMANITA_PRESSURE_PLATE, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "amanita_sign"), new SignItem(new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP).maxCount(16), BlockList.AMANITA_SIGN, BlockList.AMANITA_WALL_SIGN));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "amanita_leaves"), new BlockItem(BlockList.AMANITA_LEAVES, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "fruiting_amanita_leaves"), new BlockItem(BlockList.FRUITING_AMANITA_LEAVES, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));

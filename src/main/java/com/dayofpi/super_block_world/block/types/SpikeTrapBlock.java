@@ -1,5 +1,6 @@
 package com.dayofpi.super_block_world.block.types;
 
+import com.dayofpi.super_block_world.NewSoundList;
 import com.dayofpi.super_block_world.misc.ModDamageSource;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -12,7 +13,6 @@ import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
@@ -66,7 +66,7 @@ public class SpikeTrapBlock extends Block {
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
         boolean bl = fluidState.getFluid() == Fluids.WATER;
-        return this.getDefaultState().with(POWERED, ctx.getWorld().isReceivingRedstonePower(ctx.getBlockPos())).with(WATERLOGGED, bl);
+        return this.getDefaultState().with(WATERLOGGED, bl).with(POWERED, ctx.getWorld().isReceivingRedstonePower(ctx.getBlockPos()));
     }
 
     @Override
@@ -77,7 +77,7 @@ public class SpikeTrapBlock extends Block {
                 if (bl) {
                     world.getBlockTickScheduler().schedule(blockPos, this, 4);
                 } else {
-                    world.playSound(null, blockPos, SoundEvents.BLOCK_PISTON_EXTEND, SoundCategory.BLOCKS, 0.5F, 1.5F);
+                    world.playSound(null, blockPos, NewSoundList.BLOCK_SPIKES_EXTEND, SoundCategory.BLOCKS, 1.0F, 1.0F);
                     world.setBlockState(blockPos, state.cycle(POWERED), Block.NOTIFY_LISTENERS);
                 }
             }
@@ -88,7 +88,7 @@ public class SpikeTrapBlock extends Block {
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (state.get(POWERED) && !world.isReceivingRedstonePower(pos)) {
             world.setBlockState(pos, state.cycle(POWERED), Block.NOTIFY_LISTENERS);
-            world.playSound(null, pos, SoundEvents.BLOCK_PISTON_CONTRACT, SoundCategory.BLOCKS, 0.5F, 1.5F);
+            world.playSound(null, pos, NewSoundList.BLOCK_SPIKES_RETRACT, SoundCategory.BLOCKS, 1.0F, 1.0F);
         }
 
     }

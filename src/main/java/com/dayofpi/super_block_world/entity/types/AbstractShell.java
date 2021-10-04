@@ -58,7 +58,7 @@ public abstract class AbstractShell extends Entity {
             for (Entity entity : list) {
                 this.pushAwayFrom(entity);
                 this.setVelocity(this.getVelocity().multiply(4.5, 1.0D, 4.5D));
-                world.playSound(null, blockPos, SoundList.BUZZY_BEETLE_DROP, this.getSoundCategory(), 1.0F, 1.0F);
+                world.playSound(null, blockPos, SoundList.buzzyDrop, this.getSoundCategory(), 1.0F, 1.0F);
             }
         } else if (!list.isEmpty() && this.isSpinning()) {
             for (Entity entity : list) {
@@ -92,7 +92,7 @@ public abstract class AbstractShell extends Entity {
             if (!bl && this.world.getGameRules().getBoolean(GameRules.DO_ENTITY_DROPS)) {
                 ItemStack itemStack = new ItemStack(this.asItem());
                 this.dropStack(itemStack);
-                world.playSound(null, this.getBlockPos(), SoundList.BUZZY_BEETLE_DROP, this.getSoundCategory(), 1.0F, 1.0F);
+                world.playSound(null, this.getBlockPos(), SoundList.buzzyDrop, this.getSoundCategory(), 1.0F, 1.0F);
             }
             this.discard();
             return true;

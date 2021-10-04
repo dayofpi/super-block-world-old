@@ -12,6 +12,16 @@
         },
         {
           "type": "minecraft:item",
+          "weight": 10,
+          "name": "super_block_world:fire_flower"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 1,
+          "name": "super_block_world:bomb"
+        },
+        {
+          "type": "minecraft:item",
           "weight": 1,
           "name": "super_block_world:one_up"
         }

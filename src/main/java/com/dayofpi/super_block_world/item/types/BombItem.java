@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.item.types;
 
+import com.dayofpi.super_block_world.NewSoundList;
 import com.dayofpi.super_block_world.entity.types.projectiles.BombEntity;
-import com.dayofpi.super_block_world.SoundList;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -18,12 +18,12 @@ public class BombItem extends Item {
 
    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
       ItemStack itemStack = user.getStackInHand(hand);
-      world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundList.THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
+      world.playSound(null, user.getX(), user.getY(), user.getZ(), NewSoundList.ITEM_PROJECTILE_THROW, SoundCategory.NEUTRAL, 0.5F, 1.0F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
       user.getItemCooldownManager().set(this, 5);
       if (!world.isClient) {
          BombEntity bombEntity = new BombEntity(world, user);
          bombEntity.setItem(itemStack);
-         bombEntity.setProperties(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
+         bombEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
          world.spawnEntity(bombEntity);
       }
 

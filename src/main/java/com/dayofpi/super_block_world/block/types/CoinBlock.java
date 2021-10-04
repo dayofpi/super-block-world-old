@@ -51,7 +51,7 @@ public class CoinBlock extends ReactiveBlock {
             }
         }
         Block.dropStack(world, pos, new ItemStack(ItemList.COIN));
-        world.playSound(null, blockPos, SoundList.COIN, SoundCategory.NEUTRAL, 0.8F, 1.0F);
+        world.playSound(null, blockPos, SoundList.blockCoin, SoundCategory.NEUTRAL, 0.8F, 1.0F);
         ParticleUtil.spawnParticle(world, blockPos, ParticleTypes.WAX_OFF, UniformIntProvider.create(1, 2));
         if (state.get(COIN_COUNT) > 1) {
             world.setBlockState(blockPos, state.with(COIN_COUNT, i - 1));

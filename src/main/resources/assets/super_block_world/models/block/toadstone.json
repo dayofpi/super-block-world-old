@@ -1,8 +1,6 @@
 {
-  "parent": "minecraft:block/cube_bottom_top",
+  "parent": "minecraft:block/cube_all",
   "textures": {
-    "bottom": "super_block_world:block/toadstone_bottom",
-    "top": "super_block_world:block/toadstone_top",
-    "side": "super_block_world:block/toadstone"
+    "all": "super_block_world:block/toadstone_bottom"
   }
 }

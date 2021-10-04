@@ -24,7 +24,7 @@ public class MixinBiomeCreator {
     }
 
     // Replace natural huge mushrooms with the mod ones
-    @Inject(at = @At("HEAD"), method = "createDarkForest(FFZ)Lnet/minecraft/world/biome/Biome;", cancellable = true)
+    @Inject(at = @At("HEAD"), method = "createDarkForest(Z)Lnet/minecraft/world/biome/Biome;", cancellable = true)
     private static void createDarkForest(boolean red, CallbackInfoReturnable<Biome> info) {
         SpawnSettings.Builder $$1 = new SpawnSettings.Builder();
         DefaultBiomeFeatures.addFarmAnimals($$1);

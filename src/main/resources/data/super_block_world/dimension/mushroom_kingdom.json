@@ -15,20 +15,20 @@
               -0.15
             ],
             "humidity": [
-              -0.1,
-              0.1
+              -1,
+              -0.3
             ],
             "continentalness": [
               -0.11,
               0.3
             ],
             "erosion": [
-              -0.78,
+              -0.7799,
               -0.375
             ],
             "weirdness": [
               -1,
-              -0.93333334
+              -0.9
             ],
             "depth": 0,
             "offset": 0
@@ -45,12 +45,18 @@
               -0.1,
               0.1
             ],
-            "continentalness": -0.3,
+            "continentalness": [
+              -0.11,
+              0.3
+            ],
             "erosion": [
-              -0.78,
+              -0.7799,
               -0.375
             ],
-            "weirdness": -0.9,
+            "weirdness": [
+              -1,
+              -0.9333
+            ],
             "depth": 0,
             "offset": 0
           }
@@ -58,28 +64,70 @@
         {
           "biome": "super_block_world:forest_of_illusion",
           "parameters": {
-            "erosion": [
-              -0.78,
-              -0.375
-            ],
-            "depth": 0.0,
-            "weirdness": [
-              -1.0,
-              -0.93333334
-            ],
-            "offset": 0.0,
             "temperature": [
-              -0.15,
+              -0.45,
               0.2
             ],
+            "humidity": 0.3,
+            "continentalness": [
+              -0.11,
+              0.3
+            ],
+            "erosion": -0.5,
+            "weirdness": -1,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "super_block_world:toadstone_caves",
+          "parameters": {
+            "temperature": -0.15,
             "humidity": [
-              0.3,
-              1.0
+              -1,
+              -0.3
             ],
             "continentalness": [
               -0.11,
               0.3
-            ]
+            ],
+            "erosion": [
+              -0.5,
+              -0.375
+            ],
+            "weirdness": [
+              -1,
+              -0.9333
+            ],
+            "depth": [
+              0.1,
+              0.6
+            ],
+            "offset": 0
+          }
+        },
+        {
+          "biome": "super_block_world:gloomstone_caves",
+          "parameters": {
+            "temperature": -0.3,
+            "humidity": [
+              -0.1,
+              0.1
+            ],
+            "continentalness": 0,
+            "erosion": [
+              -0.7799,
+              -0.375
+            ],
+            "weirdness": [
+              -1,
+              -0.9333
+            ],
+            "depth": [
+              0.2,
+              0.9
+            ],
+            "offset": 0
           }
         }
       ]

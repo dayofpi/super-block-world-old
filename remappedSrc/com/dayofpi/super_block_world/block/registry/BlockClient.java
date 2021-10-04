@@ -31,6 +31,7 @@ public class BlockClient {
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.AMANITA_CARPET, RenderLayer.getCutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.SPIKE_TRAP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.STONE_TORCH, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockList.BOO_LANTERN, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.TRAMPOLINE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.HORSETAIL, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.BUSH, RenderLayer.getCutout());

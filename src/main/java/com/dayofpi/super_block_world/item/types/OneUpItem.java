@@ -12,7 +12,7 @@ public class OneUpItem extends Item {
     }
 
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-        user.playSound(SoundList.ONE_UP, 1.0F, 1.0F);
+        user.playSound(SoundList.itemOneUp, 1.0F, 1.0F);
         return super.finishUsing(stack, world, user);
     }
 }

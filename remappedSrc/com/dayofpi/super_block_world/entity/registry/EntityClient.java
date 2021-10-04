@@ -4,6 +4,7 @@ import com.dayofpi.super_block_world.entity.renderer.*;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.minecraft.client.render.entity.EmptyEntityRenderer;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 
 @Environment(EnvType.CLIENT)
@@ -12,9 +13,13 @@ public class EntityClient {
         EntityRendererRegistry.register(EntityList.TURNIP, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(EntityList.HAMMER, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(EntityList.BOMB, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(EntityList.FIREBALL, FlowerFireballRenderer::new);
+        EntityRendererRegistry.register(EntityList.GHOST, EmptyEntityRenderer::new);
         EntityRendererRegistry.register(EntityList.MOD_BOAT, ModBoatRenderer::new);
         EntityRendererRegistry.register(EntityList.BUZZY_SHELL, (context) -> new BuzzyShellRenderer<>(context, ModelLayers.BUZZY_SHELL));
         EntityRendererRegistry.register(EntityList.MOO_MOO, MooMooRenderer::new);
+        EntityRendererRegistry.register(EntityList.GOOMBA, GoombaRenderer::new);
+        EntityRendererRegistry.register(EntityList.BOO, BooRenderer::new);
         EntityRendererRegistry.register(EntityList.BUZZY_BEETLE, BuzzyRenderer::new);
         EntityRendererRegistry.register(EntityList.SPIKE_TOP, SpikeTopRenderer::new);
         EntityRendererRegistry.register(EntityList.NIPPER_PLANT, NipperPlantRenderer::new);

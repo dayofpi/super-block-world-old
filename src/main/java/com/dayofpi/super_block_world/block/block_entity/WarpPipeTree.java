@@ -126,11 +126,11 @@ public class WarpPipeTree
         if (nearestCandidate != null)
         {
             BlockPos dPos = pos.subtract(nearestCandidate);
-            if (Math.abs(dPos.getX()) >= 64)
+            if (Math.abs(dPos.getX()) >= 40)
                 nearestCandidate = null;
             else if (Math.abs(dPos.getZ()) >= 64)
                 nearestCandidate = null;
-            else if (Math.abs(dPos.getY()) >= 64)
+            else if (Math.abs(dPos.getY()) >= 40)
                 nearestCandidate = null;
         }
         return nearestCandidate;

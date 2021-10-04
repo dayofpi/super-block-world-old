@@ -16,7 +16,7 @@ public class BlockClient {
     public static void setRenderLayers() {
         ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) ->
                         view != null && pos != null ? BiomeColors.getGrassColor(view, pos) : GrassColors.getColor(0.5D, 1.0D),
-                BlockList.TOADSTOOL_GRASS, BlockList.TOADSTOOL_TURF, BlockList.HORSETAIL, BlockList.BUSH, BlockList.POTTED_BUSH);
+                BlockList.TOADSTOOL_GRASS, BlockList.TOADSTOOL_TURF, BlockList.BUSH, BlockList.POTTED_BUSH);
         ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) ->
                         view != null && pos != null ? BiomeColors.getFoliageColor(view, pos) : FoliageColors.getColor(0.5D, 1.0D),
                 BlockList.AMANITA_LEAVES, BlockList.FRUITING_AMANITA_LEAVES, BlockList.AMANITA_CARPET);
@@ -31,6 +31,7 @@ public class BlockClient {
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.AMANITA_CARPET, RenderLayer.getCutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.SPIKE_TRAP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.STONE_TORCH, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockList.BOO_LANTERN, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.TRAMPOLINE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.HORSETAIL, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.BUSH, RenderLayer.getCutout());
@@ -39,6 +40,7 @@ public class BlockClient {
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.STRAWBERRY_CORAL, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.BEANSTALK_PLANT, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.BUDDING_BEANSTALK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockList.PIRANHA_LILY, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.YELLOW_FLOWERBED, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.BLUE_SONGFLOWER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.PINK_SONGFLOWER, RenderLayer.getCutout());
@@ -59,6 +61,7 @@ public class BlockClient {
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.POTTED_BUDDING_BEANSTALK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.POTTED_FIRE_TULIP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.POTTED_MUNCHER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockList.POTTED_PIRANHA_LILY, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.POTTED_BLUE_SONGFLOWER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.POTTED_PINK_SONGFLOWER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockList.POTTED_YELLOW_SONGFLOWER, RenderLayer.getCutout());

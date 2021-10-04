@@ -44,70 +44,70 @@
     }
   },
   "octaves": {
-    "temperature": {
-      "firstOctave": -9,
-      "amplitudes": [
-        1.5,
-        0,
-        1,
-        0,
-        0,
-        0
-      ]
-    },
-    "humidity": {
-      "firstOctave": -7,
-      "amplitudes": [
-        1,
-        1,
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    "continentalness": {
-      "firstOctave": -9,
-      "amplitudes": [
-        1,
-        1,
-        2,
-        2,
-        2,
-        1,
-        1,
-        1,
-        1
-      ]
-    },
     "erosion": {
       "firstOctave": -9,
       "amplitudes": [
-        1,
-        1,
-        0,
-        1,
-        1
+        1.0,
+        1.0,
+        0.0,
+        1.0,
+        1.0
       ]
     },
     "weirdness": {
       "firstOctave": -7,
       "amplitudes": [
-        1,
-        2,
-        1,
-        0,
-        0,
-        0
+        1.0,
+        2.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
       ]
     },
     "shift": {
       "firstOctave": -3,
       "amplitudes": [
-        1,
-        1,
-        1,
-        0
+        1.0,
+        1.0,
+        1.0,
+        0.0
+      ]
+    },
+    "temperature": {
+      "firstOctave": -9,
+      "amplitudes": [
+        1.5,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "humidity": {
+      "firstOctave": -7,
+      "amplitudes": [
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "continentalness": {
+      "firstOctave": -9,
+      "amplitudes": [
+        1.0,
+        1.0,
+        2.0,
+        2.0,
+        2.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
       ]
     }
   },

@@ -18,6 +18,7 @@ public class ModelLayers {
     public static final EntityModelLayer BUZZY_SHELL = registerMain("buzzy_shell");
     public static final EntityModelLayer MOO_MOO = registerMain("moo_moo");
     public static final EntityModelLayer GOOMBA = registerMain("goomba");
+    public static final EntityModelLayer BOB_OMB = registerMain("bob_omb");
     public static final EntityModelLayer BOO = registerMain("boo");
     public static final EntityModelLayer BUZZY_BEETLE = registerMain("buzzy_beetle");
     public static final EntityModelLayer BUZZY_BEETLE_SADDLE = registerMain("buzzy_beetle_saddle");

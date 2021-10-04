@@ -39,7 +39,7 @@ public class MixinInstrument {
     private static void addCustomInstrument(CallbackInfo info) {
         var variants = new ArrayList<>(Arrays.asList(field_12652));
         var last = variants.get(variants.size() - 1);
-        var bling = newInstrument("BLING", last.ordinal() + 1, "bling", SoundList.COIN);
+        var bling = newInstrument("BLING", last.ordinal() + 1, "bling", SoundList.blockCoin);
         EnumInstruments.BLING = bling;
         variants.add(bling);
 

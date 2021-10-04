@@ -17,7 +17,6 @@
 
     "enum_additions.MixinBoatEntity",
     "enum_additions.MixinInstrument",
-    "enum_additions.MixinMineshaftFeature",
 
     "fluid.FluidBlockI",
     "fluid.FluidBlockMixin",
@@ -29,7 +28,6 @@
     "interfaces.InterfaceModelLoader",
     "interfaces.InterfaceSignType",
 
-    "BlockPlacerTypeMixin",
     "MixinAnimalEntity",
     "MixinArmorItem",
     "MixinCarver",

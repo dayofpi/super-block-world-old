@@ -1,5 +1,6 @@
 package com.dayofpi.super_block_world.block.types;
 
+import com.dayofpi.super_block_world.NewSoundList;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FallingBlock;
@@ -9,7 +10,6 @@ import net.minecraft.entity.FallingBlockEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
@@ -72,7 +72,7 @@ public class DonutBlock extends FallingBlock {
             } else if (state.get(INSTABILITY) == 1 && (!state.get(WILL_FALL))) {
                 world.setBlockState(blockPos, state.with(INSTABILITY, 2));
                 world.setBlockState(blockPos, state.with(WILL_FALL, true));
-                world.playSound(blockPos.getX(), blockPos.getY(), blockPos.getZ(), SoundEvents.BLOCK_DRIPSTONE_BLOCK_BREAK, SoundCategory.BLOCKS, 2.0F, 0.8F, true);
+                world.playSound(null, blockPos, NewSoundList.BLOCK_DONUT_BLOCK_TRIGGER, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 world.spawnParticles(ParticleTypes.POOF, blockPos.getX() + 0.5, blockPos.getY() + 1.0, blockPos.getZ() + 0.5, 3, 0.0D, 0.0D, 0.0D, 0.0D);
                 world.getBlockTickScheduler().schedule(blockPos, this, 12);
             } else if (state.get(WILL_FALL)) {

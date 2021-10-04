@@ -3,14 +3,15 @@
   "temperature": 0.8,
   "downfall": 0.4,
   "precipitation": "rain",
-  "category": "river",
+  "category": "plains",
   "player_spawn_friendly": true,
+  "creature_spawn_probability": 0.8,
   "effects": {
     "sky_color": 7721727,
     "fog_color": 11859964,
     "water_color": 1962492,
     "water_fog_color": 52959,
-    "grass_color": 9500475,
+    "grass_color": 8779049,
     "foliage_color": 4178950,
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
@@ -34,6 +35,12 @@
         "maxCount": 4
       },
       {
+        "type": "super_block_world:stingby",
+        "weight": 10,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
         "type": "super_block_world:buzzy_beetle",
         "weight": 100,
         "minCount": 2,
@@ -44,12 +51,18 @@
         "weight": 20,
         "minCount": 2,
         "maxCount": 4
+      },
+      {
+        "type": "super_block_world:bob_omb",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 2
       }
     ],
     "creature": [
       {
         "type": "minecraft:rabbit",
-        "weight": 8,
+        "weight": 20,
         "minCount": 2,
         "maxCount": 4
       },
@@ -71,7 +84,7 @@
   },
   "spawn_costs": {
     "super_block_world:goomba": {
-      "energy_budget": 0.15,
+      "energy_budget": 0.16,
       "charge": 0.7
     }
   },
@@ -101,6 +114,7 @@
     [
       "super_block_world:ore_bronze",
       "super_block_world:ore_amethyst",
+      "super_block_world:ore_amethyst_scattered",
       "super_block_world:ore_hardstone",
       "super_block_world:ore_crumble",
       "super_block_world:toppings_coal",
@@ -112,9 +126,11 @@
       "super_block_world:cave_crystals",
       "super_block_world:stone_torches",
       "super_block_world:warp_pipe_normal",
-      "super_block_world:mushroom_underground"
+      "super_block_world:mushroom_underground",
+      "super_block_world:vegetation_underground"
     ],
     [
+      "super_block_world:patch_horsetails",
       "super_block_world:plant_grassland",
       "super_block_world:flower_grassland",
       "super_block_world:mushroom_grassland",

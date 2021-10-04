@@ -60,9 +60,9 @@ public class TrampolineBlock extends FallingBlock implements Waterloggable {
         if (world.isClient && entity instanceof PlayerEntity clientPlayer) {
             if (((ClientPlayerEntity)clientPlayer).input.jumping) {
                 ParticleUtil.spawnParticle(world, blockPos, ParticleTypes.WAX_ON, UniformIntProvider.create(2, 3));
-                world.playSound(clientPlayer, blockPos, SoundList.POWERED_TRAMPOLINE, SoundCategory.BLOCKS, 1.0F, this.getSoundPitch(entity));
-            } else world.playSound(clientPlayer, blockPos, SoundList.TRAMPOLINE, SoundCategory.BLOCKS, 1.5F, this.getSoundPitch(entity));
-        } else if (!entity.isPlayer()) world.playSound(null, blockPos, SoundList.TRAMPOLINE, SoundCategory.BLOCKS, 1.0F, this.getSoundPitch(entity) * 1.2F);
+                world.playSound(clientPlayer, blockPos, SoundList.blockPoweredTrampoline, SoundCategory.BLOCKS, 1.0F, this.getSoundPitch(entity));
+            } else world.playSound(clientPlayer, blockPos, SoundList.blockTrampoline, SoundCategory.BLOCKS, 1.5F, this.getSoundPitch(entity));
+        } else if (!entity.isPlayer()) world.playSound(null, blockPos, SoundList.blockTrampoline, SoundCategory.BLOCKS, 1.0F, this.getSoundPitch(entity) * 1.2F);
 
         entity.setVelocity(vec3d.x, 0.9, vec3d.z);
 

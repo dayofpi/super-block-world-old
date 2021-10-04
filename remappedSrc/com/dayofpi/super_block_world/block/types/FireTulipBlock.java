@@ -7,10 +7,13 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+
+import java.util.Random;
 
 @SuppressWarnings("deprecation")
 public class FireTulipBlock extends FlowerBlock {
@@ -33,4 +36,13 @@ public class FireTulipBlock extends FlowerBlock {
             }
         }
     }
+
+    @Override
+    public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
+        if (random.nextInt(3) == 0) {
+            double d = (double) pos.getX() + random.nextFloat();
+            double e = (double) pos.getY() + (random.nextFloat() * 0.5);
+            double f = (double) pos.getZ() + random.nextFloat();
+            world.addParticle(ParticleTypes.FLAME, d, e, f, 0.0D, 0.0D, 0.0D);
+        }}
 }

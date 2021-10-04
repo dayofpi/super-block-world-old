@@ -28,21 +28,24 @@ public class ItemList {
     public static final Item GOLDEN_MUSHROOM = new Item(new FabricItemSettings().food(FoodComponents.GOLDEN_MUSHROOM).maxCount(16).group(CreativeTabs.ITEM_GROUP).rarity(Rarity.UNCOMMON));
     public static final Item ONE_UP = new OneUpItem(new FabricItemSettings().food(FoodComponents.ONE_UP).maxCount(16).group(CreativeTabs.ITEM_GROUP).rarity(Rarity.UNCOMMON));
     public static final Item POISON_MUSHROOM = new Item(new FabricItemSettings().food(FoodComponents.POISON_MUSHROOM).maxCount(16).group(CreativeTabs.ITEM_GROUP).rarity(Rarity.UNCOMMON));
+    public static final Item FIRE_FLOWER = new FireFlowerItem(new FabricItemSettings().maxDamage(16).group(CreativeTabs.ITEM_GROUP));
     public static final Item COIN = new Item(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item RAW_BRONZE = new Item(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item BRONZE_INGOT = new Item(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
+    public static ToolItem BRONZE_PICKAXE = new PickaxeItem(BronzeToolMaterial.INSTANCE, 2, 0.0F, new Item.Settings().group(ItemGroup.TOOLS)){};
     public static final Item TROOP_HIDE = new Item(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item CLOUD_PUFF = new Item(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item SPIKE = new Item(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item BUZZY_SHELL_PIECE = new Item(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item BUZZY_SHELL = new ArmorItem(BUZZY_ARMOR_MATERIAL, EquipmentSlot.HEAD, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item JUMP_BOOTS = new ArmorItem(JUMP_ARMOR_MATERIAL, EquipmentSlot.FEET, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
-    public static final Item BOTTLE_O_GHOST = new Item(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
+    public static final Item BOTTLE_O_GHOST = new Item(new FabricItemSettings().recipeRemainder(Items.GLASS_BOTTLE).group(CreativeTabs.ITEM_GROUP));
     public static final Item GREEN_MUSHROOM_ON_A_STICK = new OnAStickItem<>(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP).maxDamage(25), EntityList.BUZZY_BEETLE, 2);
     public static final Item AMANITA_BOAT = new ModBoatItem(ModBoatEntity.Type.AMANITA, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP).maxCount(1));
     public static final Item POISON_BUCKET = new BucketItem(FluidList.STILL_POISON, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1).group(CreativeTabs.ITEM_GROUP));
     public static final Item MOO_MOO_SPAWN_EGG = new SpawnEggItem(EntityList.MOO_MOO, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item GOOMBA_SPAWN_EGG = new SpawnEggItem(EntityList.GOOMBA, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
+    public static final Item BOB_OMB_SPAWN_EGG = new SpawnEggItem(EntityList.BOB_OMB, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item BOO_SPAWN_EGG = new SpawnEggItem(EntityList.BOO, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item BUZZY_BEETLE_SPAWN_EGG = new SpawnEggItem(EntityList.BUZZY_BEETLE, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item SPIKE_TOP_SPAWN_EGG = new SpawnEggItem(EntityList.SPIKE_TOP, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
@@ -64,6 +67,7 @@ public class ItemList {
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "golden_mushroom"), GOLDEN_MUSHROOM);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "one_up"), ONE_UP);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "poison_mushroom"), POISON_MUSHROOM);
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "fire_flower"), FIRE_FLOWER);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "coin"), COIN);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "raw_bronze"), RAW_BRONZE);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "bronze_ingot"), BRONZE_INGOT);
@@ -77,6 +81,7 @@ public class ItemList {
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "poison_bucket"), POISON_BUCKET);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "spawn_eggs/moo_moo"), MOO_MOO_SPAWN_EGG);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "spawn_eggs/goomba"), GOOMBA_SPAWN_EGG);
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "spawn_eggs/bob_omb"), BOB_OMB_SPAWN_EGG);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "spawn_eggs/boo"), BOO_SPAWN_EGG);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "spawn_eggs/buzzy_beetle"), BUZZY_BEETLE_SPAWN_EGG);
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "spawn_eggs/spike_top"), SPIKE_TOP_SPAWN_EGG);
@@ -97,6 +102,7 @@ public class ItemList {
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "redstone_trampoline"), new BlockItem(BlockList.REDSTONE_TRAMPOLINE, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "trampoline"), new BlockItem(BlockList.TRAMPOLINE, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "stone_torch"), new BlockItem(BlockList.STONE_TORCH, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "boo_lantern"), new BlockItem(BlockList.BOO_LANTERN, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "donut_block"), new BlockItem(BlockList.DONUT_BLOCK, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "toadstool_grass"), new BlockItem(BlockList.TOADSTOOL_GRASS, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "toadstool_turf"), new BlockItem(BlockList.TOADSTOOL_TURF, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
@@ -189,6 +195,7 @@ public class ItemList {
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "vegetable"), new BlockItem(BlockList.VEGETABLE, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "beanstalk"), new BlockItem(BlockList.BEANSTALK, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "budding_beanstalk"), new BlockItem(BlockList.BUDDING_BEANSTALK, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "piranha_lily"), new PiranhaLilyItem(BlockList.PIRANHA_LILY, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "muncher"), new BlockItem(BlockList.MUNCHER, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "strawberry_coral"), new BlockItem(BlockList.STRAWBERRY_CORAL, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, "strawberry_coral_block"), new BlockItem(BlockList.STRAWBERRY_CORAL_BLOCK, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));

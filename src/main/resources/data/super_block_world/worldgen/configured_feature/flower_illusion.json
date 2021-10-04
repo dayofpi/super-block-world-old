@@ -2,10 +2,10 @@
   "type": "minecraft:decorated",
   "config": {
     "decorator": {
-      "type": "minecraft:count",
       "config": {
-        "count": 2
-      }
+        "chance": 4
+      },
+      "type": "minecraft:chance"
     },
     "feature": {
       "type": "minecraft:decorated",
@@ -26,80 +26,79 @@
           }
         },
         "feature": {
-          "type": "minecraft:decorated",
+          "type": "minecraft:flower",
           "config": {
-            "decorator": {
-              "type": "minecraft:spread_32_above",
-              "config": {}
-            },
+            "tries": 50,
+            "xz_spread": 7,
+            "y_spread": 3,
+            "only_in_air": true,
+            "allowed_on": [],
+            "disallowed_on": [],
             "feature": {
-              "type": "minecraft:flower",
+              "type": "minecraft:decorated",
               "config": {
-                "can_replace": false,
-                "project": true,
-                "need_water": false,
-                "xspread": 7,
-                "yspread": 3,
-                "zspread": 7,
-                "tries": 50,
-                "state_provider": {
-                  "type": "minecraft:weighted_state_provider",
-                  "entries": [
-                    {
-                      "weight": 5,
-                      "data": {
-                        "Name": "super_block_world:blue_songflower"
-                      }
-                    },
-                    {
-                      "weight": 5,
-                      "data": {
-                        "Name": "super_block_world:pink_songflower"
-                      }
-                    },
-                    {
-                      "weight": 5,
-                      "data": {
-                        "Name": "super_block_world:yellow_songflower"
-                      }
-                    },
-                    {
-                      "weight": 2,
-                      "data": {
-                        "Name": "super_block_world:fire_tulip"
-                      }
-                    },
-                    {
-                      "weight": 5,
-                      "data": {
-                        "Name": "minecraft:red_tulip"
-                      }
-                    },
-                    {
-                      "weight": 5,
-                      "data": {
-                        "Name": "minecraft:orange_tulip"
-                      }
-                    },
-                    {
-                      "weight": 5,
-                      "data": {
-                        "Name": "minecraft:pink_tulip"
-                      }
-                    },
-                    {
-                      "weight": 5,
-                      "data": {
-                        "Name": "minecraft:allium"
-                      }
+                "decorator": {
+                  "type": "minecraft:block_filter",
+                  "config": {
+                    "predicate": {
+                      "type": "minecraft:matching_blocks",
+                      "offset": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "blocks": [
+                        "minecraft:air"
+                      ]
                     }
-                  ]
+                  }
                 },
-                "block_placer": {
-                  "type": "minecraft:simple_block_placer"
-                },
-                "whitelist": [],
-                "blacklist": []
+                "feature": {
+                  "type": "minecraft:simple_block",
+                  "config": {
+                    "to_place": {
+                      "type": "minecraft:weighted_state_provider",
+                      "entries": [
+                        {
+                          "weight": 4,
+                          "data": {
+                            "Name": "super_block_world:blue_songflower"
+                          }
+                        },
+                        {
+                          "weight": 4,
+                          "data": {
+                            "Name": "super_block_world:pink_songflower"
+                          }
+                        },
+                        {
+                          "weight": 4,
+                          "data": {
+                            "Name": "super_block_world:yellow_songflower"
+                          }
+                        },
+                        {
+                          "weight": 1,
+                          "data": {
+                            "Name": "super_block_world:fire_tulip"
+                          }
+                        },
+                        {
+                          "weight": 5,
+                          "data": {
+                            "Name": "minecraft:orange_tulip"
+                          }
+                        },
+                        {
+                          "weight": 5,
+                          "data": {
+                            "Name": "minecraft:allium"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
               }
             }
           }

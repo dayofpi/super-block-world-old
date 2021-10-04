@@ -4,7 +4,7 @@ import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.block.registry.BlockList;
 import com.dayofpi.super_block_world.entity.registry.EntityList;
 import com.dayofpi.super_block_world.item.registry.ItemList;
-import com.dayofpi.super_block_world.misc.SoundList;
+import com.dayofpi.super_block_world.SoundList;
 import com.google.common.collect.Maps;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityData;
@@ -96,6 +96,26 @@ public class MooMooEntity extends CowEntity {
         this.goalSelector.add(7, new LookAroundGoal(this));
     }
 
+    protected SoundEvent getAmbientSound() {
+        return SoundList.mooMooAmbient;
+    }
+
+    protected SoundEvent getHurtSound(DamageSource source) {
+        return SoundList.mooMooHurt;
+    }
+
+    protected SoundEvent getDeathSound() {
+        return SoundList.mooMooDeath;
+    }
+
+    protected void playStepSound(BlockPos pos, BlockState state) {
+        this.playSound(SoundList.mooMooStep, 0.2F, 1.0F);
+    }
+
+    protected float getSoundVolume() {
+        return 0.8F;
+    }
+
     public MooMooEntity createChild(ServerWorld serverWorld, PassiveEntity passiveEntity) {
         MooMooEntity mooMooEntity = EntityList.MOO_MOO.create(serverWorld);
         if (passiveEntity instanceof MooMooEntity && mooMooEntity != null) {
@@ -111,30 +131,6 @@ public class MooMooEntity extends CowEntity {
         }
     }
 
-    public int getMinAmbientSoundDelay() {
-        return 120;
-    }
-
-    protected SoundEvent getAmbientSound() {
-        return SoundList.MOO_MOO_IDLE;
-    }
-
-    protected SoundEvent getHurtSound(DamageSource source) {
-        return SoundList.MOO_MOO_HURT;
-    }
-
-    protected SoundEvent getDeathSound() {
-        return SoundList.MOO_MOO_DEATH;
-    }
-
-    protected void playStepSound(BlockPos pos, BlockState state) {
-        this.playSound(SoundList.MOO_MOO_STEP, 0.2F, 1.0F);
-    }
-
-    protected float getSoundVolume() {
-        return 0.8F;
-    }
-
     @Nullable
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
         this.setColor(this.random.nextInt(4));
@@ -147,14 +143,6 @@ public class MooMooEntity extends CowEntity {
         super.initDataTracker();
         this.dataTracker.startTracking(LYING, false);
         this.dataTracker.startTracking(TYPE, 1);
-    }
-
-    public boolean isLying() {
-        return this.dataTracker.get(LYING);
-    }
-
-    public void setLying(boolean lying) {
-        this.dataTracker.set(LYING, lying);
     }
 
     @Override
@@ -172,6 +160,14 @@ public class MooMooEntity extends CowEntity {
 
     }
 
+    public boolean isLying() {
+        return this.dataTracker.get(LYING);
+    }
+
+    public void setLying(boolean lying) {
+        this.dataTracker.set(LYING, lying);
+    }
+
     public float getPathfindingFavor(BlockPos pos, WorldView world) {
         return world.getBlockState(pos.down()).isOf(BlockList.TOADSTOOL_GRASS) ? 10.0F : world.getLightLevel(pos) - 0.5F;
     }
@@ -186,6 +182,10 @@ public class MooMooEntity extends CowEntity {
         super.readCustomDataFromNbt(nbt);
         this.setColor(nbt.getInt("Type"));
         this.setLying(nbt.getBoolean("LyingDown"));
+    }
+
+    public int getMinAmbientSoundDelay() {
+        return 120;
     }
 
     public boolean isBreedingItem(ItemStack stack) {
@@ -213,10 +213,11 @@ public class MooMooEntity extends CowEntity {
                 if (random.nextInt(50) == 0) {
                     return super.canStart();
                 } else return false;
-            } return super.canStart();
+            }
+            return super.canStart();
         }
 
-            @Nullable
+        @Nullable
         protected Vec3d getWanderTarget() {
             if (this.mob.isInsideWaterOrBubbleColumn()) {
                 Vec3d vec3d = FuzzyTargeting.find(this.mob, 15, 7);

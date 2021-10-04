@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.item.types;
 
-import com.dayofpi.super_block_world.misc.SoundList;
+import com.dayofpi.super_block_world.SoundList;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -12,7 +12,7 @@ public class OneUpItem extends Item {
     }
 
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-        user.playSound(SoundList.ONE_UP, 1.0F, 1.0F);
+        user.playSound(SoundList.itemOneUp, 1.0F, 1.0F);
         return super.finishUsing(stack, world, user);
     }
 }

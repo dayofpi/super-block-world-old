@@ -62,7 +62,7 @@ public class QuestionBlock extends ReactiveBlock implements BlockEntityProvider 
                     Block.dropStack(world, pos, defaultItems((ServerWorld) world, state, blockPos).iterator().next());
                 }
                 world.setBlockState(blockPos, pushEntitiesUpBeforeBlockChange(state, BlockList.EMPTY_BLOCK.getDefaultState(), world, blockPos));
-                world.playSound(null, blockPos, SoundList.ITEM_OUT, SoundCategory.NEUTRAL, 2.0F, 1.0F);
+                world.playSound(null, blockPos, SoundList.blockItemOut, SoundCategory.NEUTRAL, 2.0F, 1.0F);
                 ParticleUtil.spawnParticle(world, blockPos, ParticleTypes.WAX_OFF, UniformIntProvider.create(2, 3));
             }
         }

@@ -51,6 +51,10 @@
                 "feature": "super_block_world:beanstalk_budding"
               },
               {
+                "chance": 0.1,
+                "feature": "super_block_world:huge_red_mushroom"
+              },
+              {
                 "chance": 0.4,
                 "feature": "super_block_world:flowerbed"
               },

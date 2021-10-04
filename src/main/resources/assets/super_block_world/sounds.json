@@ -1,4 +1,85 @@
 {
+  "block.warp_pipe.teleport": {
+    "subtitle": "sound.block.warp_pipe.teleport",
+    "sounds": [
+      "super_block_world:random/warp_pipe"
+    ]
+  },
+  "block.donut_block.trigger": {
+    "subtitle": "sound.block.donut_block.trigger",
+    "sounds": [
+      "super_block_world:random/donut_block"
+    ]
+  },
+  "block.spikes.retract": {
+    "subtitle": "sound.block.spikes.retract",
+    "sounds": [
+      "super_block_world:random/spikes_retract"
+    ]
+  },
+  "block.spikes.extend": {
+    "subtitle": "sound.block.spikes.extend",
+    "sounds": [
+      "super_block_world:random/spikes_extend"
+    ]
+  },
+  "block.boo_lantern.hide": {
+    "subtitle": "sound.block.boo_lantern.hide",
+    "sounds": [
+      "super_block_world:random/boo_lantern_hide"
+    ]
+  },
+  "block.boo_lantern.reveal": {
+    "subtitle": "sound.block.boo_lantern.reveal",
+    "sounds": [
+      "super_block_world:random/boo_lantern_reveal"
+    ]
+  },
+  "item.projectile.throw": {
+    "subtitle": "sound.item.projectile.throw",
+    "sounds": [ "minecraft:random/bow" ]
+  },
+  "item.fire_flower.shoot": {
+    "subtitle": "sound.item.fire_flower.shoot",
+    "sounds": [ "super_block_world:random/fire_flower_shoot" ]
+  },
+  "entity.fireball.bounce": {
+    "subtitle": "sound.entity.fireball.bounce",
+    "sounds": [ "super_block_world:entity/fireball_bounce" ]
+  },
+  "entity.goomba.ambient": {
+    "subtitle": "sound.entity.goomba.ambient",
+    "sounds": [
+      "super_block_world:entity/goomba/say1",
+      "super_block_world:entity/goomba/say2"
+    ]
+  },
+  "entity.goomba.hurt": {
+    "subtitle": "sound.entity.goomba.hurt",
+    "sounds": [
+      "super_block_world:entity/goomba/hurt1",
+      "super_block_world:entity/goomba/hurt2",
+      "super_block_world:entity/goomba/hurt3"
+    ]
+  },
+  "entity.goomba.death": {
+    "subtitle": "sound.entity.goomba.death",
+    "sounds": [
+      "super_block_world:entity/goomba/death1",
+      "super_block_world:entity/goomba/death2"
+    ]
+  },
+  "entity.goomba.step": {
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      "super_block_world:entity/goomba/step1",
+      "super_block_world:entity/goomba/step2",
+      "super_block_world:entity/goomba/step3"
+    ]
+  },
+
+
+
   "block.item_in": {
     "subtitle": "block.item_in",
     "sounds": [
@@ -88,10 +169,6 @@
         "stream": true
       }
     ]
-  },
-  "item.throw": {
-    "subtitle": "item.throw",
-    "sounds": [ "minecraft:random/bow" ]
   },
   "entity.boo.ambient": {
     "subtitle": "entity.boo.ambient",
@@ -211,49 +288,6 @@
       },
       {
         "name": "super_block_world:entity/moo_moo/bell3",
-        "stream": true
-      }
-    ]
-  },
-  "entity.goomba.idle": {
-    "subtitle": "entity.goomba.idle",
-    "sounds": [
-      {
-        "name": "super_block_world:entity/goomba/say1",
-        "stream": true
-      },
-      {
-        "name": "super_block_world:entity/goomba/say2",
-        "stream": true
-      }
-    ]
-  },
-  "entity.goomba.hurt": {
-    "subtitle": "entity.goomba.hurt",
-    "sounds": [
-      {
-        "name": "super_block_world:entity/goomba/hurt1",
-        "stream": true
-      },
-      {
-        "name": "super_block_world:entity/goomba/hurt2",
-        "stream": true
-      },
-      {
-        "name": "super_block_world:entity/goomba/hurt3",
-        "stream": true
-      }
-    ]
-  },
-  "entity.goomba.death": {
-    "subtitle": "entity.goomba.death",
-    "sounds": [
-      {
-        "name": "super_block_world:entity/goomba/death1",
-        "stream": true
-      },
-      {
-        "name": "super_block_world:entity/goomba/death2",
         "stream": true
       }
     ]

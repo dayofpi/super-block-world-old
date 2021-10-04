@@ -7,6 +7,7 @@ import com.dayofpi.super_block_world.misc.DispenserBehaviors;
 import com.dayofpi.super_block_world.world.FeatureList;
 import com.dayofpi.super_block_world.world.FluidList;
 import net.fabricmc.api.ModInitializer;
+import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
 import net.minecraft.util.Identifier;
 
 public class Main implements ModInitializer {
@@ -21,8 +22,11 @@ public class Main implements ModInitializer {
         FeatureList.registerFeatures();
         TagList.registerTags();
         SoundList.registerSounds();
+        NewSoundList.registerSounds();
         FluidList.registerFluids();
         DispenserBehaviors.addDispenserBehaviors();
-        //CustomPortalBuilder.beginPortal().frameBlock(BlockList.WARP_FRAME).ignitionSource(PortalIgnitionSource.FIRE).tintColor(188, 112, 255).destDimID(DIMENSION_ID).registerPortal();
+        CustomPortalBuilder.beginPortal()
+                .frameBlock(BlockList.WARP_FRAME)
+                .tintColor(188, 112, 255).destDimID(DIMENSION_ID).registerPortal();
     }
 }

@@ -10,7 +10,8 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 
 public class GoombaRenderer<T extends GoombaEntity> extends MobEntityRenderer<T, GoombaModel<T>> {
-    private static final Identifier TEXTURE = new Identifier(Main.MOD_ID, "textures/entity/goomba/goomba.png");
+    private static final Identifier COMMON = new Identifier(Main.MOD_ID, "textures/entity/goomba/goomba.png");
+    private static final Identifier GOLD = new Identifier(Main.MOD_ID, "textures/entity/goomba/gold_goomba.png");
 
     public GoombaRenderer(EntityRendererFactory.Context context) {
         super(context, new GoombaModel<>(context.getPart(ModelLayers.GOOMBA)), 0.4F);
@@ -28,6 +29,6 @@ public class GoombaRenderer<T extends GoombaEntity> extends MobEntityRenderer<T,
 
     @Override
     public Identifier getTexture(T entity) {
-        return TEXTURE;
+        return entity.isGold() ? GOLD : COMMON;
     }
 }

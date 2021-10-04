@@ -1,5 +1,6 @@
 package com.dayofpi.super_block_world.block.types;
 
+import com.dayofpi.super_block_world.entity.types.projectiles.FlowerFireballEntity;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -10,7 +11,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.AbstractFireballEntity;
+import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
@@ -26,7 +27,6 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
@@ -73,11 +73,6 @@ public class StoneTorchBlock extends Block implements Waterloggable {
     }
 
     @Override
-    public boolean emitsRedstonePower(BlockState state) {
-        return true;
-    }
-
-    @Override
     public FluidState getFluidState(BlockState state) {
         return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
     }
@@ -87,9 +82,21 @@ public class StoneTorchBlock extends Block implements Waterloggable {
         return SHAPE;
     }
 
-    @Override
-    public int getWeakRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
+    public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
         return state.get(LIT) ? 15 : 0;
+    }
+
+    public boolean hasComparatorOutput(BlockState state) {
+        return true;
+    }
+
+    public void onProjectileHit(World world, BlockState state, BlockHitResult hit, ProjectileEntity projectile) {
+        BlockPos blockPos = hit.getBlockPos();
+        boolean isProjectileFiery = projectile.isOnFire() || projectile instanceof FlowerFireballEntity;
+        if (!world.isClient && isProjectileFiery && projectile.canModifyAt(world, blockPos) && !(Boolean)state.get(LIT)) {
+            world.setBlockState(blockPos, state.with(Properties.LIT, true), Block.NOTIFY_ALL | Block.REDRAW_ON_MAIN_THREAD);
+        }
+
     }
 
     @Override
@@ -97,10 +104,6 @@ public class StoneTorchBlock extends Block implements Waterloggable {
         if (state.get(LIT)) {
             if (!entity.isFireImmune() && entity instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity) entity)) {
                 entity.damage(DamageSource.IN_FIRE, 1F);
-            }
-        } else {
-            if (entity instanceof AbstractFireballEntity || entity.isOnFire()) {
-                world.setBlockState(pos, state.cycle(LIT), 1);
             }
         }
     }

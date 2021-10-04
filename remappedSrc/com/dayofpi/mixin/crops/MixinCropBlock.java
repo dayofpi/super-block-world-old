@@ -1,7 +1,7 @@
 package com.dayofpi.mixin.crops;
 
 import com.dayofpi.super_block_world.block.registry.BlockList;
-import com.dayofpi.super_block_world.misc.TagList;
+import com.dayofpi.super_block_world.TagList;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;

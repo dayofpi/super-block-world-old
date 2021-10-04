@@ -23,12 +23,32 @@
   "advancements.sbw.every_mushroom_power_up.description": "Collect one of each power-up",
   "advancements.sbw.hit_block.title": "As Seen on the NES!",
   "advancements.sbw.hit_block.description": "Hit your head on an item block",
+  "advancements.sbw.tame_boo.title": "Spooky Friends",
+  "advancements.sbw.tame_boo.description": "Tame a boo",
 
-  "block.item_in": "Item in",
-  "block.item_out": "Item out",
-  "block.coin": "Coin releases",
-  "block.trampoline": "Spring jump",
-  "block.powered_trampoline": "Powered spring jump",
+  "sound.block.warp_pipe.teleport": "Player warps",
+  "sound.block.donut_block.trigger": "Donut Block triggers",
+  "sound.block.spikes.retract": "Spikes retract",
+  "sound.block.spikes.extend": "Spikes extend",
+  "sound.block.boo_lantern.hide": "Boo Lantern hides",
+  "sound.block.boo_lantern.reveal": "Boo Lantern reveals",
+
+  "sound.item.projectile.throw": "Item thrown",
+
+  "sound.item.fire_flower.shoot": "Fire Flower shoots",
+
+  "sound.entity.fireball.bounce": "Fireball bounces",
+
+  "entity.super_block_world.goomba": "Goomba",
+  "sound.entity.goomba.ambient": "Goomba squeaks",
+  "sound.entity.goomba.hurt": "Goomba hurts",
+  "sound.entity.goomba.death": "Goomba dies",
+
+
+  "block.question_block.store": "Item stored",
+  "block.question_block.release": "Item releases",
+  "block.coin_block.release": "Coin releases",
+  "block.trampoline.jump": "Trampoline jump",
 
   "entity.moo_moo.idle": "Moo Moo moos",
   "entity.moo_moo.hurt": "Moo Moo hurts",
@@ -41,6 +61,14 @@
   "entity.buzzy_beetle.land": "Buzzy lands",
   "entity.buzzy_beetle.block": "Buzzy blocks an attack",
 
+  "entity.super_block_world.boo": "Boo",
+  "entity.super_block_world.moo_moo": "Moo Moo",
+  "entity.super_block_world.buzzy_beetle": "Buzzy Beetle",
+  "entity.super_block_world.spike_top": "Spike Top",
+  "entity.super_block_world.nipper_plant": "Nipper Plant",
+  "entity.super_block_world.stingby": "Stingby",
+  "entity.super_block_world.rotten_mushroom": "Rotten Mushroom",
+
   "item.super_block_world.yoshi_fruit": "Yoshi Fruit",
   "item.super_block_world.yoshi_cookie": "Yoshi Cookie",
   "item.super_block_world.turnip": "Turnip",
@@ -52,6 +80,7 @@
   "item.super_block_world.golden_mushroom": "Golden Mushroom",
   "item.super_block_world.one_up": "1-Up",
   "item.super_block_world.poison_mushroom": "Poison Mushroom",
+  "item.super_block_world.fire_flower": "Fire Flower",
   "item.super_block_world.coin": "Coin",
   "item.super_block_world.raw_bronze": "Raw Bronze",
   "item.super_block_world.bronze_ingot": "Bronze Ingot",
@@ -66,6 +95,7 @@
   "item.super_block_world.amanita_boat": "Amanita Boat",
   "item.super_block_world.spawn_eggs.moo_moo": "Moo Moo Spawn Egg",
   "item.super_block_world.spawn_eggs.goomba": "Goomba Spawn Egg",
+  "item.super_block_world.spawn_eggs.bob_omb": "Bob-omb Spawn Egg",
   "item.super_block_world.spawn_eggs.boo": "Boo Spawn Egg",
   "item.super_block_world.spawn_eggs.buzzy_beetle": "Buzzy Beetle Spawn Egg",
   "item.super_block_world.spawn_eggs.spike_top": "Spike Top Spawn Egg",
@@ -73,12 +103,7 @@
   "item.super_block_world.spawn_eggs.stingby": "Stingby Spawn Egg",
   "item.super_block_world.spawn_eggs.rotten_mushroom": "Rotten Mushroom Spawn Egg",
 
-  "entity.super_block_world.moo_moo": "Moo Moo",
-  "entity.super_block_world.buzzy_beetle": "Buzzy Beetle",
-  "entity.super_block_world.spike_top": "Spike Top",
-  "entity.super_block_world.nipper_plant": "Nipper Plant",
-  "entity.super_block_world.stingby": "Stingby",
-  "entity.super_block_world.rotten_mushroom": "Rotten Mushroom",
+
 
   "block.super_block_world.warp_frame": "Warp Frame",
   "block.super_block_world.warp_pipe": "Warp Pipe",
@@ -91,6 +116,7 @@
   "block.super_block_world.trampoline": "Trampoline",
   "block.super_block_world.redstone_trampoline": "Redstone Trampoline",
   "block.super_block_world.stone_torch": "Stone Torch",
+  "block.super_block_world.boo_lantern": "Boo Lantern",
   "block.super_block_world.donut_block": "Donut Block",
   "block.super_block_world.toadstool_grass": "Toadstool Grass",
   "block.super_block_world.toadstool_turf": "Toadstool Turf",
@@ -185,6 +211,7 @@
   "block.super_block_world.muncher": "Muncher",
   "block.super_block_world.beanstalk": "Beanstalk",
   "block.super_block_world.budding_beanstalk": "Budding Beanstalk",
+  "block.super_block_world.piranha_lily": "Piranha Lily",
   "block.super_block_world.strawberry_coral": "Strawberry Coral",
   "block.super_block_world.strawberry_coral_block": "Strawberry Coral Block",
   "block.super_block_world.yellow_flowerbed": "Yellow Flowerbed",

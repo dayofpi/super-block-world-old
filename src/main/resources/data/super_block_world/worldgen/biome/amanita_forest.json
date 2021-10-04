@@ -11,7 +11,7 @@
     "water_color": 5295837,
     "water_fog_color": 5295837,
     "grass_color": 6263838,
-    "foliage_color": 5606194,
+    "foliage_color": 1148675,
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000,
@@ -34,6 +34,12 @@
         "maxCount": 4
       },
       {
+        "type": "super_block_world:rotten_mushroom",
+        "weight": 10,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
         "type": "super_block_world:buzzy_beetle",
         "weight": 100,
         "minCount": 1,
@@ -46,16 +52,16 @@
         "maxCount": 2
       },
       {
-        "type": "super_block_world:rotten_mushroom",
-        "weight": 10,
+        "type": "super_block_world:bob_omb",
+        "weight": 5,
         "minCount": 1,
-        "maxCount": 1
+        "maxCount": 2
       }
     ],
     "creature": [
       {
         "type": "minecraft:rabbit",
-        "weight": 1,
+        "weight": 20,
         "minCount": 2,
         "maxCount": 3
       }
@@ -63,7 +69,7 @@
   },
   "spawn_costs": {
     "super_block_world:goomba": {
-      "energy_budget": 0.15,
+      "energy_budget": 0.16,
       "charge": 0.7
     }
   },
@@ -92,6 +98,7 @@
     [
       "super_block_world:ore_bronze",
       "super_block_world:ore_amethyst",
+      "super_block_world:ore_amethyst_scattered",
       "super_block_world:ore_hardstone",
       "super_block_world:ore_crumble",
       "super_block_world:toppings_coal",
@@ -103,12 +110,12 @@
       "super_block_world:cave_crystals",
       "super_block_world:stone_torches",
       "super_block_world:warp_pipe_normal",
-      "super_block_world:mushroom_underground"
+      "super_block_world:mushroom_underground",
+      "super_block_world:vegetation_underground"
     ],
     [
       "minecraft:patch_grass_normal",
       "minecraft:patch_tall_grass",
-      "minecraft:patch_waterlilly",
       "super_block_world:plant_forest",
       "super_block_world:flower_grassland",
       "super_block_world:mushroom_forest",

@@ -15,6 +15,7 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.ServerWorldAccess;
@@ -29,19 +30,24 @@ public class RottenMushroomEntity extends HostileEntity {
         super(entityType, world);
     }
 
+    public static boolean canSpawn(ServerWorldAccess world, BlockPos pos, Random random) {
+        return world.getBlockState(pos.down()).isIn(BlockTags.DIRT) && isSpawnDark(world, pos, random);
+    }
+
+    public static DefaultAttributeContainer.Builder createAttributes() {
+        return HostileEntity.createHostileAttributes()
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 15.0D)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2D)
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 3.0D);
+    }
+
     @Override
     public EntityGroup getGroup() {
         return EntityGroup.UNDEAD;
     }
 
-    @Override
-    public float getPathfindingFavor(BlockPos pos, WorldView world) {
-        return 0.5F - world.getBrightness(pos);
-    }
-
-
-    public static boolean canSpawn(ServerWorldAccess world, BlockPos pos, Random random) {
-        return pos.getY() > world.getSeaLevel() && isSpawnDark(world, pos, random);
+    public float getSoundPitch() {
+        return (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.5F;
     }
 
     protected void initGoals() {
@@ -50,13 +56,6 @@ public class RottenMushroomEntity extends HostileEntity {
         this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
         this.goalSelector.add(5, new WanderAroundFarGoal(this, 1.0D));
         this.targetSelector.add(2, new RevengeGoal(this));
-    }
-
-    public static DefaultAttributeContainer.Builder createAttributes() {
-        return HostileEntity.createHostileAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 15.0D)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2D)
-                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 3.0D);
     }
 
     public boolean tryAttack(Entity target) {
@@ -69,17 +68,13 @@ public class RottenMushroomEntity extends HostileEntity {
                     i = 15;
                 }
                 if (i > 0) {
-                    ((LivingEntity)target).addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, i * 20, 0));
+                    ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, i * 20, 0));
                 }
             }
             return true;
         } else {
             return false;
         }
-    }
-
-    public float getSoundPitch() {
-        return (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.5F;
     }
 
     public SoundEvent getHurtSound(DamageSource source) {
@@ -90,12 +85,17 @@ public class RottenMushroomEntity extends HostileEntity {
         return SoundEvents.ENTITY_ZOMBIE_DEATH;
     }
 
-    protected SoundEvent getStepSound() {
-        return SoundEvents.ENTITY_ZOMBIE_STEP;
+    @Override
+    public float getPathfindingFavor(BlockPos pos, WorldView world) {
+        return 0.5F - world.getBrightness(pos);
     }
 
     protected void playStepSound(BlockPos pos, BlockState state) {
         this.playSound(this.getStepSound(), 0.15F, 1.0F);
+    }
+
+    protected SoundEvent getStepSound() {
+        return SoundEvents.ENTITY_ZOMBIE_STEP;
     }
 
 }

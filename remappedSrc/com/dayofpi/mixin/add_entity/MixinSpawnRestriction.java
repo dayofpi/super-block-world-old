@@ -25,6 +25,12 @@ public class MixinSpawnRestriction {
         } else if (type == EntityList.SPIKE_TOP) {
             info.setReturnValue(SpikeTopEntity.canSpawn(world, pos, random));
             info.cancel();
+        } else if (type == EntityList.GOOMBA) {
+            info.setReturnValue(GoombaEntity.canSpawn(world, pos, type));
+            info.cancel();
+        } else if (type == EntityList.BOO) {
+            info.setReturnValue(BooEntity.canSpawn(world, reason, pos, random));
+            info.cancel();
         } else if (type == EntityList.STINGBY) {
             info.setReturnValue(StingbyEntity.canSpawn(world, pos));
             info.cancel();
@@ -33,6 +39,9 @@ public class MixinSpawnRestriction {
             info.cancel();
         } else if (type == EntityList.ROTTEN_MUSHROOM) {
             info.setReturnValue(RottenMushroomEntity.canSpawn(world, pos, random));
+            info.cancel();
+        } else if (type == EntityList.NIPPER_PLANT) {
+            info.setReturnValue(NipperPlantEntity.canSpawn(world, pos));
             info.cancel();
         }
     }

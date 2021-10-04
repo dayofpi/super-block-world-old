@@ -1,12 +1,13 @@
 package com.dayofpi.mixin;
 
+import com.dayofpi.super_block_world.NewSoundList;
+import com.dayofpi.super_block_world.SoundList;
+import com.dayofpi.super_block_world.TagList;
 import com.dayofpi.super_block_world.block.registry.BlockList;
 import com.dayofpi.super_block_world.block.types.WarpPipeBlock;
 import com.dayofpi.super_block_world.entity.types.mobs.AbstractBuzzy;
 import com.dayofpi.super_block_world.item.registry.ItemList;
 import com.dayofpi.super_block_world.misc.ModDamageSource;
-import com.dayofpi.super_block_world.SoundList;
-import com.dayofpi.super_block_world.TagList;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
@@ -16,7 +17,6 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.ProjectileDamageSource;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -63,11 +63,14 @@ public abstract class MixinLivingEntity extends Entity {
         if (this.getPipeCooldown() == 0 && world.getBlockState(currentPos).isOf(BlockList.WARP_PIPE)) {
             BlockPos newPos = WarpPipeBlock.warpPipeTree.getNearestBlock(currentPos, world, this.getHeadYaw());
             if (newPos != null) {
-                this.setPipeCooldown(10);
-                this.requestTeleport(newPos.getX() + 0.5, newPos.getY() + 1.0F, newPos.getZ() + 0.5);
-                world.sendEntityStatus(this, (byte) 46);
-                if (world.isClient)
-                    this.playSound(SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, 1.0F, 1.0F);
+                if (!world.isClient) {
+                    world.playSound(null, currentPos, NewSoundList.BLOCK_WARP_PIPE_TELEPORT, SoundCategory.PLAYERS, 0.5F, 1.0F);
+                    this.setPipeCooldown(20);
+                    this.requestTeleport(newPos.getX() + 0.5, newPos.getY() + 1.0F, newPos.getZ() + 0.5);
+                    world.sendEntityStatus(this, (byte) 46);
+                    world.playSound(null, newPos, NewSoundList.BLOCK_WARP_PIPE_TELEPORT, SoundCategory.PLAYERS, 0.5F, 1.0F);
+                }
+
             }
 
         }
@@ -89,7 +92,7 @@ public abstract class MixinLivingEntity extends Entity {
             info.cancel();
         }
         if (this.isWearingTheBoots()) {
-            this.playSound(SoundList.JUMP, 0.2F, this.getSoundPitch());
+            this.playSound(SoundList.jumpBoots_jump, 0.2F, this.getSoundPitch());
         }
 
     }
@@ -119,8 +122,8 @@ public abstract class MixinLivingEntity extends Entity {
             boolean exceptions = helmet.isOf(ItemList.BUZZY_SHELL) || livingEntity.getType().isIn(TagList.IMMUNE_TO_BOOTS);
             if (conditions) {
                 if (!exceptions) {
-                    entity.damage(ModDamageSource.stomp(world.getClosestEntity(LivingEntity.class, TargetPredicate.createNonAttackable(), livingEntity, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), this.getBoundingBox().expand(0, 1, 0))), 5F);
-                    this.playSound(SoundList.STOMP, 1.0F, this.getSoundPitch());
+                    entity.damage(ModDamageSource.stomp(world.getClosestEntity(LivingEntity.class, TargetPredicate.createAttackable(), livingEntity, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), this.getBoundingBox().expand(0, 1, 0))), 5F);
+                    this.playSound(SoundList.jumpBoots_stomp, 1.0F, this.getSoundPitch());
                     this.setVelocity(vec3d.x, 0.5, vec3d.z);
                     if (helmet.isDamageable()) {
                         helmet.damage(2, livingEntity, ((e) -> e.sendEquipmentBreakStatus(EquipmentSlot.HEAD)));
@@ -128,7 +131,7 @@ public abstract class MixinLivingEntity extends Entity {
 
                 } else {
                     this.setVelocity(vec3d.x, 0.5, vec3d.z);
-                    this.playSound(SoundList.BOUNCE, 1.0F, 1.0F);
+                    this.playSound(SoundList.item_jumpBoots_bounce, 1.0F, 1.0F);
                 }
             }
         }
@@ -141,7 +144,7 @@ public abstract class MixinLivingEntity extends Entity {
         ItemStack headSlot = this.getEquippedStack(EquipmentSlot.HEAD);
         if (headSlot.isOf(ItemList.BUZZY_SHELL)) {
             if (source instanceof ProjectileDamageSource && source.getPosition() != null && source.getPosition().y > this.getY() + 1.5 || source.isFallingBlock() || source.getAttacker() != null && source.getAttacker() instanceof AbstractBuzzy && ((AbstractBuzzy) source.getAttacker()).isUpsideDown() && source.getAttacker().fallDistance > 0) {
-                this.world.playSound(null, this.getBlockPos(), SoundList.BUZZY_BEETLE_BLOCK, SoundCategory.NEUTRAL, 0.6F, this.randomPitch());
+                this.world.playSound(null, this.getBlockPos(), SoundList.buzzyBlock, SoundCategory.NEUTRAL, 0.6F, this.randomPitch());
                 headSlot.setDamage(headSlot.getDamage() + random.nextInt(2));
                 if (headSlot.getDamage() >= headSlot.getMaxDamage()) {
                     this.sendEquipmentBreakStatus(EquipmentSlot.HEAD);

@@ -1,6 +1,6 @@
 package com.dayofpi.mixin.fluid;
 
-import com.dayofpi.super_block_world.misc.TagList;
+import com.dayofpi.super_block_world.TagList;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.WaterFluid;

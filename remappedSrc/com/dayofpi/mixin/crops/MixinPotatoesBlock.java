@@ -1,6 +1,6 @@
 package com.dayofpi.mixin.crops;
 
-import com.dayofpi.super_block_world.misc.TagList;
+import com.dayofpi.super_block_world.TagList;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropBlock;

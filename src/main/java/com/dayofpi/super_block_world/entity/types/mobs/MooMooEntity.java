@@ -97,19 +97,19 @@ public class MooMooEntity extends CowEntity {
     }
 
     protected SoundEvent getAmbientSound() {
-        return SoundList.MOO_MOO_IDLE;
+        return SoundList.mooMooAmbient;
     }
 
     protected SoundEvent getHurtSound(DamageSource source) {
-        return SoundList.MOO_MOO_HURT;
+        return SoundList.mooMooHurt;
     }
 
     protected SoundEvent getDeathSound() {
-        return SoundList.MOO_MOO_DEATH;
+        return SoundList.mooMooDeath;
     }
 
     protected void playStepSound(BlockPos pos, BlockState state) {
-        this.playSound(SoundList.MOO_MOO_STEP, 0.2F, 1.0F);
+        this.playSound(SoundList.mooMooStep, 0.2F, 1.0F);
     }
 
     protected float getSoundVolume() {

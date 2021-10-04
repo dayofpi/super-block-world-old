@@ -13,11 +13,13 @@ public class EntityClient {
         EntityRendererRegistry.register(EntityList.TURNIP, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(EntityList.HAMMER, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(EntityList.BOMB, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(EntityList.FIREBALL, FlowerFireballRenderer::new);
         EntityRendererRegistry.register(EntityList.GHOST, EmptyEntityRenderer::new);
         EntityRendererRegistry.register(EntityList.MOD_BOAT, ModBoatRenderer::new);
         EntityRendererRegistry.register(EntityList.BUZZY_SHELL, (context) -> new BuzzyShellRenderer<>(context, ModelLayers.BUZZY_SHELL));
         EntityRendererRegistry.register(EntityList.MOO_MOO, MooMooRenderer::new);
         EntityRendererRegistry.register(EntityList.GOOMBA, GoombaRenderer::new);
+        EntityRendererRegistry.register(EntityList.BOB_OMB, BobOmbRenderer::new);
         EntityRendererRegistry.register(EntityList.BOO, BooRenderer::new);
         EntityRendererRegistry.register(EntityList.BUZZY_BEETLE, BuzzyRenderer::new);
         EntityRendererRegistry.register(EntityList.SPIKE_TOP, SpikeTopRenderer::new);

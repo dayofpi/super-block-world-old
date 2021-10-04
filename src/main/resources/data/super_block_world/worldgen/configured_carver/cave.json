@@ -50,14 +50,14 @@
       "type": "minecraft:uniform",
       "value": {
         "min_inclusive": 1,
-        "max_exclusive": 2
+        "max_exclusive": 3
       }
     },
     "vertical_radius_multiplier": {
       "type": "minecraft:uniform",
       "value": {
         "min_inclusive": 1,
-        "max_exclusive": 2
+        "max_exclusive": 3
       }
     },
     "floor_level": {

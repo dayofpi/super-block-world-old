@@ -3,6 +3,7 @@ package com.dayofpi.super_block_world.block.types.template;
 import net.minecraft.block.*;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
@@ -43,7 +44,7 @@ public abstract class ModPlantPartBlock extends Block {
         if (!this.canAttachTo(blockState)) {
             return false;
         } else {
-            return world.getBlockState(blockPos).isOf(this.getStem(state)) || blockState.isOf(this.getPlant()) || blockState.isSideSolidFullSquare(world, blockPos, this.growthDirection);
+            return blockState.isIn(BlockTags.LEAVES) || blockState.isOf(this.getStem(state)) || blockState.isOf(this.getPlant()) || blockState.isSideSolidFullSquare(world, blockPos, this.growthDirection);
         }
     }
 

@@ -17,10 +17,7 @@ import net.minecraft.entity.ai.pathing.EntityNavigation;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.mob.HostileEntity;
-import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
@@ -32,30 +29,14 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
 
-public class StingbyEntity extends AbstractTroop implements Flutterer {
-    public StingbyEntity(EntityType<? extends AbstractTroop> entityType, World world) {
+public class StingbyEntity extends EnemyEntity implements Flutterer {
+    public StingbyEntity(EntityType<? extends EnemyEntity> entityType, World world) {
         super(entityType, world);
         this.moveControl = new FlightMoveControl(this, 20, true);
     }
 
-    public float getPathfindingFavor(BlockPos pos, WorldView world) {
-        return world.getBlockState(pos).isAir() ? 10.0F : 0.0F;
-    }
-
-    @Override
-    public EntityGroup getGroup() {
-        return EntityGroup.ARTHROPOD;
-    }
-
-    protected void initGoals() {
-        this.goalSelector.add(2, new MeleeAttackGoal(this, 1.0D, false));
-        this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
-        this.goalSelector.add(5, new StingbyEntity.StingbyWanderGoal());
-        this.targetSelector.add(2, new RevengeGoal(this));
-    }
-
     public static DefaultAttributeContainer.Builder createAttributes() {
-        return HostileEntity.createHostileAttributes()
+        return EnemyEntity.createEnemyAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 15.0D)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2D)
                 .add(EntityAttributes.GENERIC_FLYING_SPEED, 0.6D)
@@ -66,7 +47,23 @@ public class StingbyEntity extends AbstractTroop implements Flutterer {
         return world.getBlockState(pos.down()).isOf(BlockList.TOADSTOOL_GRASS) && world.getBaseLightLevel(pos, 0) > 8;
     }
 
-    protected void playStepSound(BlockPos pos, BlockState state) {
+    public float getPathfindingFavor(BlockPos pos, WorldView world) {
+        return world.getBlockState(pos).isAir() ? 10.0F : 0.0F;
+    }
+
+    protected SoundEvent getHurtSound(DamageSource source) {
+        return SoundEvents.ENTITY_BEE_HURT;
+    }
+
+    protected SoundEvent getDeathSound() {
+        return SoundEvents.ENTITY_BEE_DEATH;
+    }
+
+    protected void initGoals() {
+        this.goalSelector.add(2, new MeleeAttackGoal(this, 1.0D, false));
+        this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
+        this.goalSelector.add(5, new StingbyEntity.StingbyWanderGoal());
+        this.targetSelector.add(2, new RevengeGoal(this));
     }
 
     protected EntityNavigation createNavigation(World world) {
@@ -84,25 +81,19 @@ public class StingbyEntity extends AbstractTroop implements Flutterer {
         }
     }
 
-    protected SoundEvent getHurtSound(DamageSource source) {
-        return SoundEvents.ENTITY_BEE_HURT;
+    protected void playStepSound(BlockPos pos, BlockState state) {
     }
 
-    protected SoundEvent getDeathSound() {
-        return SoundEvents.ENTITY_BEE_DEATH;
+    protected void fall(double heightDifference, boolean onGround, BlockState landedState, BlockPos landedPosition) {
     }
 
     public boolean handleFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource) {
         return false;
     }
 
-    protected void fall(double heightDifference, boolean onGround, BlockState landedState, BlockPos landedPosition) {
-    }
-
-    @Nullable
     @Override
-    public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
-        return null;
+    public EntityGroup getGroup() {
+        return EntityGroup.ARTHROPOD;
     }
 
     @Override
@@ -122,6 +113,7 @@ public class StingbyEntity extends AbstractTroop implements Flutterer {
         public boolean shouldContinue() {
             return StingbyEntity.this.navigation.isFollowingPath();
         }
+
         public void start() {
             Vec3d vec3d = this.getRandomLocation();
             if (vec3d != null) {

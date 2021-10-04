@@ -60,6 +60,7 @@
     "super_block_world:warp_pipe",
     "super_block_world:warp_pipe_body",
     "super_block_world:stone_torch",
+    "super_block_world:boo_lantern",
     "super_block_world:spike_trap"
   ]
 }

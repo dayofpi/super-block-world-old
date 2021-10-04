@@ -4,46 +4,20 @@ import com.dayofpi.super_block_world.block.registry.BlockList;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Fertilizable;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-import java.util.Random;
-
 @SuppressWarnings("deprecation")
-public class ToadstoolSoilBlock extends Block implements Fertilizable {
+public class ToadstoolSoilBlock extends Block {
     public ToadstoolSoilBlock(Settings settings) {
         super(settings);
-    }
-
-    @Override
-    public boolean isFertilizable(BlockView world, BlockPos pos, BlockState state, boolean isClient) {
-        return true;
-    }
-
-    @Override
-    public boolean canGrow(World world, Random random, BlockPos pos, BlockState state) {
-        return !state.isOf(BlockList.COARSE_TOADSTOOL_SOIL);
-    }
-
-    @Override
-    public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-        for (int i = 0; i < 4; ++i) {
-            BlockPos blockPos = pos.add(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
-            if (world.getBlockState(blockPos).isOf(BlockList.TOADSTOOL_SOIL)) {
-                world.setBlockState(pos, BlockList.TOADSTOOL_GRASS.getDefaultState(), 2);
-                world.setBlockState(blockPos, BlockList.TOADSTOOL_GRASS.getDefaultState(), 2);
-            }
-        }
     }
 
     @Override

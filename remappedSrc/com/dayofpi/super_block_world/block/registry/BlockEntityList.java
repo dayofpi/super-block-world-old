@@ -1,6 +1,7 @@
 package com.dayofpi.super_block_world.block.registry;
 
 import com.dayofpi.super_block_world.Main;
+import com.dayofpi.super_block_world.block.block_entity.BooLanternBE;
 import com.dayofpi.super_block_world.block.block_entity.ModSignBE;
 import com.dayofpi.super_block_world.block.block_entity.QuestionBlockBE;
 import com.dayofpi.super_block_world.block.block_entity.WarpPipeBE;
@@ -13,11 +14,13 @@ public class BlockEntityList {
 
     public static BlockEntityType<ModSignBE> MOD_SIGN;
     public static BlockEntityType<QuestionBlockBE> QUESTION_BLOCK;
+    public static BlockEntityType<BooLanternBE> BOO_LANTERN;
     public static BlockEntityType<WarpPipeBE> WARP_PIPE;
 
     public static void registerBlockEntities() {
         MOD_SIGN = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "mod_sign"), FabricBlockEntityTypeBuilder.create(ModSignBE::new, BlockList.AMANITA_SIGN, BlockList.AMANITA_WALL_SIGN).build());
         QUESTION_BLOCK = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "question_block"), FabricBlockEntityTypeBuilder.create(QuestionBlockBE::new, BlockList.QUESTION_BLOCK).build());
+        BOO_LANTERN = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "boo_lantern"), FabricBlockEntityTypeBuilder.create(BooLanternBE::new, BlockList.BOO_LANTERN).build());
         WARP_PIPE = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "warp_pipe"), FabricBlockEntityTypeBuilder.create(WarpPipeBE::new, BlockList.WARP_PIPE).build());
     }
 }

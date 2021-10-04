@@ -1,12 +1,18 @@
 package com.dayofpi.super_block_world.entity.types.mobs;
 
 import com.dayofpi.super_block_world.entity.registry.EntityList;
-import com.dayofpi.super_block_world.entity.types.GhostEntity;
+import com.dayofpi.super_block_world.entity.types.SpiritEntity;
+import com.dayofpi.super_block_world.misc.ModDamageSource;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.fluid.Fluid;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.tag.Tag;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.LightType;
@@ -15,7 +21,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class AbstractGhost extends EnemyEntity {
+public abstract class AbstractGhost extends AnimalEntity {
     final static int lightLimit = 10;
 
     public AbstractGhost(EntityType<? extends AbstractGhost> entityType, World world) {
@@ -23,7 +29,16 @@ public class AbstractGhost extends EnemyEntity {
     }
 
     public static boolean canSpawn(ServerWorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
-        return isSpawnDark(world, pos, random) && world.isSkyVisible(pos) || (spawnReason == SpawnReason.STRUCTURE);
+        return isSpawnDark(world, pos, random) && world.getBlockState(pos.down()).isIn(BlockTags.DIRT) || (spawnReason == SpawnReason.STRUCTURE);
+    }
+
+    public static boolean isSpawnDark(ServerWorldAccess world, BlockPos pos, Random random) {
+        if (world.getLightLevel(LightType.SKY, pos) > random.nextInt(32)) {
+            return false;
+        } else {
+            int i = world.toServerWorld().isThundering() ? world.getLightLevel(pos, 10) : world.getLightLevel(pos);
+            return i <= random.nextInt(8);
+        }
     }
 
     public void tickMovement(){
@@ -31,15 +46,19 @@ public class AbstractGhost extends EnemyEntity {
         if (this.isAlive()) {
             final float f = world.getLightLevel(LightType.BLOCK, this.getBlockPos());
             if (f > lightLimit) {
-                this.damage(DamageSource.MAGIC, 2.0F);
+                if (this instanceof BooEntity booEntity) {
+                    if (!booEntity.isTamed()) {
+                        this.damage(ModDamageSource.light(), 3.0F);
+                    }
+                } else this.damage(ModDamageSource.light(), 3.0F);
             }
         }
     }
 
     public void onDeath(DamageSource source) {
         if (!world.isClient) {
-            GhostEntity ghostEntity = new GhostEntity(EntityList.GHOST, world, this.getX(), this.getY(), this.getZ());
-            world.spawnEntity(ghostEntity);
+            SpiritEntity spiritEntity = new SpiritEntity(EntityList.GHOST, world, this.getX(), this.getY(), this.getZ());
+            world.spawnEntity(spiritEntity);
         }
         super.onDeath(source);
     }
@@ -47,6 +66,24 @@ public class AbstractGhost extends EnemyEntity {
     @Override
     public boolean isAttackable() {
         return false;
+    }
+
+    public boolean damage(DamageSource source, float amount) {
+        if (source instanceof ModDamageSource modDamageSource) {
+            if (modDamageSource.isLight()) {
+                if (this.world.isClient) {
+                    world.addParticle(ParticleTypes.GLOW, this.getX() + random.nextFloat(), this.getY() +  random.nextFloat(), this.getZ() + random.nextFloat(), 0.0D, 0.0D, 0.0D);
+                }
+                this.playSound(SoundEvents.BLOCK_AMETHYST_BLOCK_CHIME, 1.0F, 1.0F);
+                return super.damage(source, amount);
+            } else return false;
+        } else if (source.isMagic()) {
+            return super.damage(source, amount);
+        } else return false;
+    }
+
+    public EntityGroup getGroup() {
+        return EntityGroup.UNDEAD;
     }
 
     public boolean isInAir() {

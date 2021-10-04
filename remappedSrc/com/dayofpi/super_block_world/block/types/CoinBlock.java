@@ -2,7 +2,7 @@ package com.dayofpi.super_block_world.block.types;
 
 import com.dayofpi.super_block_world.block.registry.BlockList;
 import com.dayofpi.super_block_world.item.registry.ItemList;
-import com.dayofpi.super_block_world.misc.SoundList;
+import com.dayofpi.super_block_world.SoundList;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ParticleUtil;
@@ -51,7 +51,7 @@ public class CoinBlock extends ReactiveBlock {
             }
         }
         Block.dropStack(world, pos, new ItemStack(ItemList.COIN));
-        world.playSound(null, blockPos, SoundList.COIN, SoundCategory.NEUTRAL, 0.8F, 1.0F);
+        world.playSound(null, blockPos, SoundList.blockCoin, SoundCategory.NEUTRAL, 0.8F, 1.0F);
         ParticleUtil.spawnParticle(world, blockPos, ParticleTypes.WAX_OFF, UniformIntProvider.create(1, 2));
         if (state.get(COIN_COUNT) > 1) {
             world.setBlockState(blockPos, state.with(COIN_COUNT, i - 1));

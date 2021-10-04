@@ -35,9 +35,9 @@ public class MixinBoatEntity {
             target = "Lnet/minecraft/entity/vehicle/BoatEntity$Type;field_7724:[Lnet/minecraft/entity/vehicle/BoatEntity$Type;",
             shift = At.Shift.AFTER))
     private static void addMineshaft(CallbackInfo info) {
-        ArrayList variants = new ArrayList<>(Arrays.asList(field_7724));
-        Type last = variants.get(variants.size() - 1);
-        Type amanita = newType("AMANITA", last.ordinal() + 1, BlockList.AMANITA_PLANKS, "amanita");
+        var variants = new ArrayList<>(Arrays.asList(field_7724));
+        var last = variants.get(variants.size() - 1);
+        var amanita = newType("AMANITA", last.ordinal() + 1, BlockList.AMANITA_PLANKS, "amanita");
         EnumBoats.AMANITA = amanita;
         variants.add(amanita);
 

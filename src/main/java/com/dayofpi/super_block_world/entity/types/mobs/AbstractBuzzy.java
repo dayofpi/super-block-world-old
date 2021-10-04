@@ -41,10 +41,10 @@ public abstract class AbstractBuzzy extends CeilingEntity {
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.22D);
     }
 
-    public static boolean canSpawn(ServerWorldAccess world, BlockPos pos, Random random, EntityType<? extends MobEntity> type) {
-        boolean floorValid = world.getBlockState(pos.down()).isOf(BlockList.VANILLATE) || world.getBlockState(pos.down()).isOf(BlockList.TOPPED_VANILLATE);
-        boolean ceilingValid = world.getBlockState(pos.up()).isOf(BlockList.VANILLATE) || world.getBlockState(pos.down()).isOf(BlockList.TOPPED_VANILLATE);
-        return CeilingEntity.isSpawnDark(world, pos, random) && !world.isSkyVisible(pos) && (floorValid || ceilingValid);
+    public static boolean canSpawn(ServerWorldAccess world, BlockPos pos, Random random) {
+        boolean floorValid = isSpawnBlockValid(world, pos.down());
+        boolean ceilingValid = isSpawnBlockValid(world, pos.up());
+        return !world.isSkyVisible(pos) && (floorValid || ceilingValid);
     }
 
     public void initGoals() {
@@ -55,11 +55,15 @@ public abstract class AbstractBuzzy extends CeilingEntity {
     }
 
     protected SoundEvent getHurtSound(DamageSource source) {
-        return SoundList.BUZZY_BEETLE_HURT;
+        return SoundList.buzzyHurt;
     }
 
     protected SoundEvent getDeathSound() {
-        return SoundList.BUZZY_BEETLE_DEATH;
+        return SoundList.buzzyDeath;
+    }
+
+    public static boolean isSpawnBlockValid(ServerWorldAccess world, BlockPos pos) {
+        return world.getBlockState(pos).isOf(BlockList.VANILLATE) || world.getBlockState(pos).isOf(BlockList.GLOOMSTONE);
     }
 
     @Override
@@ -86,7 +90,7 @@ public abstract class AbstractBuzzy extends CeilingEntity {
     }
 
     protected SoundEvent getLandingSound() {
-        return SoundList.BUZZY_BEETLE_LAND;
+        return SoundList.buzzyLand;
     }
 
     @Override
@@ -115,7 +119,7 @@ public abstract class AbstractBuzzy extends CeilingEntity {
     }
 
     private SoundEvent getDropSound() {
-        return SoundList.BUZZY_BEETLE_DROP;
+        return SoundList.buzzyDrop;
     }
 
     @Override
@@ -132,6 +136,6 @@ public abstract class AbstractBuzzy extends CeilingEntity {
     }
 
     private SoundEvent getBlockingSound() {
-        return SoundList.BUZZY_BEETLE_BLOCK;
+        return SoundList.buzzyBlock;
     }
 }

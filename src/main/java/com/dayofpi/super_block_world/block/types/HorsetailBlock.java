@@ -46,7 +46,7 @@ public class HorsetailBlock extends PlantBlock {
         BlockPos blockPos = pos.down();
         BlockState floor = world.getBlockState(blockPos);
         if (state.get(PART) == 0) {
-            return floor.isIn(BlockTags.DIRT) || floor.isOf(BlockList.TOADSTOOL_FARMLAND) || floor.isOf(BlockList.TOADSTONE);
+            return floor.isIn(BlockTags.DIRT);
         } else if (state.get(PART) == 1) {
             return floor.isOf(BlockList.HORSETAIL) && floor.get(PART) == 0;
         } else return floor.isOf(BlockList.HORSETAIL) && floor.get(PART) == 1;
@@ -70,15 +70,7 @@ public class HorsetailBlock extends PlantBlock {
         }
     }
 
-    public static void placeAt(WorldAccess world, BlockState state, BlockPos pos, int flags) {
-        BlockPos blockPos = pos.up();
-        BlockPos blockPos2 = pos.up(2);
-        world.setBlockState(pos, state.with(PART, 0), flags);
-        world.setBlockState(blockPos, state.with(PART, 1), flags);
-        world.setBlockState(blockPos2, state.with(PART, 2), flags);
-    }
-
-        protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(PART);
     }
 

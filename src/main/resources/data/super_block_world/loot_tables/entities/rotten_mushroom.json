@@ -6,12 +6,21 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "weight": 4,
-          "name": "super_block_world:poison_mushroom"
+          "weight": 1,
+          "name": "super_block_world:poison_mushroom",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
         },
         {
           "type": "minecraft:item",
-          "weight": 96,
+          "weight": 50,
           "name": "minecraft:rotten_flesh",
           "functions": [
             {

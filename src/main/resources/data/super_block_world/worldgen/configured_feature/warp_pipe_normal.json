@@ -4,62 +4,73 @@
     "decorator": {
       "type": "minecraft:count",
       "config": {
-        "count": 7
+        "count": 4
       }
     },
     "feature": {
       "type": "minecraft:decorated",
       "config": {
         "decorator": {
-          "type": "minecraft:square",
-          "config": {}
-        },
-        "feature": {
           "type": "minecraft:decorated",
           "config": {
-            "decorator": {
-              "type": "minecraft:range",
+            "outer": {
+              "type": "minecraft:square",
+              "config": {}
+            },
+            "inner": {
+              "type": "minecraft:decorated",
               "config": {
-                "height": {
-                  "type": "minecraft:biased_to_bottom",
-                  "min_inclusive": {
-                    "above_bottom": 0
-                  },
-                  "max_inclusive": {
-                    "below_top": 0
+                "outer": {
+                  "type": "minecraft:water_depth_threshold",
+                  "config": {
+                    "max_water_depth": 50
+                  }
+                },
+                "inner": {
+                  "type": "minecraft:range",
+                  "config": {
+                    "height": {
+                      "type": "minecraft:biased_to_bottom",
+                      "min_inclusive": {
+                        "above_bottom": 0
+                      },
+                      "max_inclusive": {
+                        "below_top": 10
+                      }
+                    }
                   }
                 }
               }
-            },
-            "feature": {
-              "type": "minecraft:random_boolean_selector",
+            }
+          }
+        },
+        "feature": {
+          "type": "minecraft:random_boolean_selector",
+          "config": {
+            "feature_false": {
+              "type": "minecraft:decorated",
               "config": {
-                "feature_false": {
-                  "type": "minecraft:decorated",
+                "decorator": {
+                  "type": "minecraft:cave_surface",
                   "config": {
-                    "decorator": {
-                      "type": "minecraft:cave_surface",
-                      "config": {
-                        "surface": "floor",
-                        "floor_to_ceiling_search_range": 12
-                      }
-                    },
-                    "feature": "super_block_world:warp_pipe_floor"
+                    "surface": "floor",
+                    "floor_to_ceiling_search_range": 12
                   }
                 },
-                "feature_true": {
-                  "type": "minecraft:decorated",
+                "feature": "super_block_world:warp_pipe_floor"
+              }
+            },
+            "feature_true": {
+              "type": "minecraft:decorated",
+              "config": {
+                "decorator": {
+                  "type": "minecraft:cave_surface",
                   "config": {
-                    "decorator": {
-                      "type": "minecraft:cave_surface",
-                      "config": {
-                        "surface": "ceiling",
-                        "floor_to_ceiling_search_range": 12
-                      }
-                    },
-                    "feature": "super_block_world:warp_pipe_ceiling"
+                    "surface": "ceiling",
+                    "floor_to_ceiling_search_range": 12
                   }
-                }
+                },
+                "feature": "super_block_world:warp_pipe_ceiling"
               }
             }
           }

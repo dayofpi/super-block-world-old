@@ -4,7 +4,7 @@
     "decorator": {
       "type": "minecraft:count",
       "config": {
-        "count": 8
+        "count": 30
       }
     },
     "feature": {
@@ -41,8 +41,8 @@
           "config": {
             "features": [
               {
-                "chance": 0.001,
-                "feature": "super_block_world:beanstalk_not_budding"
+                "chance": 0.05,
+                "feature": "super_block_world:dark_amanita_baby_checked"
               }
             ],
             "default": "super_block_world:dark_amanita_checked"

@@ -1,8 +1,9 @@
 package com.dayofpi.super_block_world.entity.types.mobs;
 
+import com.dayofpi.super_block_world.NewSoundList;
 import com.dayofpi.super_block_world.entity.registry.EntityList;
 import com.dayofpi.super_block_world.item.registry.ItemList;
-import com.dayofpi.super_block_world.SoundList;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -30,13 +31,18 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class GoombaEntity extends EnemyEntity {
-    private static final TrackedData<Integer> SIZE;
     static final Predicate<ItemEntity> POWER_UP_FILTER;
+    private static final TrackedData<Integer> SIZE;
+    private static final TrackedData<Boolean> GROWABLE;
+    private static final TrackedData<Boolean> GOLD;
 
     static {
         SIZE = DataTracker.registerData(GoombaEntity.class, TrackedDataHandlerRegistry.INTEGER);
+        GROWABLE = DataTracker.registerData(GoombaEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+        GOLD = DataTracker.registerData(GoombaEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
         POWER_UP_FILTER = (item) -> !item.cannotPickup() && item.isAlive() && item.getStack().isOf(ItemList.SUPER_MUSHROOM);
     }
+
     public GoombaEntity(EntityType<? extends EnemyEntity> entityType, World world) {
         super(entityType, world);
     }
@@ -47,52 +53,78 @@ public class GoombaEntity extends EnemyEntity {
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE);
     }
 
+    public static boolean canSpawn(ServerWorldAccess world, BlockPos pos, EntityType<? extends MobEntity> type) {
+        return world.getBlockState(pos.down()).allowsSpawning(world, pos, type) && !(world.getLightLevel(LightType.BLOCK, pos) > 0);
+    }
+
     public void initGoals() {
         this.goalSelector.add(1, new SwimGoal(this));
         this.goalSelector.add(2, new MeleeAttackGoal(this, 1.0D, false));
         this.targetSelector.add(2, new RevengeGoal(this));
         this.goalSelector.add(5, new WanderAroundFarGoal(this, 0.7D));
         this.goalSelector.add(6, new LookAroundGoal(this));
-        this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
+        this.goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
         this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
     }
 
-    public static boolean canSpawn(ServerWorldAccess world, BlockPos pos, EntityType<? extends MobEntity> type) {
-        return world.getBlockState(pos.down()).allowsSpawning(world, pos, type) && !(world.getLightLevel(LightType.BLOCK, pos) > 0);
-    }
-
-    public float getSoundPitch() {
-        return (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.5F - (this.getSize() * 0.5F);
+    @Override
+    protected void initDataTracker() {
+        super.initDataTracker();
+        this.dataTracker.startTracking(SIZE, 1);
+        this.dataTracker.startTracking(GROWABLE, true);
+        this.dataTracker.startTracking(GOLD, false);
     }
 
     public int getMinAmbientSoundDelay() {
-        return 100;
+        return 500;
+    }
+
+    public void tick() {
+        super.tick();
+        if (this.getSize() < 2 && this.isAlive() && this.isGrowable()) {
+            List<ItemEntity> list = GoombaEntity.this.world.getEntitiesByClass(ItemEntity.class, this.getBoundingBox(), POWER_UP_FILTER);
+            if (!list.isEmpty()) {
+                list.forEach((Entity::discard));
+                this.setSize(this.getSize() + 1);
+            }
+        }
     }
 
     protected SoundEvent getAmbientSound() {
-        return SoundList.GOOMBA_IDLE;
+        return NewSoundList.ENTITY_GOOMBA_AMBIENT;
     }
 
-    protected SoundEvent getHurtSound(DamageSource source) {
-        return SoundList.GOOMBA_HURT;
+    public void writeCustomDataToNbt(NbtCompound nbt) {
+        super.writeCustomDataToNbt(nbt);
+        nbt.putInt("Size", this.getSize());
+        nbt.putBoolean("Gold", this.isGold());
+        nbt.putBoolean("Growable", this.isGrowable());
     }
 
-    protected SoundEvent getDeathSound() {
-        return SoundList.GOOMBA_DEATH;
+    public void readCustomDataFromNbt(NbtCompound nbt) {
+        this.setSize(nbt.getInt("Size"));
+        this.setGold(nbt.getBoolean("Gold"));
+        this.setGrowable(nbt.getBoolean("Growable"));
+        super.readCustomDataFromNbt(nbt);
     }
 
-    public boolean tryAttack(Entity target) {
-        if (this.distanceTo(target) < 2F) {
-            return super.tryAttack(target);
-        } return false;
+    @Override
+    protected void dropInventory() {
+        super.dropInventory();
+        if (this.isGold()) {
+            this.dropItem(ItemList.COIN);
+        }
     }
 
-    public double getMountedHeightOffset() {
-        return this.getDimensions(getPose()).height;
+    protected Identifier getLootTableId() {
+        return this.getSize() == 1 ? this.getType().getLootTableId() : LootTables.EMPTY;
     }
 
     @Nullable
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
+        if (this.random.nextInt(100) == 0) {
+            this.setGold(true);
+        }
         if (this.random.nextFloat() > 0.5F) {
             this.setSize(1);
             if (this.random.nextInt(10) == 0) {
@@ -110,31 +142,80 @@ public class GoombaEntity extends EnemyEntity {
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
     }
 
-    public void tick() {
-        super.tick();
-        if (this.getSize() < 2 && this.isAlive()) {
-            List<ItemEntity> list = GoombaEntity.this.world.getEntitiesByClass(ItemEntity.class, this.getBoundingBox(), POWER_UP_FILTER);
-            if (!list.isEmpty()) {
-                list.forEach((Entity::discard));
-                this.setSize(this.getSize() + 1);
+    public boolean tryAttack(Entity target) {
+        if (this.distanceTo(target) < 2F) {
+            return super.tryAttack(target);
+        }
+        return false;
+    }
+
+    private boolean isGrowable() {
+        return this.dataTracker.get(GROWABLE);
+    }
+
+    private void setGrowable(boolean growable) {
+        this.dataTracker.set(GROWABLE, growable);
+    }
+
+    public boolean isGold() {
+        return this.dataTracker.get(GOLD);
+    }
+
+    private void setGold(boolean gold) {
+        this.dataTracker.set(GOLD, gold);
+    }
+
+
+    protected SoundEvent getHurtSound(DamageSource source) {
+        return NewSoundList.ENTITY_GOOMBA_HURT;
+    }
+
+    protected SoundEvent getDeathSound() {
+        return NewSoundList.ENTITY_GOOMBA_DEATH;
+    }
+
+    public void remove(RemovalReason reason) {
+        int i = this.getSize();
+        if (!this.world.isClient && i == 2 && this.isDead()) {
+            Text text = this.getCustomName();
+            boolean bl = this.isAiDisabled();
+            float f = (float) i / 4.0F;
+            int k = 2 + this.random.nextInt(3);
+
+            for (int l = 0; l < k; ++l) {
+                float g = ((float) (l % 2) - 0.5F) * f;
+                float h = ((float) (l / 2) - 0.5F) * f;
+                GoombaEntity goombaEntity = (GoombaEntity) this.getType().create(this.world);
+                if (goombaEntity != null) {
+                    if (this.isPersistent()) {
+                        goombaEntity.setPersistent();
+                    }
+
+                    goombaEntity.setCustomName(text);
+                    goombaEntity.setAiDisabled(bl);
+                    goombaEntity.setInvulnerable(this.isInvulnerable());
+                    goombaEntity.setGold(this.isGold());
+                    goombaEntity.setSize(1);
+                    goombaEntity.setGrowable(false);
+                    goombaEntity.refreshPositionAndAngles(this.getX() + (double) g, this.getY() + 0.5D, this.getZ() + (double) h, this.random.nextFloat() * 360.0F, 0.0F);
+                    this.world.spawnEntity(goombaEntity);
+                }
             }
         }
+
+        super.remove(reason);
     }
 
-    @Override
-    protected void initDataTracker() {
-        super.initDataTracker();
-        this.dataTracker.startTracking(SIZE, 1);
+    protected void playStepSound(BlockPos pos, BlockState state) {
+        this.playSound(this.getStepSound(), 0.8F, this.getSoundPitch() * 1.2F);
     }
 
-    public void writeCustomDataToNbt(NbtCompound nbt) {
-        super.writeCustomDataToNbt(nbt);
-        nbt.putInt("Size", this.getSize());
+    protected SoundEvent getStepSound() {
+        return NewSoundList.ENTITY_GOOMBA_STEP;
     }
 
-    public void readCustomDataFromNbt(NbtCompound nbt) {
-        this.setSize(nbt.getInt("Size"));
-        super.readCustomDataFromNbt(nbt);
+    public float getSoundPitch() {
+        return (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.5F - (this.getSize() * 0.3F);
     }
 
     public void onTrackedDataSet(TrackedData<?> data) {
@@ -147,6 +228,10 @@ public class GoombaEntity extends EnemyEntity {
             }
         }
         super.onTrackedDataSet(data);
+    }
+
+    public EntityDimensions getDimensions(EntityPose pose) {
+        return super.getDimensions(pose).scaled(0.5F * (float) this.getSize() + 0.5F);
     }
 
     public int getSize() {
@@ -177,34 +262,8 @@ public class GoombaEntity extends EnemyEntity {
         this.experiencePoints = clampedSize * 2;
     }
 
-    public void remove(RemovalReason reason) {
-        int i = this.getSize();
-        if (!this.world.isClient && i == 2 && this.isDead()) {
-            Text text = this.getCustomName();
-            boolean bl = this.isAiDisabled();
-            float f = (float)i / 4.0F;
-            int k = 2 + this.random.nextInt(3);
-
-            for(int l = 0; l < k; ++l) {
-                float g = ((float)(l % 2) - 0.5F) * f;
-                float h = ((float)(l / 2) - 0.5F) * f;
-                GoombaEntity goombaEntity = (GoombaEntity)this.getType().create(this.world);
-                if (goombaEntity != null) {
-                    if (this.isPersistent()) {
-                        goombaEntity.setPersistent();
-                    }
-
-                    goombaEntity.setCustomName(text);
-                    goombaEntity.setAiDisabled(bl);
-                    goombaEntity.setInvulnerable(this.isInvulnerable());
-                    goombaEntity.setSize(1);
-                    goombaEntity.refreshPositionAndAngles(this.getX() + (double) g, this.getY() + 0.5D, this.getZ() + (double) h, this.random.nextFloat() * 360.0F, 0.0F);
-                    this.world.spawnEntity(goombaEntity);
-                }
-            }
-        }
-
-        super.remove(reason);
+    public double getMountedHeightOffset() {
+        return this.getDimensions(getPose()).height;
     }
 
     public void calculateDimensions() {
@@ -213,13 +272,5 @@ public class GoombaEntity extends EnemyEntity {
         double f = this.getZ();
         super.calculateDimensions();
         this.setPosition(d, e, f);
-    }
-
-    public EntityDimensions getDimensions(EntityPose pose) {
-        return super.getDimensions(pose).scaled(0.5F * (float)this.getSize() + 0.5F);
-    }
-
-    protected Identifier getLootTableId() {
-        return this.getSize() > 0 ? this.getType().getLootTableId() : LootTables.EMPTY;
     }
 }
